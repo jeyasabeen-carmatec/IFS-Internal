@@ -1,0 +1,167 @@
+/* 
+  Localizable.strings
+  QIFS
+
+  Created by zylog on 10/06/17.
+  Copyright © 2017 zsl. All rights reserved.
+*/
+
+"Calculator" = "الحاسبة";
+
+"CASH POSITION" = "الرصيد النقدي";
+
+"Change Password" = "تغيير كلمة المرور";
+"Islamic Financial Securities" = "الاسلامية للأوراق المالية";
+"OK" = "موافق";
+
+"Contact Us" = "الاتصال بنا";
+
+"Verification" = "التحقق";
+
+"My Favorites" = "المفضلة";
+"Symbol/Company Name" = "الرمز/إسم الشركة";
+"Cash Position" = "الرصيد النقدي";
+"My Orders History" = "تاريخ الأوامر";
+"Settings" = "إعدادات";
+"Sign Out" = "خروج";
+
+"Forgot Password" = "نسيت كلمة المرور";
+"Enter OTP" = "إدخال OTP";
+"Cancel" = "إلغاء";
+
+"Please rate IFS!" = "!IFS يرجى معدل";
+"If you liked it, we would like to know!" = "!إذا كنت تحب ذلك، نود أن نعرف";
+"Rate It Now" = "معدل الآن";
+"Remind Me Later" = "ذكرني لاحقا";
+"No, Thanks" = "لا شكرا";
+
+"Map" = "خريطة الموقع";
+
+"Market Depth" = "عمق السوق";
+
+"My Orders" = "أوامرى";
+"Org. Qty" = "الكمية";
+"Price" = "السعر";
+"Qty" = "الكمية";
+"Avg. Price" = "متوسط السعر";
+"YES" = "نعم";
+"NO" = "لا";
+
+"New Order" = "أمر جديد";
+"Modify Order" = "تعديل الأمر";
+"Create Order" = "إنشاء أمر";
+"Modify" = "تعديل";
+
+"Order Confirmation" = "تأكيد الأمر";
+
+"Order History" = "تاريخ الأوامر";
+"Last Week" = "آخر اسبوع";
+"Last Month" = "آخر شهر";
+"Last 3 Months" = "آخر ثلاث اشهر";
+
+"Unfavorite" = "غير مفضلة";
+"Favorite" = "مفضلة";
+
+"My Portfolio" = "المحفظة";
+
+"Registration" = "Registration";
+"Agree" = "Agree";
+"Disagree" = "Disagree";
+
+"Add Favorites" = "إضافة للمفضلة";
+
+"Market Sectors" = "قطاعات السوق";
+
+"QE Market" = "السوق";
+
+"Login" = "الدخول";
+
+"Close" = "الاغلاق";
+"Date" = "التاريخ";
+"Last" = "آخر سعر";
+
+"Remove" = "إزالة";
+"Details" = "تفاصيل";
+"Buy" = "شراء";
+"Sell" = "بيع";
+
+"QE Index" = "المؤشر";
+"Prices" = "الأسعار";
+"Gain/Loss" = "ربح/خسارة";
+"Sectors" = "القطاعات";
+"Active" = "الأكثر نشاطا";
+"Bonds" = "السندات";
+
+"Ask" = "عرض";
+"Bid" = "طلب";
+"Contact Text" = "الشركه الاسلامية للاوراق المالية\nمبنى مكين القابضة , الدور الرابع\nشارع حمد الكبير\nالدوحة , قطر\nصندوق البريد : 12402\nفاكس : (+974) 4449 8802\nإيميل:info@islamicbroker.com.qa";
+"Phone1" = "8888 4449 (974+)";
+"Phone2" = "8824 4449 (974+)";
+
+//"My Favorites" = "My Favorites";
+
+"INTERNET_CONNECTION" = "لا يوجد إتصال بشبكة الإنترنت . برجاء المحاولة لاحقا";
+"USERNAME" = "برجاء إدخال اسم المستخدم";
+"PASSWORD" = "برجاء إدخال كلمة السر";
+"SESSION_EXPIRED" = "انتهت صلاحية جلسة العمل الخاصة بك";
+"INVALID_HEADER" = "Invalid Header";
+"INVALID_TOKEN" = "رمز الدخول غير صالح";
+
+"REPASSWORD" = "Please enter the Retype Password";
+"ACCOUNT_NUMBER" = "برجاء إدخال رقم المساهم";
+"ACCOUNT_NUMBER_VALID" = "Account Number must be at least 10 characters";
+"PASSWORD_VALID" = "كلمة المرور يجب أن تكون مكونة من 6 رموز على الأقل";
+"REPASSWORD_MISMATCH" = "Retype Password mismatched";
+"FIRSTNAME" = "Please enter the First Name";
+"LASTNAME" = "Please enter the Last Name";
+"MOBILE_NUMBER" = "برجاء إدخال رقم الجوال المعتمد";
+"MOBILE_NUMBER_VALID" = "Mobile number must be numeric";
+"EMAIL" = "برجاء إدخال البريد الالكترونى";
+"EMAIL_VALID" = "برجاء إدخال بريد إلكترونى صحيح";
+"REGISTER_TERMS" = "Terms & Conditions";
+"REGISTER_SUCCESS" = "Registered successfully";
+"REGISTER_FAILED" = "Unable to register the user. Please try again";
+
+"CHANGE_NEW_PASSWORD" = "برجاء إدخال كلمة مرور جديدة";
+"CHANGE_CONFIRM_PASSWORD" = "برجاء تأكيد كلمة المرور";
+"CHANGE_PASSWORD_MISMATCH" = "كلمة المرور غير متطابقة";
+"CHANGE_PASSWORD_SUCCESS" = "تم تغيير كلمة المرور بنجاح";
+
+"FORGOT_PASSWORD_SUCCESS" = "تم إرسال رمز التحقق إلى رقم الجوال المسجل بنجاح";
+"FORGOT_PASSWORD_OTP" = "برجاء إدخال رمز التحقق أدناه ";
+
+"NEWORDER_SECURITY" = "برجاء إختيار رمز/إسم الشركه من البحث";
+"NEWORDER_TRANSACTION" = "برجاء إختيار نوع العملية";
+"NEWORDER_ORDERTYPE" = "برجاء إختيار نوع الأمر";
+"NEWORDER_DURATION" = "برجاء إختيار مدة الأمر";
+"NEWORDER_PRICE" = "برجاء إدخال حد السعر";
+"NEWORDER_VALIDPRICE" = "برجاء إدخال حد سعر صالح";
+"NEWORDER_LIMITUPPRICE" = "Limit Price should not be greater than Limit Up Price";
+"NEWORDER_LIMITDOWNPRICE" = "Limit Price should not be lesser than Limit Down Price";
+"NEWORDER_QTY" = "برجاء إدخال الكمية";
+"NEWORDER_DISCLOSEDQTY" = "برجاء إدخال الكمية المعلنه";
+"NEWORDER_DISCLOSEDQTYVAL" = "الكمية المعلنه لا يجب ان تكون أكبر من الكمية الأصلية";
+"NEWORDER_BUYINGCASH" = "لايوجد لديك رصيد كافى";
+"NEWORDER_NOTENOUGHAVAILQTY" = "الكمية غير متوفرة";
+
+"CANCEL_ORDER_CONFIRM" = "هل أنت متاكد أنك ترغب في إلغاء الأمر";
+"CANCEL_ORDER_SUCCESS" = "تم إلغاء الأمر بنجاح";
+"FAVORITES_ADD" = "تم الإضافة للمفضلة بنجاح";
+"FAVORITES_REMOVE" = "تم الإزالة من المفضلة";
+
+"CALCULATOR_CASH" = "Please enter the Cash Amount";
+"CALCULATOR_VALIDCASH" = "Please enter a valid Cash Amount";
+"CALCULATOR_SHARE" = "Please enter the Share Price";
+"CALCULATOR_VALIDSHARE" = "Please enter a valid Share Price";
+"CALCULATOR_SHARES" = "Please enter the No. of Shares";
+
+"ORDERCONFIRM_CREATE_SUCCESS" = "تم إضافة الأمر بنجاح";
+"ORDERCONFIRM_MODIFY_SUCCESS" = "تم تعديل الأمر بنجاح";
+"CHART_DATA_UNAVAILABLE" = "لا توجد بيانات لعرضها على الشارت";
+"NEWORDER_ORG_QTY" = "برجاء إدخال الكمية";
+"NEWORDER_LIMITLESSVALID" = "حد السعر يجب ان يكون اقل من";
+"NEWORDER_LIMITGREATERVALID" = "و اكبر من";
+
+"SIGNOUT_CONFIRMATION" = "هل أنت متأكد أنك تريد الخروج؟";
+"CHANGE_ARABIC" = "التبديل إلى اللغة العربية؟";
+"CHANGE_ENGLISH" = "التبديل إلى اللغة الإنجليزية؟";
