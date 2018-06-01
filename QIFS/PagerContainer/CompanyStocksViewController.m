@@ -143,8 +143,8 @@
         [GlobalShare showBasicAlertView:self :INTERNET_CONNECTION];
         return;
     }
-    
-    [self performSelector:@selector(getMarketWatch) withObject:nil afterDelay:0.01f];*/
+    */
+    [self performSelector:@selector(getMarketWatch) withObject:nil afterDelay:0.01f];
 }
 
 - (void)didReceiveMemoryWarning {
