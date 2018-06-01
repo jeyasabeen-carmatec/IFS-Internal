@@ -17,7 +17,6 @@ static GlobalShare *_shareInstane;
 
 @implementation GlobalShare
 
-@synthesize ismodifyOrder;
 @synthesize stockSectors;
 @synthesize topNavController;
 @synthesize topViewController;
@@ -235,12 +234,6 @@ static GlobalShare *_shareInstane;
     [formatter setDateFormat:@"dd-MM-yyyy"];
     return [formatter dateFromString:theDate];
 }
-+ (NSDate *)returnDateAsDateanother_form:(NSString *)theDate
-{
-    NSDateFormatter* formatter = [[NSDateFormatter alloc] init];
-    [formatter setDateFormat:@"MM-dd-yyyy"];
-    return [formatter dateFromString:theDate];
-}
 
 + (NSString *)returnUSDate:(NSDate *)theDate {
     NSDateFormatter* formatter = [[NSDateFormatter alloc] init];
@@ -439,48 +432,7 @@ static GlobalShare *_shareInstane;
     
     [viewController presentViewController:alertController animated:YES completion:nil];
 }
-//+(void)login_alert_view_creating:(UIViewController *)viewcontroller
-//{
-//    UIAlertController * alertController = [UIAlertController alertControllerWithTitle: @"Islamic Financial Securities"
-//                                                                              message: @"Please login to continue"
-//                                                                       preferredStyle:UIAlertControllerStyleAlert];
-//    
-//    [alertController addTextFieldWithConfigurationHandler:^(UITextField *textField) {
-//        textField.placeholder = @"Enter Userid";
-//        textField.textColor = [UIColor blackColor];
-//        textField.clearButtonMode = UITextFieldViewModeWhileEditing;
-//        [textField addTarget:self action:@selector(textDidChange:) forControlEvents:UIControlEventEditingChanged];
-//    }];
-//    
-//    [alertController addTextFieldWithConfigurationHandler:^(UITextField *textField) {
-//        textField.placeholder = @"Enter password";
-//        textField.textColor = [UIColor blackColor];
-//        textField.clearButtonMode = UITextFieldViewModeWhileEditing;
-//        [textField addTarget:self action:@selector(textDidChange:) forControlEvents:UIControlEventEditingChanged];
-//    }];
-//    
-//     UIAlertAction *login = [UIAlertAction actionWithTitle:@"Login"
-//                                                  style:UIAlertActionStyleDefault
-//                                                handler:^(UIAlertAction *action) {
-//                                                  
-//                                                }];
-//    
-//    
-//    [alertController addAction:login];
-//    //self.submit_action.enabled = NO;
-//    
-//    UIAlertAction *cancel = [UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel
-//                                                   handler:^(UIAlertAction * action) {
-//                                                       
-//                                                       [viewcontroller dismissViewControllerAnimated:NO completion:nil];
-//                                                       
-//                                                   }];
-//    
-//    [alertController addAction:cancel];
-//    
-//   
-//    [viewcontroller presentViewController:alertController animated:YES completion:nil];
-//}
+
 + (void)showSessionExpiredAlertView:(id)viewController :(NSString *)strMessage {
     GlobalShare *globalShare = [GlobalShare sharedInstance];
 
@@ -681,35 +633,6 @@ static GlobalShare *_shareInstane;
     NSBundle *languageBundle = [NSBundle bundleWithPath:path];
     NSString *str = [languageBundle localizedStringForKey:passKey value:@"" table:@"Localization"];
     return str;
-}
-+ (void)showLoginAlertView:(id)viewController :(NSString *)strMessage {
-    
-    NSString *alertTitle = NSLocalizedString(@"Login", @"Login");
-        UIAlertController * alertController = [UIAlertController alertControllerWithTitle: alertTitle
-                                                                              message: @""
-                                                                       preferredStyle:UIAlertControllerStyleAlert];
-    [alertController addTextFieldWithConfigurationHandler:^(UITextField *textField) {
-        textField.placeholder = @"name";
-        textField.textColor = [UIColor blueColor];
-        textField.clearButtonMode = UITextFieldViewModeWhileEditing;
-        textField.borderStyle = UITextBorderStyleRoundedRect;
-    }];
-    [alertController addTextFieldWithConfigurationHandler:^(UITextField *textField) {
-        textField.placeholder = @"password";
-        textField.textColor = [UIColor blueColor];
-        textField.clearButtonMode = UITextFieldViewModeWhileEditing;
-        textField.borderStyle = UITextBorderStyleRoundedRect;
-        textField.secureTextEntry = YES;
-    }];
-    [alertController addAction:[UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
-        NSArray * textfields = alertController.textFields;
-        UITextField * namefield = textfields[0];
-        UITextField * passwordfiled = textfields[1];
-        NSLog(@"%@:%@",namefield.text,passwordfiled.text);
-        
-    }]];
-    [viewController presentViewController:alertController animated:YES completion:nil];
-    
 }
 
 

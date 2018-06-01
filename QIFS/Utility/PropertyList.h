@@ -15,6 +15,9 @@
 
 #define WEB_URL @"http://islamicbroker.biz/english/index.html"
 
+
+#define webSite_Url @"https://www.islamicbroker.com.qa/"
+
 //UATPUBLIC
 #define REQUEST_URL @"http://212.77.209.101/OrderManagerWebAPI/WebAPI/"
 
@@ -152,6 +155,5 @@
 #define SIGNOUT_CONFIRMATION            NSLocalizedString(@"SIGNOUT_CONFIRMATION", @"SIGNOUT_CONFIRMATION")
 #define CHANGE_ARABIC                   NSLocalizedString(@"CHANGE_ARABIC", @"CHANGE_ARABIC")
 #define CHANGE_ENGLISH                  NSLocalizedString(@"CHANGE_ENGLISH", @"CHANGE_ENGLISH")
-#define CHECK_AMOUNT                  NSLocalizedString(@"NOT ENOUGH CASH", @"NOT ENOUGH CASH")
 
 #endif /* PropertyList_h */

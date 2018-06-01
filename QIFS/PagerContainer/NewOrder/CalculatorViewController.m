@@ -10,8 +10,6 @@
 
 @interface CalculatorViewController ()
 
-@property (nonatomic, weak) IBOutlet UIActivityIndicatorView *indicatorView;
-
 @property (nonatomic, weak) IBOutlet UILabel *labelTitle;
 @property (nonatomic, weak) IBOutlet UIView *viewBuy1;
 @property (nonatomic, weak) IBOutlet UIView *viewBuy2;
@@ -132,8 +130,6 @@
         [self.labelSellSharePrice2 setTextAlignment:NSTextAlignmentRight];
         [self.labelSellCash2 setTextAlignment:NSTextAlignmentRight];
     }
-    
-     [self performSelector:@selector(getCashPosition) withObject:nil afterDelay:0.01f];
 }
 
 -(void)viewWillDisappear:(BOOL)animated {
@@ -166,7 +162,7 @@
             [_viewSell1 setHidden:YES];
             [_viewSell2 setHidden:YES];
             
-           // self.textFieldBuyCash1.text = @"";
+            self.textFieldBuyCash1.text = @"";
             self.textFieldBuySharePrice1.text = @"";
             self.textFieldBuyNoOfShares1.text = @"";
             
@@ -185,7 +181,7 @@
             self.textFieldSellSharePrice1.text = @"";
             self.textFieldSellCash1.text = @"";
             
-          //  self.textFieldSellCash2.text = @"";
+            self.textFieldSellCash2.text = @"";
             self.textFieldSellSharePrice2.text = @"";
             self.textFieldSellNoOfShares2.text = @"";
             
@@ -197,8 +193,7 @@
 
 - (IBAction)actionCalculateBuyShares:(id)sender {
     [self.textFieldCurrent resignFirstResponder];
-    double buyCash1 = 0, buySharePrice1 = 0, commission = 0, commissionVal = 0;
-    int buyNoOfShares1 = 0;
+    double buyCash1 = 0, buySharePrice1 = 0, buyNoOfShares1 = 0, commission = 0, commissionVal = 0;
     buyCash1 = [[self.textFieldBuyCash1.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]] doubleValue];
     buySharePrice1 = [[self.textFieldBuySharePrice1.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]] doubleValue];
     
@@ -224,7 +219,7 @@
     buyCash1 = buyCash1 - commissionVal;
     buyNoOfShares1 = buyCash1 / buySharePrice1;
 
-    self.textFieldBuyNoOfShares1.text = [GlobalShare createCommaSeparatedString:[NSString stringWithFormat:@"%d", buyNoOfShares1]];
+    self.textFieldBuyNoOfShares1.text = [GlobalShare createCommaSeparatedString:[NSString stringWithFormat:@"%.f", buyNoOfShares1]];
 }
 
 - (IBAction)actionCalculateBuyCash:(id)sender {
@@ -285,8 +280,7 @@
 
 - (IBAction)actionCalculateSellShares:(id)sender {
     [self.textFieldCurrent resignFirstResponder];
-    double sellCash2 = 0, sellSharePrice2 = 0,  commission = 0, commissionVal = 0;
-    int sellNoOfShares2 = 0;
+    double sellCash2 = 0, sellSharePrice2 = 0, sellNoOfShares2 = 0, commission = 0, commissionVal = 0;
     sellCash2 = [[self.textFieldSellCash2.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]] doubleValue];
     sellSharePrice2 = [[self.textFieldSellSharePrice2.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]] doubleValue];
     
@@ -312,7 +306,7 @@
     sellCash2 = sellCash2 + commissionVal;
     sellNoOfShares2 = sellCash2 / sellSharePrice2;
 
-    self.textFieldSellNoOfShares2.text = [GlobalShare createCommaSeparatedString:[NSString stringWithFormat:@"%d", sellNoOfShares2]];
+    self.textFieldSellNoOfShares2.text = [GlobalShare createCommaSeparatedString:[NSString stringWithFormat:@"%.f", sellNoOfShares2]];
 }
 
 - (void)backgroundTapped:(id)sender {
@@ -423,71 +417,5 @@
         self.view.frame = self.view.bounds;
     }];
 }
--(void) getCashPosition {
-    @try {
-        [self.indicatorView setHidden:NO];
-        
-        NSString *strToken = [NSString stringWithFormat:@"%@", [[NSUserDefaults standardUserDefaults] stringForKey:@"ssckey"]];
-        NSURLSessionConfiguration *defaultConfigObject = [NSURLSessionConfiguration defaultSessionConfiguration];
-        defaultConfigObject.HTTPAdditionalHeaders = @{@"Authorization": strToken};
-        NSURLSession *defaultSession = [NSURLSession sessionWithConfiguration:defaultConfigObject delegate:self delegateQueue:[NSOperationQueue mainQueue]];
-        
-        NSString *strURL = [NSString stringWithFormat:@"%@%@", REQUEST_URL, @"GetCashPosition"];
-        NSURL *url = [NSURL URLWithString:strURL];
-        
-        NSURLSessionDataTask *dataTask = [defaultSession dataTaskWithURL:url
-                                                       completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
-                                                           [self.indicatorView setHidden:YES];
-                                                           if(error == nil)
-                                                           {
-                                                               NSMutableDictionary *returnedDict = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:&error];
-                                                               if([returnedDict[@"status"] hasPrefix:@"error"]) {
-                                                                   if([returnedDict[@"result"] hasPrefix:@"T5"])
-                                                                       [GlobalShare showSessionExpiredAlertView:self :SESSION_EXPIRED];
-                                                                   else if([returnedDict[@"result"] hasPrefix:@"T4"])
-                                                                       [GlobalShare showBasicAlertView:self :INVALID_HEADER];
-                                                                   else if([returnedDict[@"result"] hasPrefix:@"T3"] || [returnedDict[@"result"] hasPrefix:@"T2"])
-                                                                       [GlobalShare showBasicAlertView:self :INVALID_TOKEN];
-                                                                   else
-                                                                       [GlobalShare showBasicAlertView:self :returnedDict[@"result"]];
-                                                                   return;
-                                                               }
-                                                               if([returnedDict[@"status"] isEqualToString:@"authenticated"]) {
-                                                                   dispatch_async(dispatch_get_main_queue(), ^{
-                                                                       NSDictionary *dictVal = returnedDict[@"result"];
-                                                                       
-                                                                    if([globalShare ismodifyOrder] == true )
-                                                                    {
-                                                                        NSString *str_order_val = [[NSUserDefaults standardUserDefaults] valueForKey:@"modified_order_VAL"];
-                                                                        
-                                                                        self.textFieldBuyCash1.text = [NSString stringWithFormat:@"%@", str_order_val];
-                                                                        
-                                                                        self.textFieldSellCash2.text = [NSString stringWithFormat:@"%@", str_order_val];
-//                                                                        [globalShare setIsmodifyOrder:false];
-                                                                    }
-                                                                    else{
-                                                                        self.textFieldBuyCash1.text = [NSString stringWithFormat:@"%@", dictVal[@"Current_Balance"]];
-                                                                        
-                                                                        self.textFieldSellCash2.text = [NSString stringWithFormat:@"%@", dictVal[@"Current_Balance"]];
-                                                                    }
-                                                                      
-                                                                       
-                                                                       
-                                                                   });
-                                                               }
-                                                           }
-                                                           else {
-                                                               [GlobalShare showBasicAlertView:self :[error localizedDescription]];
-                                                           }
-                                                       }];
-        
-        [dataTask resume];
-    }
-    @catch (NSException * e) {
-        NSLog(@"%@", [e description]);
-    }
-    @finally {
-        
-    }
-}
+
 @end

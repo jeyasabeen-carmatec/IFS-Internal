@@ -97,7 +97,9 @@
 //    _chartView.rightAxis.axisMinValue = 9500.0;
     
 //    [_chartView animateWithXAxisDuration:2.5 easingOption:ChartEasingOptionEaseInOutQuart];
+      */
 }
+  
 
 -(void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:YES];
@@ -144,7 +146,7 @@
         return;
     }
     
-    [self performSelector:@selector(getMarketWatch) withObject:nil afterDelay:0.01f];*/
+    [self performSelector:@selector(getMarketWatch) withObject:nil afterDelay:0.01f];
 }
 
 - (void)didReceiveMemoryWarning {

@@ -16,7 +16,6 @@
 @synthesize labelMktValue;
 @synthesize labelGainLoss;
 @synthesize labelGainLossVal;
-@synthesize label_AR_Symbol;
 
 - (void)awakeFromNib {
     [super awakeFromNib];

@@ -79,10 +79,10 @@ NSString *const kFavoriteOptionsViewCellIdentifier = @"OptionsViewCell";
                              @"menu_title": NSLocalizedString(@"Cash Position", @"Cash Position"),
                              @"menu_image": @"icon_cash_position"
                              },
-//                         @{
-//                             @"menu_title": NSLocalizedString(@"My Orders History", @"My Orders History"),
-//                             @"menu_image": @"icon_my_order_history"
-//                             },
+                         @{
+                             @"menu_title": NSLocalizedString(@"My Orders History", @"My Orders History"),
+                             @"menu_image": @"icon_my_order_history"
+                             },
                          @{
                              @"menu_title": NSLocalizedString(@"Contact Us", @"Contact Us"),
                              @"menu_image": @"icon_contact_us"
@@ -877,15 +877,15 @@ NSString *const kFavoriteOptionsViewCellIdentifier = @"OptionsViewCell";
                 self.tabBarController.tabBar.hidden = YES;
             }];
         }
-//        else if(indexPath.row == 1) {
-//            OrderHistoryViewController *orderHistoryViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"OrderHistoryViewController"];
-//            [[self navigationController] pushViewController:orderHistoryViewController animated:YES];
-//        }
         else if(indexPath.row == 1) {
+            OrderHistoryViewController *orderHistoryViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"OrderHistoryViewController"];
+            [[self navigationController] pushViewController:orderHistoryViewController animated:YES];
+        }
+        else if(indexPath.row == 2) {
             ContactUsViewController *contactUsViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"ContactUsViewController"];
             [[self navigationController] pushViewController:contactUsViewController animated:YES];
         }
-        else if(indexPath.row == 2) {
+        else if(indexPath.row == 3) {
             SettingsViewController *settingsViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"SettingsViewController"];
             [[self navigationController] pushViewController:settingsViewController animated:YES];
         }

@@ -13,9 +13,6 @@
 
 @interface GlobalShare : NSObject
 
-@property (nonatomic, assign) BOOL ismodifyOrder;
-@property (nonatomic, assign) BOOL isBuytheorder;
-
 @property (nonatomic, strong) NSArray *stockSectors;
 @property (nonatomic, strong) id topNavController;
 @property (nonatomic, strong) id topViewController;
@@ -55,9 +52,6 @@
 @property (nonatomic, strong) NSArray *pickerData3;
 @property (nonatomic, strong) NSMutableArray *arraySectors;
 
-@property(nonatomic, strong)UIAlertAction *submit_action;
-
-
 @property (nonatomic, strong) FMDatabase *fmDBObject;
 @property (nonatomic, strong) FMResultSet *fmRSObject;
 
@@ -78,7 +72,6 @@
 + (void)loadViewController:(id)navController;
 + (NSString *)returnDateTime:(NSDate *)theDate;
 + (NSString *)returnDate:(NSDate *)theDate;
-+ (NSDate *)returnDateAsDateanother_form:(NSString *)theDate;
 + (NSDate *)returnDateAsDate:(NSString *)theDate;
 + (NSString *)returnUSDate:(NSDate *)theDate;
 + (NSString *)returnTime:(NSDate *)theDate;
@@ -105,7 +98,5 @@
 + (void)setSelectedLanguage:(NSInteger)currentLanguage;
 + (NSInteger)getSelectedLanguage;
 + (NSString *)languageSelectedStringForKey:(NSString *)passKey;
-
-//+(void)login_alert_view_creating:(UIViewController *)viewcontroller;//Praash_code
 
 @end
