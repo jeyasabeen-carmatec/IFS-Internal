@@ -166,3 +166,10 @@
 "CHANGE_ARABIC" = "Switch to Arabic?";
 "CHANGE_ENGLISH" = "Switch to English?";
 
+"ORDER_MODIFIED" = "Order modified";
+"COMMISSION VALUE" = "Commission value";
+"NEW BALANCE" = "New balance";
+"TOTAL ORDER VALUE" = "Total order value";
+
+"NOT ENOUGH CASH" = "Not enough cash in the customer market account to cover this order";
+"CHANGE QUANTITY" = "Are you sure you want to change Qty to";

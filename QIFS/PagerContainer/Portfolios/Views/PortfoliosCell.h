@@ -12,6 +12,8 @@
 @interface PortfoliosCell : MGSwipeTableCell
 
 @property (nonatomic, weak) IBOutlet UILabel *labelSymbol;
+@property (nonatomic, weak) IBOutlet UILabel *label_AR_Symbol;
+
 @property (nonatomic, weak) IBOutlet UILabel *labelQty;
 @property (nonatomic, weak) IBOutlet UILabel *labelAvgPrice;
 @property (nonatomic, weak) IBOutlet UILabel *labelMktValue;

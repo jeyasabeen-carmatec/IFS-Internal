@@ -7,15 +7,15 @@
 //
 
 #import "StocksOverviewViewController.h"
-#import <Charts/Charts.h>
+//#import <Charts/Charts.h>
 #import "StockNewsCell.h"
 
 #define RAND_FROM_TO(min, max) (min + arc4random_uniform(max - min + 1))
 NSString *const kStockNewsCellIdentifier = @"StockNewsCell";
 
-@interface StocksOverviewViewController () <ChartViewDelegate, NSURLSessionDelegate>
+@interface StocksOverviewViewController () < NSURLSessionDelegate> //ChartViewDelegate
 
-@property (nonatomic, weak) IBOutlet LineChartView *chartView;
+@property (nonatomic, weak) IBOutlet UIView *chartView; //LineChartView
 @property (nonatomic, weak) IBOutlet UIView *summaryView;
 @property (nonatomic, weak) IBOutlet UIView *newsView;
 @property (nonatomic, weak) IBOutlet UISegmentedControl *segmentMenu;
@@ -49,44 +49,46 @@ NSString *const kStockNewsCellIdentifier = @"StockNewsCell";
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view, typically from a nib.
+    
+
     globalShare = [GlobalShare sharedInstance];
     [self clearMarketIndex];
 
+  
+    
     self.arrayTimes = @[
                         @"09:30", @"09:30", @"10:00", @"10:30", @"11:00",
                         @"11:30", @"12:00", @"12:30", @"13:00", @"13:15"
                         ];
 
-    _chartView.backgroundColor = [UIColor colorWithRed:252/255.f green:252/255.f blue:252/255.f alpha:0.7f];
-    _chartView.delegate = self;
+//    _chartView.backgroundColor = [UIColor colorWithRed:252/255.f green:252/255.f blue:252/255.f alpha:0.7f];
+//    _chartView.delegate = self;
 //    _chartView.descriptionText = @"";
-    _chartView.chartDescription.enabled = NO;
-    _chartView.noDataText = CHART_DATA_UNAVAILABLE;
-//    _chartView.noDataTextDescription = CHART_DATA_UNAVAILABLE;
-    
-    _chartView.dragEnabled = NO;
-    _chartView.pinchZoomEnabled = NO;
-    _chartView.drawGridBackgroundEnabled = NO;
-    _chartView.scaleXEnabled = NO;
-    _chartView.scaleYEnabled = NO;
-    
-    _chartView.rightAxis.enabled = YES;
-    _chartView.leftAxis.enabled = NO;
-    _chartView.rightAxis.drawGridLinesEnabled = NO;
-    _chartView.xAxis.drawGridLinesEnabled = NO;
-    _chartView.rightAxis.gridLineWidth = 0.1;
-    _chartView.xAxis.gridLineWidth = 0.1;
-    _chartView.xAxis.labelPosition = XAxisLabelPositionBottom;
-//    _chartView.xAxis.avoidFirstLastClippingEnabled = YES;
-    _chartView.rightAxis.drawTopYLabelEntryEnabled = YES;
-//    _chartView._defaultValueFormatter.minimumFractionDigits = 0;
-//    _chartView._defaultValueFormatter.minimumSignificantDigits = 0;// (not considered)
-//    _chartView._defaultValueFormatter.minimumFractionDigits = 2;
-
-    _chartView.legend.enabled = NO;
-//    _chartView.rightAxis.axisMaxValue = 10500.0;
-//    _chartView.rightAxis.axisMinValue = 9500.0;
+//    _chartView.noDataText = CHART_DATA_UNAVAILABLE;
+////    _chartView.noDataTextDescription = CHART_DATA_UNAVAILABLE;
+//    
+//    _chartView.dragEnabled = NO;
+//    _chartView.pinchZoomEnabled = NO;
+//    _chartView.drawGridBackgroundEnabled = NO;
+//    _chartView.scaleXEnabled = NO;
+//    _chartView.scaleYEnabled = NO;
+//    
+//    _chartView.rightAxis.enabled = YES;
+//    _chartView.leftAxis.enabled = NO;
+//    _chartView.rightAxis.drawGridLinesEnabled = NO;
+//    _chartView.xAxis.drawGridLinesEnabled = NO;
+//    _chartView.rightAxis.gridLineWidth = 0.1;
+//    _chartView.xAxis.gridLineWidth = 0.1;
+//    _chartView.xAxis.labelPosition = XAxisLabelPositionBottom;
+////    _chartView.xAxis.avoidFirstLastClippingEnabled = YES;
+//    _chartView.rightAxis.drawTopYLabelEntryEnabled = YES;
+////    _chartView._defaultValueFormatter.minimumFractionDigits = 0;
+//    _chartView._defaultValueFormatter.minimumSignificantDigits = 0;
+////    _chartView._defaultValueFormatter.minimumFractionDigits = 2;
+//
+//    _chartView.legend.enabled = NO;
+////    _chartView.rightAxis.axisMaxValue = 10500.0;
+////    _chartView.rightAxis.axisMinValue = 9500.0;
 }
 
 -(void)viewWillAppear:(BOOL)animated {
@@ -168,29 +170,53 @@ NSString *const kStockNewsCellIdentifier = @"StockNewsCell";
 }
 
 - (IBAction)actionChartClick:(id)sender {
-    [self.delegate handleTapOnChartView];
+//    [self.delegate handleTapOnChartView];
 }
 
 - (IBAction)segmentedControlIndexChanged:(id)sender {
-    switch (self.segmentMenu.selectedSegmentIndex) {
-        case 0:
-            //            [newsView removeFromSuperview];
-            //            [self.view addSubview:summaryView];
-            [_newsView setHidden:YES];
-            [_summaryView setHidden:NO];
-            break;
-        case 1:
-            //            [summaryView removeFromSuperview];
-            //            [self.view addSubview:newsView];
-            [_newsView setHidden:NO];
-            [_summaryView setHidden:YES];
-            break;
-        default:
-            break;
+//    switch (self.segmentMenu.selectedSegmentIndex) {
+//        case 0:
+//            //            [newsView removeFromSuperview];
+//            //            [self.view addSubview:summaryView];
+//            [_newsView setHidden:YES];
+//            [_summaryView setHidden:NO];
+//            break;
+//        case 1:
+//
+//              [self newsAction];
+//            [_newsView setHidden:NO];
+//            [_summaryView setHidden:YES];
+//
+//           // break;
+//        default:
+//            break;
+//    }
+    
+    if (self.segmentMenu.selectedSegmentIndex == 0) {
+        [_newsView setHidden:YES];
+        [_summaryView setHidden:NO];
     }
+    else{
+        [self newsAction];
+    }
+    
+    
+}
+-(void)newsAction{
+    NSString *str;
+                 if(globalShare.myLanguage == ARABIC_LANGUAGE) {
+                    str = [NSString stringWithFormat:@"https://www.islamicbroker.com.qa/ar/stories/c/3/0/%D8%A3%D9%87 %D9%85-%D8%A7%D9%84%D8%A3%D8%AE%D8%A8%D8%A7%D8%B1"];
+                 }
+                 else{
+                    str= @"https://www.islamicbroker.com.qa/en/stories/c/3/0/News";
+                 }
+             // [[UIApplication sharedApplication]openURL:[NSURL URLWithString:str] options:@{} completionHandler:nil];
+    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:str]];
+    [self.segmentMenu setSelectedSegmentIndex:0];
+
 }
 
-#pragma mark - Common actions
+#pragma mark - Common actions    http://islamicbroker.biz/english/index.html
 
 -(void) getMarketIndex {
     @try {
@@ -330,7 +356,7 @@ NSString *const kStockNewsCellIdentifier = @"StockNewsCell";
     defaultConfigObject.HTTPAdditionalHeaders = @{@"Authorization": strToken};
     NSURLSession *defaultSession = [NSURLSession sessionWithConfiguration:defaultConfigObject delegate:self delegateQueue:[NSOperationQueue mainQueue]];
     
-    NSString *strURL = [NSString stringWithFormat:@"%@%@", REQUEST_URL, @"Authenticate"];
+    NSString *strURL = [NSString stringWithFormat:@"%@%@", REQUEST_URL, @"                                                            "];
     NSURL *url = [NSURL URLWithString:strURL];
     
     NSURLSessionDataTask *dataTask = [defaultSession dataTaskWithURL:url
@@ -370,14 +396,14 @@ NSString *const kStockNewsCellIdentifier = @"StockNewsCell";
 
 - (void)updateChartData
 {
-    [_chartView animateWithYAxisDuration:2.5 easingOption:ChartEasingOptionEaseInOutQuart];
+//    [_chartView animateWithYAxisDuration:2.5 easingOption:ChartEasingOptionEaseInOutQuart];
     [self setDataCount:30 range:100];
 }
 
 - (void)setDataCount:(int)count range:(double)range
 {
     if([self.arrayMarketIndex count] == 0) {
-        _chartView.data = nil;
+//        _chartView.data = nil;
         return;
     }
     
@@ -398,85 +424,72 @@ NSString *const kStockNewsCellIdentifier = @"StockNewsCell";
         [xVals addObject:strVal];
     }
 
-    NSMutableArray *yVals = [[NSMutableArray alloc] init];
-    
-//    for (int i = 0; i < 7; i++)
+//    NSMutableArray *yVals = [[NSMutableArray alloc] init];
+//    
+////    for (int i = 0; i < 7; i++)
+////    {
+////        double val = (double) RAND_FROM_TO(10000, 10100);
+////        [yVals addObject:[[ChartDataEntry alloc] initWithValue:val xIndex:i]];
+////    }
+//    
+//    for (int i = 0; i < self.arrayMarketIndex.count; i++)
 //    {
-//        double val = (double) RAND_FROM_TO(10000, 10100);
-//        [yVals addObject:[[ChartDataEntry alloc] initWithValue:val xIndex:i]];
-//    }
-    
-    for (int i = 0; i < self.arrayMarketIndex.count; i++)
-    {
 //        double val = [self.arrayMarketIndex[i][@"index_1"] doubleValue];
 //        [yVals addObject:[[ChartDataEntry alloc] initWithValue:val xIndex:i]];
-        [yVals addObject:self.arrayMarketIndex[i][@"index_1"]];
-    }
-    
-//    _chartView.xAxis._axisMaximum = [self.arrayMarketIndex count]-1;
-//    _chartView.xAxis._axisMinimum = 0;
-//    _chartView.xAxis.axisMaxValue = [self.arrayMarketIndex count]-1;
-//    _chartView.xAxis.axisMinValue = 0;
-    
-    NSLog(@"\nX values = %@\nY Values = %@",xVals,yVals);
-    
-    NSMutableArray *values = [[NSMutableArray alloc] init];
-    for (int i = 0; i < self.arrayMarketIndex.count; i++) {
-        [values addObject:[[ChartDataEntry alloc] initWithX:[[xVals objectAtIndex:i] doubleValue] y:[[yVals objectAtIndex:i] doubleValue]]];
-    }
-
-    LineChartDataSet *set1 = nil;
-    if (_chartView.data.dataSetCount > 0)
-    {
-        set1 = (LineChartDataSet *)_chartView.data.dataSets[0];
+//    }
+//    
+////    _chartView.xAxis._axisMaximum = [self.arrayMarketIndex count]-1;
+////    _chartView.xAxis._axisMinimum = 0;
+////    _chartView.xAxis.axisMaxValue = [self.arrayMarketIndex count]-1;
+////    _chartView.xAxis.axisMinValue = 0;
+//
+//    LineChartDataSet *set1 = nil;
+//    if (_chartView.data.dataSetCount > 0)
+//    {
+//        set1 = (LineChartDataSet *)_chartView.data.dataSets[0];
 //        set1.yVals = yVals;
 //        _chartView.data.xValsObjc = xVals;
-//        set1.xMin = 10500.0;
-//        set1.xMax = 9500.0;
-        set1.values = values;
-        [_chartView.data notifyDataChanged];
-        [_chartView notifyDataSetChanged];
-        [_indicatorView setHidden:YES];
-    }
-    else
-    {
+//        [_chartView.data notifyDataChanged];
+//        [_chartView notifyDataSetChanged];
+//        [_indicatorView setHidden:YES];
+//    }
+//    else
+//    {
 //        set1 = [[LineChartDataSet alloc] initWithYVals:yVals label:@""];
-        
-        set1 = [[LineChartDataSet alloc] initWithValues:values label:@"DataSet 1"];
-        [set1 setColor:[UIColor colorWithRed:204/255.f green:224/255.f blue:255/255.f alpha:1.f]];
-        [set1 setCircleColor:UIColor.blackColor];
-        set1.lineWidth = 1.0;
-        set1.circleRadius = 3.0;
-        set1.drawCircleHoleEnabled = NO;
-        set1.valueFont = [UIFont systemFontOfSize:9.f];
-        
-        NSArray *gradientColors = @[
-                                    (id)[UIColor colorWithRed:230/255.f green:240/255.f blue:255/255.f alpha:1.f].CGColor,
-                                    (id)[UIColor colorWithRed:230/255.f green:240/255.f blue:255/255.f alpha:1.f].CGColor
-                                    ];
-        CGGradientRef gradient = CGGradientCreateWithColors(nil, (CFArrayRef)gradientColors, nil);
-        
-        set1.fill = [ChartFill fillWithLinearGradient:gradient angle:90.f];
-        set1.drawFilledEnabled = YES;
-        set1.drawValuesEnabled = NO;
-        set1.drawCirclesEnabled = NO;
-        set1.drawHorizontalHighlightIndicatorEnabled = NO;
-        set1.drawVerticalHighlightIndicatorEnabled = NO;
-        set1.highlightLineWidth = 1.0;
-        set1.lineWidth = 2.0;
-        set1.axisDependency = AxisDependencyRight;
-        
-        CGGradientRelease(gradient);
-        
-        NSMutableArray *dataSets = [[NSMutableArray alloc] init];
-        [dataSets addObject:set1];
-        
+//        
+//        [set1 setColor:[UIColor colorWithRed:204/255.f green:224/255.f blue:255/255.f alpha:1.f]];
+//        [set1 setCircleColor:UIColor.blackColor];
+//        set1.lineWidth = 1.0;
+//        set1.circleRadius = 3.0;
+//        set1.drawCircleHoleEnabled = NO;
+//        set1.valueFont = [UIFont systemFontOfSize:9.f];
+//        
+//        NSArray *gradientColors = @[
+//                                    (id)[UIColor colorWithRed:230/255.f green:240/255.f blue:255/255.f alpha:1.f].CGColor,
+//                                    (id)[UIColor colorWithRed:230/255.f green:240/255.f blue:255/255.f alpha:1.f].CGColor
+//                                    ];
+//        CGGradientRef gradient = CGGradientCreateWithColors(nil, (CFArrayRef)gradientColors, nil);
+//        
+//        set1.fill = [ChartFill fillWithLinearGradient:gradient angle:90.f];
+//        set1.drawFilledEnabled = YES;
+//        set1.drawValuesEnabled = NO;
+//        set1.drawCirclesEnabled = NO;
+//        set1.drawHorizontalHighlightIndicatorEnabled = NO;
+//        set1.drawVerticalHighlightIndicatorEnabled = NO;
+//        set1.highlightLineWidth = 1.0;
+//        set1.lineWidth = 2.0;
+//        set1.axisDependency = AxisDependencyRight;
+//        
+//        CGGradientRelease(gradient);
+//        
+//        NSMutableArray *dataSets = [[NSMutableArray alloc] init];
+//        [dataSets addObject:set1];
+//        
 //        LineChartData *data = [[LineChartData alloc] initWithXVals:xVals dataSets:dataSets];
-        LineChartData *data = [[LineChartData alloc] initWithDataSets:dataSets];
-        _chartView.data = data;
-        
-        [_indicatorView setHidden:YES];
-    }
+//        
+//        _chartView.data = data;
+//        [_indicatorView setHidden:YES];
+//    }
 }
 
 -(void) clearMarketIndex {
@@ -497,11 +510,11 @@ NSString *const kStockNewsCellIdentifier = @"StockNewsCell";
 
 #pragma mark - ChartViewDelegate
 
-- (void)chartValueSelected:(ChartViewBase * __nonnull)chartView entry:(ChartDataEntry * __nonnull)entry dataSetIndex:(NSInteger)dataSetIndex highlight:(ChartHighlight * __nonnull)highlight
-{
-//    NSLog(@"chartValueSelected %ld", (long)dataSetIndex);
-//    [self.delegate handleTapOnChartView];
-}
+//- (void)chartValueSelected:(ChartViewBase * __nonnull)chartView entry:(ChartDataEntry * __nonnull)entry dataSetIndex:(NSInteger)dataSetIndex highlight:(ChartHighlight * __nonnull)highlight
+//{
+////    NSLog(@"chartValueSelected %ld", (long)dataSetIndex);
+////    [self.delegate handleTapOnChartView];
+//}
 
 #pragma mark - Table view data source
 

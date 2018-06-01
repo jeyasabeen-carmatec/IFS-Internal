@@ -7,17 +7,17 @@
 //
 
 #import "CompanyStocksViewController.h"
-#import <Charts/Charts.h>
+//#import <Charts/Charts.h>
 #import "MarketDepthViewController.h"
 #import "NewOrderViewController.h"
 #import "CompanyGraphViewController.h"
 
 #define RAND_FROM_TO(min, max) (min + arc4random_uniform(max - min + 1))
 
-@interface CompanyStocksViewController () <ChartViewDelegate, NSURLSessionDelegate>
+@interface CompanyStocksViewController () < NSURLSessionDelegate> //ChartViewDelegate
 
 @property (nonatomic, weak) IBOutlet UILabel *labelTitle;
-@property (nonatomic, weak) IBOutlet LineChartView *chartView;
+@property (nonatomic, weak) IBOutlet UIView *chartView; //LineChartView
 @property (nonatomic, weak) IBOutlet UIView *summaryView;
 @property (nonatomic, weak) IBOutlet UISegmentedControl *segmentMenu;
 @property (nonatomic, weak) IBOutlet UIActivityIndicatorView *indicatorView;
@@ -50,7 +50,7 @@
 
 @implementation CompanyStocksViewController
 
-@synthesize delegate;
+//@synthesize delegate;
 @synthesize securityId;
 @synthesize securityName;
 
@@ -58,7 +58,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
     globalShare = [GlobalShare sharedInstance];
-    [self clearMarketWatch];
+//    [self clearMarketWatch];
 
     self.labelSymbol.text = self.labelTitle.text = self.securityId;
     self.labelSecurityName.text = self.securityName;
@@ -67,9 +67,9 @@
                         @"11:30", @"12:00", @"12:30", @"13:00", @"13:15"
                         ];
 
-    _chartView.backgroundColor = [UIColor colorWithRed:252/255.f green:252/255.f blue:252/255.f alpha:0.7f];
+   /* _chartView.backgroundColor = [UIColor colorWithRed:252/255.f green:252/255.f blue:252/255.f alpha:0.7f];
     _chartView.delegate = self;
-//    _chartView.descriptionText = @"";
+    _chartView.descriptionText = @"";
     _chartView.noDataText = CHART_DATA_UNAVAILABLE;
 //    _chartView.noDataTextDescription = CHART_DATA_UNAVAILABLE;
     
@@ -89,14 +89,14 @@
     _chartView.rightAxis.drawTopYLabelEntryEnabled = YES;
 //    _chartView._defaultValueFormatter.minimumFractionDigits = 2;
 //    _chartView._defaultValueFormatter.maximumFractionDigits = 2;
-//    _chartView._defaultValueFormatter.maximumSignificantDigits = 4;
-//    _chartView._defaultValueFormatter.minimumSignificantDigits = 4;
+    _chartView._defaultValueFormatter.maximumSignificantDigits = 4;
+    _chartView._defaultValueFormatter.minimumSignificantDigits = 4;
 
     _chartView.legend.enabled = NO;
 //    _chartView.rightAxis.axisMaxValue = 10500.0;
 //    _chartView.rightAxis.axisMinValue = 9500.0;
     
-    [_chartView animateWithXAxisDuration:2.5 easingOption:ChartEasingOptionEaseInOutQuart];
+//    [_chartView animateWithXAxisDuration:2.5 easingOption:ChartEasingOptionEaseInOutQuart];
 }
 
 -(void)viewWillAppear:(BOOL)animated {
@@ -144,7 +144,7 @@
         return;
     }
     
-    [self performSelector:@selector(getMarketWatch) withObject:nil afterDelay:0.01f];
+    [self performSelector:@selector(getMarketWatch) withObject:nil afterDelay:0.01f];*/
 }
 
 - (void)didReceiveMemoryWarning {
@@ -341,14 +341,14 @@
 
 - (void)updateChartData
 {
-    [_chartView animateWithYAxisDuration:2.5 easingOption:ChartEasingOptionEaseInOutQuart];
+//    [_chartView animateWithYAxisDuration:2.5 easingOption:ChartEasingOptionEaseInOutQuart];
     [self setDataCount:30 range:100];
 }
 
 - (void)setDataCount:(int)count range:(double)range
 {
     if([self.arrayMarketWatch count] == 0) {
-        _chartView.data = nil;
+//        _chartView.data = nil;
         return;
     }
     
@@ -368,7 +368,7 @@
         [xVals addObject:strVal];
     }
 
-    NSMutableArray *yVals = [[NSMutableArray alloc] init];
+//    NSMutableArray *yVals = [[NSMutableArray alloc] init];
     
 //    for (int i = 0; i < 7; i++)
 //    {
@@ -380,30 +380,22 @@
     {
 //        double val = [self.arrayMarketWatch[i][@"comp_current_price"] doubleValue];
 //        [yVals addObject:[[ChartDataEntry alloc] initWithValue:val xIndex:i]];
-        [yVals addObject:self.arrayMarketWatch[i][@"comp_current_price"]];
     }
 
-    NSMutableArray *values = [[NSMutableArray alloc] init];
-    for (int i = 0; i < self.arrayMarketWatch.count; i++)
-    {
-        [values addObject:[[ChartDataEntry alloc] initWithX:[[xVals objectAtIndex:i] doubleValue] y:[[yVals objectAtIndex:i] doubleValue]]];
-    }
-
-    LineChartDataSet *set1 = nil;
+   /* LineChartDataSet *set1 = nil;
     if (_chartView.data.dataSetCount > 0)
     {
         set1 = (LineChartDataSet *)_chartView.data.dataSets[0];
-//        set1.yVals = yVals;
-//        _chartView.data.xValsObjc = xVals;
-        set1.values = values;
+        set1.yVals = yVals;
+        _chartView.data.xValsObjc = xVals;
         [_chartView.data notifyDataChanged];
         [_chartView notifyDataSetChanged];
         [_indicatorView setHidden:YES];
     }
     else
     {
-//        set1 = [[LineChartDataSet alloc] initWithYVals:yVals label:@""];
-        set1 = [[LineChartDataSet alloc] initWithValues:values label:@"DataSet 1"];
+        set1 = [[LineChartDataSet alloc] initWithYVals:yVals label:@""];
+        
         [set1 setColor:[UIColor colorWithRed:204/255.f green:224/255.f blue:255/255.f alpha:1.f]];
         [set1 setCircleColor:UIColor.blackColor];
         set1.lineWidth = 1.0;
@@ -432,13 +424,11 @@
         NSMutableArray *dataSets = [[NSMutableArray alloc] init];
         [dataSets addObject:set1];
         
-//        LineChartData *data = [[LineChartData alloc] initWithXVals:xVals dataSets:dataSets];
+        LineChartData *data = [[LineChartData alloc] initWithXVals:xVals dataSets:dataSets];
         
-        LineChartData *data = [[LineChartData alloc] initWithDataSets:dataSets];
         _chartView.data = data;
-        
         [_indicatorView setHidden:YES];
-    }
+    }*/
 }
 
 -(void) clearMarketWatch {
@@ -463,10 +453,10 @@
 
 #pragma mark - ChartViewDelegate
 
-- (void)chartValueSelected:(ChartViewBase * __nonnull)chartView entry:(ChartDataEntry * __nonnull)entry dataSetIndex:(NSInteger)dataSetIndex highlight:(ChartHighlight * __nonnull)highlight
-{
+//- (void)chartValueSelected:(ChartViewBase * __nonnull)chartView entry:(ChartDataEntry * __nonnull)entry dataSetIndex:(NSInteger)dataSetIndex highlight:(ChartHighlight * __nonnull)highlight
+//{
 //    NSLog(@"chartValueSelected %ld", (long)dataSetIndex);
-}
+//}
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {

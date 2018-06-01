@@ -89,10 +89,10 @@ NSString *const kMyOrdersOptionsViewCellIdentifier = @"OptionsViewCell";
                            @"menu_title": NSLocalizedString(@"Cash Position", @"Cash Position"),
                            @"menu_image": @"icon_cash_position"
                            },
-                       @{
-                           @"menu_title": NSLocalizedString(@"My Orders History", @"My Orders History"),
-                           @"menu_image": @"icon_my_order_history"
-                           },
+//                       @{
+//                           @"menu_title": NSLocalizedString(@"My Orders History", @"My Orders History"),
+//                           @"menu_image": @"icon_my_order_history"
+//                           },
                        @{
                            @"menu_title": NSLocalizedString(@"Contact Us", @"Contact Us"),
                            @"menu_image": @"icon_contact_us"
@@ -187,6 +187,7 @@ NSString *const kMyOrdersOptionsViewCellIdentifier = @"OptionsViewCell";
 
 -(void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:YES];
+    [globalShare setIsmodifyOrder:NO];
     
     if(globalShare.myLanguage == ARABIC_LANGUAGE) {
         [[UIView appearance] setSemanticContentAttribute:UISemanticContentAttributeForceRightToLeft];
@@ -901,15 +902,15 @@ NSString *const kMyOrdersOptionsViewCellIdentifier = @"OptionsViewCell";
                 self.tabBarController.tabBar.hidden = YES;
             }];
         }
+//        else if(indexPath.row == 1) {
+//            OrderHistoryViewController *orderHistoryViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"OrderHistoryViewController"];
+//            [[self navigationController] pushViewController:orderHistoryViewController animated:YES];
+//        }
         else if(indexPath.row == 1) {
-            OrderHistoryViewController *orderHistoryViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"OrderHistoryViewController"];
-            [[self navigationController] pushViewController:orderHistoryViewController animated:YES];
-        }
-        else if(indexPath.row == 2) {
             ContactUsViewController *contactUsViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"ContactUsViewController"];
             [[self navigationController] pushViewController:contactUsViewController animated:YES];
         }
-        else if(indexPath.row == 3) {
+        else if(indexPath.row == 2) {
             SettingsViewController *settingsViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"SettingsViewController"];
             [[self navigationController] pushViewController:settingsViewController animated:YES];
         }
@@ -938,7 +939,7 @@ NSString *const kMyOrdersOptionsViewCellIdentifier = @"OptionsViewCell";
         companyStocksViewController.securityName = self.visibleResults[indexPath.row][(globalShare.myLanguage != ARABIC_LANGUAGE) ? @"security_name_e" : @"security_name_a"];
         [[self navigationController] pushViewController:companyStocksViewController animated:YES];
 //        [self.searchController setActive:NO];
-        
+       
         self.searchResults.text = @"";
         NSString *searchString = self.searchResults.text;
         [self updateFilteredContentForProductName:searchString];
@@ -950,6 +951,7 @@ NSString *const kMyOrdersOptionsViewCellIdentifier = @"OptionsViewCell";
         self.ticketContentView.view.frame = CGRectMake(0, [[UIScreen mainScreen] bounds].size.height, [[UIScreen mainScreen] bounds].size.width, [[UIScreen mainScreen] bounds].size.height);
         self.ticketContentView.delegate = self;
         self.ticketContentView.strOrderId = self.arrayMyOrders[indexPath.row][@"order_id"];
+      
         [self.view addSubview:self.ticketContentView.view];
         [UIView animateWithDuration:.3 animations:^{
             [self.ticketContentView.view setFrame:CGRectMake(0, 0, [[UIScreen mainScreen] bounds].size.width, [[UIScreen mainScreen] bounds].size.height)];
