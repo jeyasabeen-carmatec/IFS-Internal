@@ -9,6 +9,7 @@
 #import "ViewController.h"
 #import "RegisterViewController.h"
 #import "ForgotPasswordViewController.h"
+#import "LoginView.h"
 
 @implementation UIView (ShakeAnimation)
 
@@ -58,9 +59,12 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    NSString *userName = [[NSUserDefaults standardUserDefaults] valueForKey:@"UserName"];
+    if (userName == nil ||[userName isEqualToString:@"(null)"]) {
+        userName = @"";
+    }
     
-    
-    _textFieldUserName.text = @"1000000321";
+    _textFieldUserName.text = userName;//@"1000000321";
     _textFieldPassword.text = @"ssc@123";
     
     // Do any additional setup after loading the view, typically from a nib.
@@ -70,10 +74,16 @@
 //    [txtUserName triggerShakeAnimation];
     
     globalShare.topNavController = self.navigationController;
+
+    NSLog(@"Testing....");
 }
 
 -(void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:YES];
+    
+    
+    
+    
 //    [self.textFieldUserName setText:@"1000015535"];
 //    [self.textFieldPassword setText:@"123456"];
 //    [self.textFieldUserName setText:@"1000555647"];
@@ -168,7 +178,6 @@
 
 - (IBAction)actionLogin:(id)sender {
     @try {
-//        [self toDisableControls];
 
         [self.textFieldUserName resignFirstResponder];
         [self.textFieldPassword resignFirstResponder];
@@ -190,8 +199,7 @@
         }
         [self verifyUserLogin];
 
-//        UITabBarController *tabController = [self.storyboard instantiateViewControllerWithIdentifier:@"StockTabBarController"];
-//        [[self navigationController] pushViewController:tabController animated:YES];
+
     }
     @catch (NSException * e) {
         NSLog(@"%@", [e description]);
@@ -211,12 +219,12 @@
     [[self navigationController] pushViewController:registerViewController animated:YES];
 }
 - (IBAction)marketPreviewAction:(id)sender {
-    
-    [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"ssckey"];
+
+   [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"ssckey"];
+   
     UITabBarController *tabController = [self.storyboard instantiateViewControllerWithIdentifier:@"StockTabBarController"];
     tabController.delegate = self;
     [[self navigationController] pushViewController:tabController animated:YES];
-    
     
 }
 
@@ -271,6 +279,10 @@
                                                             NSString *strToken = [returnedDict objectForKey:@"result"];
 //                                                            NSString *strToken = @"1234567890";
                                                             [[NSUserDefaults standardUserDefaults] setObject:strToken forKey:@"ssckey"];
+                                                            [[NSUserDefaults standardUserDefaults] synchronize];
+                                                            
+                                                            // Storing UserName in Shared Preference values..
+                                                            [[NSUserDefaults standardUserDefaults] setValue:stringUserName forKey:@"UserName"];
                                                             [[NSUserDefaults standardUserDefaults] synchronize];
 
                                                             UITabBarController *tabController = [self.storyboard instantiateViewControllerWithIdentifier:@"StockTabBarController"];

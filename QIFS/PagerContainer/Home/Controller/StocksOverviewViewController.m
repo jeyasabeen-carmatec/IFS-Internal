@@ -356,7 +356,7 @@ NSString *const kStockNewsCellIdentifier = @"StockNewsCell";
     defaultConfigObject.HTTPAdditionalHeaders = @{@"Authorization": strToken};
     NSURLSession *defaultSession = [NSURLSession sessionWithConfiguration:defaultConfigObject delegate:self delegateQueue:[NSOperationQueue mainQueue]];
     
-    NSString *strURL = [NSString stringWithFormat:@"%@%@", REQUEST_URL, @"                                                            "];
+    NSString *strURL = [NSString stringWithFormat:@"%@%@", REQUEST_URL, @"Authenticate"];
     NSURL *url = [NSURL URLWithString:strURL];
     
     NSURLSessionDataTask *dataTask = [defaultSession dataTaskWithURL:url

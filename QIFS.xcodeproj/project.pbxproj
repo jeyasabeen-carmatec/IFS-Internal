@@ -130,6 +130,8 @@
 		51FCBCE71D2126ED0072D356 /* Down_Arrow.png in Resources */ = {isa = PBXBuildFile; fileRef = 51FCBCE51D2126ED0072D356 /* Down_Arrow.png */; };
 		51FCBCE81D2126ED0072D356 /* Up_Arrow.png in Resources */ = {isa = PBXBuildFile; fileRef = 51FCBCE61D2126ED0072D356 /* Up_Arrow.png */; };
 		51FF4E9D1D5C9EFA0077AEE0 /* icon_map.png in Resources */ = {isa = PBXBuildFile; fileRef = 51FF4E9C1D5C9EFA0077AEE0 /* icon_map.png */; };
+		779B7F5E20BBED0F00B89452 /* LoginView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 779B7F6020BBED0F00B89452 /* LoginView.xib */; };
+		77D48F9820B81ABF00EEFB33 /* LoginView.m in Sources */ = {isa = PBXBuildFile; fileRef = 77D48F9720B81ABF00EEFB33 /* LoginView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -389,6 +391,11 @@
 		51FCBCE51D2126ED0072D356 /* Down_Arrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Down_Arrow.png; path = Images/Down_Arrow.png; sourceTree = "<group>"; };
 		51FCBCE61D2126ED0072D356 /* Up_Arrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Up_Arrow.png; path = Images/Up_Arrow.png; sourceTree = "<group>"; };
 		51FF4E9C1D5C9EFA0077AEE0 /* icon_map.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = icon_map.png; path = Images/icon_map.png; sourceTree = "<group>"; };
+		779B7F6620BC02B500B89452 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LoginView.xib; sourceTree = "<group>"; };
+		779B7F6820BC0BD300B89452 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/LoginView.strings; sourceTree = "<group>"; };
+		779B7F6A20BC0D2D00B89452 /* ar */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ar; path = ar.lproj/LoginView.strings; sourceTree = "<group>"; };
+		77D48F9620B81ABF00EEFB33 /* LoginView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LoginView.h; sourceTree = "<group>"; };
+		77D48F9720B81ABF00EEFB33 /* LoginView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LoginView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -700,6 +707,9 @@
 				514382CB1D1DBB8C00E1B739 /* PropertyList.h */,
 				514382D01D1DBE5500E1B739 /* Reachability.h */,
 				514382D11D1DBE5500E1B739 /* Reachability.m */,
+				77D48F9620B81ABF00EEFB33 /* LoginView.h */,
+				77D48F9720B81ABF00EEFB33 /* LoginView.m */,
+				779B7F6020BBED0F00B89452 /* LoginView.xib */,
 				514383221D1DC88800E1B739 /* QIFS.swift */,
 				514383231D1DC88800E1B739 /* QIFS-Bridging-Header.h */,
 				51332C411DE8ABB7001536CD /* DataManager.h */,
@@ -965,13 +975,11 @@
 				TargetAttributes = {
 					5108D32D1D6EDEB100D23F6E = {
 						CreatedOnToolsVersion = 7.3.1;
-						DevelopmentTeam = 4MCGAH3G26;
-						ProvisioningStyle = Manual;
+						DevelopmentTeam = KF8S4V7VM6;
 					};
 					514382A61D1D82D400E1B739 = {
 						CreatedOnToolsVersion = 7.3.1;
-						DevelopmentTeam = 4MCGAH3G26;
-						ProvisioningStyle = Manual;
+						DevelopmentTeam = MU44929JUZ;
 					};
 				};
 			};
@@ -1016,6 +1024,7 @@
 				510BE70D1D65A082002011D1 /* icon_marker.png in Resources */,
 				511247EB1D23C65800364145 /* right_Arrow@2x.png in Resources */,
 				51FF4E9D1D5C9EFA0077AEE0 /* icon_map.png in Resources */,
+				779B7F5E20BBED0F00B89452 /* LoginView.xib in Resources */,
 				514383351D1DD18F00E1B739 /* leftArrow@2x.png in Resources */,
 				514D32391D1EA35700E78C71 /* icon_search.png in Resources */,
 				514383301D1DCC9B00E1B739 /* RegisterViewController.xib in Resources */,
@@ -1118,6 +1127,7 @@
 				514382D21D1DBE5500E1B739 /* Reachability.m in Sources */,
 				5102EDD81D494816005B04F8 /* FavoriteStocksViewController.m in Sources */,
 				51FB2B2F1D393B9D00D6EACE /* StocksPagerViewController.m in Sources */,
+				77D48F9820B81ABF00EEFB33 /* LoginView.m in Sources */,
 				514C96091D578BDE00D7C1DA /* CompanyStocksViewController.m in Sources */,
 				512379371D5667ED0096C0E2 /* PendingAlertsCell.m in Sources */,
 				51434D4F1DE19473003F303B /* MDOrderAskCell.m in Sources */,
@@ -1197,6 +1207,16 @@
 			name = Main.storyboard;
 			sourceTree = "<group>";
 		};
+		779B7F6020BBED0F00B89452 /* LoginView.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				779B7F6620BC02B500B89452 /* Base */,
+				779B7F6820BC0BD300B89452 /* en */,
+				779B7F6A20BC0D2D00B89452 /* ar */,
+			);
+			name = LoginView.xib;
+			sourceTree = "<group>";
+		};
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
@@ -1205,15 +1225,12 @@
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CODE_SIGN_STYLE = Manual;
-				DEVELOPMENT_TEAM = 4MCGAH3G26;
 				INFOPLIST_FILE = QIFSToday/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.carmatec.ifs;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ifs.mobiletrading.QIFSToday;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "6152ed1d-4224-4275-80b8-63351b14ee76";
-				PROVISIONING_PROFILE_SPECIFIER = IFSDev;
+				PROVISIONING_PROFILE = "";
 				SKIP_INSTALL = YES;
 			};
 			name = Debug;
@@ -1222,16 +1239,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CODE_SIGN_STYLE = Manual;
-				DEVELOPMENT_TEAM = 4MCGAH3G26;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: ISLAMIC FINANCIAL SECURITIES CO. (MU44929JUZ)";
 				INFOPLIST_FILE = QIFSToday/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.carmatec.ifs;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ifs.mobiletrading.QIFSToday;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "6152ed1d-4224-4275-80b8-63351b14ee76";
-				PROVISIONING_PROFILE_SPECIFIER = IFSDev;
+				PROVISIONING_PROFILE = "736dc37d-1ff9-4646-a12c-425809aab758";
 				SKIP_INSTALL = YES;
 			};
 			name = Release;
@@ -1350,18 +1364,15 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CODE_SIGN_STYLE = Manual;
 				DEFINES_MODULE = YES;
-				DEVELOPMENT_TEAM = 4MCGAH3G26;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/$(PROJECT_NAME)/QIFS-Prefix.pch";
 				INFOPLIST_FILE = QIFS/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.carmatec.ifs;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ifs.mobiletrading;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "6152ed1d-4224-4275-80b8-63351b14ee76";
-				PROVISIONING_PROFILE_SPECIFIER = IFSDev;
+				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "QIFS/Utility/QIFS-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.0;
@@ -1376,19 +1387,16 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CODE_SIGN_STYLE = Manual;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: ISLAMIC FINANCIAL SECURITIES CO. (MU44929JUZ)";
 				DEFINES_MODULE = YES;
-				DEVELOPMENT_TEAM = 4MCGAH3G26;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/$(PROJECT_NAME)/QIFS-Prefix.pch";
 				INFOPLIST_FILE = QIFS/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.carmatec.ifs;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ifs.mobiletrading;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "6152ed1d-4224-4275-80b8-63351b14ee76";
-				PROVISIONING_PROFILE_SPECIFIER = IFSDev;
+				PROVISIONING_PROFILE = "736dc37d-1ff9-4646-a12c-425809aab758";
 				SWIFT_OBJC_BRIDGING_HEADER = "QIFS/Utility/QIFS-Bridging-Header.h";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";

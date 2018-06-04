@@ -97,7 +97,9 @@
 //    _chartView.rightAxis.axisMinValue = 9500.0;
     
 //    [_chartView animateWithXAxisDuration:2.5 easingOption:ChartEasingOptionEaseInOutQuart];
+      */
 }
+  
 
 -(void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:YES];
@@ -143,7 +145,11 @@
         [GlobalShare showBasicAlertView:self :INTERNET_CONNECTION];
         return;
     }
+<<<<<<< HEAD
     */
+=======
+    
+>>>>>>> aa17e637865ecd6b3d2e6f2e1a595be305573f4e
     [self performSelector:@selector(getMarketWatch) withObject:nil afterDelay:0.01f];
 }
 

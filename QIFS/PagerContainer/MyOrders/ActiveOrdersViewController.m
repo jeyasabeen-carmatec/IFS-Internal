@@ -30,7 +30,6 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     globalShare = [GlobalShare sharedInstance];
-    
 
     if(globalShare.myLanguage == ARABIC_LANGUAGE) {
         [self.view setSemanticContentAttribute:UISemanticContentAttributeForceRightToLeft];
@@ -72,15 +71,7 @@
     }];
 }
 
-- (IBAction)actionModifyOrder:(id)sender
-{
-    if([_strOrderType isEqualToString:@"BUY"])
-    {
-        [globalShare setIsBuytheorder:YES];
-    }
-    [globalShare setIsmodifyOrder:YES];
-    
-    
+- (IBAction)actionModifyOrder:(id)sender {
     [self.delegate callBackSuperviewFromNewOrder];
     [UIView animateWithDuration:.3 animations:^{
         [self.view setFrame:CGRectMake(0, [[UIScreen mainScreen] bounds].size.height, [[UIScreen mainScreen] bounds].size.width, [[UIScreen mainScreen] bounds].size.height)];
@@ -88,7 +79,6 @@
         if([self.view superview])
             [self.view removeFromSuperview];
     }];
-    
 
     NewOrderViewController *newOrderViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"NewOrderViewController"];
     newOrderViewController.securityId = self.securityId;
