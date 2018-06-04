@@ -136,6 +136,22 @@
 		73CCC06120BD24B6009A662F /* StocksOverviewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 73CCC06020BD24B6009A662F /* StocksOverviewViewController.m */; };
 		73CCC06320BD3978009A662F /* ActiveStocksViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 73CCC06220BD3978009A662F /* ActiveStocksViewController.m */; };
 		73CCC06520BD3A38009A662F /* CompanyGraphViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 73CCC06420BD3A38009A662F /* CompanyGraphViewController.m */; };
+		D076046120C513A000ED59EB /* DateValueFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = D076045C20C5139F00ED59EB /* DateValueFormatter.m */; };
+		D076046220C513A000ED59EB /* DateValueFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = D076045C20C5139F00ED59EB /* DateValueFormatter.m */; };
+		D076046320C513A000ED59EB /* CompanyStocksViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D076045D20C5139F00ED59EB /* CompanyStocksViewController.m */; };
+		D076046420C513A000ED59EB /* CompanyStocksViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D076045D20C5139F00ED59EB /* CompanyStocksViewController.m */; };
+		D076046520C513A000ED59EB /* CompanyGraphViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D076045E20C5139F00ED59EB /* CompanyGraphViewController.m */; };
+		D076046620C513A000ED59EB /* CompanyGraphViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D076045E20C5139F00ED59EB /* CompanyGraphViewController.m */; };
+		D076046720C513A000ED59EB /* DayAxisValueFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = D076045F20C513A000ED59EB /* DayAxisValueFormatter.m */; };
+		D076046820C513A000ED59EB /* DayAxisValueFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = D076045F20C513A000ED59EB /* DayAxisValueFormatter.m */; };
+		D076046B20C513AD00ED59EB /* IntAxisValueFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = D076046920C513AC00ED59EB /* IntAxisValueFormatter.m */; };
+		D076046C20C513AD00ED59EB /* IntAxisValueFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = D076046920C513AC00ED59EB /* IntAxisValueFormatter.m */; };
+		D076047020C513C600ED59EB /* XYMarkerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D076046E20C513C500ED59EB /* XYMarkerView.swift */; };
+		D076047120C513C600ED59EB /* XYMarkerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D076046E20C513C500ED59EB /* XYMarkerView.swift */; };
+		D076047220C513C600ED59EB /* RadarMarkerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D076046F20C513C500ED59EB /* RadarMarkerView.swift */; };
+		D076047320C513C600ED59EB /* RadarMarkerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D076046F20C513C500ED59EB /* RadarMarkerView.swift */; };
+		D076047520C513D200ED59EB /* BalloonMarker.swift in Sources */ = {isa = PBXBuildFile; fileRef = D076047420C513D100ED59EB /* BalloonMarker.swift */; };
+		D076047620C513D200ED59EB /* BalloonMarker.swift in Sources */ = {isa = PBXBuildFile; fileRef = D076047420C513D100ED59EB /* BalloonMarker.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -418,6 +434,19 @@
 		73CCC06020BD24B6009A662F /* StocksOverviewViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StocksOverviewViewController.m; sourceTree = "<group>"; };
 		73CCC06220BD3978009A662F /* ActiveStocksViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActiveStocksViewController.m; sourceTree = "<group>"; };
 		73CCC06420BD3A38009A662F /* CompanyGraphViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CompanyGraphViewController.m; sourceTree = "<group>"; };
+		D076045820C5139E00ED59EB /* DateValueFormatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DateValueFormatter.h; sourceTree = "<group>"; };
+		D076045B20C5139E00ED59EB /* CompanyStocksViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CompanyStocksViewController.h; sourceTree = "<group>"; };
+		D076045C20C5139F00ED59EB /* DateValueFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DateValueFormatter.m; sourceTree = "<group>"; };
+		D076045D20C5139F00ED59EB /* CompanyStocksViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CompanyStocksViewController.m; sourceTree = "<group>"; };
+		D076045E20C5139F00ED59EB /* CompanyGraphViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CompanyGraphViewController.m; sourceTree = "<group>"; };
+		D076045F20C513A000ED59EB /* DayAxisValueFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DayAxisValueFormatter.m; sourceTree = "<group>"; };
+		D076046020C513A000ED59EB /* DayAxisValueFormatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DayAxisValueFormatter.h; sourceTree = "<group>"; };
+		D076046920C513AC00ED59EB /* IntAxisValueFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IntAxisValueFormatter.m; sourceTree = "<group>"; };
+		D076046A20C513AD00ED59EB /* IntAxisValueFormatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IntAxisValueFormatter.h; sourceTree = "<group>"; };
+		D076046D20C513C400ED59EB /* QIFSToday-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "QIFSToday-Bridging-Header.h"; sourceTree = "<group>"; };
+		D076046E20C513C500ED59EB /* XYMarkerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XYMarkerView.swift; sourceTree = "<group>"; };
+		D076046F20C513C500ED59EB /* RadarMarkerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RadarMarkerView.swift; sourceTree = "<group>"; };
+		D076047420C513D100ED59EB /* BalloonMarker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BalloonMarker.swift; sourceTree = "<group>"; };
 		D0CF9E0620C5101100D343F4 /* Charts.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Charts.xcodeproj; path = charts/Charts.xcodeproj; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
@@ -546,14 +575,23 @@
 				5123791D1D56165D0096C0E2 /* OptionsMenu */,
 				51031E321D5DDC2E0049137E /* Search */,
 				7319815420BD87ED00719955 /* DayAxisValueFormatter.h */,
+				D076046020C513A000ED59EB /* DayAxisValueFormatter.h */,
 				7319815520BD87ED00719955 /* DayAxisValueFormatter.m */,
+				D076045E20C5139F00ED59EB /* CompanyGraphViewController.m */,
+				D076045B20C5139E00ED59EB /* CompanyStocksViewController.h */,
+				D076045D20C5139F00ED59EB /* CompanyStocksViewController.m */,
 				7319813720BD756200719955 /* DateValueFormatter.h */,
 				7319813520BD756200719955 /* DateValueFormatter.m */,
 				7319815120BD87E100719955 /* IntAxisValueFormatter.h */,
+				D076046A20C513AD00ED59EB /* IntAxisValueFormatter.h */,
 				7319815220BD87E100719955 /* IntAxisValueFormatter.m */,
+				D076046920C513AC00ED59EB /* IntAxisValueFormatter.m */,
 				510D23351D23174F008D1EB4 /* PagerViewController.h */,
 				510D23361D23174F008D1EB4 /* PagerViewController.m */,
 				510D23371D23174F008D1EB4 /* PagerViewController.xib */,
+				D076045820C5139E00ED59EB /* DateValueFormatter.h */,
+				D076045C20C5139F00ED59EB /* DateValueFormatter.m */,
+				D076045F20C513A000ED59EB /* DayAxisValueFormatter.m */,
 				511247E31D23AA3100364145 /* ChildExampleViewController.h */,
 				511247E41D23AA3100364145 /* ChildExampleViewController.m */,
 				511247E51D23AA3100364145 /* ChildExampleViewController.xib */,
@@ -563,9 +601,13 @@
 				514C960B1D57A4BE00D7C1DA /* QEGraphViewController.m */,
 				51613C6D1E20C3530055505A /* CompanyGraphViewController.h */,
 				73CCC06420BD3A38009A662F /* CompanyGraphViewController.m */,
+				D076047420C513D100ED59EB /* BalloonMarker.swift */,
+				D076046F20C513C500ED59EB /* RadarMarkerView.swift */,
+				D076046E20C513C500ED59EB /* XYMarkerView.swift */,
 				7319814420BD873C00719955 /* BalloonMarker.swift */,
 				7319814520BD873C00719955 /* RadarMarkerView.swift */,
 				7319814320BD873C00719955 /* XYMarkerView.swift */,
+				D076046D20C513C400ED59EB /* QIFSToday-Bridging-Header.h */,
 			);
 			name = PagerContainer;
 			sourceTree = "<group>";
@@ -1015,6 +1057,7 @@
 					5108D32D1D6EDEB100D23F6E = {
 						CreatedOnToolsVersion = 7.3.1;
 						DevelopmentTeam = KF8S4V7VM6;
+						LastSwiftMigration = 0920;
 					};
 					514382A61D1D82D400E1B739 = {
 						CreatedOnToolsVersion = 7.3.1;
@@ -1121,8 +1164,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D076046820C513A000ED59EB /* DayAxisValueFormatter.m in Sources */,
+				D076046220C513A000ED59EB /* DateValueFormatter.m in Sources */,
+				D076046420C513A000ED59EB /* CompanyStocksViewController.m in Sources */,
+				D076047320C513C600ED59EB /* RadarMarkerView.swift in Sources */,
+				D076047120C513C600ED59EB /* XYMarkerView.swift in Sources */,
+				D076046620C513A000ED59EB /* CompanyGraphViewController.m in Sources */,
 				5108D3351D6EDEB200D23F6E /* TodayViewController.m in Sources */,
+				D076046C20C513AD00ED59EB /* IntAxisValueFormatter.m in Sources */,
 				5108D3431D6EE0A100D23F6E /* WidgetListCell.m in Sources */,
+				D076047620C513D200ED59EB /* BalloonMarker.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1135,6 +1186,7 @@
 				511247E61D23AA3100364145 /* ChildExampleViewController.m in Sources */,
 				510D233B1D23174F008D1EB4 /* PagerViewController.m in Sources */,
 				514382B21D1D82D500E1B739 /* ViewController.m in Sources */,
+				D076046320C513A000ED59EB /* CompanyStocksViewController.m in Sources */,
 				51FB2B3E1D398EBC00D6EACE /* MGSwipeButton.m in Sources */,
 				73CCC06320BD3978009A662F /* ActiveStocksViewController.m in Sources */,
 				5121930F1D60641700CE95C2 /* BondStocksCell.m in Sources */,
@@ -1155,6 +1207,8 @@
 				517ACE321F82B467001E24A9 /* ActiveOrdersViewController.m in Sources */,
 				73CCC06120BD24B6009A662F /* StocksOverviewViewController.m in Sources */,
 				51DA15911F8173E5001EAF83 /* MyNewOrdersCell.m in Sources */,
+				D076046120C513A000ED59EB /* DateValueFormatter.m in Sources */,
+				D076047520C513D200ED59EB /* BalloonMarker.swift in Sources */,
 				511247DF1D239BDD00364145 /* XLButtonBarView.m in Sources */,
 				51332C431DE8ABB7001536CD /* DataManager.m in Sources */,
 				7319814820BD873D00719955 /* RadarMarkerView.swift in Sources */,
@@ -1170,6 +1224,7 @@
 				514383241D1DC88800E1B739 /* QIFS.swift in Sources */,
 				7319814720BD873D00719955 /* BalloonMarker.swift in Sources */,
 				51FB2B381D398E4C00D6EACE /* MyOrdersViewController.m in Sources */,
+				D076046520C513A000ED59EB /* CompanyGraphViewController.m in Sources */,
 				514382AF1D1D82D500E1B739 /* AppDelegate.m in Sources */,
 				512379271D5616CC0096C0E2 /* CashPositionViewController.m in Sources */,
 				51332C401DE8AB97001536CD /* FMResultSet.m in Sources */,
@@ -1183,9 +1238,11 @@
 				51332C3E1DE8AB97001536CD /* FMDatabasePool.m in Sources */,
 				514C960C1D57A4BE00D7C1DA /* QEGraphViewController.m in Sources */,
 				5102EDDF1D494827005B04F8 /* SearchStocksCell.m in Sources */,
+				D076047220C513C600ED59EB /* RadarMarkerView.swift in Sources */,
 				515AF64A1D2E511B00FF837E /* OrderConfirmViewController.m in Sources */,
 				515E8D561EED9B03000852B9 /* OptionsViewCell.m in Sources */,
 				514C96061D578B7500D7C1DA /* NewOrderViewController.m in Sources */,
+				D076047020C513C600ED59EB /* XYMarkerView.swift in Sources */,
 				510B993E1D6C17B200D7703F /* StockList.m in Sources */,
 				514D322F1D1E70F200E78C71 /* ForgotPasswordViewController.m in Sources */,
 				51332C3D1DE8AB97001536CD /* FMDatabaseAdditions.m in Sources */,
@@ -1194,6 +1251,7 @@
 				51FB2B2F1D393B9D00D6EACE /* StocksPagerViewController.m in Sources */,
 				7319815320BD87E200719955 /* IntAxisValueFormatter.m in Sources */,
 				7319815620BD87EE00719955 /* DayAxisValueFormatter.m in Sources */,
+				D076046B20C513AD00ED59EB /* IntAxisValueFormatter.m in Sources */,
 				512379371D5667ED0096C0E2 /* PendingAlertsCell.m in Sources */,
 				51434D4F1DE19473003F303B /* MDOrderAskCell.m in Sources */,
 				515AF6491D2E511B00FF837E /* CalculatorViewController.m in Sources */,
@@ -1201,6 +1259,7 @@
 				51FB2B3F1D398EBC00D6EACE /* MGSwipeTableCell.m in Sources */,
 				5102EDC61D4947BE005B04F8 /* PortfoliosCell.m in Sources */,
 				51FB2B331D393FD900D6EACE /* CAPSPageMenu.m in Sources */,
+				D076046720C513A000ED59EB /* DayAxisValueFormatter.m in Sources */,
 				51434D501DE19473003F303B /* MDPriceAskCell.m in Sources */,
 				5102EDD21D494805005B04F8 /* MDOrderBidCell.m in Sources */,
 				512379261D5616CC0096C0E2 /* ContactUsViewController.m in Sources */,
@@ -1279,6 +1338,7 @@
 		5108D33E1D6EDEB300D23F6E /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = QIFSToday/Info.plist;
@@ -1288,12 +1348,16 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				SKIP_INSTALL = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "QIFS/QIFSToday-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
 		5108D33F1D6EDEB300D23F6E /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: ISLAMIC FINANCIAL SECURITIES CO. (MU44929JUZ)";
 				INFOPLIST_FILE = QIFSToday/Info.plist;
@@ -1303,6 +1367,8 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "736dc37d-1ff9-4646-a12c-425809aab758";
 				SKIP_INSTALL = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "QIFS/QIFSToday-Bridging-Header.h";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
 		};
