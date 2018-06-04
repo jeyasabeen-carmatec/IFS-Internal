@@ -18,18 +18,10 @@
 #import "SettingsViewController.h"
 #import "CompanyStocksViewController.h"
 #import "OptionsViewCell.h"
-#import "LoginView.h"
 
 NSString *const kNewOrderOptionsViewCellIdentifier = @"OptionsViewCell";
 
-@interface NewOrderViewController () <UIPickerViewDelegate, UIPickerViewDataSource, NSURLSessionDelegate, orderConfirmDelegate, tabBarManageCashDelegate,UITextFieldDelegate>{
-    LoginView *loginVw;
-    UIView *overLayView;
-}
-@property (weak, nonatomic) IBOutlet UIView *contentView;
-@property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
-@property (weak, nonatomic) IBOutlet UILabel *limitUPLabel;
-@property (weak, nonatomic) IBOutlet UILabel *limitDowmLabel;
+@interface NewOrderViewController () <UIPickerViewDelegate, UIPickerViewDataSource, NSURLSessionDelegate, orderConfirmDelegate, tabBarManageCashDelegate>
 
 @property (nonatomic, weak) IBOutlet UIButton *buttonTransaction;
 @property (nonatomic, weak) IBOutlet UIButton *buttonOrderType;
@@ -132,8 +124,6 @@ NSString *const kNewOrderOptionsViewCellIdentifier = @"OptionsViewCell";
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    _scrollView.translatesAutoresizingMaskIntoConstraints = YES;
-    
     // Do any additional setup after loading the view from its nib.
     globalShare = [GlobalShare sharedInstance];
     [[GlobalShare sharedInstance] setIsConfirmOrder:NO];
@@ -244,23 +234,6 @@ NSString *const kNewOrderOptionsViewCellIdentifier = @"OptionsViewCell";
     _viewOrderValue.layer.cornerRadius = 3;
     _viewOrderValue.layer.masksToBounds = YES;
     
-    
-    _limitUPLabel.layer.cornerRadius = 3;
-    _limitUPLabel.layer.masksToBounds = YES;
-    _limitUPLabel.layer.borderColor=[[UIColor grayColor]CGColor];
-    _limitUPLabel.layer.borderWidth= 1.0f;
-
-    
-    
-    _limitDowmLabel.layer.cornerRadius = 3;
-    _limitDowmLabel.layer.masksToBounds = YES;
-    _limitDowmLabel.layer.borderColor = [[UIColor grayColor]CGColor];
-    _limitDowmLabel.layer.borderWidth= 1.0f;
-
-
-
-    
-    
     _viewDisclose.layer.cornerRadius = 3;
     _viewDisclose.layer.masksToBounds = YES;
     _viewDisclose.layer.borderWidth = 2.0;
@@ -274,13 +247,6 @@ NSString *const kNewOrderOptionsViewCellIdentifier = @"OptionsViewCell";
 
 -(void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:YES];
-    
-    overLayView = [[UIView alloc] initWithFrame:CGRectMake(0, self.navigationController.navigationBar.frame.origin.y, self.view.frame.size.width, self.view.frame.size.height)];
-    overLayView.backgroundColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.5];
-    overLayView.clipsToBounds = YES;
-    overLayView.hidden = YES;
-    [self.view addSubview:overLayView];
-    
     
     for (id control in self.view.subviews) {
         if ([control isKindOfClass:[UITextField class]]) {
@@ -438,38 +404,25 @@ NSString *const kNewOrderOptionsViewCellIdentifier = @"OptionsViewCell";
         return;
     }
     
-    NSString *strToken = [NSString stringWithFormat:@"%@", [[NSUserDefaults standardUserDefaults] stringForKey:@"ssckey"]];
+    if(![[NSUserDefaults standardUserDefaults] boolForKey:@"is_system_codes"])
+        [self performSelector:@selector(getSystemCodes) withObject:nil afterDelay:0.01f];
+    else {
+        globalShare.pickerData1 = [DataManager select_SystemCodes:@"tbl_TransactionOrderType"];
+        globalShare.pickerData2 = [DataManager select_SystemCodes:@"tbl_PriceOrderType"];
+        globalShare.pickerData3 = [DataManager select_SystemCodes:@"tbl_DurationOrderType"];
+    }
     
-    
- if (strToken == nil || [strToken isEqualToString:@"(null)"]) {
-        [self showsLoginPopUp];
-  }else{
-    
-         if(![[NSUserDefaults standardUserDefaults] boolForKey:@"is_system_codes"])
-                [self performSelector:@selector(getSystemCodes) withObject:nil afterDelay:0.01f];
-         else {
-                globalShare.pickerData1 = [DataManager select_SystemCodes:@"tbl_TransactionOrderType"];
-                globalShare.pickerData2 = [DataManager select_SystemCodes:@"tbl_PriceOrderType"];
-                globalShare.pickerData3 = [DataManager select_SystemCodes:@"tbl_DurationOrderType"];
-              }
-      
-    
-       if(![[NSUserDefaults standardUserDefaults] boolForKey:@"is_securities_avail"])
-              [self performSelector:@selector(getSecurityBySector) withObject:nil afterDelay:0.01f];
-        else {
-                self.allResults = [DataManager select_SecurityList];
-            }
-      
+    if(![[NSUserDefaults standardUserDefaults] boolForKey:@"is_securities_avail"])
+        [self performSelector:@selector(getSecurityBySector) withObject:nil afterDelay:0.01f];
+    else {
+        self.allResults = [DataManager select_SecurityList];
+    }
 
-      [self performSelector:@selector(getMarketWatchNew) withObject:nil afterDelay:0.01f];
-      //    [self performSelector:@selector(getSystemCodes) withObject:nil afterDelay:0.01f];
-      //    [self performSelector:@selector(getSecurityBySector) withObject:nil afterDelay:0.01f];
-      [self performSelector:@selector(getCashPosition) withObject:nil afterDelay:0.01f];
-      //    [[GlobalShare sharedInstance] setIsConfirmOrder:NO];
-      
-  }
-    
-    
+    [self performSelector:@selector(getMarketWatchNew) withObject:nil afterDelay:0.01f];
+//    [self performSelector:@selector(getSystemCodes) withObject:nil afterDelay:0.01f];
+//    [self performSelector:@selector(getSecurityBySector) withObject:nil afterDelay:0.01f];
+    [self performSelector:@selector(getCashPosition) withObject:nil afterDelay:0.01f];
+//    [[GlobalShare sharedInstance] setIsConfirmOrder:NO];
 }
 
 -(void)viewWillDisappear:(BOOL)animated {
@@ -490,92 +443,13 @@ NSString *const kNewOrderOptionsViewCellIdentifier = @"OptionsViewCell";
     [[NSNotificationCenter defaultCenter] removeObserver:self name:UIKeyboardWillShowNotification object:nil];
     [[NSNotificationCenter defaultCenter] removeObserver:self name:UIKeyboardWillHideNotification object:nil];
 }
--(void)viewDidLayoutSubviews{
-    _scrollView.contentSize = CGSizeMake(self.view.frame.size.width, self.contentView.frame.size.height+self.contentView.frame.origin.y+400);
-   NSLog(@"%f",self.contentView.frame.size.height+self.contentView.frame.origin.y+400);
-}
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-#pragma mark Loading Login PopUp when guest User
-/*
- Demo User Login(Custom View)
- */
--(void)showsLoginPopUp{
-    
-    overLayView.hidden = NO;
-    loginVw  = [[[NSBundle mainBundle] loadNibNamed:@"LoginView" owner:self options:nil] objectAtIndex:0];
-    [self.view addSubview:loginVw];
-    loginVw.frame = CGRectMake(0, 0, self.view.frame.size.width-70, loginVw.frame.size.height);
-    loginVw.center = self.view.center;
-    
-    [loginVw.cancelButton addTarget:self action:@selector(cancelButtonAction) forControlEvents:UIControlEventTouchUpInside];
-    [loginVw.loginButton addTarget:self action:@selector(loginButtonAction) forControlEvents:UIControlEventTouchUpInside];
-    loginVw.userNameTF.delegate =self;
-    loginVw.passwordTF.delegate = self;
-    
-    if(globalShare.myLanguage == ARABIC_LANGUAGE) {
-        // [[UIView appearance] setSemanticContentAttribute:UISemanticContentAttributeForceRightToLeft];
-        [loginVw setSemanticContentAttribute:UISemanticContentAttributeForceRightToLeft];
-        
-    }
-    else {
-        //[[UIView appearance] setSemanticContentAttribute:UISemanticContentAttributeForceLeftToRight];
-        [loginVw setSemanticContentAttribute:UISemanticContentAttributeForceLeftToRight];
-        
-    }
-    
-}
 
 #pragma mark - Button actions
-/*
- Custom Login Screen Cancel Button Actions
- */
--(void)cancelButtonAction{
-    overLayView.hidden = YES;
-    [loginVw removeFromSuperview];
-    //[self.tabBarController setSelectedIndex:0];
-    [self.navigationController popViewControllerAnimated:YES];
-   
-}
-/*
- Custom Login Screen Login Button Actions
- */
--(void)loginButtonAction{
-    
-    @try {
-        
-        [loginVw.userNameTF resignFirstResponder];
-        [loginVw.passwordTF resignFirstResponder];
-        
-        NSString *stringUserName = [loginVw.userNameTF.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
-        NSString *stringPassword = [loginVw.passwordTF.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
-        
-        if([stringUserName length] == 0) {
-            [GlobalShare showBasicAlertView:self :USERNAME];
-            return;
-        } else if([stringPassword length] == 0) {
-            [GlobalShare showBasicAlertView:self :PASSWORD];
-            return;
-        }
-        
-        if (![GlobalShare isConnectedInternet]) {
-            [GlobalShare showBasicAlertView:self :INTERNET_CONNECTION];
-            return;
-        }
-        [self verifyUserLogin:stringUserName andPassword:stringPassword];
-        
-        
-    }
-    @catch (NSException * e) {
-        NSLog(@"%@", [e description]);
-    }
-    @finally {
-        //        [self toEnableControls];
-    }
-    
-}
 
 - (IBAction)actionBack:(id)sender {
     if([[GlobalShare sharedInstance] isPortfolioOrder])
@@ -1267,56 +1141,6 @@ NSString *const kNewOrderOptionsViewCellIdentifier = @"OptionsViewCell";
 
 #pragma mark - Common actions
 
-
--(BOOL)verifyUserLogin:(NSString *)stringUserName andPassword:(NSString*)stringPassword{
-    @try {
-        
-        [loginVw removeFromSuperview];
-        overLayView.hidden = YES;
-        
-        NSURLSessionConfiguration *defaultConfigObject = [NSURLSessionConfiguration defaultSessionConfiguration];
-        NSURLSession *defaultSession = [NSURLSession sessionWithConfiguration:defaultConfigObject delegate:self delegateQueue:[NSOperationQueue mainQueue]];
-        
-        NSString *strURL = [NSString stringWithFormat:@"%@SetCredentials?username=%@&password=%@", REQUEST_URL, stringUserName, stringPassword];
-        NSURL *url = [NSURL URLWithString:strURL];
-        
-        NSURLSessionDataTask *dataTask = [defaultSession dataTaskWithURL:url
-                                                       completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
-                                                           
-                                                           
-                                                           if(error == nil)
-                                                           {
-                                                               
-                                                               NSMutableDictionary *returnedDict = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:&error];
-                                                               if([[returnedDict objectForKey:@"status"] hasPrefix:@"error"]) {
-                                                                   if([[returnedDict objectForKey:@"result"] hasPrefix:@"T4"])
-                                                                       [GlobalShare showBasicAlertView:self :INVALID_HEADER];
-                                                                   else
-                                                                       [GlobalShare showBasicAlertView:self :[returnedDict objectForKey:@"result"]];
-                                                                   return;
-                                                               }
-                                                               NSString *strToken = [returnedDict objectForKey:@"result"];
-                                                               [[NSUserDefaults standardUserDefaults] setObject:strToken forKey:@"ssckey"];
-                                                               [[NSUserDefaults standardUserDefaults] synchronize];
-                                                               [self viewWillAppear:YES];
-                                                               
-                                                               
-                                                           }
-                                                           else {
-                                                               
-                                                               [GlobalShare showBasicAlertView:self :[error localizedDescription]];
-                                                           }
-                                                       }];
-        
-        [dataTask resume];
-    }
-    @catch (NSException * e) {
-        NSLog(@"%@", [e description]);
-    }
-    @finally {
-        
-    }
-}
 - (void)callHeartBeatUpdate {
     [[GlobalShare sharedInstance] setIsTimerNewOrderRun:YES];
     globalShare.timerNewOrder = [NSTimer scheduledTimerWithTimeInterval:AUTO_SYNC_INTERVAL target:self selector:@selector(getMarketWatchNew) userInfo:nil repeats:YES];

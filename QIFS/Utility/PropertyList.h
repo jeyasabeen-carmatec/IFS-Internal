@@ -15,9 +15,6 @@
 
 #define WEB_URL @"http://islamicbroker.biz/english/index.html"
 
-
-#define webSite_Url @"https://www.islamicbroker.com.qa/"
-
 //UATPUBLIC
 #define REQUEST_URL @"http://212.77.209.101/OrderManagerWebAPI/WebAPI/"
 

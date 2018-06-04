@@ -635,5 +635,4 @@ static GlobalShare *_shareInstane;
     return str;
 }
 
-
 @end

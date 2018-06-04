@@ -14,7 +14,7 @@
 #import "GainLossViewController.h"
 #import "ActiveStocksViewController.h"
 #import "SearchResultsTableViewController.h"
-//#import "QIFS-Swift.h"
+#import "QIFS-Swift.h"
 #import "QEGraphViewController.h"
 #import "AlertsViewController.h"
 #import "CashPositionViewController.h"
@@ -268,16 +268,7 @@ NSString *const kStocksOptionsViewCellIdentifier = @"OptionsViewCell";
         [self.tableViewOptionMenu setSemanticContentAttribute:UISemanticContentAttributeForceLeftToRight];
         [self.view setSemanticContentAttribute:UISemanticContentAttributeForceLeftToRight];
     }
-     //_pageMenu = [[CAPSPageMenu alloc] initWithViewControllers:controllerArray frame:CGRectMake(0.0, 64.0, self.view.frame.size.width, self.view.frame.size.height-49-64) options:parameters index:passIndex];
-    
-    _pageMenu = [[CAPSPageMenu alloc] initWithViewControllers:controllerArray frame:CGRectMake(0.0, _labelTitle.frame.origin.y+_labelTitle.frame.size.height+20, self.view.frame.size.width, self.view.frame.size.height-(_labelTitle.frame.origin.y+_labelTitle.frame.size.height+20)-49) options:parameters index:passIndex];//labelTitle
-    
-    NSLog(@"..... %f",_labelTitle.frame.origin.y+_labelTitle.frame.size.height+10);
-    NSLog(@"Height %f",self.view.frame.size.height-(_labelTitle.frame.origin.y+_labelTitle.frame.size.height+30)-49);
-    //NSLog(@"y %f",_labelTitle.frame.origin.y);
-
-    
-    
+    _pageMenu = [[CAPSPageMenu alloc] initWithViewControllers:controllerArray frame:CGRectMake(0.0, 64.0, self.view.frame.size.width, self.view.frame.size.height-49-64) options:parameters index:passIndex];
     _pageMenu.delegate = self;
     [_pageMenu moveToPage:passIndex withAnimated:YES];
     [self.view addSubview:_pageMenu.view];
@@ -504,10 +495,6 @@ NSString *const kStocksOptionsViewCellIdentifier = @"OptionsViewCell";
 -(void) getSystemCodes {
     @try {
         NSString *strToken = [NSString stringWithFormat:@"%@", [[NSUserDefaults standardUserDefaults] stringForKey:@"ssckey"]];
-        if (strToken == nil || [strToken isEqualToString:@"(null)"]) {
-            strToken = @" ";
-        }
-       
         NSURLSessionConfiguration *defaultConfigObject = [NSURLSessionConfiguration defaultSessionConfiguration];
         defaultConfigObject.HTTPAdditionalHeaders = @{@"Authorization": strToken};
         NSURLSession *defaultSession = [NSURLSession sessionWithConfiguration:defaultConfigObject delegate:self delegateQueue:[NSOperationQueue mainQueue]];
@@ -561,10 +548,6 @@ NSString *const kStocksOptionsViewCellIdentifier = @"OptionsViewCell";
 -(void) getSecurityBySector {
     @try {
         NSString *strToken = [[NSUserDefaults standardUserDefaults] stringForKey:@"ssckey"];
-        if (strToken == nil ||[strToken isEqualToString:@"(null)"]) {
-            strToken = @"";
-        }
-        
         NSURLSessionConfiguration *defaultConfigObject = [NSURLSessionConfiguration defaultSessionConfiguration];
         defaultConfigObject.HTTPAdditionalHeaders = @{@"Authorization": strToken};
         NSURLSession *defaultSession = [NSURLSession sessionWithConfiguration:defaultConfigObject delegate:self delegateQueue:[NSOperationQueue mainQueue]];

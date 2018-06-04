@@ -9,7 +9,6 @@
 #import "ViewController.h"
 #import "RegisterViewController.h"
 #import "ForgotPasswordViewController.h"
-#import "LoginView.h"
 
 @implementation UIView (ShakeAnimation)
 
@@ -48,7 +47,6 @@
 @property (nonatomic, weak) IBOutlet UIButton *buttonLogin;
 @property (nonatomic, weak) IBOutlet UIButton *buttonForgotPassword;
 @property (nonatomic, weak) IBOutlet UIButton *buttonNewUser;
-@property (weak, nonatomic) IBOutlet UIButton *buttonMarketPreview;
 
 @property (nonatomic, strong) UITextField *textFieldCurrent;
 
@@ -58,15 +56,6 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
-    NSString *userName = [[NSUserDefaults standardUserDefaults] valueForKey:@"UserName"];
-    if (userName == nil ||[userName isEqualToString:@"(null)"]) {
-        userName = @"";
-    }
-    
-    _textFieldUserName.text = userName;//@"1000000321";
-    _textFieldPassword.text = @"ssc@123";
-    
     // Do any additional setup after loading the view, typically from a nib.
     globalShare = [GlobalShare sharedInstance];
     [self.labelTitle setText:NSLocalizedString(@"Login", @"Login")];
@@ -74,20 +63,14 @@
 //    [txtUserName triggerShakeAnimation];
     
     globalShare.topNavController = self.navigationController;
-
-    NSLog(@"Testing....");
 }
 
 -(void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:YES];
-    
-    
-    
-    
 //    [self.textFieldUserName setText:@"1000015535"];
 //    [self.textFieldPassword setText:@"123456"];
-//    [self.textFieldUserName setText:@"1000555647"];
-//    [self.textFieldPassword setText:@"ifsc123"];
+    [self.textFieldUserName setText:@"1000000321"];
+    [self.textFieldPassword setText:@"ssc@123"];
     [[GlobalShare sharedInstance] setIsErrorPupup:NO];
     [[GlobalShare sharedInstance] setIsTimerStockListRun:NO];
     [[GlobalShare sharedInstance] setIsTimerPortfolioRun:NO];
@@ -178,6 +161,7 @@
 
 - (IBAction)actionLogin:(id)sender {
     @try {
+//        [self toDisableControls];
 
         [self.textFieldUserName resignFirstResponder];
         [self.textFieldPassword resignFirstResponder];
@@ -199,7 +183,8 @@
         }
         [self verifyUserLogin];
 
-
+//        UITabBarController *tabController = [self.storyboard instantiateViewControllerWithIdentifier:@"StockTabBarController"];
+//        [[self navigationController] pushViewController:tabController animated:YES];
     }
     @catch (NSException * e) {
         NSLog(@"%@", [e description]);
@@ -218,15 +203,6 @@
     RegisterViewController *registerViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"RegisterViewController"];
     [[self navigationController] pushViewController:registerViewController animated:YES];
 }
-- (IBAction)marketPreviewAction:(id)sender {
-
-   [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"ssckey"];
-   
-    UITabBarController *tabController = [self.storyboard instantiateViewControllerWithIdentifier:@"StockTabBarController"];
-    tabController.delegate = self;
-    [[self navigationController] pushViewController:tabController animated:YES];
-    
-}
 
 #pragma mark - Common actions
 
@@ -234,14 +210,12 @@
     [self.buttonLogin setEnabled:YES];
     [self.buttonForgotPassword setEnabled:YES];
     [self.buttonNewUser setEnabled:YES];
-    [self.buttonMarketPreview setEnabled:YES];
 }
 
 -(void) toDisableControls {
     [self.buttonLogin setEnabled:NO];
     [self.buttonForgotPassword setEnabled:NO];
     [self.buttonNewUser setEnabled:NO];
-    [self.buttonMarketPreview setEnabled:NO];
 }
 
 -(void) verifyUserLogin {
@@ -279,10 +253,6 @@
                                                             NSString *strToken = [returnedDict objectForKey:@"result"];
 //                                                            NSString *strToken = @"1234567890";
                                                             [[NSUserDefaults standardUserDefaults] setObject:strToken forKey:@"ssckey"];
-                                                            [[NSUserDefaults standardUserDefaults] synchronize];
-                                                            
-                                                            // Storing UserName in Shared Preference values..
-                                                            [[NSUserDefaults standardUserDefaults] setValue:stringUserName forKey:@"UserName"];
                                                             [[NSUserDefaults standardUserDefaults] synchronize];
 
                                                             UITabBarController *tabController = [self.storyboard instantiateViewControllerWithIdentifier:@"StockTabBarController"];
@@ -403,7 +373,5 @@
 //    
 //    [self presentViewController:alertController animated:YES completion:nil];
 //}
-
-
 
 @end

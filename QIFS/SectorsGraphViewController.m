@@ -7,20 +7,14 @@
 //
 
 #import "SectorsGraphViewController.h"
-//#import <Charts/Charts.h>
+#import <Charts/Charts.h>
 #import "SectorsGraphCell.h"
 
 NSString *const kSectorsGraphCellIdentifier = @"SectorsGraphCell";
 
-@interface SectorsGraphViewController () < NSURLSessionDelegate> //ChartViewDelegate
+@interface SectorsGraphViewController () <ChartViewDelegate, NSURLSessionDelegate>
 
-@property (nonatomic, weak) IBOutlet UIView *chartView; //PieChartView
-
-
-
-
-
-
+@property (nonatomic, weak) IBOutlet PieChartView *chartView;
 @property (nonatomic, weak) IBOutlet UIView *bottomView;
 @property (nonatomic, weak) IBOutlet UIActivityIndicatorView *indicatorView;
 
@@ -34,9 +28,13 @@ NSString *const kSectorsGraphCellIdentifier = @"SectorsGraphCell";
 @property (nonatomic, strong) NSArray *legendColors;
 @property (nonatomic, strong) NSString *companyId;
 
+
 @end
 
 @implementation SectorsGraphViewController
+//{
+//    NSMutableArray *yVals1;
+//}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -44,53 +42,122 @@ NSString *const kSectorsGraphCellIdentifier = @"SectorsGraphCell";
     globalShare = [GlobalShare sharedInstance];
     self.tableViewComponents.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
 
-//    _chartView.usePercentValuesEnabled = YES;
-//    _chartView.drawSlicesUnderHoleEnabled = NO;
-//    _chartView.holeRadiusPercent = 0.58;
-//    _chartView.transparentCircleRadiusPercent = 0.61;
+    _chartView.usePercentValuesEnabled = YES;
+    _chartView.drawSlicesUnderHoleEnabled = NO;
+    _chartView.holeRadiusPercent = 0.58;
+    _chartView.transparentCircleRadiusPercent = 0.61;
 //    _chartView.descriptionText = @"";
-//    [_chartView setExtraOffsetsWithLeft:5.f top:10.f right:5.f bottom:5.f];
-//    
-//    _chartView.extraTopOffset = -5.0f;
-//    _chartView.extraBottomOffset = 0.0f;
-//    _chartView.extraLeftOffset = -5.0f;
-//    _chartView.extraRightOffset = -5.0f;
+    [_chartView setExtraOffsetsWithLeft:5.f top:10.f right:5.f bottom:5.f];
+    
+    _chartView.extraTopOffset = -5.0f;
+    _chartView.extraBottomOffset = 0.0f;
+    _chartView.extraLeftOffset = -5.0f;
+    _chartView.extraRightOffset = -5.0f;
+
+    _chartView.drawCenterTextEnabled = YES;
+    _chartView.userInteractionEnabled = NO;
+    _chartView.chartDescription.text = @"";
+    
+//    [_labelComapany setText:@""];
+//    [_labelComapany setHidden:YES];
+//    [_imageArrow setHidden:YES];
+    
+//    NSMutableParagraphStyle *paragraphStyle = [[NSParagraphStyle defaultParagraphStyle] mutableCopy];
+//    paragraphStyle.lineBreakMode = NSLineBreakByTruncatingTail;
+//    paragraphStyle.alignment = NSTextAlignmentCenter;
 //
-//    _chartView.drawCenterTextEnabled = YES;
-    
-    NSMutableParagraphStyle *paragraphStyle = [[NSParagraphStyle defaultParagraphStyle] mutableCopy];
-    paragraphStyle.lineBreakMode = NSLineBreakByTruncatingTail;
-    paragraphStyle.alignment = NSTextAlignmentCenter;
-    
-    NSMutableAttributedString *centerText = [[NSMutableAttributedString alloc] initWithString:@"Charts\nby Daniel Cohen Gindi"];
-    [centerText setAttributes:@{
-                                NSFontAttributeName: [UIFont fontWithName:@"HelveticaNeue-Light" size:13.f],
-                                NSParagraphStyleAttributeName: paragraphStyle
-                                } range:NSMakeRange(0, centerText.length)];
-    [centerText addAttributes:@{
-                                NSFontAttributeName: [UIFont fontWithName:@"HelveticaNeue-Light" size:11.f],
-                                NSForegroundColorAttributeName: UIColor.grayColor
-                                } range:NSMakeRange(10, centerText.length - 10)];
-    [centerText addAttributes:@{
-                                NSFontAttributeName: [UIFont fontWithName:@"HelveticaNeue-LightItalic" size:11.f],
-                                NSForegroundColorAttributeName: [UIColor colorWithRed:51/255.f green:181/255.f blue:229/255.f alpha:1.f]
-                                } range:NSMakeRange(centerText.length - 19, 19)];
+//    NSMutableAttributedString *centerText = [[NSMutableAttributedString alloc] initWithString:@"Charts\nby Daniel Cohen Gindi"];
+//    [centerText setAttributes:@{
+//                                NSFontAttributeName: [UIFont fontWithName:@"HelveticaNeue-Light" size:13.f],
+//                                NSParagraphStyleAttributeName: paragraphStyle
+//                                } range:NSMakeRange(0, centerText.length)];
+//    [centerText addAttributes:@{
+//                                NSFontAttributeName: [UIFont fontWithName:@"HelveticaNeue-Light" size:11.f],
+//                                NSForegroundColorAttributeName: UIColor.grayColor
+//                                } range:NSMakeRange(10, centerText.length - 10)];
+//    [centerText addAttributes:@{
+//                                NSFontAttributeName: [UIFont fontWithName:@"HelveticaNeue-LightItalic" size:11.f],
+//                                NSForegroundColorAttributeName: [UIColor colorWithRed:51/255.f green:181/255.f blue:229/255.f alpha:1.f]
+//                                } range:NSMakeRange(centerText.length - 19, 19)];
 //    _chartView.centerAttributedText = centerText;
-//    
-//    _chartView.drawHoleEnabled = YES;
-//    _chartView.rotationAngle = 0.0;
-//    _chartView.rotationEnabled = YES;
-//    _chartView.highlightPerTapEnabled = YES;
-//    
+    
+    _chartView.drawHoleEnabled = YES;
+    _chartView.rotationAngle = 0.0;
+    _chartView.rotationEnabled = YES;
+    _chartView.highlightPerTapEnabled = YES;
+    
 //    ChartLegend *l = _chartView.legend;
-//    l.position = ChartLegendPositionRightOfChart;
+//    l.position = ChartLegendDirectionRightToLeft;
 //    l.xEntrySpace = 7.0;
 //    l.yEntrySpace = 0.0;
 //    l.yOffset = 0.0;
 //    _chartView.legend.enabled = NO;
-//
-//    _chartView.delegate = self;
+    
+    ChartLegend *l = _chartView.legend;
+    l.horizontalAlignment = ChartLegendHorizontalAlignmentRight;
+    l.verticalAlignment = ChartLegendVerticalAlignmentTop;
+    l.orientation = ChartLegendOrientationVertical;
+    l.drawInside = NO;
+    l.xEntrySpace = 7.0;
+    l.yEntrySpace = 0.0;
+    l.yOffset = 0.0;
+
+    _chartView.legend.enabled = NO;
+    _chartView.delegate = self;
 }
+
+- (void)setDataCount:(int)count range:(double)range
+{
+//    double mult = range;
+    
+    NSMutableArray *values = [[NSMutableArray alloc] init];
+    
+    for (int i = 0; i < count; i++)
+    {
+        NSDictionary *def = self.arraySectorList[i];
+//        cell.labelCompany.text = def[(globalShare.myLanguage != ARABIC_LANGUAGE) ? @"security_sector_name_en" : @"security_sector_name_ar"];
+        //    cell.labelPercent.text = @"14.53 %";e.value / yValueSum * 100.0
+        //    cell.labelValue.text = def[@"Index"];
+
+        
+//        NSDictionary *def = self.arraySectorList[i];
+        [values addObject:[[PieChartDataEntry alloc] initWithValue:[GlobalShare roundoff:[def[@"sector_percentage"] doubleValue] :2] label:def[(globalShare.myLanguage != ARABIC_LANGUAGE) ? @"security_sector_name_en" : @"security_sector_name_ar"] icon: [UIImage imageNamed:@"icon"]]];
+    }
+    
+    PieChartDataSet *dataSet = [[PieChartDataSet alloc] initWithValues:values label:@"Election Results"];
+    
+    dataSet.drawIconsEnabled = NO;
+    
+//    dataSet.sliceSpace = 2.0;
+    dataSet.iconsOffset = CGPointMake(0, 40);
+    
+    // add a lot of colors
+    
+    NSMutableArray *colors = [[NSMutableArray alloc] init];
+    [colors addObjectsFromArray:ChartColorTemplates.vordiplom];
+    [colors addObjectsFromArray:ChartColorTemplates.joyful];
+    [colors addObjectsFromArray:ChartColorTemplates.colorful];
+    [colors addObjectsFromArray:ChartColorTemplates.liberty];
+    [colors addObjectsFromArray:ChartColorTemplates.pastel];
+    [colors addObject:[UIColor colorWithRed:51/255.f green:181/255.f blue:229/255.f alpha:1.f]];
+    
+    dataSet.colors = colors;
+    
+    PieChartData *data = [[PieChartData alloc] initWithDataSet:dataSet];
+    
+    NSNumberFormatter *pFormatter = [[NSNumberFormatter alloc] init];
+    pFormatter.numberStyle = NSNumberFormatterPercentStyle;
+    pFormatter.maximumFractionDigits = 1;
+    pFormatter.multiplier = @1.f;
+    pFormatter.percentSymbol = @" %";
+    [data setValueFormatter:[[ChartDefaultValueFormatter alloc] initWithFormatter:pFormatter]];
+    [data setValueFont:[UIFont fontWithName:@"HelveticaNeue-Light" size:11.f]];
+    [data setValueTextColor:UIColor.whiteColor];
+    
+    _chartView.data = data;
+    [_chartView highlightValues:nil];
+}
+
 
 -(void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:YES];
@@ -268,7 +335,7 @@ NSString *const kSectorsGraphCellIdentifier = @"SectorsGraphCell";
 
 - (void)updateChartData:(NSString *)passCompanyId
 {
-//    [_chartView animateWithXAxisDuration:1.4 easingOption:ChartEasingOptionEaseOutBack];
+    [_chartView animateWithXAxisDuration:1.4 easingOption:ChartEasingOptionEaseOutBack];
     [self setDataCount:passCompanyId];
 }
 
@@ -297,7 +364,7 @@ NSString *const kSectorsGraphCellIdentifier = @"SectorsGraphCell";
         [companyName addObject:([passCompanyId isEqualToString:@"100"]) ? self.arraySectorList[i][(globalShare.myLanguage != ARABIC_LANGUAGE) ? @"security_sector_name_en" : @"security_sector_name_ar"] : self.arrayCompanyList[i][@"ticker"]];
     }
 
-//    NSMutableArray *yVals1 = [[NSMutableArray alloc] init];
+//     yVals1 = [[NSMutableArray alloc] init];
     
     // IMPORTANT: In a PieChart, no values (Entry) should have the same xIndex (even if from different DataSets), since no values can be drawn above each other.[GlobalShare returnDoubleFromStringActive:[GlobalShare formatStringToTwoDigits:self.arrayVolumeStocks[0][@"volume_all"]]]
     for (int i = 0; i < count; i++)
@@ -307,7 +374,10 @@ NSString *const kSectorsGraphCellIdentifier = @"SectorsGraphCell";
 //            NSDictionary *def = self.arraySectorList[i];
 //            self.arrayCompanyList = def[@"securities"];
 //            sumofValues = [self.arrayCompanyList valueForKeyPath:@"@sum.value_all"];
+//            [yVals1 addObject:sumofValues];
 //        }
+    
+//        NSLog(@"The numbers Y val = %@",yVals1);
 
 //        [yVals1 addObject:[[BarChartDataEntry alloc] initWithValue:(arc4random_uniform(mult) + mult / 5) xIndex:i]];
 //        [yVals1 addObject:[[BarChartDataEntry alloc] initWithValue:([passCompanyId isEqualToString:@"100"]) ? [GlobalShare returnDoubleFromStringActive:[GlobalShare formatStringToTwoDigits:[sumofValues stringValue]]] : [GlobalShare returnDoubleFromStringActive:[GlobalShare formatStringToTwoDigits:self.arrayCompanyList[i][@"value_all"]]] xIndex:i]];
@@ -330,20 +400,20 @@ NSString *const kSectorsGraphCellIdentifier = @"SectorsGraphCell";
 //    }
 
     // add a lot of colors
-//    NSMutableArray *colors = [[NSMutableArray alloc] init];
-//    [colors addObjectsFromArray:ChartColorTemplates.vordiplom];
-//    [colors addObjectsFromArray:ChartColorTemplates.joyful];
-//    [colors addObjectsFromArray:ChartColorTemplates.colorful];
-//    [colors addObjectsFromArray:ChartColorTemplates.liberty];
-//    [colors addObjectsFromArray:ChartColorTemplates.material];
-//    [colors addObjectsFromArray:ChartColorTemplates.pastel];
-//    [colors addObjectsFromArray:ChartColorTemplates.pastel];
-//    [colors addObjectsFromArray:ChartColorTemplates.pastel];
-//    [colors addObject:[UIColor colorWithRed:51/255.f green:181/255.f blue:229/255.f alpha:1.f]];
-//    
+    NSMutableArray *colors = [[NSMutableArray alloc] init];
+    [colors addObjectsFromArray:ChartColorTemplates.vordiplom];
+    [colors addObjectsFromArray:ChartColorTemplates.joyful];
+    [colors addObjectsFromArray:ChartColorTemplates.colorful];
+    [colors addObjectsFromArray:ChartColorTemplates.liberty];
+    [colors addObjectsFromArray:ChartColorTemplates.material];
+    [colors addObjectsFromArray:ChartColorTemplates.pastel];
+    [colors addObjectsFromArray:ChartColorTemplates.pastel];
+    [colors addObjectsFromArray:ChartColorTemplates.pastel];
+    [colors addObject:[UIColor colorWithRed:51/255.f green:181/255.f blue:229/255.f alpha:1.f]];
+    
 //    dataSet.colors = colors;
-//    self.legendColors = colors;
-//    
+    self.legendColors = colors;
+    
 //    dataSet.valueLinePart1OffsetPercentage = 0.8;
 //    dataSet.valueLinePart1Length = 0.2;
 //    dataSet.valueLinePart2Length = 0.6;
@@ -351,21 +421,23 @@ NSString *const kSectorsGraphCellIdentifier = @"SectorsGraphCell";
 //    dataSet.yValuePosition = PieChartValuePositionInsideSlice;
 //
 //    PieChartData *data = [[PieChartData alloc] initWithXVals:xVals dataSet:dataSet];
-//    
-//    NSNumberFormatter *pFormatter = [[NSNumberFormatter alloc] init];
-//    pFormatter.numberStyle = NSNumberFormatterPercentStyle;
-//    pFormatter.maximumFractionDigits = 2;
-//    pFormatter.multiplier = @1.f;
-//    pFormatter.percentSymbol = @" %";
+    
+    NSNumberFormatter *pFormatter = [[NSNumberFormatter alloc] init];
+    pFormatter.numberStyle = NSNumberFormatterPercentStyle;
+    pFormatter.maximumFractionDigits = 2;
+    pFormatter.multiplier = @1.f;
+    pFormatter.percentSymbol = @" %";
 //    [data setValueFormatter:pFormatter];
 //    [data setValueFont:[UIFont fontWithName:@"HelveticaNeue-Light" size:11.f]];
 //    [data setValueTextColor:UIColor.blackColor];
-//    
-//    _chartView.data = data;
-//    _chartView.centerText = ([passCompanyId isEqualToString:@"100"]) ? NSLocalizedString(@"Market Sectors", @"Market Sectors") : self.arraySectorList[[passCompanyId integerValue]][(globalShare.myLanguage != ARABIC_LANGUAGE) ? @"security_sector_name_en" : @"security_sector_name_ar"];
-//    [_chartView highlightValues:nil];
     
+//    _chartView.data = data;
+    _chartView.centerText = ([passCompanyId isEqualToString:@"100"]) ? NSLocalizedString(@"Market Sectors", @"Market Sectors") : self.arraySectorList[[passCompanyId integerValue]][(globalShare.myLanguage != ARABIC_LANGUAGE) ? @"security_sector_name_en" : @"security_sector_name_ar"];
+    [_chartView highlightValues:nil];    
     [_tableViewComponents reloadData];
+    
+    
+    [self setDataCount:(int)count range:100];
 }
 
 #pragma mark - Table view data source
