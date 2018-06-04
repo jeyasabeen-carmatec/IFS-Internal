@@ -47,6 +47,7 @@
 @property (nonatomic, weak) IBOutlet UIButton *buttonLogin;
 @property (nonatomic, weak) IBOutlet UIButton *buttonForgotPassword;
 @property (nonatomic, weak) IBOutlet UIButton *buttonNewUser;
+@property (weak, nonatomic) IBOutlet UIButton *buttonMarketPreview;
 
 @property (nonatomic, strong) UITextField *textFieldCurrent;
 
@@ -56,6 +57,12 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    
+    
+    _textFieldUserName.text = @"1000000321";
+    _textFieldPassword.text = @"ssc@123";
+    
     // Do any additional setup after loading the view, typically from a nib.
     globalShare = [GlobalShare sharedInstance];
     [self.labelTitle setText:NSLocalizedString(@"Login", @"Login")];
@@ -69,8 +76,8 @@
     [super viewWillAppear:YES];
 //    [self.textFieldUserName setText:@"1000015535"];
 //    [self.textFieldPassword setText:@"123456"];
-    [self.textFieldUserName setText:@"1000000321"];
-    [self.textFieldPassword setText:@"ssc@123"];
+//    [self.textFieldUserName setText:@"1000555647"];
+//    [self.textFieldPassword setText:@"ifsc123"];
     [[GlobalShare sharedInstance] setIsErrorPupup:NO];
     [[GlobalShare sharedInstance] setIsTimerStockListRun:NO];
     [[GlobalShare sharedInstance] setIsTimerPortfolioRun:NO];
@@ -203,6 +210,15 @@
     RegisterViewController *registerViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"RegisterViewController"];
     [[self navigationController] pushViewController:registerViewController animated:YES];
 }
+- (IBAction)marketPreviewAction:(id)sender {
+    
+    [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"ssckey"];
+    UITabBarController *tabController = [self.storyboard instantiateViewControllerWithIdentifier:@"StockTabBarController"];
+    tabController.delegate = self;
+    [[self navigationController] pushViewController:tabController animated:YES];
+    
+    
+}
 
 #pragma mark - Common actions
 
@@ -210,12 +226,14 @@
     [self.buttonLogin setEnabled:YES];
     [self.buttonForgotPassword setEnabled:YES];
     [self.buttonNewUser setEnabled:YES];
+    [self.buttonMarketPreview setEnabled:YES];
 }
 
 -(void) toDisableControls {
     [self.buttonLogin setEnabled:NO];
     [self.buttonForgotPassword setEnabled:NO];
     [self.buttonNewUser setEnabled:NO];
+    [self.buttonMarketPreview setEnabled:NO];
 }
 
 -(void) verifyUserLogin {
@@ -373,5 +391,7 @@
 //    
 //    [self presentViewController:alertController animated:YES completion:nil];
 //}
+
+
 
 @end

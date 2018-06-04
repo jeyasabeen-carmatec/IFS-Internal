@@ -11,14 +11,14 @@
 #import "PropertyList.h"
 #import "XLPagerTabStripViewController.h"
 
-@protocol chartTapDelegate <NSObject>
-@required
-- (void)handleTapOnChartView;
-@end
+//@protocol chartTapDelegate <NSObject>
+//@required
+//- (void)handleTapOnChartView;
+//@end
 
 @interface StocksOverviewViewController : UIViewController <XLPagerTabStripChildItem> {
     GlobalShare *globalShare;
 }
-@property id<chartTapDelegate> delegate;
+//@property id<chartTapDelegate> delegate;
 
 @end

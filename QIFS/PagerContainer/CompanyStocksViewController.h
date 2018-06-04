@@ -10,17 +10,17 @@
 #import "GlobalShare.h"
 #import "PropertyList.h"
 
-@protocol chartCompanyTapDelegate <NSObject>
-@required
-- (void)handleTapOnCompanyChartView;
-@end
+//@protocol chartCompanyTapDelegate <NSObject>
+//@required
+//- (void)handleTapOnCompanyChartView;
+//@end
 
 
 @interface CompanyStocksViewController : UIViewController {
     GlobalShare *globalShare;
 }
 
-@property id<chartCompanyTapDelegate> delegate;
+//@property id<chartCompanyTapDelegate> delegate;
 @property (strong, nonatomic) NSString *securityId;
 @property (strong, nonatomic) NSString *securityName;
 

@@ -264,6 +264,10 @@ NSString *const kStockListCellIdentifier = @"StockListCell";
 //    [self dismissPopup];
 
     NSString *strToken = [[NSUserDefaults standardUserDefaults] stringForKey:@"ssckey"];
+        if (strToken == nil) {
+            strToken = @"";
+        }
+        
     NSURLSessionConfiguration *defaultConfigObject = [NSURLSessionConfiguration defaultSessionConfiguration];
     defaultConfigObject.HTTPAdditionalHeaders = @{@"Authorization": strToken};
     NSURLSession *defaultSession = [NSURLSession sessionWithConfiguration:defaultConfigObject delegate:self delegateQueue:[NSOperationQueue mainQueue]];
