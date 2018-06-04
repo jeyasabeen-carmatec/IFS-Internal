@@ -13,6 +13,9 @@
 @property (nonatomic, weak) IBOutlet UILabel *labelTitle;
 @property (nonatomic, weak) IBOutlet UIButton *buttonAbout;
 @property (nonatomic, weak) IBOutlet UIButton *buttonUserGuide;
+
+
+
 @property (nonatomic, weak) IBOutlet UIButton *buttonHelp;
 @property (nonatomic, weak) IBOutlet UIButton *buttonRate;
 @property (nonatomic, weak) IBOutlet UISwitch *switchEnglish;

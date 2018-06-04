@@ -14,7 +14,7 @@
 #import "GainLossViewController.h"
 #import "ActiveStocksViewController.h"
 #import "SearchResultsTableViewController.h"
-#import "QIFS-Swift.h"
+//#import "QIFS-Swift.h"
 #import "QEGraphViewController.h"
 #import "AlertsViewController.h"
 #import "CashPositionViewController.h"
@@ -91,10 +91,10 @@ NSString *const kStocksOptionsViewCellIdentifier = @"OptionsViewCell";
                            @"menu_title": NSLocalizedString(@"Cash Position", @"Cash Position"),
                            @"menu_image": @"icon_cash_position"
                            },
-                       @{
-                           @"menu_title": NSLocalizedString(@"My Orders History", @"My Orders History"),
-                           @"menu_image": @"icon_my_order_history"
-                           },
+//                       @{
+//                           @"menu_title": NSLocalizedString(@"My Orders History", @"My Orders History"),
+//                           @"menu_image": @"icon_my_order_history"
+//                           },
                        @{
                            @"menu_title": NSLocalizedString(@"Contact Us", @"Contact Us"),
                            @"menu_image": @"icon_contact_us"
@@ -175,7 +175,7 @@ NSString *const kStocksOptionsViewCellIdentifier = @"OptionsViewCell";
     GainLossViewController *controller3 = [self.storyboard instantiateViewControllerWithIdentifier:@"GainLossViewController"];
     SectorsGraphViewController *controller4 = [self.storyboard instantiateViewControllerWithIdentifier:@"SectorsGraphViewController"];
     ActiveStocksViewController *controller5 = [self.storyboard instantiateViewControllerWithIdentifier:@"ActiveStocksViewController"];
-    BondStocksViewController *controller6 = [self.storyboard instantiateViewControllerWithIdentifier:@"BondStocksViewController"];
+//    BondStocksViewController *controller6 = [self.storyboard instantiateViewControllerWithIdentifier:@"BondStocksViewController"];
     self.stockListView = controller2;
     
     controller1.title = NSLocalizedString(@"QE Index", @"QE Index");
@@ -183,13 +183,13 @@ NSString *const kStocksOptionsViewCellIdentifier = @"OptionsViewCell";
     controller3.title = NSLocalizedString(@"Gain/Loss", @"Gain/Loss");
     controller4.title = NSLocalizedString(@"Sectors", @"Sectors");
     controller5.title = NSLocalizedString(@"Active", @"Active");
-    controller6.title = NSLocalizedString(@"Bonds", @"Bonds");
+   // controller6.title = NSLocalizedString(@"Bonds", @"Bonds");
     
     NSArray *controllerArray;
     if(globalShare.myLanguage == ARABIC_LANGUAGE)
-        controllerArray = @[controller6, controller5, controller4, controller3, controller1, controller2];
+        controllerArray = @[/*controller6,*/ controller5, controller4, controller3, controller1, controller2];
     else
-        controllerArray = @[controller2, controller1, controller3, controller4, controller5, controller6];
+        controllerArray = @[controller2, controller1, controller3, controller4, controller5/*, controller6*/];
 
     NSDictionary *parameters = @{
                                  CAPSPageMenuOptionScrollMenuBackgroundColor: [UIColor whiteColor],
@@ -268,7 +268,16 @@ NSString *const kStocksOptionsViewCellIdentifier = @"OptionsViewCell";
         [self.tableViewOptionMenu setSemanticContentAttribute:UISemanticContentAttributeForceLeftToRight];
         [self.view setSemanticContentAttribute:UISemanticContentAttributeForceLeftToRight];
     }
-    _pageMenu = [[CAPSPageMenu alloc] initWithViewControllers:controllerArray frame:CGRectMake(0.0, 64.0, self.view.frame.size.width, self.view.frame.size.height-49-64) options:parameters index:passIndex];
+     //_pageMenu = [[CAPSPageMenu alloc] initWithViewControllers:controllerArray frame:CGRectMake(0.0, 64.0, self.view.frame.size.width, self.view.frame.size.height-49-64) options:parameters index:passIndex];
+    
+    _pageMenu = [[CAPSPageMenu alloc] initWithViewControllers:controllerArray frame:CGRectMake(0.0, _labelTitle.frame.origin.y+_labelTitle.frame.size.height+20, self.view.frame.size.width, self.view.frame.size.height-(_labelTitle.frame.origin.y+_labelTitle.frame.size.height+20)-49) options:parameters index:passIndex];//labelTitle
+    
+    NSLog(@"..... %f",_labelTitle.frame.origin.y+_labelTitle.frame.size.height+10);
+    NSLog(@"Height %f",self.view.frame.size.height-(_labelTitle.frame.origin.y+_labelTitle.frame.size.height+30)-49);
+    //NSLog(@"y %f",_labelTitle.frame.origin.y);
+
+    
+    
     _pageMenu.delegate = self;
     [_pageMenu moveToPage:passIndex withAnimated:YES];
     [self.view addSubview:_pageMenu.view];
@@ -989,15 +998,15 @@ NSString *const kStocksOptionsViewCellIdentifier = @"OptionsViewCell";
                     
                 }];
             }
+//            else if(indexPath.row == 1) {
+//                OrderHistoryViewController *orderHistoryViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"OrderHistoryViewController"];
+//                [[self navigationController] pushViewController:orderHistoryViewController animated:YES];
+//            }
             else if(indexPath.row == 1) {
-                OrderHistoryViewController *orderHistoryViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"OrderHistoryViewController"];
-                [[self navigationController] pushViewController:orderHistoryViewController animated:YES];
-            }
-            else if(indexPath.row == 2) {
                 ContactUsViewController *contactUsViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"ContactUsViewController"];
                 [[self navigationController] pushViewController:contactUsViewController animated:YES];
             }
-            else if(indexPath.row == 3) {
+            else if(indexPath.row == 2) {
                 SettingsViewController *settingsViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"SettingsViewController"];
                 [[self navigationController] pushViewController:settingsViewController animated:YES];
             }

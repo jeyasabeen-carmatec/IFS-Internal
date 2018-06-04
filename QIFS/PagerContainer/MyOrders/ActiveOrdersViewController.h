@@ -23,5 +23,7 @@
 @property (nonatomic, strong) NSString *strOrderId;
 @property (nonatomic, strong) NSString *securityId;
 @property (nonatomic, strong) NSString *strOrderDetails;
+@property (nonatomic, strong) NSString *strOrderType;
+
 
 @end

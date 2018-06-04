@@ -18,6 +18,7 @@
 @property (nonatomic, weak) IBOutlet UILabel *labelCostOfTrade;
 @property (nonatomic, weak) IBOutlet UILabel *labelOrderValue;
 @property (nonatomic, weak) IBOutlet UILabel *labelNewBuyPower;
+
 @property (nonatomic, weak) IBOutlet UIActivityIndicatorView *indicatorView;
 
 @end
@@ -42,7 +43,7 @@
     _viewBg.layer.masksToBounds = YES;
     
     self.labelTransaction.text = passOrderValues[@"Transaction"];
-    self.labelAccount.text = passOrderValues[@"Account"];
+    //self.labelAccount.text = passOrderValues[@"Account"];
     self.labelValidity.text = passOrderValues[@"Validity"];
     self.labelCostOfTrade.text = passOrderValues[@"CostOfTrade"];
     self.labelOrderValue.text = passOrderValues[@"OrderValue"];
@@ -59,6 +60,10 @@
         [self.labelCostOfTrade setTextAlignment:NSTextAlignmentLeft];
         [self.labelOrderValue setTextAlignment:NSTextAlignmentLeft];
         [self.labelNewBuyPower setTextAlignment:NSTextAlignmentLeft];
+       
+
+        
+
     }
     else {
         [self.view setSemanticContentAttribute:UISemanticContentAttributeForceLeftToRight];
@@ -67,7 +72,9 @@
         [self.labelCostOfTrade setTextAlignment:NSTextAlignmentRight];
         [self.labelOrderValue setTextAlignment:NSTextAlignmentRight];
         [self.labelNewBuyPower setTextAlignment:NSTextAlignmentRight];
+        
     }
+    [self getCashPosition];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -177,6 +184,62 @@
     [alertController addAction:okAction];
     
     [self presentViewController:alertController animated:YES completion:nil];
+}
+#pragma mark - Common actions
+
+-(void) getCashPosition {
+    @try {
+        [self.indicatorView setHidden:NO];
+        
+        NSString *strToken = [NSString stringWithFormat:@"%@", [[NSUserDefaults standardUserDefaults] stringForKey:@"ssckey"]];
+        NSURLSessionConfiguration *defaultConfigObject = [NSURLSessionConfiguration defaultSessionConfiguration];
+        defaultConfigObject.HTTPAdditionalHeaders = @{@"Authorization": strToken};
+        NSURLSession *defaultSession = [NSURLSession sessionWithConfiguration:defaultConfigObject delegate:self delegateQueue:[NSOperationQueue mainQueue]];
+        
+        NSString *strURL = [NSString stringWithFormat:@"%@%@", REQUEST_URL, @"GetCashPosition"];
+        NSURL *url = [NSURL URLWithString:strURL];
+        
+        NSURLSessionDataTask *dataTask = [defaultSession dataTaskWithURL:url
+                                                       completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
+                                                           [self.indicatorView setHidden:YES];
+                                                           if(error == nil)
+                                                           {
+                                                               NSMutableDictionary *returnedDict = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:&error];
+                                                               if([returnedDict[@"status"] hasPrefix:@"error"]) {
+                                                                   if([returnedDict[@"result"] hasPrefix:@"T5"])
+                                                                       [GlobalShare showSessionExpiredAlertView:self :SESSION_EXPIRED];
+                                                                   else if([returnedDict[@"result"] hasPrefix:@"T4"])
+                                                                       [GlobalShare showBasicAlertView:self :INVALID_HEADER];
+                                                                   else if([returnedDict[@"result"] hasPrefix:@"T3"] || [returnedDict[@"result"] hasPrefix:@"T2"])
+                                                                       [GlobalShare showBasicAlertView:self :INVALID_TOKEN];
+                                                                   else
+                                                                       [GlobalShare showBasicAlertView:self :returnedDict[@"result"]];
+                                                                   return;
+                                                               }
+                                                               if([returnedDict[@"status"] isEqualToString:@"authenticated"]) {
+                                                                   dispatch_async(dispatch_get_main_queue(), ^{
+                                                                       NSDictionary *dictVal = returnedDict[@"result"];
+                                                                       
+                                                                       self.labelAccount.text = dictVal[@"cust_id"];
+                                                                       
+                                                                      
+                                                                       
+                                                                   });
+                                                               }
+                                                           }
+                                                           else {
+                                                               [GlobalShare showBasicAlertView:self :[error localizedDescription]];
+                                                           }
+                                                       }];
+        
+        [dataTask resume];
+    }
+    @catch (NSException * e) {
+        NSLog(@"%@", [e description]);
+    }
+    @finally {
+        
+    }
 }
 
 @end
