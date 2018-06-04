@@ -23,8 +23,7 @@ NSString *const kPortfoliosOptionsViewCellIdentifier = @"OptionsViewCell";
 
 @interface PortfoliosViewController () <tabBarManageCashDelegate, NSURLSessionDelegate>
 
-@property (nonatomic, weak) IBOutlet UILabel *
-;
+@property (nonatomic, weak) IBOutlet UILabel *labelPortfolioValue;
 @property (nonatomic, weak) IBOutlet UILabel *labelGainLoss;
 @property (nonatomic, weak) IBOutlet UITableView *tableViewStocks;
 @property (nonatomic, weak) IBOutlet UIActivityIndicatorView *indicatorView;
