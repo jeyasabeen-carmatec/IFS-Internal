@@ -76,7 +76,6 @@
 		514383341D1DD18F00E1B739 /* leftArrow.png in Resources */ = {isa = PBXBuildFile; fileRef = 514383321D1DD18F00E1B739 /* leftArrow.png */; };
 		514383351D1DD18F00E1B739 /* leftArrow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 514383331D1DD18F00E1B739 /* leftArrow@2x.png */; };
 		514C96061D578B7500D7C1DA /* NewOrderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 514C96051D578B7500D7C1DA /* NewOrderViewController.m */; };
-		514C96091D578BDE00D7C1DA /* CompanyStocksViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 514C96081D578BDE00D7C1DA /* CompanyStocksViewController.m */; };
 		514C960C1D57A4BE00D7C1DA /* QEGraphViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 514C960B1D57A4BE00D7C1DA /* QEGraphViewController.m */; };
 		514D322F1D1E70F200E78C71 /* ForgotPasswordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 514D322D1D1E70F200E78C71 /* ForgotPasswordViewController.m */; };
 		514D32301D1E70F200E78C71 /* ForgotPasswordViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 514D322E1D1E70F200E78C71 /* ForgotPasswordViewController.xib */; };
@@ -94,11 +93,8 @@
 		515AF6161D2E4DAD00FF837E /* buttonBgLight.png in Resources */ = {isa = PBXBuildFile; fileRef = 515AF6101D2E4DAD00FF837E /* buttonBgLight.png */; };
 		515AF6291D2E508100FF837E /* PageLoadViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 515AF6251D2E508100FF837E /* PageLoadViewController.m */; };
 		515AF62A1D2E508100FF837E /* StocksContainerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 515AF6271D2E508100FF837E /* StocksContainerViewController.m */; };
-		515AF6371D2E509A00FF837E /* ActiveStocksViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 515AF62D1D2E509A00FF837E /* ActiveStocksViewController.m */; };
 		515AF6381D2E509A00FF837E /* GainLossViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 515AF62E1D2E509A00FF837E /* GainLossViewController.m */; };
-		515AF6391D2E509A00FF837E /* SectorsGraphViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 515AF62F1D2E509A00FF837E /* SectorsGraphViewController.m */; };
 		515AF63A1D2E509A00FF837E /* StockListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 515AF6301D2E509A00FF837E /* StockListViewController.m */; };
-		515AF63B1D2E509A00FF837E /* StocksOverviewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 515AF6321D2E509A00FF837E /* StocksOverviewViewController.m */; };
 		515AF6421D2E50B100FF837E /* BarView.m in Sources */ = {isa = PBXBuildFile; fileRef = 515AF63D1D2E50B100FF837E /* BarView.m */; };
 		515AF6431D2E50B100FF837E /* SectorsGraphCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 515AF63F1D2E50B100FF837E /* SectorsGraphCell.m */; };
 		515AF6441D2E50B100FF837E /* StockListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 515AF6411D2E50B100FF837E /* StockListCell.m */; };
@@ -110,7 +106,6 @@
 		515C1B1A1D3AC310008B6946 /* MyOrdersCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 515C1B191D3AC310008B6946 /* MyOrdersCell.m */; };
 		515CE9511EEC1E5500E36E67 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 515CE9531EEC1E5500E36E67 /* Localizable.strings */; };
 		515E8D561EED9B03000852B9 /* OptionsViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 515E8D551EED9B03000852B9 /* OptionsViewCell.m */; };
-		51613C6F1E20C3540055505A /* CompanyGraphViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 51613C6E1E20C3540055505A /* CompanyGraphViewController.m */; };
 		517ACE321F82B467001E24A9 /* ActiveOrdersViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 517ACE301F82B467001E24A9 /* ActiveOrdersViewController.m */; };
 		5180B5DE1D4CEA4C0023553B /* PopoverViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5180B5DC1D4CEA4C0023553B /* PopoverViewController.m */; };
 		51829C151D269F2900DF1C73 /* XLButtonBarPagerTabStripViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 51829C111D269F2800DF1C73 /* XLButtonBarPagerTabStripViewController.m */; };
@@ -130,7 +125,6 @@
 		51FCBCE71D2126ED0072D356 /* Down_Arrow.png in Resources */ = {isa = PBXBuildFile; fileRef = 51FCBCE51D2126ED0072D356 /* Down_Arrow.png */; };
 		51FCBCE81D2126ED0072D356 /* Up_Arrow.png in Resources */ = {isa = PBXBuildFile; fileRef = 51FCBCE61D2126ED0072D356 /* Up_Arrow.png */; };
 		51FF4E9D1D5C9EFA0077AEE0 /* icon_map.png in Resources */ = {isa = PBXBuildFile; fileRef = 51FF4E9C1D5C9EFA0077AEE0 /* icon_map.png */; };
-<<<<<<< HEAD
 		7319813820BD756200719955 /* DateValueFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 7319813520BD756200719955 /* DateValueFormatter.m */; };
 		7319814620BD873D00719955 /* XYMarkerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7319814320BD873C00719955 /* XYMarkerView.swift */; };
 		7319814720BD873D00719955 /* BalloonMarker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7319814420BD873C00719955 /* BalloonMarker.swift */; };
@@ -142,8 +136,6 @@
 		73CCC06120BD24B6009A662F /* StocksOverviewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 73CCC06020BD24B6009A662F /* StocksOverviewViewController.m */; };
 		73CCC06320BD3978009A662F /* ActiveStocksViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 73CCC06220BD3978009A662F /* ActiveStocksViewController.m */; };
 		73CCC06520BD3A38009A662F /* CompanyGraphViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 73CCC06420BD3A38009A662F /* CompanyGraphViewController.m */; };
-=======
->>>>>>> prakash_code
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -154,23 +146,20 @@
 			remoteGlobalIDString = 5108D32D1D6EDEB100D23F6E;
 			remoteInfo = QIFSToday;
 		};
-<<<<<<< HEAD
-		7351BC4020C50CB800F49E27 /* PBXContainerItemProxy */ = {
+		D0CF9E0B20C5101100D343F4 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = 7351BC3B20C50CB800F49E27 /* Charts.xcodeproj */;
+			containerPortal = D0CF9E0620C5101100D343F4 /* Charts.xcodeproj */;
 			proxyType = 2;
 			remoteGlobalIDString = 65AD9E95D9ED4DC0BD73A743;
 			remoteInfo = Charts;
 		};
-		7351BC4220C50CB800F49E27 /* PBXContainerItemProxy */ = {
+		D0CF9E0D20C5101100D343F4 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = 7351BC3B20C50CB800F49E27 /* Charts.xcodeproj */;
+			containerPortal = D0CF9E0620C5101100D343F4 /* Charts.xcodeproj */;
 			proxyType = 2;
 			remoteGlobalIDString = 1CBBC58C6CE1EBEE9852CE41;
 			remoteInfo = ChartsTests;
 		};
-=======
->>>>>>> prakash_code
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -327,8 +316,6 @@
 		514383331D1DD18F00E1B739 /* leftArrow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "leftArrow@2x.png"; path = "Images/leftArrow@2x.png"; sourceTree = "<group>"; };
 		514C96041D578B7500D7C1DA /* NewOrderViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NewOrderViewController.h; path = PagerContainer/NewOrder/NewOrderViewController.h; sourceTree = "<group>"; };
 		514C96051D578B7500D7C1DA /* NewOrderViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; name = NewOrderViewController.m; path = PagerContainer/NewOrder/NewOrderViewController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
-		514C96071D578BDE00D7C1DA /* CompanyStocksViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CompanyStocksViewController.h; path = PagerContainer/CompanyStocksViewController.h; sourceTree = "<group>"; };
-		514C96081D578BDE00D7C1DA /* CompanyStocksViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; name = CompanyStocksViewController.m; path = PagerContainer/CompanyStocksViewController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		514C960A1D57A4BE00D7C1DA /* QEGraphViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = QEGraphViewController.h; path = PagerContainer/QEGraphViewController.h; sourceTree = "<group>"; };
 		514C960B1D57A4BE00D7C1DA /* QEGraphViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; name = QEGraphViewController.m; path = PagerContainer/QEGraphViewController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		514D322C1D1E70F200E78C71 /* ForgotPasswordViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ForgotPasswordViewController.h; path = UserManagement/ForgotPasswordViewController.h; sourceTree = "<group>"; };
@@ -353,12 +340,9 @@
 		515AF6261D2E508100FF837E /* StocksContainerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = StocksContainerViewController.h; path = PagerContainer/Home/StocksContainerViewController.h; sourceTree = "<group>"; };
 		515AF6271D2E508100FF837E /* StocksContainerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = StocksContainerViewController.m; path = PagerContainer/Home/StocksContainerViewController.m; sourceTree = "<group>"; };
 		515AF6281D2E508100FF837E /* PageLoadViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PageLoadViewController.h; path = PagerContainer/Home/PageLoadViewController.h; sourceTree = "<group>"; };
-		515AF62D1D2E509A00FF837E /* ActiveStocksViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; name = ActiveStocksViewController.m; path = PagerContainer/Home/Controller/ActiveStocksViewController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		515AF62E1D2E509A00FF837E /* GainLossViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; name = GainLossViewController.m; path = PagerContainer/Home/Controller/GainLossViewController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
-		515AF62F1D2E509A00FF837E /* SectorsGraphViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; name = SectorsGraphViewController.m; path = PagerContainer/Home/Controller/SectorsGraphViewController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		515AF6301D2E509A00FF837E /* StockListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; name = StockListViewController.m; path = PagerContainer/Home/Controller/StockListViewController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		515AF6311D2E509A00FF837E /* StocksOverviewViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = StocksOverviewViewController.h; path = PagerContainer/Home/Controller/StocksOverviewViewController.h; sourceTree = "<group>"; };
-		515AF6321D2E509A00FF837E /* StocksOverviewViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; name = StocksOverviewViewController.m; path = PagerContainer/Home/Controller/StocksOverviewViewController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		515AF6331D2E509A00FF837E /* ActiveStocksViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ActiveStocksViewController.h; path = PagerContainer/Home/Controller/ActiveStocksViewController.h; sourceTree = "<group>"; };
 		515AF6341D2E509A00FF837E /* GainLossViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GainLossViewController.h; path = PagerContainer/Home/Controller/GainLossViewController.h; sourceTree = "<group>"; };
 		515AF6351D2E509A00FF837E /* SectorsGraphViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SectorsGraphViewController.h; path = PagerContainer/Home/Controller/SectorsGraphViewController.h; sourceTree = "<group>"; };
@@ -387,7 +371,6 @@
 		515E8D541EED9B03000852B9 /* OptionsViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OptionsViewCell.h; path = PagerContainer/OptionsMenu/Views/OptionsViewCell.h; sourceTree = "<group>"; };
 		515E8D551EED9B03000852B9 /* OptionsViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OptionsViewCell.m; path = PagerContainer/OptionsMenu/Views/OptionsViewCell.m; sourceTree = "<group>"; };
 		51613C6D1E20C3530055505A /* CompanyGraphViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CompanyGraphViewController.h; path = PagerContainer/CompanyGraphViewController.h; sourceTree = "<group>"; };
-		51613C6E1E20C3540055505A /* CompanyGraphViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; name = CompanyGraphViewController.m; path = PagerContainer/CompanyGraphViewController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		517ACE301F82B467001E24A9 /* ActiveOrdersViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ActiveOrdersViewController.m; path = PagerContainer/MyOrders/ActiveOrdersViewController.m; sourceTree = "<group>"; };
 		517ACE311F82B467001E24A9 /* ActiveOrdersViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ActiveOrdersViewController.h; path = PagerContainer/MyOrders/ActiveOrdersViewController.h; sourceTree = "<group>"; };
 		5180B5DB1D4CEA4C0023553B /* PopoverViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PopoverViewController.h; path = PagerContainer/Home/Controller/PopoverViewController.h; sourceTree = "<group>"; };
@@ -420,7 +403,6 @@
 		51FCBCE51D2126ED0072D356 /* Down_Arrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Down_Arrow.png; path = Images/Down_Arrow.png; sourceTree = "<group>"; };
 		51FCBCE61D2126ED0072D356 /* Up_Arrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Up_Arrow.png; path = Images/Up_Arrow.png; sourceTree = "<group>"; };
 		51FF4E9C1D5C9EFA0077AEE0 /* icon_map.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = icon_map.png; path = Images/icon_map.png; sourceTree = "<group>"; };
-<<<<<<< HEAD
 		7319813520BD756200719955 /* DateValueFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DateValueFormatter.m; sourceTree = "<group>"; };
 		7319813720BD756200719955 /* DateValueFormatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DateValueFormatter.h; sourceTree = "<group>"; };
 		7319814320BD873C00719955 /* XYMarkerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XYMarkerView.swift; sourceTree = "<group>"; };
@@ -433,12 +415,10 @@
 		731EF9CC20BBEE2100EEDF7D /* SectorsGraphViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SectorsGraphViewController.m; sourceTree = "<group>"; };
 		73216D3A20B543CD00D807B2 /* CompanyStocksViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CompanyStocksViewController.h; sourceTree = "<group>"; };
 		73216D3B20B543CD00D807B2 /* CompanyStocksViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CompanyStocksViewController.m; sourceTree = "<group>"; };
-		7351BC3B20C50CB800F49E27 /* Charts.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Charts.xcodeproj; path = charts/Charts.xcodeproj; sourceTree = SOURCE_ROOT; };
 		73CCC06020BD24B6009A662F /* StocksOverviewViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StocksOverviewViewController.m; sourceTree = "<group>"; };
 		73CCC06220BD3978009A662F /* ActiveStocksViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActiveStocksViewController.m; sourceTree = "<group>"; };
 		73CCC06420BD3A38009A662F /* CompanyGraphViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CompanyGraphViewController.m; sourceTree = "<group>"; };
-=======
->>>>>>> prakash_code
+		D0CF9E0620C5101100D343F4 /* Charts.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Charts.xcodeproj; path = charts/Charts.xcodeproj; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -565,18 +545,27 @@
 				5123792A1D5667320096C0E2 /* Alerts */,
 				5123791D1D56165D0096C0E2 /* OptionsMenu */,
 				51031E321D5DDC2E0049137E /* Search */,
+				7319815420BD87ED00719955 /* DayAxisValueFormatter.h */,
+				7319815520BD87ED00719955 /* DayAxisValueFormatter.m */,
+				7319813720BD756200719955 /* DateValueFormatter.h */,
+				7319813520BD756200719955 /* DateValueFormatter.m */,
+				7319815120BD87E100719955 /* IntAxisValueFormatter.h */,
+				7319815220BD87E100719955 /* IntAxisValueFormatter.m */,
 				510D23351D23174F008D1EB4 /* PagerViewController.h */,
 				510D23361D23174F008D1EB4 /* PagerViewController.m */,
 				510D23371D23174F008D1EB4 /* PagerViewController.xib */,
 				511247E31D23AA3100364145 /* ChildExampleViewController.h */,
 				511247E41D23AA3100364145 /* ChildExampleViewController.m */,
 				511247E51D23AA3100364145 /* ChildExampleViewController.xib */,
-				514C96071D578BDE00D7C1DA /* CompanyStocksViewController.h */,
-				514C96081D578BDE00D7C1DA /* CompanyStocksViewController.m */,
+				73216D3A20B543CD00D807B2 /* CompanyStocksViewController.h */,
+				73216D3B20B543CD00D807B2 /* CompanyStocksViewController.m */,
 				514C960A1D57A4BE00D7C1DA /* QEGraphViewController.h */,
 				514C960B1D57A4BE00D7C1DA /* QEGraphViewController.m */,
 				51613C6D1E20C3530055505A /* CompanyGraphViewController.h */,
-				51613C6E1E20C3540055505A /* CompanyGraphViewController.m */,
+				73CCC06420BD3A38009A662F /* CompanyGraphViewController.m */,
+				7319814420BD873C00719955 /* BalloonMarker.swift */,
+				7319814520BD873C00719955 /* RadarMarkerView.swift */,
+				7319814320BD873C00719955 /* XYMarkerView.swift */,
 			);
 			name = PagerContainer;
 			sourceTree = "<group>";
@@ -762,10 +751,7 @@
 		514382CF1D1DBCD900E1B739 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-<<<<<<< HEAD
-				7351BC3B20C50CB800F49E27 /* Charts.xcodeproj */,
-=======
->>>>>>> prakash_code
+				D0CF9E0620C5101100D343F4 /* Charts.xcodeproj */,
 				514382CD1D1DBCBD00E1B739 /* SystemConfiguration.framework */,
 			);
 			name = Frameworks;
@@ -887,15 +873,15 @@
 			isa = PBXGroup;
 			children = (
 				515AF6311D2E509A00FF837E /* StocksOverviewViewController.h */,
-				515AF6321D2E509A00FF837E /* StocksOverviewViewController.m */,
+				73CCC06020BD24B6009A662F /* StocksOverviewViewController.m */,
 				515AF6361D2E509A00FF837E /* StockListViewController.h */,
 				515AF6301D2E509A00FF837E /* StockListViewController.m */,
 				515AF6351D2E509A00FF837E /* SectorsGraphViewController.h */,
-				515AF62F1D2E509A00FF837E /* SectorsGraphViewController.m */,
+				731EF9CC20BBEE2100EEDF7D /* SectorsGraphViewController.m */,
 				515AF6341D2E509A00FF837E /* GainLossViewController.h */,
 				515AF62E1D2E509A00FF837E /* GainLossViewController.m */,
 				515AF6331D2E509A00FF837E /* ActiveStocksViewController.h */,
-				515AF62D1D2E509A00FF837E /* ActiveStocksViewController.m */,
+				73CCC06220BD3978009A662F /* ActiveStocksViewController.m */,
 				5121930A1D6063F900CE95C2 /* BondStocksViewController.h */,
 				5121930B1D6063F900CE95C2 /* BondStocksViewController.m */,
 				5180B5DB1D4CEA4C0023553B /* PopoverViewController.h */,
@@ -968,18 +954,15 @@
 			name = MGSwipeCell;
 			sourceTree = "<group>";
 		};
-<<<<<<< HEAD
-		7351BC3C20C50CB800F49E27 /* Products */ = {
+		D0CF9E0720C5101100D343F4 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				7351BC4120C50CB800F49E27 /* Charts.framework */,
-				7351BC4320C50CB800F49E27 /* ChartsTests.xctest */,
+				D0CF9E0C20C5101100D343F4 /* Charts.framework */,
+				D0CF9E0E20C5101100D343F4 /* ChartsTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-=======
->>>>>>> prakash_code
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -1031,12 +1014,10 @@
 				TargetAttributes = {
 					5108D32D1D6EDEB100D23F6E = {
 						CreatedOnToolsVersion = 7.3.1;
-						DevelopmentTeam = 4MCGAH3G26;
-						ProvisioningStyle = Manual;
+						DevelopmentTeam = KF8S4V7VM6;
 					};
 					514382A61D1D82D400E1B739 = {
 						CreatedOnToolsVersion = 7.3.1;
-						DevelopmentTeam = 4MCGAH3G26;
 						ProvisioningStyle = Manual;
 					};
 				};
@@ -1053,15 +1034,12 @@
 			mainGroup = 5143829E1D1D82D400E1B739;
 			productRefGroup = 514382A81D1D82D400E1B739 /* Products */;
 			projectDirPath = "";
-<<<<<<< HEAD
 			projectReferences = (
 				{
-					ProductGroup = 7351BC3C20C50CB800F49E27 /* Products */;
-					ProjectRef = 7351BC3B20C50CB800F49E27 /* Charts.xcodeproj */;
+					ProductGroup = D0CF9E0720C5101100D343F4 /* Products */;
+					ProjectRef = D0CF9E0620C5101100D343F4 /* Charts.xcodeproj */;
 				},
 			);
-=======
->>>>>>> prakash_code
 			projectRoot = "";
 			targets = (
 				514382A61D1D82D400E1B739 /* QIFS */,
@@ -1070,26 +1048,23 @@
 		};
 /* End PBXProject section */
 
-<<<<<<< HEAD
 /* Begin PBXReferenceProxy section */
-		7351BC4120C50CB800F49E27 /* Charts.framework */ = {
+		D0CF9E0C20C5101100D343F4 /* Charts.framework */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.framework;
 			path = Charts.framework;
-			remoteRef = 7351BC4020C50CB800F49E27 /* PBXContainerItemProxy */;
+			remoteRef = D0CF9E0B20C5101100D343F4 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		7351BC4320C50CB800F49E27 /* ChartsTests.xctest */ = {
+		D0CF9E0E20C5101100D343F4 /* ChartsTests.xctest */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.cfbundle;
 			path = ChartsTests.xctest;
-			remoteRef = 7351BC4220C50CB800F49E27 /* PBXContainerItemProxy */;
+			remoteRef = D0CF9E0D20C5101100D343F4 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 /* End PBXReferenceProxy section */
 
-=======
->>>>>>> prakash_code
 /* Begin PBXResourcesBuildPhase section */
 		5108D32C1D6EDEB100D23F6E /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
@@ -1156,15 +1131,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				514382CC1D1DBB8C00E1B739 /* GlobalShare.m in Sources */,
+				7319813820BD756200719955 /* DateValueFormatter.m in Sources */,
 				511247E61D23AA3100364145 /* ChildExampleViewController.m in Sources */,
 				510D233B1D23174F008D1EB4 /* PagerViewController.m in Sources */,
 				514382B21D1D82D500E1B739 /* ViewController.m in Sources */,
 				51FB2B3E1D398EBC00D6EACE /* MGSwipeButton.m in Sources */,
+				73CCC06320BD3978009A662F /* ActiveStocksViewController.m in Sources */,
 				5121930F1D60641700CE95C2 /* BondStocksCell.m in Sources */,
-				515AF6371D2E509A00FF837E /* ActiveStocksViewController.m in Sources */,
-				515AF63B1D2E509A00FF837E /* StocksOverviewViewController.m in Sources */,
 				515AF63A1D2E509A00FF837E /* StockListViewController.m in Sources */,
-				51613C6F1E20C3540055505A /* CompanyGraphViewController.m in Sources */,
 				51332C3F1DE8AB97001536CD /* FMDatabaseQueue.m in Sources */,
 				515B0EAB1D54CD6E00D15698 /* OrderTicketStaticCell.m in Sources */,
 				512379311D5667CE0096C0E2 /* AlertsViewController.m in Sources */,
@@ -1172,23 +1146,29 @@
 				512379291D5616CC0096C0E2 /* OrderHistoryViewController.m in Sources */,
 				5102EDC21D4947A8005B04F8 /* PortfoliosViewController.m in Sources */,
 				5180B5DE1D4CEA4C0023553B /* PopoverViewController.m in Sources */,
+				73CCC06520BD3A38009A662F /* CompanyGraphViewController.m in Sources */,
+				73216D3C20B543CE00D807B2 /* CompanyStocksViewController.m in Sources */,
 				511247E01D239BDD00364145 /* XLButtonBarViewCell.m in Sources */,
 				51031E3C1D5E22C00049137E /* OrderHistoryCell.m in Sources */,
 				51D340321E9569DA00455815 /* EnterOTPViewController.m in Sources */,
 				511DBAE81EE4823B00A416FE /* LanguageManager.m in Sources */,
 				517ACE321F82B467001E24A9 /* ActiveOrdersViewController.m in Sources */,
+				73CCC06120BD24B6009A662F /* StocksOverviewViewController.m in Sources */,
 				51DA15911F8173E5001EAF83 /* MyNewOrdersCell.m in Sources */,
 				511247DF1D239BDD00364145 /* XLButtonBarView.m in Sources */,
 				51332C431DE8ABB7001536CD /* DataManager.m in Sources */,
+				7319814820BD873D00719955 /* RadarMarkerView.swift in Sources */,
 				51332C3C1DE8AB97001536CD /* FMDatabase.m in Sources */,
 				51DA158B1F816CC9001EAF83 /* MyNewOrdersViewController.m in Sources */,
 				5102EDD31D494805005B04F8 /* MDPriceBidCell.m in Sources */,
 				515C1B1A1D3AC310008B6946 /* MyOrdersCell.m in Sources */,
+				7319814620BD873D00719955 /* XYMarkerView.swift in Sources */,
 				5102EDD91D494816005B04F8 /* SearchStocksViewController.m in Sources */,
 				515B0EAA1D54CD6E00D15698 /* OrderTicketCell.m in Sources */,
 				512193091D6061D300CE95C2 /* MapViewController.m in Sources */,
 				5102EDD11D494805005B04F8 /* MDBarView.m in Sources */,
 				514383241D1DC88800E1B739 /* QIFS.swift in Sources */,
+				7319814720BD873D00719955 /* BalloonMarker.swift in Sources */,
 				51FB2B381D398E4C00D6EACE /* MyOrdersViewController.m in Sources */,
 				514382AF1D1D82D500E1B739 /* AppDelegate.m in Sources */,
 				512379271D5616CC0096C0E2 /* CashPositionViewController.m in Sources */,
@@ -1199,7 +1179,6 @@
 				515B0EA21D54CD5B00D15698 /* OrderTicketViewController.m in Sources */,
 				514382AC1D1D82D500E1B739 /* main.m in Sources */,
 				51829C161D269F2900DF1C73 /* XLPagerTabStripViewController.m in Sources */,
-				515AF6391D2E509A00FF837E /* SectorsGraphViewController.m in Sources */,
 				512379361D5667ED0096C0E2 /* ActiveAlertsCell.m in Sources */,
 				51332C3E1DE8AB97001536CD /* FMDatabasePool.m in Sources */,
 				514C960C1D57A4BE00D7C1DA /* QEGraphViewController.m in Sources */,
@@ -1213,7 +1192,8 @@
 				514382D21D1DBE5500E1B739 /* Reachability.m in Sources */,
 				5102EDD81D494816005B04F8 /* FavoriteStocksViewController.m in Sources */,
 				51FB2B2F1D393B9D00D6EACE /* StocksPagerViewController.m in Sources */,
-				514C96091D578BDE00D7C1DA /* CompanyStocksViewController.m in Sources */,
+				7319815320BD87E200719955 /* IntAxisValueFormatter.m in Sources */,
+				7319815620BD87EE00719955 /* DayAxisValueFormatter.m in Sources */,
 				512379371D5667ED0096C0E2 /* PendingAlertsCell.m in Sources */,
 				51434D4F1DE19473003F303B /* MDOrderAskCell.m in Sources */,
 				515AF6491D2E511B00FF837E /* CalculatorViewController.m in Sources */,
@@ -1235,6 +1215,7 @@
 				511DBAE91EE4823B00A416FE /* NSBundle+Language.m in Sources */,
 				512379301D5667CE0096C0E2 /* AddAlertViewController.m in Sources */,
 				515AF6431D2E50B100FF837E /* SectorsGraphCell.m in Sources */,
+				731EF9CD20BBEE2100EEDF7D /* SectorsGraphViewController.m in Sources */,
 				51031E351D5DDC6B0049137E /* SearchResultsTableViewController.m in Sources */,
 				5102EDC91D4947DA005B04F8 /* MarketDepthViewController.m in Sources */,
 				51829C151D269F2900DF1C73 /* XLButtonBarPagerTabStripViewController.m in Sources */,
@@ -1300,15 +1281,12 @@
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CODE_SIGN_STYLE = Manual;
-				DEVELOPMENT_TEAM = 4MCGAH3G26;
 				INFOPLIST_FILE = QIFSToday/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.carmatec.ifs;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ifs.mobiletrading.QIFSToday;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "6152ed1d-4224-4275-80b8-63351b14ee76";
-				PROVISIONING_PROFILE_SPECIFIER = IFSDev;
+				PROVISIONING_PROFILE = "";
 				SKIP_INSTALL = YES;
 			};
 			name = Debug;
@@ -1317,16 +1295,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CODE_SIGN_STYLE = Manual;
-				DEVELOPMENT_TEAM = 4MCGAH3G26;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: ISLAMIC FINANCIAL SECURITIES CO. (MU44929JUZ)";
 				INFOPLIST_FILE = QIFSToday/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.carmatec.ifs;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ifs.mobiletrading.QIFSToday;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "6152ed1d-4224-4275-80b8-63351b14ee76";
-				PROVISIONING_PROFILE_SPECIFIER = IFSDev;
+				PROVISIONING_PROFILE = "736dc37d-1ff9-4646-a12c-425809aab758";
 				SKIP_INSTALL = YES;
 			};
 			name = Release;
@@ -1447,16 +1422,16 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
 				DEFINES_MODULE = YES;
-				DEVELOPMENT_TEAM = 4MCGAH3G26;
+				DEVELOPMENT_TEAM = "";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/$(PROJECT_NAME)/QIFS-Prefix.pch";
 				INFOPLIST_FILE = QIFS/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.carmatec.ifs;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ifs.mobiletrading;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "6152ed1d-4224-4275-80b8-63351b14ee76";
-				PROVISIONING_PROFILE_SPECIFIER = IFSDev;
+				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "QIFS/Utility/QIFS-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.0;
@@ -1474,16 +1449,16 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
 				DEFINES_MODULE = YES;
-				DEVELOPMENT_TEAM = 4MCGAH3G26;
+				DEVELOPMENT_TEAM = "";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/$(PROJECT_NAME)/QIFS-Prefix.pch";
 				INFOPLIST_FILE = QIFS/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.carmatec.ifs;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ifs.mobiletrading;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "6152ed1d-4224-4275-80b8-63351b14ee76";
-				PROVISIONING_PROFILE_SPECIFIER = IFSDev;
+				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "QIFS/Utility/QIFS-Bridging-Header.h";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";

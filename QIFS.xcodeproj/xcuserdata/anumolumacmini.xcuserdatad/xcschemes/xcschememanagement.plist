@@ -7,20 +7,12 @@
 		<key>QIFS.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
-<<<<<<< HEAD
-			<integer>2</integer>
-=======
 			<integer>0</integer>
->>>>>>> prakash_code
 		</dict>
 		<key>QIFSToday.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
-<<<<<<< HEAD
-			<integer>3</integer>
-=======
 			<integer>1</integer>
->>>>>>> prakash_code
 		</dict>
 	</dict>
 </dict>
