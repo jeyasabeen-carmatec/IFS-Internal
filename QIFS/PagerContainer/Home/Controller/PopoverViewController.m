@@ -100,19 +100,6 @@
 //    NewOrderViewController *newOrderViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"NewOrderViewController"];
 //    [[GlobalShare sharedInstance] setIsDirectOrder:NO];
 //    [globalShare.topNavController pushViewController:newOrderViewController animated:YES];
-    
-    
-    NSString *str;
-    if(globalShare.myLanguage == ARABIC_LANGUAGE) {
-        str = [NSString stringWithFormat:@"https://www.islamicbroker.com.qa/ar/stories/c/3/0/%D8%A3%D9%87 %D9%85-%D8%A7%D9%84%D8%A3%D8%AE%D8%A8%D8%A7%D8%B1"];
-    }
-    else{
-        str= @"https://www.islamicbroker.com.qa/en/stories/c/3/0/News";
-    }
-    // [[UIApplication sharedApplication]openURL:[NSURL URLWithString:str] options:@{} completionHandler:nil];
-    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:str]];
-    
-    
 }
 
 - (IBAction)actionNewOrder:(id)sender {
