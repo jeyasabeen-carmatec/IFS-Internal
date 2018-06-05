@@ -48,9 +48,13 @@
 "NO" = "لا";
 
 "New Order" = "أمر جديد";
-"Modify Order" = "تعديل الأمر";
+"Modify Order" = "رملا ليدعت ";
+/*
+ ;"تعديل الأمر";
+ */
 "Create Order" = "إنشاء أمر";
 "Modify" = "تعديل";
+
 
 "Order Confirmation" = "تأكيد الأمر";
 
@@ -165,3 +169,10 @@
 "SIGNOUT_CONFIRMATION" = "هل أنت متأكد أنك تريد الخروج؟";
 "CHANGE_ARABIC" = "التبديل إلى اللغة العربية؟";
 "CHANGE_ENGLISH" = "التبديل إلى اللغة الإنجليزية؟";
+
+"ORDER_MODIFIED" = "ومن اجل تعديل";
+"COMMISSION VALUE" = "قيمة العمولة";
+"NEW BALANCE" = "الرصيد الجديد";
+"TOTAL ORDER VALUE" = "إجمالي قيمة الطلب";
+"NOT ENOUGH CASH" = "لا توجد مبالغ نقدية كافية في حساب سوق العملاء لتغطية هذا الطلب";
+"CHANGE QUANTITY" = "هل أنت متأكد من أنك تريد تغيير الكمية إلى";

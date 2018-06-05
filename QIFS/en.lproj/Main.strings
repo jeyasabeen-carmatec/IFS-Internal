@@ -365,6 +365,9 @@
 /* Class = "UILabel"; text = "Label"; ObjectID = "FL8-S5-djd"; */
 "FL8-S5-djd.text" = "Label";
 
+/* Class = "UIButton"; normalTitle = "Market Preview"; ObjectID = "FNk-1n-vmB"; */
+"FNk-1n-vmB.normalTitle" = "Market Preview";
+
 /* Class = "UILabel"; text = "17,602.30"; ObjectID = "Fnt-8s-i5w"; */
 "Fnt-8s-i5w.text" = "17,602.30";
 
@@ -782,6 +785,9 @@
 /* Class = "UIButton"; normalTitle = "6 M"; ObjectID = "ZDF-tc-zel"; */
 "ZDF-tc-zel.normalTitle" = "6 M";
 
+/* Class = "UILabel"; text = "Limit Down"; ObjectID = "ZRq-Bk-QnN"; */
+"ZRq-Bk-QnN.text" = "Limit Down";
+
 /* Class = "UILabel"; text = "New Password"; ObjectID = "ZS5-xt-yjW"; */
 "ZS5-xt-yjW.text" = "New Password";
 
@@ -1062,7 +1068,7 @@
 "h7r-rg-Bnw.text" = "IFS";
 
 /* Class = "UILabel"; text = "100XXXXXXX"; ObjectID = "hAV-fe-ORT"; */
-"hAV-fe-ORT.text" = "XXXXXXXXXX";
+"hAV-fe-ORT.text" = "100XXXXXXX";
 
 /* Class = "UILabel"; text = "Calculator"; ObjectID = "hCr-6c-H92"; */
 "hCr-6c-H92.text" = "Calculator";
@@ -1321,6 +1327,9 @@
 
 /* Class = "UILabel"; text = "Label"; ObjectID = "srK-Ce-UgW"; */
 "srK-Ce-UgW.text" = "Label";
+
+/* Class = "UILabel"; text = "Limit Up  12341vbvhj"; ObjectID = "ssq-H8-cts"; */
+"ssq-H8-cts.text" = "Limit Up  12341vbvhj";
 
 /* Class = "UITabBarItem"; title = "My Portfolio"; ObjectID = "svr-EJ-z3A"; */
 "svr-EJ-z3A.title" = "My Portfolio";

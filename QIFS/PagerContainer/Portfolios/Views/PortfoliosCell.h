@@ -17,5 +17,6 @@
 @property (nonatomic, weak) IBOutlet UILabel *labelMktValue;
 @property (nonatomic, weak) IBOutlet UILabel *labelGainLoss;
 @property (nonatomic, weak) IBOutlet UILabel *labelGainLossVal;
+@property (weak, nonatomic) IBOutlet UILabel *label_AR_Symbol;
 
 @end

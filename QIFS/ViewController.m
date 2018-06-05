@@ -75,7 +75,7 @@
     
     globalShare.topNavController = self.navigationController;
 
-    NSLog(@"Testing....");
+    
 }
 
 -(void)viewWillAppear:(BOOL)animated {

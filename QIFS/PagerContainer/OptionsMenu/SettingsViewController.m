@@ -13,9 +13,6 @@
 @property (nonatomic, weak) IBOutlet UILabel *labelTitle;
 @property (nonatomic, weak) IBOutlet UIButton *buttonAbout;
 @property (nonatomic, weak) IBOutlet UIButton *buttonUserGuide;
-
-
-
 @property (nonatomic, weak) IBOutlet UIButton *buttonHelp;
 @property (nonatomic, weak) IBOutlet UIButton *buttonRate;
 @property (nonatomic, weak) IBOutlet UISwitch *switchEnglish;
@@ -102,12 +99,12 @@
 
 - (IBAction)actionAbout:(id)sender {
     NSString *urlStr;
-        if(globalShare.myLanguage == ARABIC_LANGUAGE) {
-            urlStr = [NSString stringWithFormat:@"%@ar",webSite_Url];
-         }
-        else{
-            urlStr = [NSString stringWithFormat:@"%@en",webSite_Url];
-        }
+    if(globalShare.myLanguage == ARABIC_LANGUAGE) {
+        urlStr = [NSString stringWithFormat:@"%@ar",webSite_Url];
+    }
+    else{
+        urlStr = [NSString stringWithFormat:@"%@en",webSite_Url];
+    }
     
     [[UIApplication sharedApplication] openURL:[NSURL URLWithString:urlStr]];
 }

@@ -7,25 +7,12 @@
 		<key>QIFS.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>0</integer>
+			<integer>2</integer>
 		</dict>
 		<key>QIFSToday.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>1</integer>
-		</dict>
-	</dict>
-	<key>SuppressBuildableAutocreation</key>
-	<dict>
-		<key>5108D32D1D6EDEB100D23F6E</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>514382A61D1D82D400E1B739</key>
-		<dict>
-			<key>primary</key>
-			<true/>
+			<integer>3</integer>
 		</dict>
 	</dict>
 </dict>
