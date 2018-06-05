@@ -98,7 +98,15 @@
 }
 
 - (IBAction)actionAbout:(id)sender {
-    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:WEB_URL]];
+    NSString *urlStr;
+    if(globalShare.myLanguage == ARABIC_LANGUAGE) {
+        urlStr = [NSString stringWithFormat:@"%@ar",webSite_Url];
+    }
+    else{
+        urlStr = [NSString stringWithFormat:@"%@en",webSite_Url];
+    }
+    
+    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:urlStr]];
 }
 
 - (IBAction)actionRate:(id)sender {

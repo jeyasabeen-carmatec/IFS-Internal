@@ -18,10 +18,20 @@
 #import "SettingsViewController.h"
 #import "CompanyStocksViewController.h"
 #import "OptionsViewCell.h"
+#import "LoginView.h"
 
 NSString *const kNewOrderOptionsViewCellIdentifier = @"OptionsViewCell";
 
-@interface NewOrderViewController () <UIPickerViewDelegate, UIPickerViewDataSource, NSURLSessionDelegate, orderConfirmDelegate, tabBarManageCashDelegate>
+@interface NewOrderViewController () <UIPickerViewDelegate, UIPickerViewDataSource, NSURLSessionDelegate, orderConfirmDelegate, tabBarManageCashDelegate,UITextFieldDelegate>{
+    LoginView *loginVw;
+    UIView *overLayView;
+}
+
+@property (weak, nonatomic) IBOutlet UIView *contentView;
+@property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
+@property (weak, nonatomic) IBOutlet UILabel *limitUPLabel;
+@property (weak, nonatomic) IBOutlet UILabel *limitDowmLabel;
+
 
 @property (nonatomic, weak) IBOutlet UIButton *buttonTransaction;
 @property (nonatomic, weak) IBOutlet UIButton *buttonOrderType;
@@ -96,7 +106,10 @@ NSString *const kNewOrderOptionsViewCellIdentifier = @"OptionsViewCell";
 //@property (nonatomic, assign) NSInteger transactionId;
 //@property (nonatomic, assign) NSInteger orderTypeId;
 //@property (nonatomic, assign) NSInteger durationId;
+@property (strong, nonatomic) NSString *str_limit;
+@property (strong, nonatomic) NSString *str_shares_QTY;
 
+@property (strong, nonatomic) NSString *strQty;
 @property (strong, nonatomic) NSString *strBuyPower;
 @property (strong, nonatomic) NSString *strPrevOrderValue;
 @property (strong, nonatomic) NSString *strLimitUpPrice;
@@ -105,6 +118,9 @@ NSString *const kNewOrderOptionsViewCellIdentifier = @"OptionsViewCell";
 @property (strong, nonatomic) NSDate *pickerTimeVal;
 @property (strong, nonatomic) NSString *strLimitPrice;
 @property (strong, nonatomic) NSString *strValidPortOnSellQty;
+/*prakash*/
+@property (strong,nonatomic) NSString *str_confirm_order;
+
 
 @property (weak, nonatomic) IBOutlet UILabel *labelTransactionCaption;
 @property (weak, nonatomic) IBOutlet UILabel *labelOrderCaption;
@@ -124,6 +140,9 @@ NSString *const kNewOrderOptionsViewCellIdentifier = @"OptionsViewCell";
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    _scrollView.translatesAutoresizingMaskIntoConstraints = YES;
+
     // Do any additional setup after loading the view from its nib.
     globalShare = [GlobalShare sharedInstance];
     [[GlobalShare sharedInstance] setIsConfirmOrder:NO];
@@ -139,10 +158,10 @@ NSString *const kNewOrderOptionsViewCellIdentifier = @"OptionsViewCell";
                            @"menu_title": NSLocalizedString(@"Cash Position", @"Cash Position"),
                            @"menu_image": @"icon_cash_position"
                            },
-                       @{
-                           @"menu_title": NSLocalizedString(@"My Orders History", @"My Orders History"),
-                           @"menu_image": @"icon_my_order_history"
-                           },
+//                       @{
+//                           @"menu_title": NSLocalizedString(@"My Orders History", @"My Orders History"),
+//                           @"menu_image": @"icon_my_order_history"
+//                           },
                        @{
                            @"menu_title": NSLocalizedString(@"Contact Us", @"Contact Us"),
                            @"menu_image": @"icon_contact_us"
@@ -240,14 +259,43 @@ NSString *const kNewOrderOptionsViewCellIdentifier = @"OptionsViewCell";
     _viewDisclose.layer.borderColor = [UIColor darkGrayColor].CGColor;
     _viewDisclose.backgroundColor = [UIColor clearColor];
     
+    _limitUPLabel.layer.cornerRadius = 3;
+    _limitUPLabel.layer.masksToBounds = YES;
+    _limitUPLabel.layer.borderColor=[[UIColor grayColor]CGColor];
+    _limitUPLabel.layer.borderWidth= 1.0f;
+
+    _limitDowmLabel.layer.cornerRadius = 3;
+    _limitDowmLabel.layer.masksToBounds = YES;
+    _limitDowmLabel.layer.borderColor = [[UIColor grayColor]CGColor];
+    _limitDowmLabel.layer.borderWidth= 1.0f;
+    
+    
     [self.textFieldLimit setTextAlignment:NSTextAlignmentNatural];
     [self.textFieldQty setTextAlignment:NSTextAlignmentNatural];
     [self.textFieldDisclose setTextAlignment:NSTextAlignmentNatural];
+    
+    [self.textFieldLimit addTarget:self action:@selector(QTY_changed) forControlEvents:UIControlEventEditingChanged];
+    
+    _strQty = _textFieldQty.text;
 }
-
+-(void)viewDidLayoutSubviews{
+    _scrollView.contentSize = CGSizeMake(self.view.frame.size.width, self.contentView.frame.size.height+self.contentView.frame.origin.y+400);
+    NSLog(@"%f",self.contentView.frame.size.height+self.contentView.frame.origin.y+400);
+}
 -(void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:YES];
     
+    overLayView = [[UIView alloc] initWithFrame:CGRectMake(0, self.navigationController.navigationBar.frame.origin.y, self.view.frame.size.width, self.view.frame.size.height)];
+    overLayView.backgroundColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.5];
+    overLayView.clipsToBounds = YES;
+    overLayView.hidden = YES;
+    [self.view addSubview:overLayView];
+    
+    
+    if(self.tabBarController.selectedIndex == 1)
+    {
+        [globalShare setIsmodifyOrder:false];
+    }
     for (id control in self.view.subviews) {
         if ([control isKindOfClass:[UITextField class]]) {
             UITextField *textField = (UITextField *)control;
@@ -289,7 +337,8 @@ NSString *const kNewOrderOptionsViewCellIdentifier = @"OptionsViewCell";
         [self.buttonOrderType setBackgroundImage:[UIImage imageNamed:@"btn_dropdown_ar"] forState:UIControlStateNormal];
         [self.buttonDuration setBackgroundImage:[UIImage imageNamed:@"btn_dropdown_ar"] forState:UIControlStateNormal];
     }
-    else {
+    else
+    {
         [[UIView appearance] setSemanticContentAttribute:UISemanticContentAttributeForceLeftToRight];
         [self.tableViewOptionMenu setSemanticContentAttribute:UISemanticContentAttributeForceLeftToRight];
         [self.view setSemanticContentAttribute:UISemanticContentAttributeForceLeftToRight];
@@ -403,26 +452,36 @@ NSString *const kNewOrderOptionsViewCellIdentifier = @"OptionsViewCell";
         [GlobalShare showBasicAlertView:self :INTERNET_CONNECTION];
         return;
     }
-    
-    if(![[NSUserDefaults standardUserDefaults] boolForKey:@"is_system_codes"])
-        [self performSelector:@selector(getSystemCodes) withObject:nil afterDelay:0.01f];
-    else {
-        globalShare.pickerData1 = [DataManager select_SystemCodes:@"tbl_TransactionOrderType"];
-        globalShare.pickerData2 = [DataManager select_SystemCodes:@"tbl_PriceOrderType"];
-        globalShare.pickerData3 = [DataManager select_SystemCodes:@"tbl_DurationOrderType"];
+      NSString *strToken = [NSString stringWithFormat:@"%@", [[NSUserDefaults standardUserDefaults] stringForKey:@"ssckey"]];
+    if (strToken == nil || [strToken isEqualToString:@"(null)"]) {
+        [self showsLoginPopUp];
+    }else{
+        
+        if(![[NSUserDefaults standardUserDefaults] boolForKey:@"is_system_codes"])
+            [self performSelector:@selector(getSystemCodes) withObject:nil afterDelay:0.01f];
+        else {
+            globalShare.pickerData1 = [DataManager select_SystemCodes:@"tbl_TransactionOrderType"];
+            globalShare.pickerData2 = [DataManager select_SystemCodes:@"tbl_PriceOrderType"];
+            globalShare.pickerData3 = [DataManager select_SystemCodes:@"tbl_DurationOrderType"];
+        }
+        
+        
+        if(![[NSUserDefaults standardUserDefaults] boolForKey:@"is_securities_avail"])
+            [self performSelector:@selector(getSecurityBySector) withObject:nil afterDelay:0.01f];
+        else {
+            self.allResults = [DataManager select_SecurityList];
+        }
+        
+        
+        [self performSelector:@selector(getMarketWatchNew) withObject:nil afterDelay:0.01f];
+        //    [self performSelector:@selector(getSystemCodes) withObject:nil afterDelay:0.01f];
+        //    [self performSelector:@selector(getSecurityBySector) withObject:nil afterDelay:0.01f];
+        [self performSelector:@selector(getCashPosition) withObject:nil afterDelay:0.01f];
+        //    [[GlobalShare sharedInstance] setIsConfirmOrder:NO];
+        
     }
     
-    if(![[NSUserDefaults standardUserDefaults] boolForKey:@"is_securities_avail"])
-        [self performSelector:@selector(getSecurityBySector) withObject:nil afterDelay:0.01f];
-    else {
-        self.allResults = [DataManager select_SecurityList];
-    }
-
-    [self performSelector:@selector(getMarketWatchNew) withObject:nil afterDelay:0.01f];
-//    [self performSelector:@selector(getSystemCodes) withObject:nil afterDelay:0.01f];
-//    [self performSelector:@selector(getSecurityBySector) withObject:nil afterDelay:0.01f];
-    [self performSelector:@selector(getCashPosition) withObject:nil afterDelay:0.01f];
-//    [[GlobalShare sharedInstance] setIsConfirmOrder:NO];
+    
 }
 
 -(void)viewWillDisappear:(BOOL)animated {
@@ -442,6 +501,8 @@ NSString *const kNewOrderOptionsViewCellIdentifier = @"OptionsViewCell";
     
     [[NSNotificationCenter defaultCenter] removeObserver:self name:UIKeyboardWillShowNotification object:nil];
     [[NSNotificationCenter defaultCenter] removeObserver:self name:UIKeyboardWillHideNotification object:nil];
+    
+    //[globalShare setIsmodifyOrder:false];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -449,7 +510,84 @@ NSString *const kNewOrderOptionsViewCellIdentifier = @"OptionsViewCell";
     // Dispose of any resources that can be recreated.
 }
 
+#pragma mark Loading Login PopUp when guest User
+/*
+ Demo User Login(Custom View)
+ */
+-(void)showsLoginPopUp{
+    
+    overLayView.hidden = NO;
+    loginVw  = [[[NSBundle mainBundle] loadNibNamed:@"LoginView" owner:self options:nil] objectAtIndex:0];
+    [self.view addSubview:loginVw];
+    loginVw.frame = CGRectMake(0, 0, self.view.frame.size.width-70, loginVw.frame.size.height);
+    loginVw.center = self.view.center;
+    
+    [loginVw.cancelButton addTarget:self action:@selector(cancelButtonAction) forControlEvents:UIControlEventTouchUpInside];
+    [loginVw.loginButton addTarget:self action:@selector(loginButtonAction) forControlEvents:UIControlEventTouchUpInside];
+    loginVw.userNameTF.delegate =self;
+    loginVw.passwordTF.delegate = self;
+    
+    if(globalShare.myLanguage == ARABIC_LANGUAGE) {
+        // [[UIView appearance] setSemanticContentAttribute:UISemanticContentAttributeForceRightToLeft];
+        [loginVw setSemanticContentAttribute:UISemanticContentAttributeForceRightToLeft];
+        
+    }
+    else {
+        //[[UIView appearance] setSemanticContentAttribute:UISemanticContentAttributeForceLeftToRight];
+        [loginVw setSemanticContentAttribute:UISemanticContentAttributeForceLeftToRight];
+        
+    }
+    
+}
+
 #pragma mark - Button actions
+/*
+ Custom Login Screen Cancel Button Actions
+ */
+-(void)cancelButtonAction{
+    overLayView.hidden = YES;
+    [loginVw removeFromSuperview];
+    [self.tabBarController setSelectedIndex:0];
+   
+    
+}
+/*
+ Custom Login Screen Login Button Actions
+ */
+-(void)loginButtonAction{
+    
+    @try {
+        
+        [loginVw.userNameTF resignFirstResponder];
+        [loginVw.passwordTF resignFirstResponder];
+        
+        NSString *stringUserName = [loginVw.userNameTF.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
+        NSString *stringPassword = [loginVw.passwordTF.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
+        
+        if([stringUserName length] == 0) {
+            [GlobalShare showBasicAlertView:self :USERNAME];
+            return;
+        } else if([stringPassword length] == 0) {
+            [GlobalShare showBasicAlertView:self :PASSWORD];
+            return;
+        }
+        
+        if (![GlobalShare isConnectedInternet]) {
+            [GlobalShare showBasicAlertView:self :INTERNET_CONNECTION];
+            return;
+        }
+        [self verifyUserLogin:stringUserName andPassword:stringPassword];
+        
+        
+    }
+    @catch (NSException * e) {
+        NSLog(@"%@", [e description]);
+    }
+    @finally {
+        //        [self toEnableControls];
+    }
+    
+}
 
 - (IBAction)actionBack:(id)sender {
     if([[GlobalShare sharedInstance] isPortfolioOrder])
@@ -912,13 +1050,23 @@ NSString *const kNewOrderOptionsViewCellIdentifier = @"OptionsViewCell";
 //        strSubmitNewOrder = [NSString stringWithFormat:@"?order_side=%@&symbol=%@&qty=%@&disclose=%@&price=%@&is_market_price_order=%@&validity=%@&expiry_date=%@&expiry_time=%@&order_id=%@", strOrderSide, strSymbol, strQty, strDisclose, ([self.buttonOrderType.currentTitle isEqualToString:@"Market Price"]) ? @"" : strPrice, ([self.buttonOrderType.currentTitle isEqualToString:@"Market Price"]) ? @"1" : @"0", strValidity, strValidityDate, strValidityTime, self.strOrderId];
 //        strConfirmOrder = [NSString stringWithFormat:@"?order_type=%@&order_side=%@&symbol=%@&qty=%@&price=%@&is_market_price_order=%@&order_id=%@", @"2", strOrderSide, strSymbol, strQty, ([self.buttonOrderType.currentTitle isEqualToString:@"Market Price"]) ? @"" : strPrice, ([self.buttonOrderType.currentTitle isEqualToString:@"Market Price"]) ? @"1" : @"0", self.strOrderId];
         strSubmitNewOrder = [NSString stringWithFormat:@"?order_side=%@&symbol=%@&qty=%@&disclose=%@&price=%@&is_market_price_order=%@&validity=%@&expiry_date=%@&expiry_time=%@&order_id=%@", strOrderSide, strSymbol, strQty, strDisclose, (self.selectValOrder == 1) ? @"" : strPrice, isMarketPrice, strValidity, strValidityDate, strValidityTime, self.strOrderId];
+       
+        
         strConfirmOrder = [NSString stringWithFormat:@"?order_type=%@&order_side=%@&symbol=%@&qty=%@&price=%@&is_market_price_order=%@&order_id=%@", @"2", strOrderSide, strSymbol, strQty, (self.selectValOrder == 1) ? @"" : strPrice, isMarketPrice, self.strOrderId];
+        
+        _str_confirm_order = [NSString stringWithFormat:@"?order_type=%@&order_side=%@&symbol=%@&qty=%@&price=%@&is_market_price_order=%@&order_id=%@", @"2", strOrderSide, strSymbol, strQty, (self.selectValOrder == 1) ? @"" : strPrice, isMarketPrice, self.strOrderId];
+        
     }
     else {
 //        strSubmitNewOrder = [NSString stringWithFormat:@"?order_side=%@&symbol=%@&qty=%@&disclose=%@&price=%@&is_market_price_order=%@&validity=%@&expiry_date=%@&expiry_time=%@", strOrderSide, strSymbol, strQty, strDisclose, ([self.buttonOrderType.currentTitle isEqualToString:@"Market Price"]) ? @"" : strPrice, ([self.buttonOrderType.currentTitle isEqualToString:@"Market Price"]) ? @"1" : @"0", strValidity, strValidityDate, strValidityTime];
 //        strConfirmOrder = [NSString stringWithFormat:@"?order_type=%@&order_side=%@&symbol=%@&qty=%@&price=%@&is_market_price_order=%@&order_id=%@", @"1", strOrderSide, strSymbol, strQty, ([self.buttonOrderType.currentTitle isEqualToString:@"Market Price"]) ? @"" : strPrice, ([self.buttonOrderType.currentTitle isEqualToString:@"Market Price"]) ? @"1" : @"0", @""];
         strSubmitNewOrder = [NSString stringWithFormat:@"?order_side=%@&symbol=%@&qty=%@&disclose=%@&price=%@&is_market_price_order=%@&validity=%@&expiry_date=%@&expiry_time=%@", strOrderSide, strSymbol, strQty, strDisclose, (self.selectValOrder == 1) ? @"" : strPrice, isMarketPrice, strValidity, strValidityDate, strValidityTime];
+        
         strConfirmOrder = [NSString stringWithFormat:@"?order_type=%@&order_side=%@&symbol=%@&qty=%@&price=%@&is_market_price_order=%@&order_id=%@", @"1", strOrderSide, strSymbol, strQty, (self.selectValOrder == 1) ? @"" : strPrice, isMarketPrice, @""];
+        
+         _str_confirm_order = [NSString stringWithFormat:@"?order_type=%@&order_side=%@&symbol=%@&qty=%@&price=%@&is_market_price_order=%@&order_id=%@", @"1", strOrderSide, strSymbol, strQty, (self.selectValOrder == 1) ? @"" : strPrice, isMarketPrice, @""];
+        [self create_order_chek_STATUS];
+        
     }
     
 //    NSString *strTransaction = [NSString stringWithFormat:@"%@ %@ %@ @ %@", strTransactionType, strQty, strSymbol, ([self.buttonOrderType.currentTitle isEqualToString:@"Limit Price"]) ? strPrice : self.buttonOrderType.currentTitle];
@@ -978,10 +1126,121 @@ NSString *const kNewOrderOptionsViewCellIdentifier = @"OptionsViewCell";
     [dictVals setObject:[GlobalShare createCommaSeparatedTwoDigitString:[NSString stringWithFormat:@"%.2f", OrderVal]] forKey:@"OrderValue"];
     [dictVals setObject:[GlobalShare createCommaSeparatedTwoDigitString:[NSString stringWithFormat:@"%.2f", orderCommissionVal]] forKey:@"CostOfTrade"];
     
-    OrderConfirmViewController *orderConfirmViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"OrderConfirmViewController"];
-    orderConfirmViewController.delegate = self;
-    orderConfirmViewController.passOrderValues = dictVals;
-    [[self navigationController] pushViewController:orderConfirmViewController animated:YES];
+    
+    
+    
+    if([globalShare isBuyOrder] == true )
+    {
+     
+    if([_str_shares_QTY isEqualToString:_textFieldQty.text] )
+    {
+        if( [_str_limit isEqualToString:_textFieldLimit.text])
+        {
+        OrderConfirmViewController *orderConfirmViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"OrderConfirmViewController"];
+        orderConfirmViewController.delegate = self;
+        orderConfirmViewController.passOrderValues = dictVals;
+        [[self navigationController] pushViewController:orderConfirmViewController animated:YES];
+        }
+        
+        else
+        {
+//           //  [globalShare setIsmodifyOrder:false];
+//
+//                NSString *str_txt =NSLocalizedString(@"ORDER_MODIFIED", @"Basic Alert Style");
+//                NSString *str_string = [NSString stringWithFormat:@"%@\n%@ %@ - %@",str_txt,_textFieldQty.text,_labelSymbol.text,_textFieldLimit.text];
+//
+//            NSString *alertTitle = NSLocalizedString(@"Islamic Financial Securities", @"Basic Alert Style");
+//            NSString *alertMessage = NSLocalizedString(str_string, @"BasicAlertMessage");
+//
+//            UIAlertController *alertController = [UIAlertController alertControllerWithTitle:alertTitle
+//                                                                                     message:alertMessage
+//                                                                              preferredStyle:UIAlertControllerStyleAlert];
+//
+//            UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:NSLocalizedString(@"NO", @"NO")
+//                                                                   style:UIAlertActionStyleDefault
+//                                                                 handler:^(UIAlertAction *action)
+//                                           {
+//                                                 [self dismissViewControllerAnimated:NO completion:nil];
+//                                           }];
+//
+//            UIAlertAction *okAction = [UIAlertAction actionWithTitle:NSLocalizedString(@"YES", @"YES")
+//                                                               style:UIAlertActionStyleDefault
+//                                                             handler:^(UIAlertAction *action)
+//                                       {
+//                                           OrderConfirmViewController *orderConfirmViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"OrderConfirmViewController"];
+//                                           orderConfirmViewController.delegate = self;
+//                                           orderConfirmViewController.passOrderValues = dictVals;
+//                                           [[self navigationController] pushViewController:orderConfirmViewController animated:YES];
+//                                       }];
+//
+//            if(globalShare.myLanguage == ARABIC_LANGUAGE) {
+//                [alertController addAction:cancelAction];
+//                [alertController addAction:okAction];
+//            }
+//            else {
+//                [alertController addAction:okAction];
+//                [alertController addAction:cancelAction];
+//            }
+//
+//            [self presentViewController:alertController animated:YES completion:nil];
+            
+            [self update_ORder_API:dictVals];
+            
+            }
+        
+    }
+    else{
+        
+        // [globalShare setIsmodifyOrder:false];
+        
+//        NSString *str_txt =NSLocalizedString(@"ORDER_MODIFIED", @"Basic Alert Style");
+//        NSString *str_string = [NSString stringWithFormat:@"%@\n%@ %@ - %@",str_txt,_textFieldQty.text,_labelSymbol.text,_textFieldLimit.text];
+//        NSString *alertTitle = NSLocalizedString(@"Islamic Financial Securities", @"Basic Alert Style");
+//        NSString *alertMessage = NSLocalizedString(str_string, @"BasicAlertMessage");
+//
+//        UIAlertController *alertController = [UIAlertController alertControllerWithTitle:alertTitle
+//                                                                                 message:alertMessage
+//                                                                          preferredStyle:UIAlertControllerStyleAlert];
+//
+//        UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:NSLocalizedString(@"NO", @"NO")
+//                                                               style:UIAlertActionStyleDefault
+//                                                             handler:^(UIAlertAction *action)
+//                                       {
+//                                           [self dismissViewControllerAnimated:NO completion:nil];
+//                                       }];
+//
+//        UIAlertAction *okAction = [UIAlertAction actionWithTitle:NSLocalizedString(@"YES", @"YES")
+//                                                           style:UIAlertActionStyleDefault
+//                                                         handler:^(UIAlertAction *action)
+//                                   {
+//                                       OrderConfirmViewController *orderConfirmViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"OrderConfirmViewController"];
+//                                       orderConfirmViewController.delegate = self;
+//                                       orderConfirmViewController.passOrderValues = dictVals;
+//                                       [[self navigationController] pushViewController:orderConfirmViewController animated:YES];
+//                                   }];
+//
+//        if(globalShare.myLanguage == ARABIC_LANGUAGE) {
+//            [alertController addAction:cancelAction];
+//            [alertController addAction:okAction];
+//        }
+//        else {
+//            [alertController addAction:okAction];
+//            [alertController addAction:cancelAction];
+//        }
+//
+//        [self presentViewController:alertController animated:YES completion:nil];
+        [self update_ORder_API:dictVals];
+     }
+    }
+    else
+    {
+        OrderConfirmViewController *orderConfirmViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"OrderConfirmViewController"];
+        orderConfirmViewController.delegate = self;
+        orderConfirmViewController.passOrderValues = dictVals;
+        [[self navigationController] pushViewController:orderConfirmViewController animated:YES];
+    }
+    
+    
 }
 
 - (IBAction)actionMarketDepth:(id)sender {
@@ -1140,6 +1399,56 @@ NSString *const kNewOrderOptionsViewCellIdentifier = @"OptionsViewCell";
 }
 
 #pragma mark - Common actions
+-(BOOL)verifyUserLogin:(NSString *)stringUserName andPassword:(NSString*)stringPassword{
+    @try {
+        
+        
+        [loginVw removeFromSuperview];
+        overLayView.hidden = YES;
+        
+        NSURLSessionConfiguration *defaultConfigObject = [NSURLSessionConfiguration defaultSessionConfiguration];
+        NSURLSession *defaultSession = [NSURLSession sessionWithConfiguration:defaultConfigObject delegate:self delegateQueue:[NSOperationQueue mainQueue]];
+        
+        NSString *strURL = [NSString stringWithFormat:@"%@SetCredentials?username=%@&password=%@", REQUEST_URL, stringUserName, stringPassword];
+        NSURL *url = [NSURL URLWithString:strURL];
+        
+        NSURLSessionDataTask *dataTask = [defaultSession dataTaskWithURL:url
+                                                       completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
+                                                           
+                                                           
+                                                           if(error == nil)
+                                                           {
+                                                               
+                                                               NSMutableDictionary *returnedDict = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:&error];
+                                                               if([[returnedDict objectForKey:@"status"] hasPrefix:@"error"]) {
+                                                                   if([[returnedDict objectForKey:@"result"] hasPrefix:@"T4"])
+                                                                       [GlobalShare showBasicAlertView:self :INVALID_HEADER];
+                                                                   else
+                                                                       [GlobalShare showBasicAlertView:self :[returnedDict objectForKey:@"result"]];
+                                                                   return;
+                                                               }
+                                                               NSString *strToken = [returnedDict objectForKey:@"result"];
+                                                               [[NSUserDefaults standardUserDefaults] setObject:strToken forKey:@"ssckey"];
+                                                               [[NSUserDefaults standardUserDefaults] synchronize];
+                                                               [self viewWillAppear:YES];
+                                                               
+                                                               
+                                                           }
+                                                           else {
+                                                               
+                                                               [GlobalShare showBasicAlertView:self :[error localizedDescription]];
+                                                           }
+                                                       }];
+        
+        [dataTask resume];
+    }
+    @catch (NSException * e) {
+        NSLog(@"%@", [e description]);
+    }
+    @finally {
+        
+    }
+}
 
 - (void)callHeartBeatUpdate {
     [[GlobalShare sharedInstance] setIsTimerNewOrderRun:YES];
@@ -1169,6 +1478,7 @@ NSString *const kNewOrderOptionsViewCellIdentifier = @"OptionsViewCell";
                                                            if(error == nil)
                                                            {
                                                                NSMutableDictionary *returnedDict = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:&error];
+                                                               NSLog(@"the live market_data_is:%@",returnedDict);
                                                                if([returnedDict[@"status"] hasPrefix:@"error"]) {
                                                                    if([returnedDict[@"result"] hasPrefix:@"T5"])
                                                                        [GlobalShare showSessionExpiredAlertView:self :SESSION_EXPIRED];
@@ -1571,6 +1881,7 @@ NSString *const kNewOrderOptionsViewCellIdentifier = @"OptionsViewCell";
         NSURLSession *defaultSession = [NSURLSession sessionWithConfiguration:defaultConfigObject delegate:self delegateQueue:[NSOperationQueue mainQueue]];
         
         NSString *strURL = [NSString stringWithFormat:@"%@%@%@", REQUEST_URL, @"GetOrderDetails?order_id=", self.strOrderId];
+        NSLog(@"The URL for getOrderdetails:%@",strURL);
         NSURL *url = [NSURL URLWithString:strURL];
         
         NSURLSessionDataTask *dataTask = [defaultSession dataTaskWithURL:url
@@ -1580,6 +1891,12 @@ NSString *const kNewOrderOptionsViewCellIdentifier = @"OptionsViewCell";
                                                            {
                                                                NSMutableDictionary *returnedDict = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:&error];
                                                                if([returnedDict[@"status"] hasPrefix:@"error"]) {
+                                                                   if([returnedDict[@"order_type_desc_e"] isEqualToString:@"SELL"])
+                                                                   {
+                                                                       [globalShare setIsBuytheorder:false];
+                                                                   }
+                                                                   
+                                                                   
                                                                    if([returnedDict[@"result"] hasPrefix:@"T5"])
                                                                        [GlobalShare showSessionExpiredAlertView:self :SESSION_EXPIRED];
                                                                    else if([returnedDict[@"result"] hasPrefix:@"T4"])
@@ -1594,6 +1911,10 @@ NSString *const kNewOrderOptionsViewCellIdentifier = @"OptionsViewCell";
                                                                    dispatch_async(dispatch_get_main_queue(), ^{
                                                                        
                                                                        NSDictionary *dictVal = returnedDict[@"result"];
+                                                                       
+                                                                       NSString *strcost =[NSString stringWithFormat:@"%.2f",[dictVal[@"OrderValue"]floatValue]] ;
+                                                                       [[NSUserDefaults standardUserDefaults] setValue:strcost forKey:@"modified_order_VAL"] ;
+                                                                       [[NSUserDefaults standardUserDefaults] synchronize];
                                                                        
                                                                        NSPredicate *applePred1 = [NSPredicate predicateWithFormat:@"self.minor_code matches %@", dictVal[@"order_type_id"]];
                                                                        NSArray *arrFiltered1 = [globalShare.pickerData1 filteredArrayUsingPredicate:applePred1];
@@ -1624,6 +1945,7 @@ NSString *const kNewOrderOptionsViewCellIdentifier = @"OptionsViewCell";
                                                                        else {
                                                                            self.selectValOrder = 0;
                                                                            self.textFieldLimit.text = [GlobalShare formatStringToTwoDigits:dictVal[@"limit_price"]];
+                                                                           _str_limit = self.textFieldLimit.text;
                                                                            [self.textFieldLimit setAlpha:1.0];
                                                                            [self.textFieldLimit setEnabled:YES];
                                                                        }
@@ -1640,15 +1962,21 @@ NSString *const kNewOrderOptionsViewCellIdentifier = @"OptionsViewCell";
                                                                        }
                                                                        
                                                                        self.textFieldQty.text = dictVal[@"qty"];
+                                                                       _str_shares_QTY = _textFieldQty.text;
+                                                                       
                                                                        self.strLimitPrice = dictVal[@"limit_price"];
                                                                        
 //                                                                       if([self.buttonDuration.currentTitle isEqualToString:@"GTD"]) {
                                                                        if(self.selectValDuration == 8) {
                                                                            [self.labelDuration setText:[NSString stringWithFormat:@"%@", [dictVal[@"expiry_date"] componentsSeparatedByString:@" "][0]]];
-                                                                           self.datePicker.date = [GlobalShare returnDateAsDate:self.labelDuration.text];
+                                                                           NSLog(@"The label duration text is:%@",self.labelDuration.text);
+                                                                        NSDate   *date = [GlobalShare returnDateAsDateanother_form:self.labelDuration.text];
+                                                                           self.datePicker.date = date; /*[GlobalShare returnDateAsDate:self.labelDuration.text];*/
                                                                        }
 //                                                                       else if([self.buttonDuration.currentTitle isEqualToString:@"GTT"]) {
                                                                        else if(self.selectValDuration == 9) {
+                                                                           @try
+                                                                           {
                                                                            NSString *strExpTime = [NSString stringWithFormat:@"%@", [dictVal[@"expiry_date"] componentsSeparatedByString:@" "][1]];
                                                                            [self.labelDuration setText:[NSString stringWithFormat:@"%@:%@", [strExpTime componentsSeparatedByString:@":"][0], [strExpTime componentsSeparatedByString:@":"][1]]];
 //                                                                           self.timePicker.date = [GlobalShare returnTimeAsDate:self.labelDuration.text];
@@ -1665,6 +1993,11 @@ NSString *const kNewOrderOptionsViewCellIdentifier = @"OptionsViewCell";
                                                                            NSDate *startDate = [gregorian dateFromComponents:components];
                                                                            
                                                                            [self.timePicker setDate:startDate animated:YES];
+                                                                           }
+                                                                           @catch(NSException *exception)
+                                                                           {
+                                                                               
+                                                                           }
                                                                        }
                                                                        else
                                                                            [self.labelDuration setText:@""];
@@ -1876,6 +2209,9 @@ NSString *const kNewOrderOptionsViewCellIdentifier = @"OptionsViewCell";
                                                                        double commissionVal = 0, orderVal = 0, orderCommissionVal = 0;
                                                                        commissionVal = [dictVal[@"commission_value"] doubleValue];
                                                                        orderCommissionVal = [dictVal[@"total_order_value"] doubleValue];
+                                                                       
+                                                                       [[NSUserDefaults standardUserDefaults] setValue:dictVal[@"total_order_value"]  forKey:@"modified_order_VAL"] ;
+                                                                       [[NSUserDefaults standardUserDefaults] synchronize];
                                                                        if(self.selectValTrans == 0)
                                                                            orderVal = orderCommissionVal - commissionVal;
                                                                        else
@@ -1885,6 +2221,9 @@ NSString *const kNewOrderOptionsViewCellIdentifier = @"OptionsViewCell";
 
                                                                        [dictParams setObject:[GlobalShare createCommaSeparatedTwoDigitString:[NSString stringWithFormat:@"%.2f", orderVal]] forKey:@"CostOfTrade"];
                                                                        [dictParams setObject:[GlobalShare createCommaSeparatedTwoDigitString:dictVal[@"total_order_value"]] forKey:@"OrderValue"];
+                                                                    
+                                                                       
+                                                                       
                                                                        [dictParams setObject:[GlobalShare createCommaSeparatedTwoDigitString:dictVal[@"new_balance"]] forKey:@"NewBuyPower"];
 
                                                                        OrderConfirmViewController *orderConfirmViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"OrderConfirmViewController"];
@@ -2131,15 +2470,18 @@ NSString *const kNewOrderOptionsViewCellIdentifier = @"OptionsViewCell";
 }
 
 - (void)textFieldDidEndEditing:(UITextField *)textField {
-//    [UIView setAnimationDuration:0.5];
-//    
-//    if ([textField isEqual:_textFieldLimit])
-//        self.view.frame = [GlobalShare setViewMovedUp:NO :self.view :75];
+    [UIView setAnimationDuration:0.5];
+    
+    if ([textField isEqual:_textFieldLimit])
+    {
+        [self updateOrderValue];
+      //  self.view.frame = [GlobalShare setViewMovedUp:NO :self.view :75];
+    }
 //    else
-//        self.view.frame = [GlobalShare setViewMovedUp:NO :self.view :90];
-//    
-//    [UIView commitAnimations];
-////    [self updateOrderValue];
+       // self.view.frame = [GlobalShare setViewMovedUp:NO :self.view :90];
+    
+  //  [UIView commitAnimations];
+    
 }
 
 - (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string {
@@ -2289,15 +2631,15 @@ NSString *const kNewOrderOptionsViewCellIdentifier = @"OptionsViewCell";
                 self.tabBarController.tabBar.hidden = YES;
             }];
         }
+//        else if(indexPath.row == 1) {
+//            OrderHistoryViewController *orderHistoryViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"OrderHistoryViewController"];
+//            [[self navigationController] pushViewController:orderHistoryViewController animated:YES];
+//        }
         else if(indexPath.row == 1) {
-            OrderHistoryViewController *orderHistoryViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"OrderHistoryViewController"];
-            [[self navigationController] pushViewController:orderHistoryViewController animated:YES];
-        }
-        else if(indexPath.row == 2) {
             ContactUsViewController *contactUsViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"ContactUsViewController"];
             [[self navigationController] pushViewController:contactUsViewController animated:YES];
         }
-        else if(indexPath.row == 3) {
+        else if(indexPath.row == 2) {
             SettingsViewController *settingsViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"SettingsViewController"];
             [[self navigationController] pushViewController:settingsViewController animated:YES];
         }
@@ -2423,4 +2765,187 @@ NSString *const kNewOrderOptionsViewCellIdentifier = @"OptionsViewCell";
     [self.tableResults reloadData];
 }
 
+#pragma mark modify order
+-(void)update_ORder_API : (NSDictionary *)dictVals
+{
+   
+        @try {
+            if([self.strOrderId length] == 0) return;
+            
+            [self.indicatorView setHidden:NO];
+            
+            NSString *strToken = [NSString stringWithFormat:@"%@", [[NSUserDefaults standardUserDefaults] stringForKey:@"ssckey"]];
+            NSURLSessionConfiguration *defaultConfigObject = [NSURLSessionConfiguration defaultSessionConfiguration];
+            defaultConfigObject.HTTPAdditionalHeaders = @{@"Authorization": strToken};
+            NSURLSession *defaultSession = [NSURLSession sessionWithConfiguration:defaultConfigObject delegate:self delegateQueue:[NSOperationQueue mainQueue]];
+            
+            NSString *strURL = [NSString stringWithFormat:@"%@%@%@", REQUEST_URL,@"ConfirmOrder",_str_confirm_order];
+            
+//            NSString *strURL =[NSString stringWithFormat:@"%@ConfirmOrder?order_side=1&order_type=2&symbol=%@&qty=%@&price=%@&is_market_price_order=0&order_id=20171214-749037, tag=null'];
+            NSLog(@"The URL for getOrderdetails:%@",strURL);
+            NSURL *url = [NSURL URLWithString:strURL];
+            
+            NSURLSessionDataTask *dataTask = [defaultSession dataTaskWithURL:url
+                                                           completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
+                                                               [self.indicatorView setHidden:YES];
+    if(error == nil)
+        {
+       NSMutableDictionary *returnedDict = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:&error];
+            NSLog(@"the response from update order:%@",returnedDict);
+            
+            
+            
+            if([returnedDict[@"status"] isEqualToString:@"authenticated"])
+            {
+            NSDictionary *temp_dict = returnedDict[@"result"];
+            NSString *str_VAL = [NSString stringWithFormat:@"%@",temp_dict[@"new_balance"]];
+                
+           
+            if([str_VAL containsString:@"-"])
+            {
+                
+                [GlobalShare showBasicAlertView:self :CHECK_AMOUNT];
+                return;
+            }
+            else
+            {
+                
+                
+            NSString *str_txt =NSLocalizedString(@"CHANGE QUANTITY", @"Basic Alert Style");
+//            NSString *str_commission_VAL = NSLocalizedString(@"COMMISSION VALUE", @"Basic Alert Style");
+//            NSString *str_newbal_VAL =NSLocalizedString(@"NEW BALANCE", @"Basic Alert Style");
+//            NSString *str_total_order_VAL =NSLocalizedString(@"TOTAL ORDER VALUE", @"Basic Alert Style");
+//
+//                NSString *strCommisionvalue = [NSString stringWithFormat:@"%@",temp_dict[@"commission_value"]];
+//                NSString *strnewbalancevalue = [NSString stringWithFormat:@"%@",temp_dict[@"new_balance"]];
+//                 NSString *strtotalbalancevalue = [NSString stringWithFormat:@"%@",temp_dict[@"total_order_value"]];
+                
+           
+//                NSString *str_string = [NSString stringWithFormat:@"%@\n%@ : %@\n%@ : %@\n%@ : %@ ",str_txt,str_commission_VAL,strCommisionvalue,str_newbal_VAL,strnewbalancevalue,str_total_order_VAL,strtotalbalancevalue];
+           NSString *alertTitle = NSLocalizedString(@"Islamic Financial Securities", @"Basic Alert Style");
+                
+                NSString *str_TXT = [NSString stringWithFormat:@"%@ %@",str_txt,_textFieldQty.text];
+            NSString *alertMessage = NSLocalizedString(str_TXT, @"BasicAlertMessage");
+            
+            UIAlertController *alertController = [UIAlertController alertControllerWithTitle:alertTitle
+                                                                                     message:alertMessage
+                                                                              preferredStyle:UIAlertControllerStyleAlert];
+            
+            UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:NSLocalizedString(@"NO", @"NO")
+                                                                   style:UIAlertActionStyleDefault
+                                                                 handler:^(UIAlertAction *action)
+                                           {
+                                               _textFieldQty.text = _strQty;
+                                               [self dismissViewControllerAnimated:NO completion:nil];
+                                           }];
+            
+            UIAlertAction *okAction = [UIAlertAction actionWithTitle:NSLocalizedString(@"YES", @"YES")
+                                                               style:UIAlertActionStyleDefault
+                                                             handler:^(UIAlertAction *action)
+                                       {
+                                           OrderConfirmViewController *orderConfirmViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"OrderConfirmViewController"];
+                                           orderConfirmViewController.delegate = self;
+                                           orderConfirmViewController.passOrderValues = dictVals;
+                                           [[self navigationController] pushViewController:orderConfirmViewController animated:YES];
+                                       }];
+            
+            if(globalShare.myLanguage == ARABIC_LANGUAGE) {
+                [alertController addAction:cancelAction];
+                [alertController addAction:okAction];
+            }
+            else {
+                [alertController addAction:okAction];
+                [alertController addAction:cancelAction];
+            }
+            
+            [self presentViewController:alertController animated:YES completion:nil];
+         }
+        }
+        }
+        }];
+        
+            [dataTask resume];
+        }
+        @catch (NSException * e) {
+            NSLog(@"%@", [e description]);
+        }
+        @finally {
+            
+        }
+}
+
+-(void)create_order_chek_STATUS
+{
+    @try {
+        if([self.strOrderId length] == 0) return;
+        
+        [self.indicatorView setHidden:NO];
+        
+        NSString *strToken = [NSString stringWithFormat:@"%@", [[NSUserDefaults standardUserDefaults] stringForKey:@"ssckey"]];
+        NSURLSessionConfiguration *defaultConfigObject = [NSURLSessionConfiguration defaultSessionConfiguration];
+        defaultConfigObject.HTTPAdditionalHeaders = @{@"Authorization": strToken};
+        NSURLSession *defaultSession = [NSURLSession sessionWithConfiguration:defaultConfigObject delegate:self delegateQueue:[NSOperationQueue mainQueue]];
+        
+        NSString *strURL = [NSString stringWithFormat:@"%@%@%@", REQUEST_URL,@"ConfirmOrder",_str_confirm_order];
+        
+        //            NSString *strURL =[NSString stringWithFormat:@"%@ConfirmOrder?order_side=1&order_type=2&symbol=%@&qty=%@&price=%@&is_market_price_order=0&order_id=20171214-749037, tag=null'];
+        NSLog(@"The URL for getOrderdetails:%@",strURL);
+        NSURL *url = [NSURL URLWithString:strURL];
+        
+        NSURLSessionDataTask *dataTask = [defaultSession dataTaskWithURL:url
+                                                       completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
+                                                           [self.indicatorView setHidden:YES];
+                                                           if(error == nil)
+                                                           {
+                                                               NSMutableDictionary *returnedDict = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:&error];
+                                                               NSLog(@"the response from update order:%@",returnedDict);
+                                                               
+                                                               
+                                                               
+                                                               if([returnedDict[@"status"] isEqualToString:@"authenticated"])
+                                                               {
+                                                                   NSDictionary *temp_dict = returnedDict[@"result"];
+                                                                   NSString *str_VAL = [NSString stringWithFormat:@"%@",temp_dict[@"new_balance"]];
+                                                                   
+                                                                   
+                                                                   if([str_VAL containsString:@"-"])
+                                                                   {
+                                                                       
+                                                                       [GlobalShare showBasicAlertView:self :CHECK_AMOUNT];
+                                                                       return;
+                                                                   }
+                                                               }
+                                                           }
+                                                               }];
+                                                               
+                                                               [dataTask resume];
+                                                           }
+                                                           @catch (NSException * e) {
+                                                               NSLog(@"%@", [e description]);
+                                                           }
+                                                           @finally {
+                                                               
+                                                           }
+    
+}
+#pragma Text field editing chaneged
+
+-(void)QTY_changed
+{
+    
+//    NSString *strQty = [self.textFieldQty.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
+    NSString *strLimitPrice = [self.textFieldLimit.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
+    NSArray *temp_arr = [strLimitPrice componentsSeparatedByString:@"."];
+    NSString *strTemp = [temp_arr objectAtIndex:0];
+    if(strTemp.length >=2)
+    {
+    
+    NSString  *strPrice = self.labelBuyPower.text;
+    int VAL = [strPrice intValue]/[strLimitPrice intValue];
+    
+    _textFieldQty.text =[NSString stringWithFormat:@"%d",VAL];
+    
+    NSLog(@"The Quantity is:%d",VAL);
+    }
+}
 @end

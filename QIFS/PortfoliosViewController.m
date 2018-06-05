@@ -23,6 +23,7 @@ NSString *const kPortfoliosOptionsViewCellIdentifier = @"OptionsViewCell";
 
 @interface PortfoliosViewController () <tabBarManageCashDelegate, NSURLSessionDelegate>
 
+
 @property (nonatomic, weak) IBOutlet UILabel *labelPortfolioValue;
 @property (nonatomic, weak) IBOutlet UILabel *labelGainLoss;
 @property (nonatomic, weak) IBOutlet UITableView *tableViewStocks;
@@ -70,10 +71,10 @@ NSString *const kPortfoliosOptionsViewCellIdentifier = @"OptionsViewCell";
                            @"menu_title": NSLocalizedString(@"Cash Position", @"Cash Position"),
                            @"menu_image": @"icon_cash_position"
                            },
-                       @{
-                           @"menu_title": NSLocalizedString(@"My Orders History", @"My Orders History"),
-                           @"menu_image": @"icon_my_order_history"
-                           },
+//                       @{
+//                           @"menu_title": NSLocalizedString(@"My Orders History", @"My Orders History"),
+//                           @"menu_image": @"icon_my_order_history"
+//                           },
                        @{
                            @"menu_title": NSLocalizedString(@"Contact Us", @"Contact Us"),
                            @"menu_image": @"icon_contact_us"
@@ -481,8 +482,10 @@ NSString *const kPortfoliosOptionsViewCellIdentifier = @"OptionsViewCell";
     //    
     //    ([def[@"GainLoss"] hasPrefix:@"-"]) ? cell.labelGainLoss.textColor = [UIColor colorWithRed:171/255.f green:0/255.f blue:2/255.f alpha:1.f] : (cell.labelGainLoss.textColor = [UIColor colorWithRed:0/255.f green:111/255.f blue:46/255.f alpha:1.f]);
     //    ([def[@"GainLoss"] hasPrefix:@"-"]) ? cell.labelGainLossVal.textColor = [UIColor colorWithRed:171/255.f green:0/255.f blue:2/255.f alpha:1.f] : (cell.labelGainLossVal.textColor = [UIColor colorWithRed:0/255.f green:111/255.f blue:46/255.f alpha:1.f]);
+        
 
         cell.labelSymbol.text = def[@"ticker"];
+        cell.label_AR_Symbol.text = def[@"security_name_a"];
         cell.labelQty.text = [GlobalShare createCommaSeparatedString:def[@"qty"]];
         cell.labelAvgPrice.text = [GlobalShare formatStringToTwoDigits:def[@"cost_price"]];
         cell.labelMktValue.text = [GlobalShare createCommaSeparatedTwoDigitString:def[@"market_value"]];
@@ -608,15 +611,15 @@ NSString *const kPortfoliosOptionsViewCellIdentifier = @"OptionsViewCell";
                 self.tabBarController.tabBar.hidden = YES;
             }];
         }
+//        else if(indexPath.row == 1) {
+//            OrderHistoryViewController *orderHistoryViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"OrderHistoryViewController"];
+//            [[self navigationController] pushViewController:orderHistoryViewController animated:YES];
+//        }
         else if(indexPath.row == 1) {
-            OrderHistoryViewController *orderHistoryViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"OrderHistoryViewController"];
-            [[self navigationController] pushViewController:orderHistoryViewController animated:YES];
-        }
-        else if(indexPath.row == 2) {
             ContactUsViewController *contactUsViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"ContactUsViewController"];
             [[self navigationController] pushViewController:contactUsViewController animated:YES];
         }
-        else if(indexPath.row == 3) {
+        else if(indexPath.row == 2) {
             SettingsViewController *settingsViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"SettingsViewController"];
             [[self navigationController] pushViewController:settingsViewController animated:YES];
         }

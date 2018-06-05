@@ -1,17 +1,16 @@
 //
-//  MyNewOrdersViewController.m
+//  MyOrdersViewController.m
 //  QIFS
 //
 //  Created by zylog on 16/07/16.
 //  Copyright © 2016 zsl. All rights reserved.
 //
 
-#import "MyNewOrdersViewController.h"
+#import "MyOrdersViewController.h"
 #import "MGSwipeButton.h"
 #import "NewOrderViewController.h"
-#import "MyNewOrdersCell.h"
+#import "MyOrdersCell.h"
 #import "OrderTicketViewController.h"
-#import "ActiveOrdersViewController.h"
 
 #import "AlertsViewController.h"
 #import "CashPositionViewController.h"
@@ -21,13 +20,13 @@
 #import "CompanyStocksViewController.h"
 #import "OptionsViewCell.h"
 
-NSString *const kMyNewOrdersCellIdentifier = @"MyNewOrdersCell";
-NSString *const kMyNewOrdersOptionsViewCellIdentifier = @"OptionsViewCell";
+NSString *const kMyOrdersCellIdentifier = @"MyOrdersCell";
+NSString *const kMyOrdersOptionsViewCellIdentifier = @"OptionsViewCell";
 
 #define DEGREES_TO_RADIANS(degrees)((M_PI * degrees)/180)
 #define TEST_USE_MG_DELEGATE 1
 
-@interface MyNewOrdersViewController () <tabBarManageOrderDelegate,tapNewOrderDelegate, tabBarManageCashDelegate, NSURLSessionDelegate>
+@interface MyOrdersViewController () <tabBarManageOrderDelegate, tabBarManageCashDelegate, NSURLSessionDelegate>
 
 @property (nonatomic, weak) IBOutlet UITableView *tableViewOrders;
 @property (nonatomic, weak) IBOutlet UISegmentedControl *segmentOrders;
@@ -60,17 +59,15 @@ NSString *const kMyNewOrdersOptionsViewCellIdentifier = @"OptionsViewCell";
 
 @property (nonatomic, weak) IBOutlet UILabel *labelTitleOrgQty;
 @property (nonatomic, weak) IBOutlet UILabel *labelTitleAvgPrice;
-@property (nonatomic, weak) IBOutlet UILabel *labelTitleValidity;
 @property (nonatomic, weak) IBOutlet UILabel *labelMyOrderCount;
 @property (nonatomic, weak) IBOutlet UILabel *labelActiveCount;
 @property (nonatomic, weak) IBOutlet UILabel *labelFilledCount;
 @property (nonatomic, weak) IBOutlet UILabel *labelCancelledCount;
 @property (nonatomic, strong) OrderTicketViewController *ticketContentView;
-@property (nonatomic, strong) ActiveOrdersViewController *activeContentView;
 
 @end
 
-@implementation MyNewOrdersViewController
+@implementation MyOrdersViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -92,10 +89,10 @@ NSString *const kMyNewOrdersOptionsViewCellIdentifier = @"OptionsViewCell";
                            @"menu_title": NSLocalizedString(@"Cash Position", @"Cash Position"),
                            @"menu_image": @"icon_cash_position"
                            },
-                       @{
-                           @"menu_title": NSLocalizedString(@"My Orders History", @"My Orders History"),
-                           @"menu_image": @"icon_my_order_history"
-                           },
+//                       @{
+//                           @"menu_title": NSLocalizedString(@"My Orders History", @"My Orders History"),
+//                           @"menu_image": @"icon_my_order_history"
+//                           },
                        @{
                            @"menu_title": NSLocalizedString(@"Contact Us", @"Contact Us"),
                            @"menu_image": @"icon_contact_us"
@@ -190,24 +187,23 @@ NSString *const kMyNewOrdersOptionsViewCellIdentifier = @"OptionsViewCell";
 
 -(void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:YES];
+    [globalShare setIsmodifyOrder:NO];
     
     if(globalShare.myLanguage == ARABIC_LANGUAGE) {
         [[UIView appearance] setSemanticContentAttribute:UISemanticContentAttributeForceRightToLeft];
         [self.tableViewOptionMenu setSemanticContentAttribute:UISemanticContentAttributeForceRightToLeft];
         [self.view setSemanticContentAttribute:UISemanticContentAttributeForceRightToLeft];
         [self.labelTitleAvgPrice setTextAlignment:NSTextAlignmentLeft];
-        [self.labelTitleValidity setTextAlignment:NSTextAlignmentLeft];
     }
     else {
         [[UIView appearance] setSemanticContentAttribute:UISemanticContentAttributeForceLeftToRight];
         [self.tableViewOptionMenu setSemanticContentAttribute:UISemanticContentAttributeForceLeftToRight];
         [self.view setSemanticContentAttribute:UISemanticContentAttributeForceLeftToRight];
         [self.labelTitleAvgPrice setTextAlignment:NSTextAlignmentRight];
-        [self.labelTitleValidity setTextAlignment:NSTextAlignmentRight];
     }
     
-//    [self.labelTitleOrgQty setText:NSLocalizedString(@"Org. Qty", @"Org. Qty")];
-//    [self.labelTitleAvgPrice setText:NSLocalizedString(@"Price", @"Price")];
+    [self.labelTitleOrgQty setText:NSLocalizedString(@"Org. Qty", @"Org. Qty")];
+    [self.labelTitleAvgPrice setText:NSLocalizedString(@"Price", @"Price")];
     [self.tableViewOrders reloadData];
     
     if (![GlobalShare isConnectedInternet]) {
@@ -390,32 +386,6 @@ NSString *const kMyNewOrdersOptionsViewCellIdentifier = @"OptionsViewCell";
     [self performSelector:@selector(getOrderCount) withObject:nil afterDelay:0.01f];
 }
 
-- (IBAction)actionOrderTicket:(id)sender {
-    UIButton *btn = (UIButton *)sender;
-    [_transparencyButton setAlpha:1.0];
-    if(![self.viewOptionMenu isHidden])
-        [self.viewOptionMenu setHidden:YES];
-    [self.transparencyButton removeFromSuperview];
-    self.transparencyButton = nil;
-    
-    NSDictionary *def = self.arrayMyOrders[btn.tag];
-    
-//    if(([def[@"order_status_id"] integerValue] == 3 || [def[@"order_status_id"] integerValue] == 4 || [def[@"order_status_id"] integerValue] == 12 || [def[@"order_status_id"] integerValue] == 8 || [def[@"order_status_id"] integerValue] == 5 || [def[@"order_status_id"] integerValue] == 11 || [def[@"order_status_id"] integerValue] == 6 || [def[@"order_status_id"] integerValue] == 13))
-    if([def[@"executed_qty"] integerValue] == 0)
-        return;
-    
-    self.ticketContentView = [self.storyboard instantiateViewControllerWithIdentifier:@"OrderTicketViewController"];
-    self.ticketContentView.view.frame = CGRectMake(0, [[UIScreen mainScreen] bounds].size.height, [[UIScreen mainScreen] bounds].size.width, [[UIScreen mainScreen] bounds].size.height);
-    self.ticketContentView.delegate = self;
-    self.ticketContentView.strOrderId = def[@"order_id"];
-    [self.view addSubview:self.ticketContentView.view];
-    [UIView animateWithDuration:.3 animations:^{
-        [self.ticketContentView.view setFrame:CGRectMake(0, 0, [[UIScreen mainScreen] bounds].size.width, [[UIScreen mainScreen] bounds].size.height)];
-    } completion:^(BOOL finished) {
-        self.tabBarController.tabBar.hidden = YES;
-    }];
-}
-
 #pragma mark - Common actions
 
 -(void) getSubmittedOrders {
@@ -429,8 +399,6 @@ NSString *const kMyNewOrdersOptionsViewCellIdentifier = @"OptionsViewCell";
 //            strLocOrderType = @"8,5";
         else
             strLocOrderType = self.strOrderType;
-
-        strLocOrderType = @"";
 
 //    [self.indicatorView setHidden:NO];
 
@@ -656,11 +624,6 @@ NSString *const kMyNewOrdersOptionsViewCellIdentifier = @"OptionsViewCell";
     self.tabBarController.tabBar.hidden = NO;
 }
 
-- (void)callBackSuperviewFromNewOrder {
-    self.tabBarController.tabBar.hidden = NO;
-    [self performSelector:@selector(getOrderCount) withObject:nil afterDelay:0.01f];
-}
-
 - (void)showAlertViewTwoActions:(NSString *)strMessage {
     NSString *alertTitle = NSLocalizedString(@"Islamic Financial Securities", @"Basic Alert Style");
     NSString *alertMessage = NSLocalizedString(strMessage, @"BasicAlertMessage");
@@ -777,7 +740,7 @@ NSString *const kMyNewOrdersOptionsViewCellIdentifier = @"OptionsViewCell";
 //        cell.imageView.image = [UIImage imageNamed:self.arrayMenu[indexPath.row][@"menu_image"]];
 //        cell.textLabel.font = [UIFont systemFontOfSize:13.0];
         
-        OptionsViewCell *cell = (OptionsViewCell *) [tableView dequeueReusableCellWithIdentifier:kMyNewOrdersOptionsViewCellIdentifier forIndexPath:indexPath];
+        OptionsViewCell *cell = (OptionsViewCell *) [tableView dequeueReusableCellWithIdentifier:kMyOrdersOptionsViewCellIdentifier forIndexPath:indexPath];
         
         cell.labelOption.text = self.arrayMenu[indexPath.row][@"menu_title"];
         cell.imageOption.image = [UIImage imageNamed:self.arrayMenu[indexPath.row][@"menu_image"]];
@@ -804,7 +767,7 @@ NSString *const kMyNewOrdersOptionsViewCellIdentifier = @"OptionsViewCell";
         return cell;
     }
     else {
-        MyNewOrdersCell *cell = (MyNewOrdersCell *) [tableView dequeueReusableCellWithIdentifier:kMyNewOrdersCellIdentifier forIndexPath:indexPath];
+        MyOrdersCell *cell = (MyOrdersCell *) [tableView dequeueReusableCellWithIdentifier:kMyOrdersCellIdentifier forIndexPath:indexPath];
 
         NSDictionary *def = self.arrayMyOrders[indexPath.row];
         
@@ -829,27 +792,21 @@ NSString *const kMyNewOrdersOptionsViewCellIdentifier = @"OptionsViewCell";
         cell.labelCompanyName.text = (globalShare.myLanguage != ARABIC_LANGUAGE) ? def[@"security_name_e"] : def[@"security_name_a"];
         cell.labelOrder.text = (globalShare.myLanguage != ARABIC_LANGUAGE) ? def[@"order_type_desc_e"] : def[@"order_type_desc_a"];
         cell.labelPrice.text = [GlobalShare formatStringToTwoDigits:def[@"price"]];
-        cell.labelOrgQty.text = [GlobalShare createCommaSeparatedString:def[@"qty"]];
-        cell.labelExecQty.text = [GlobalShare createCommaSeparatedString:def[@"executed_qty"]];
-        [cell.buttonExecQty setTitle:[GlobalShare createCommaSeparatedString:def[@"executed_qty"]] forState:UIControlStateNormal];
-        cell.buttonExecQty.tag = indexPath.row;
-//        cell.labelOrgQty.text = [GlobalShare createCommaSeparatedString:@"345523525"];
-//        [cell.buttonExecQty setTitle:[GlobalShare createCommaSeparatedString:@"246585643"] forState:UIControlStateNormal];
-
+//        cell.labelOrgQty.text = [GlobalShare createCommaSeparatedString:def[@"qty"]];
 //        cell.labelOrgQty.text = [GlobalShare createCommaSeparatedString:def[@"remaining_qty"]];
 //        NSString *strQty = [NSString stringWithFormat:@"%ld", (long)([def[@"qty"] integerValue] - [def[@"executed_qty"] integerValue])];
 //        cell.labelOrgQty.text = [GlobalShare createCommaSeparatedString:strQty];
-//        if([self.strOrderType integerValue] == 3 || [self.strOrderType integerValue] == 7 || [self.strOrderType integerValue] == 8)
-//            cell.labelExpCanDate.text = @"";
-//        else
-//            cell.labelExpCanDate.text = def[@"expiry_date"];
+        if([self.strOrderType integerValue] == 3 || [self.strOrderType integerValue] == 7 || [self.strOrderType integerValue] == 8)
+            cell.labelExpCanDate.text = @"";
+        else
+            cell.labelExpCanDate.text = def[@"expiry_date"];
 
         cell.labelDate.text = [NSString stringWithFormat:@"%@", def[@"order_date"]];
         
-        if([def[@"order_status_id"] integerValue] == 7 || [def[@"order_status_id"] integerValue] == 8)
+        if([self.strOrderType integerValue] == 7 || [self.strOrderType integerValue] == 8)
             cell.labelValidity.text = @"";
         else
-            cell.labelValidity.text = [NSString stringWithFormat:@"%@", (globalShare.myLanguage != ARABIC_LANGUAGE) ? def[@"validity_en"] : def[@"validity_ar"]];
+            cell.labelValidity.text = [NSString stringWithFormat:@"Validity:%@", (globalShare.myLanguage != ARABIC_LANGUAGE) ? def[@"validity_en"] : def[@"validity_ar"]];
 
 //        if([[def[@"order_type_desc_e"] uppercaseString] isEqualToString:@"BUY"])
         if([def[@"order_type_id"] integerValue] == 1)
@@ -857,17 +814,10 @@ NSString *const kMyNewOrdersOptionsViewCellIdentifier = @"OptionsViewCell";
         else
             cell.labelOrder.textColor = [UIColor colorWithRed:255/255.f green:60/255.f blue:26/255.f alpha:1.f];
 
-//        if([self.strOrderType integerValue] == 3 || [self.strOrderType integerValue] == 5 || [self.strOrderType integerValue] == 11)
-//            cell.labelOrgQty.text = [GlobalShare createCommaSeparatedString:def[@"remaining_qty"]];
-//        else
-//            cell.labelOrgQty.text = [GlobalShare createCommaSeparatedString:def[@"executed_qty"]];
-
-        cell.labelStatus.text = [NSString stringWithFormat:@"%@", (globalShare.myLanguage != ARABIC_LANGUAGE) ? def[@"order_status_e"] : def[@"order_status_a"]];
-
-        if([def[@"order_status_id"] integerValue] == 5 || [def[@"order_status_id"] integerValue] == 11 || [def[@"order_status_id"] integerValue] == 6 || [def[@"order_status_id"] integerValue] == 13)
-            cell.labelStatus.textColor = [UIColor colorWithRed:255/255.f green:60/255.f blue:26/255.f alpha:1.f];
+        if([self.strOrderType integerValue] == 3 || [self.strOrderType integerValue] == 5 || [self.strOrderType integerValue] == 11)
+            cell.labelOrgQty.text = [GlobalShare createCommaSeparatedString:def[@"remaining_qty"]];
         else
-            cell.labelStatus.textColor = [UIColor colorWithRed:97/255.f green:152/255.f blue:255/255.f alpha:1.f];
+            cell.labelOrgQty.text = [GlobalShare createCommaSeparatedString:def[@"executed_qty"]];
 
         if(indexPath.row % 2 == 0)
             cell.backgroundColor = [UIColor whiteColor];
@@ -878,43 +828,40 @@ NSString *const kMyNewOrdersOptionsViewCellIdentifier = @"OptionsViewCell";
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
         cell.tag = indexPath.row;
         
-//        if([def[@"order_status_id"] integerValue] == 3 || [def[@"order_status_id"] integerValue] == 4 || [def[@"order_status_id"] integerValue] == 12 || [def[@"order_status_id"] integerValue] == 8) {
-//            cell.delegate = self;
-//            
-//            //#if !TEST_USE_MG_DELEGATE
-////            cell.rightSwipeSettings.transition = MGSwipeTransitionDrag;
-////            cell.rightSwipeSettings.onlySwipeButtons = NO;
-////            cell.rightExpansion.fillOnTrigger = YES;
-////            cell.rightButtons = [self createRightButtons:2];
-//            if(globalShare.myLanguage == ARABIC_LANGUAGE) {
-//                cell.leftSwipeSettings.transition = MGSwipeTransitionDrag;
-//                cell.leftSwipeSettings.onlySwipeButtons = NO;
-//                cell.leftButtons = [self createLeftButtons:2];
-//            }
-//            else {
-//                cell.rightSwipeSettings.transition = MGSwipeTransitionDrag;
-//                cell.rightSwipeSettings.onlySwipeButtons = NO;
-//                cell.rightButtons = [self createRightButtons:2];
-//            }
-//            //#endif
-//        }
-//        else {
-//            cell.rightButtons = nil;
-//        }
+//        if([self.strOrderType integerValue] == 3 || [self.strOrderType integerValue] == 8) {
+        if([self.strOrderType integerValue] == 3) {
+            cell.delegate = self;
+            
+            //#if !TEST_USE_MG_DELEGATE
+//            cell.rightSwipeSettings.transition = MGSwipeTransitionDrag;
+//            cell.rightSwipeSettings.onlySwipeButtons = NO;
+//            cell.rightExpansion.fillOnTrigger = YES;
+//            cell.rightButtons = [self createRightButtons:2];
+            if(globalShare.myLanguage == ARABIC_LANGUAGE) {
+                cell.leftSwipeSettings.transition = MGSwipeTransitionDrag;
+                cell.leftSwipeSettings.onlySwipeButtons = NO;
+                cell.leftButtons = [self createLeftButtons:2];
+            }
+            else {
+                cell.rightSwipeSettings.transition = MGSwipeTransitionDrag;
+                cell.rightSwipeSettings.onlySwipeButtons = NO;
+                cell.rightButtons = [self createRightButtons:2];
+            }
+            //#endif
+        }
+        else {
+            cell.rightButtons = nil;
+        }
         
         if(globalShare.myLanguage == ARABIC_LANGUAGE) {
             [cell.labelPrice setTextAlignment:NSTextAlignmentLeft];
-//            [cell.labelExpCanDate setTextAlignment:NSTextAlignmentLeft];
+            [cell.labelExpCanDate setTextAlignment:NSTextAlignmentLeft];
             [cell.labelValidity setTextAlignment:NSTextAlignmentLeft];
-            [cell.labelOrder setTextAlignment:NSTextAlignmentLeft];
-            [cell.labelStatus setTextAlignment:NSTextAlignmentLeft];
         }
         else {
             [cell.labelPrice setTextAlignment:NSTextAlignmentRight];
-//            [cell.labelExpCanDate setTextAlignment:NSTextAlignmentRight];
+            [cell.labelExpCanDate setTextAlignment:NSTextAlignmentRight];
             [cell.labelValidity setTextAlignment:NSTextAlignmentRight];
-            [cell.labelOrder setTextAlignment:NSTextAlignmentRight];
-            [cell.labelStatus setTextAlignment:NSTextAlignmentRight];
         }
         
         return cell;
@@ -955,15 +902,15 @@ NSString *const kMyNewOrdersOptionsViewCellIdentifier = @"OptionsViewCell";
                 self.tabBarController.tabBar.hidden = YES;
             }];
         }
+//        else if(indexPath.row == 1) {
+//            OrderHistoryViewController *orderHistoryViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"OrderHistoryViewController"];
+//            [[self navigationController] pushViewController:orderHistoryViewController animated:YES];
+//        }
         else if(indexPath.row == 1) {
-            OrderHistoryViewController *orderHistoryViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"OrderHistoryViewController"];
-            [[self navigationController] pushViewController:orderHistoryViewController animated:YES];
-        }
-        else if(indexPath.row == 2) {
             ContactUsViewController *contactUsViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"ContactUsViewController"];
             [[self navigationController] pushViewController:contactUsViewController animated:YES];
         }
-        else if(indexPath.row == 3) {
+        else if(indexPath.row == 2) {
             SettingsViewController *settingsViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"SettingsViewController"];
             [[self navigationController] pushViewController:settingsViewController animated:YES];
         }
@@ -992,46 +939,22 @@ NSString *const kMyNewOrdersOptionsViewCellIdentifier = @"OptionsViewCell";
         companyStocksViewController.securityName = self.visibleResults[indexPath.row][(globalShare.myLanguage != ARABIC_LANGUAGE) ? @"security_name_e" : @"security_name_a"];
         [[self navigationController] pushViewController:companyStocksViewController animated:YES];
 //        [self.searchController setActive:NO];
-        
+       
         self.searchResults.text = @"";
         NSString *searchString = self.searchResults.text;
         [self updateFilteredContentForProductName:searchString];
     }
     else {
-//        if([self.strOrderType integerValue] == 3 || [self.strOrderType integerValue] == 5 || [self.strOrderType integerValue] == 11)
-//            return;
-//        self.ticketContentView = [self.storyboard instantiateViewControllerWithIdentifier:@"OrderTicketViewController"];
-//        self.ticketContentView.view.frame = CGRectMake(0, [[UIScreen mainScreen] bounds].size.height, [[UIScreen mainScreen] bounds].size.width, [[UIScreen mainScreen] bounds].size.height);
-//        self.ticketContentView.delegate = self;
-//        self.ticketContentView.strOrderId = self.arrayMyOrders[indexPath.row][@"order_id"];
-//        [self.view addSubview:self.ticketContentView.view];
-//        [UIView animateWithDuration:.3 animations:^{
-//            [self.ticketContentView.view setFrame:CGRectMake(0, 0, [[UIScreen mainScreen] bounds].size.width, [[UIScreen mainScreen] bounds].size.height)];
-//        } completion:^(BOOL finished) {
-//            self.tabBarController.tabBar.hidden = YES;
-//        }];
-        
-        
-        NSDictionary *def = self.arrayMyOrders[indexPath.row];
-
-        if([def[@"order_status_id"] integerValue] == 7 || [def[@"order_status_id"] integerValue] == 5 || [def[@"order_status_id"] integerValue] == 11 || [def[@"order_status_id"] integerValue] == 6 || [def[@"order_status_id"] integerValue] == 13)
+        if([self.strOrderType integerValue] == 3 || [self.strOrderType integerValue] == 5 || [self.strOrderType integerValue] == 11)
             return;
-        
-        NSString *strTransaction;
-        if(globalShare.myLanguage == ARABIC_LANGUAGE)
-            strTransaction = [NSString stringWithFormat:@"%@ - %@ %@ %@", [GlobalShare formatStringToTwoDigits:def[@"price"]], def[@"symbol"], [GlobalShare createCommaSeparatedString:def[@"qty"]], (globalShare.myLanguage != ARABIC_LANGUAGE) ? def[@"order_type_desc_e"] : def[@"order_type_desc_a"]];
-        else
-            strTransaction = [NSString stringWithFormat:@"%@ %@ %@ - %@", (globalShare.myLanguage != ARABIC_LANGUAGE) ? def[@"order_type_desc_e"] : def[@"order_type_desc_a"], [GlobalShare createCommaSeparatedString:def[@"qty"]], def[@"symbol"], [GlobalShare formatStringToTwoDigits:def[@"price"]]];
-
-        self.activeContentView = [self.storyboard instantiateViewControllerWithIdentifier:@"ActiveOrdersViewController"];
-        self.activeContentView.view.frame = CGRectMake(0, [[UIScreen mainScreen] bounds].size.height, [[UIScreen mainScreen] bounds].size.width, [[UIScreen mainScreen] bounds].size.height);
-        self.activeContentView.delegate = self;
-        self.activeContentView.strOrderId = def[@"order_id"];
-        self.activeContentView.securityId = def[@"symbol"];
-        self.activeContentView.strOrderDetails = strTransaction;
-        [self.view addSubview:self.activeContentView.view];
+        self.ticketContentView = [self.storyboard instantiateViewControllerWithIdentifier:@"OrderTicketViewController"];
+        self.ticketContentView.view.frame = CGRectMake(0, [[UIScreen mainScreen] bounds].size.height, [[UIScreen mainScreen] bounds].size.width, [[UIScreen mainScreen] bounds].size.height);
+        self.ticketContentView.delegate = self;
+        self.ticketContentView.strOrderId = self.arrayMyOrders[indexPath.row][@"order_id"];
+      
+        [self.view addSubview:self.ticketContentView.view];
         [UIView animateWithDuration:.3 animations:^{
-            [self.activeContentView.view setFrame:CGRectMake(0, 0, [[UIScreen mainScreen] bounds].size.width, [[UIScreen mainScreen] bounds].size.height)];
+            [self.ticketContentView.view setFrame:CGRectMake(0, 0, [[UIScreen mainScreen] bounds].size.width, [[UIScreen mainScreen] bounds].size.height)];
         } completion:^(BOOL finished) {
             self.tabBarController.tabBar.hidden = YES;
         }];
