@@ -66,6 +66,24 @@ NSString *const kPortfoliosOptionsViewCellIdentifier = @"OptionsViewCell";
     [self.tableResults setHidden:YES];
     
 //    self.arrayMenu = [NSArray arrayWithObjects:@"Cash Position", @"My Orders History", @"Contact Us", @"Settings", @"Sign Out", nil];
+    
+    NSString *str_key = [NSString stringWithFormat:@"%@",[[NSUserDefaults standardUserDefaults] valueForKey:@"ssckey"]];
+    NSString *strSign,*strArsign;
+    if([str_key isEqualToString:@"(null)"])
+    {
+        str_key = @"";
+    }
+    
+    if([str_key isEqualToString:@""])
+    {
+        strSign = @"Sign In";
+        strArsign = @"Sign In";
+        
+    }
+    else{
+        strSign = @"Sign Out";
+        strArsign = @"Sign Out";
+    }
     self.arrayMenu = @[
                        @{
                            @"menu_title": NSLocalizedString(@"Cash Position", @"Cash Position"),
@@ -84,7 +102,7 @@ NSString *const kPortfoliosOptionsViewCellIdentifier = @"OptionsViewCell";
                            @"menu_image": @"icon_settings"
                            },
                        @{
-                           @"menu_title": NSLocalizedString(@"Sign Out", @"Sign Out"),
+                           @"menu_title": NSLocalizedString(strSign, strArsign),
                            @"menu_image": @"icon_signout"
                            }
                        ];
@@ -625,6 +643,7 @@ NSString *const kPortfoliosOptionsViewCellIdentifier = @"OptionsViewCell";
         }
         else {
 //            [[self navigationController] popToRootViewControllerAnimated:YES];
+            
             [GlobalShare showSignOutAlertView:self :SIGNOUT_CONFIRMATION];
         }
     }

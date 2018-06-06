@@ -239,7 +239,7 @@ NSString *const kStockNewsCellIdentifier = @"StockNewsCell";
                                                                dispatch_async(dispatch_get_main_queue(), ^{
                                                                    NSDictionary *dictVal = returnedDict[@"result"];
                                                                    self.labelCurrentIndex.text = [GlobalShare createCommaSeparatedTwoDigitString:dictVal[@"index_1"]];
-                                                                   self.labelTodayChanges.text = [NSString stringWithFormat:@"%@(%@%%)", [GlobalShare formatStringToTwoDigits:dictVal[@"change"]], [GlobalShare formatStringToTwoDigits:dictVal[@"change_perc"]]];
+                                                                   self.labelTodayChanges.text = [NSString stringWithFormat:@"%@(%@%%)", [GlobalShare formatStringToTwoDigits:dictVal[@"change_perc"]], [GlobalShare formatStringToTwoDigits:dictVal[@"change"]]];
 
 //                                                                   if([dictVal[@"change"] hasPrefix:@"-"] || [dictVal[@"change"] hasPrefix:@"+"]) {
 //                                                                       if([dictVal[@"change"] hasPrefix:@"+"]) {

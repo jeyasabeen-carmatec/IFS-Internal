@@ -5,8 +5,8 @@
 /* Class = "UILabel"; text = "Label"; ObjectID = "0BA-u4-L2w"; */
 "0BA-u4-L2w.text" = "Label";
 
-/* Class = "UIButton"; normalTitle = "Cancel"; ObjectID = "0Zr-Nh-kkX"; */
-"0Zr-Nh-kkX.normalTitle" = "Cancel";
+/* Class = "UIButton"; normalTitle = "إلغاء"; ObjectID = "0Zr-Nh-kkX"; */
+"0Zr-Nh-kkX.normalTitle" = "إلغاء";
 
 /* Class = "UILabel"; text = "23,673,304.00 QR"; ObjectID = "0kH-Fv-3zX"; */
 "0kH-Fv-3zX.text" = "23,673,304.00 QR";
@@ -17,44 +17,44 @@
 /* Class = "UILabel"; text = "17,602.30"; ObjectID = "0uQ-k0-lBh"; */
 "0uQ-k0-lBh.text" = "17,602.30";
 
-/* Class = "UISegmentedControl"; 0xR-zO-jHf.segmentTitles[0] = "Buy"; ObjectID = "0xR-zO-jHf"; */
-"0xR-zO-jHf.segmentTitles[0]" = "Buy";
+/* Class = "UISegmentedControl"; 0xR-zO-jHf.segmentTitles[0] = "شراء"; ObjectID = "0xR-zO-jHf"; */
+"0xR-zO-jHf.segmentTitles[0]" = "شراء";
 
-/* Class = "UISegmentedControl"; 0xR-zO-jHf.segmentTitles[1] = "Sell"; ObjectID = "0xR-zO-jHf"; */
-"0xR-zO-jHf.segmentTitles[1]" = "Sell";
+/* Class = "UISegmentedControl"; 0xR-zO-jHf.segmentTitles[1] = "بيع"; ObjectID = "0xR-zO-jHf"; */
+"0xR-zO-jHf.segmentTitles[1]" = "بيع";
 
-/* Class = "UILabel"; text = "Last"; ObjectID = "0yk-dc-wKW"; */
-"0yk-dc-wKW.text" = "Last";
+/* Class = "UILabel"; text = "أخر"; ObjectID = "0yk-dc-wKW"; */
+"0yk-dc-wKW.text" = "أخر";
 
-/* Class = "UILabel"; text = "Ask Qty"; ObjectID = "158-UT-2BA"; */
-"158-UT-2BA.text" = "Ask Qty";
+/* Class = "UILabel"; text = "كمية العرض"; ObjectID = "158-UT-2BA"; */
+"158-UT-2BA.text" = "كمية العرض";
 
 /* Class = "UILabel"; text = "18-07-2016 10:30:23 AM"; ObjectID = "1Bk-eD-FJB"; */
 "1Bk-eD-FJB.text" = "18-07-2016 10:30:23 AM";
 
-/* Class = "UILabel"; text = "Overall Gain/Loss (%)"; ObjectID = "1Jn-Ng-Yhy"; */
-"1Jn-Ng-Yhy.text" = "Overall Gain/Loss (%)";
+/* Class = "UILabel"; text = "الربح/الخسارة(%)"; ObjectID = "1Jn-Ng-Yhy"; */
+"1Jn-Ng-Yhy.text" = "الربح/الخسارة(%)";
 
-/* Class = "UIButton"; normalTitle = "Week"; ObjectID = "1Pv-V2-lQP"; */
-"1Pv-V2-lQP.normalTitle" = "Week";
+/* Class = "UIButton"; normalTitle = "اسبوع"; ObjectID = "1Pv-V2-lQP"; */
+"1Pv-V2-lQP.normalTitle" = "اسبوع";
 
 /* Class = "UILabel"; text = "25/06/2016 16:00"; ObjectID = "1Tu-SR-JJ2"; */
 "1Tu-SR-JJ2.text" = "25/06/2016 16:00";
 
-/* Class = "UILabel"; text = "Add Favorites"; ObjectID = "1ft-4E-df4"; */
-"1ft-4E-df4.text" = "Add Favorites";
+/* Class = "UILabel"; text = "إضافة للمفضلة"; ObjectID = "1ft-4E-df4"; */
+"1ft-4E-df4.text" = "إضافة للمفضلة";
 
-/* Class = "UILabel"; text = "Portfolio Value"; ObjectID = "1yD-4H-NDQ"; */
-"1yD-4H-NDQ.text" = "Portfolio Value";
+/* Class = "UILabel"; text = "قيمة المحفظة"; ObjectID = "1yD-4H-NDQ"; */
+"1yD-4H-NDQ.text" = "قيمة المحفظة";
 
-/* Class = "UIButton"; normalTitle = "Favorite"; ObjectID = "2FW-0V-TWm"; */
-"2FW-0V-TWm.normalTitle" = "Favorite";
+/* Class = "UIButton"; normalTitle = "مفضلة"; ObjectID = "2FW-0V-TWm"; */
+"2FW-0V-TWm.normalTitle" = "مفضلة";
 
 /* Class = "UILabel"; text = "Label"; ObjectID = "2Jl-uq-IpW"; */
 "2Jl-uq-IpW.text" = "Label";
 
-/* Class = "UILabel"; text = "Prev. Close"; ObjectID = "2RK-aW-VlZ"; */
-"2RK-aW-VlZ.text" = "Prev. Close";
+/* Class = "UILabel"; text = "الإغلاق السابق"; ObjectID = "2RK-aW-VlZ"; */
+"2RK-aW-VlZ.text" = "الإغلاق السابق";
 
 /* Class = "UILabel"; text = "12,970.00 QR"; ObjectID = "2hq-R2-uEz"; */
 "2hq-R2-uEz.text" = "12,970.00 QR";
@@ -62,8 +62,8 @@
 /* Class = "UILabel"; text = "17,602.30"; ObjectID = "2na-IR-G76"; */
 "2na-IR-G76.text" = "17,602.30";
 
-/* Class = "UILabel"; text = "Volume"; ObjectID = "2sx-kE-LHV"; */
-"2sx-kE-LHV.text" = "Volume";
+/* Class = "UILabel"; text = "الحجم"; ObjectID = "2sx-kE-LHV"; */
+"2sx-kE-LHV.text" = "الحجم";
 
 /* Class = "UILabel"; text = "Label"; ObjectID = "2yC-al-Yrv"; */
 "2yC-al-Yrv.text" = "Label";
@@ -74,8 +74,8 @@
 /* Class = "UILabel"; text = "25/06/2016 16:00"; ObjectID = "3M3-IH-ptR"; */
 "3M3-IH-ptR.text" = "25/06/2016 16:00";
 
-/* Class = "UILabel"; text = "No. of Shares"; ObjectID = "3PJ-8a-InM"; */
-"3PJ-8a-InM.text" = "No. of Shares";
+/* Class = "UILabel"; text = "عدد الأسهم"; ObjectID = "3PJ-8a-InM"; */
+"3PJ-8a-InM.text" = "عدد الأسهم";
 
 /* Class = "UIButton"; normalTitle = "6 M"; ObjectID = "3eF-hF-hxF"; */
 "3eF-hF-hxF.normalTitle" = "6 M";
@@ -83,8 +83,8 @@
 /* Class = "UILabel"; text = "Date:18-07-2016 10:30:23 AM"; ObjectID = "3qm-yR-9FH"; */
 "3qm-yR-9FH.text" = "Date:18-07-2016 10:30:23 AM";
 
-/* Class = "UILabel"; text = "Sell"; ObjectID = "4Cs-2L-nsm"; */
-"4Cs-2L-nsm.text" = "Sell";
+/* Class = "UILabel"; text = "بيع"; ObjectID = "4Cs-2L-nsm"; */
+"4Cs-2L-nsm.text" = "بيع";
 
 /* Class = "UILabel"; text = "5,000"; ObjectID = "4DD-PE-QpP"; */
 "4DD-PE-QpP.text" = "5,000";
@@ -95,20 +95,20 @@
 /* Class = "UILabel"; text = "Label"; ObjectID = "4Gn-X1-k8h"; */
 "4Gn-X1-k8h.text" = "Label";
 
-/* Class = "UILabel"; text = "QE Index"; ObjectID = "4Io-3s-AqO"; */
-"4Io-3s-AqO.text" = "QE Index";
+/* Class = "UILabel"; text = "GOOGL"; ObjectID = "4Io-3s-AqO"; */
+"4Io-3s-AqO.text" = "GOOGL";
 
-/* Class = "UIButton"; normalTitle = "Calculate"; ObjectID = "4K5-Dl-XQZ"; */
-"4K5-Dl-XQZ.normalTitle" = "Calculate";
+/* Class = "UIButton"; normalTitle = "إحسب"; ObjectID = "4K5-Dl-XQZ"; */
+"4K5-Dl-XQZ.normalTitle" = "إحسب";
 
 /* Class = "UILabel"; text = "GOOGL"; ObjectID = "4Ls-xE-t7Q"; */
 "4Ls-xE-t7Q.text" = "GOOGL";
 
-/* Class = "UIButton"; normalTitle = "Calculate"; ObjectID = "4RJ-LY-Tvn"; */
-"4RJ-LY-Tvn.normalTitle" = "Calculate";
+/* Class = "UIButton"; normalTitle = "إحسب"; ObjectID = "4RJ-LY-Tvn"; */
+"4RJ-LY-Tvn.normalTitle" = "إحسب";
 
-/* Class = "UILabel"; text = "Current Balance"; ObjectID = "4bJ-9L-uf8"; */
-"4bJ-9L-uf8.text" = "Current Balance";
+/* Class = "UILabel"; text = "الرصيد الحالي"; ObjectID = "4bJ-9L-uf8"; */
+"4bJ-9L-uf8.text" = "الرصيد الحالي";
 
 /* Class = "UILabel"; text = "IFS"; ObjectID = "4sZ-Dv-I5v"; */
 "4sZ-Dv-I5v.text" = "IFS";
@@ -128,11 +128,11 @@
 /* Class = "UILabel"; text = "Label"; ObjectID = "5It-gK-utV"; */
 "5It-gK-utV.text" = "Label";
 
-/* Class = "UILabel"; text = "User Name"; ObjectID = "5Jt-nl-45l"; */
-"5Jt-nl-45l.text" = "User Name";
+/* Class = "UILabel"; text = "اسم المستخدم"; ObjectID = "5Jt-nl-45l"; */
+"5Jt-nl-45l.text" = "اسم المستخدم";
 
-/* Class = "UILabel"; text = "Top by Volume"; ObjectID = "5LM-U8-TaE"; */
-"5LM-U8-TaE.text" = "Top by Volume";
+/* Class = "UILabel"; text = "الأعلى بالحجم"; ObjectID = "5LM-U8-TaE"; */
+"5LM-U8-TaE.text" = "الأعلى بالحجم";
 
 /* Class = "UIButton"; normalTitle = "3 Y"; ObjectID = "5es-KY-xcg"; */
 "5es-KY-xcg.normalTitle" = "3 Y";
@@ -140,8 +140,8 @@
 /* Class = "UIButton"; normalTitle = "(+974) 4449 8888"; ObjectID = "5jS-t6-Wlv"; */
 "5jS-t6-Wlv.normalTitle" = "(+974) 4449 8888";
 
-/* Class = "UILabel"; text = "Arabic"; ObjectID = "5kh-t9-d7n"; */
-"5kh-t9-d7n.text" = "Arabic";
+/* Class = "UILabel"; text = "عربي"; ObjectID = "5kh-t9-d7n"; */
+"5kh-t9-d7n.text" = "عربي";
 
 /* Class = "UILabel"; text = "Label"; ObjectID = "5rd-6p-eMd"; */
 "5rd-6p-eMd.text" = "Label";
@@ -149,8 +149,8 @@
 /* Class = "UILabel"; text = "15,440.30"; ObjectID = "6Gf-f3-IQr"; */
 "6Gf-f3-IQr.text" = "15,440.30";
 
-/* Class = "UILabel"; text = "Email Address"; ObjectID = "6He-29-4PH"; */
-"6He-29-4PH.text" = "Email Address";
+/* Class = "UILabel"; text = "البريد الالكترونى"; ObjectID = "6He-29-4PH"; */
+"6He-29-4PH.text" = "البريد الالكترونى";
 
 /* Class = "UILabel"; text = "IFS"; ObjectID = "6TD-r0-1zd"; */
 "6TD-r0-1zd.text" = "IFS";
@@ -164,8 +164,8 @@
 /* Class = "UILabel"; text = "1"; ObjectID = "6oS-vd-MDQ"; */
 "6oS-vd-MDQ.text" = "1";
 
-/* Class = "UIButton"; normalTitle = "About Us"; ObjectID = "6qj-8T-yXF"; */
-"6qj-8T-yXF.normalTitle" = "About Us";
+/* Class = "UIButton"; normalTitle = "من نحن"; ObjectID = "6qj-8T-yXF"; */
+"6qj-8T-yXF.normalTitle" = "من نحن";
 
 /* Class = "UILabel"; text = "2323.44"; ObjectID = "6tb-6w-lSS"; */
 "6tb-6w-lSS.text" = "2323.44";
@@ -173,8 +173,8 @@
 /* Class = "UILabel"; text = "1"; ObjectID = "6vS-CN-mwZ"; */
 "6vS-CN-mwZ.text" = "1";
 
-/* Class = "UILabel"; text = "Order"; ObjectID = "71r-BI-KTr"; */
-"71r-BI-KTr.text" = "Order";
+/* Class = "UILabel"; text = "الأمر"; ObjectID = "71r-BI-KTr"; */
+"71r-BI-KTr.text" = "الأمر";
 
 /* Class = "UILabel"; text = "Label"; ObjectID = "78y-dh-YMV"; */
 "78y-dh-YMV.text" = "Label";
@@ -182,14 +182,14 @@
 /* Class = "UILabel"; text = "Label"; ObjectID = "7HZ-ra-mIZ"; */
 "7HZ-ra-mIZ.text" = "Label";
 
-/* Class = "UITabBarItem"; title = "QE Market"; ObjectID = "7I5-1N-fwc"; */
-"7I5-1N-fwc.title" = "QE Market";
+/* Class = "UITabBarItem"; title = "السوق"; ObjectID = "7I5-1N-fwc"; */
+"7I5-1N-fwc.title" = "السوق";
 
-/* Class = "UILabel"; text = "Day Low"; ObjectID = "7Jx-kX-crl"; */
-"7Jx-kX-crl.text" = "Day Low";
+/* Class = "UILabel"; text = "اقل سعر"; ObjectID = "7Jx-kX-crl"; */
+"7Jx-kX-crl.text" = "اقل سعر";
 
-/* Class = "UILabel"; text = "Limit"; ObjectID = "7Vk-o9-Wnx"; */
-"7Vk-o9-Wnx.text" = "Limit";
+/* Class = "UILabel"; text = "السعر"; ObjectID = "7Vk-o9-Wnx"; */
+"7Vk-o9-Wnx.text" = "السعر";
 
 /* Class = "UILabel"; text = "10,345,450"; ObjectID = "7gY-8Y-h9D"; */
 "7gY-8Y-h9D.text" = "10,345,450";
@@ -200,8 +200,8 @@
 /* Class = "UILabel"; text = "Label"; ObjectID = "7y1-eq-v88"; */
 "7y1-eq-v88.text" = "Label";
 
-/* Class = "UITabBarItem"; title = "My Favorites"; ObjectID = "82P-KD-Uu7"; */
-"82P-KD-Uu7.title" = "My Favorites";
+/* Class = "UITabBarItem"; title = "المفضلة"; ObjectID = "82P-KD-Uu7"; */
+"82P-KD-Uu7.title" = "المفضلة";
 
 /* Class = "UILabel"; text = "1"; ObjectID = "8Dp-kV-OMI"; */
 "8Dp-kV-OMI.text" = "1";
@@ -209,11 +209,11 @@
 /* Class = "UILabel"; text = "593,924.00"; ObjectID = "8Fs-AY-z3c"; */
 "8Fs-AY-z3c.text" = "593,924.00";
 
-/* Class = "UILabel"; text = "52 wk Low"; ObjectID = "8La-3d-TDF"; */
-"8La-3d-TDF.text" = "52 wk Low";
+/* Class = "UILabel"; text = "أدنى 52 إسبوع"; ObjectID = "8La-3d-TDF"; */
+"8La-3d-TDF.text" = "أدنى 52 إسبوع";
 
-/* Class = "UILabel"; text = "Last Deposit"; ObjectID = "8Vc-hw-bcj"; */
-"8Vc-hw-bcj.text" = "Last Deposit";
+/* Class = "UILabel"; text = "آخر إيداع"; ObjectID = "8Vc-hw-bcj"; */
+"8Vc-hw-bcj.text" = "آخر إيداع";
 
 /* Class = "UILabel"; text = "Date: 17-07-2016"; ObjectID = "8eo-XN-2Ci"; */
 "8eo-XN-2Ci.text" = "Date: 17-07-2016";
@@ -221,14 +221,14 @@
 /* Class = "UILabel"; text = "IFS"; ObjectID = "8fp-es-Yng"; */
 "8fp-es-Yng.text" = "IFS";
 
-/* Class = "UILabel"; text = "Confirm Password"; ObjectID = "8xL-5O-bm4"; */
-"8xL-5O-bm4.text" = "Confirm Password";
+/* Class = "UILabel"; text = "تأكيد كلمة المرور"; ObjectID = "8xL-5O-bm4"; */
+"8xL-5O-bm4.text" = "تأكيد كلمة المرور";
 
 /* Class = "UILabel"; text = "Label"; ObjectID = "96I-eq-5Sj"; */
 "96I-eq-5Sj.text" = "Label";
 
-/* Class = "UILabel"; text = "Email Address"; ObjectID = "99u-6R-WSg"; */
-"99u-6R-WSg.text" = "Email Address";
+/* Class = "UILabel"; text = "البريد الالكترونى"; ObjectID = "99u-6R-WSg"; */
+"99u-6R-WSg.text" = "البريد الالكترونى";
 
 /* Class = "UILabel"; text = "4646446464"; ObjectID = "9FD-BE-uwy"; */
 "9FD-BE-uwy.text" = "4646446464";
@@ -243,73 +243,73 @@
 "9Rp-ei-NX3.text" = "2";
 
 /* Class = "UILabel"; text = "Symbol"; ObjectID = "9Zx-3s-hJG"; */
-"9Zx-3s-hJG.text" = "Symbol";
+"9Zx-3s-hJG.text" = "الرمز";
 
-/* Class = "UILabel"; text = "Symbol"; ObjectID = "9iS-Dh-qBW"; */
-"9iS-Dh-qBW.text" = "Symbol";
+/* Class = "UILabel"; text = "الرمز"; ObjectID = "9iS-Dh-qBW"; */
+"9iS-Dh-qBW.text" = "الرمز";
 
 /* Class = "UILabel"; text = "12/06/2016"; ObjectID = "9z3-6W-Hhf"; */
 "9z3-6W-Hhf.text" = "12/06/2016";
 
 /* Class = "UILabel"; text = "Qty"; ObjectID = "A0c-17-Mmr"; */
-"A0c-17-Mmr.text" = "Qty";
+"A0c-17-Mmr.text" = "المنفذة";
 
-/* Class = "UILabel"; text = "Sit Back & Relax! while verify your mobile number"; ObjectID = "A7H-AO-nwd"; */
-"A7H-AO-nwd.text" = "Sit Back & Relax! while verify your mobile number";
+/* Class = "UILabel"; text = "الجلوس والاسترخاء! في حين تحقق رقم هاتفك النقال"; ObjectID = "A7H-AO-nwd"; */
+"A7H-AO-nwd.text" = "الجلوس والاسترخاء! في حين تحقق رقم هاتفك النقال";
 
-/* Class = "UILabel"; text = "Today's Change"; ObjectID = "Acj-X2-OEa"; */
-"Acj-X2-OEa.text" = "Today's Change";
+/* Class = "UILabel"; text = "التغير اليومي"; ObjectID = "Acj-X2-OEa"; */
+"Acj-X2-OEa.text" = "التغير اليومي";
 
 /* Class = "UIButton"; normalTitle = "1 M"; ObjectID = "AdD-bz-3zi"; */
 "AdD-bz-3zi.normalTitle" = "1 M";
 
-/* Class = "UILabel"; text = "Change Password"; ObjectID = "Al6-lK-T5m"; */
-"Al6-lK-T5m.text" = "Change Password";
+/* Class = "UILabel"; text = "تغيير كلمة المرور"; ObjectID = "Al6-lK-T5m"; */
+"Al6-lK-T5m.text" = "تغيير كلمة المرور";
 
-/* Class = "UITextField"; placeholder = "Password"; ObjectID = "B1R-nF-Sia"; */
-"B1R-nF-Sia.placeholder" = "Password";
+/* Class = "UITextField"; placeholder = "كلمة المرور"; ObjectID = "B1R-nF-Sia"; */
+"B1R-nF-Sia.placeholder" = "كلمة المرور";
 
-/* Class = "UILabel"; text = "Day High"; ObjectID = "B8h-AH-Pix"; */
-"B8h-AH-Pix.text" = "Day High";
+/* Class = "UILabel"; text = "اعلى سعر"; ObjectID = "B8h-AH-Pix"; */
+"B8h-AH-Pix.text" = "اعلى سعر";
 
-/* Class = "UILabel"; text = "Share Price"; ObjectID = "BGd-tk-L8c"; */
-"BGd-tk-L8c.text" = "Share Price";
+/* Class = "UILabel"; text = "سعر السهم"; ObjectID = "BGd-tk-L8c"; */
+"BGd-tk-L8c.text" = "سعر السهم";
 
 /* Class = "UILabel"; text = "Label"; ObjectID = "BKu-Gg-BVb"; */
 "BKu-Gg-BVb.text" = "Label";
 
-/* Class = "UISegmentedControl"; BP1-lS-6Ow.segmentTitles[0] = "Gainers"; ObjectID = "BP1-lS-6Ow"; */
-"BP1-lS-6Ow.segmentTitles[0]" = "Gainers";
+/* Class = "UISegmentedControl"; BP1-lS-6Ow.segmentTitles[0] = "الرابحون"; ObjectID = "BP1-lS-6Ow"; */
+"BP1-lS-6Ow.segmentTitles[0]" = "الرابحون";
 
-/* Class = "UISegmentedControl"; BP1-lS-6Ow.segmentTitles[1] = "Losers"; ObjectID = "BP1-lS-6Ow"; */
-"BP1-lS-6Ow.segmentTitles[1]" = "Losers";
+/* Class = "UISegmentedControl"; BP1-lS-6Ow.segmentTitles[1] = "الخاسرون"; ObjectID = "BP1-lS-6Ow"; */
+"BP1-lS-6Ow.segmentTitles[1]" = "الخاسرون";
 
 /* Class = "UILabel"; text = "Label"; ObjectID = "BW8-Wy-DPx"; */
 "BW8-Wy-DPx.text" = "Label";
 
 /* Class = "UILabel"; text = "Status"; ObjectID = "BXb-01-ZTM"; */
-"BXb-01-ZTM.text" = "Status";
+"BXb-01-ZTM.text" = "الحالة";
 
 /* Class = "UILabel"; text = "1"; ObjectID = "BfE-mN-ihy"; */
 "BfE-mN-ihy.text" = "1";
 
-/* Class = "UILabel"; text = "My Orders"; ObjectID = "Bgb-id-1rg"; */
-"Bgb-id-1rg.text" = "My Orders";
+/* Class = "UILabel"; text = "أوامرى"; ObjectID = "Bgb-id-1rg"; */
+"Bgb-id-1rg.text" = "أوامرى";
 
 /* Class = "UILabel"; text = "Label"; ObjectID = "Bnf-tg-Pnn"; */
 "Bnf-tg-Pnn.text" = "Label";
 
-/* Class = "UIButton"; normalTitle = "Latest News"; ObjectID = "BqC-MT-ikF"; */
-"BqC-MT-ikF.normalTitle" = "Latest News";
+/* Class = "UIButton"; normalTitle = "أخبار السهم"; ObjectID = "BqC-MT-ikF"; */
+"BqC-MT-ikF.normalTitle" = "أخبار السهم";
 
 /* Class = "UILabel"; text = "1"; ObjectID = "C7e-Ws-rTn"; */
 "C7e-Ws-rTn.text" = "1";
 
-/* Class = "UILabel"; text = "Qty"; ObjectID = "CbH-DX-hf8"; */
-"CbH-DX-hf8.text" = "Qty";
+/* Class = "UILabel"; text = "الكمية"; ObjectID = "CbH-DX-hf8"; */
+"CbH-DX-hf8.text" = "الكمية";
 
 /* Class = "UILabel"; text = "Cancelled"; ObjectID = "CsH-NF-JUK"; */
-"CsH-NF-JUK.text" = "Cancelled";
+"CsH-NF-JUK.text" = "ملغى";
 
 /* Class = "UILabel"; text = "Registration"; ObjectID = "D7L-rZ-wMO"; */
 "D7L-rZ-wMO.text" = "Registration";
@@ -317,8 +317,8 @@
 /* Class = "UILabel"; text = "1"; ObjectID = "DGN-KC-aOO"; */
 "DGN-KC-aOO.text" = "1";
 
-/* Class = "UITabBarItem"; title = "My Favorites"; ObjectID = "DQG-CP-e4X"; */
-"DQG-CP-e4X.title" = "My Favorites";
+/* Class = "UITabBarItem"; title = "المفضلة"; ObjectID = "DQG-CP-e4X"; */
+"DQG-CP-e4X.title" = "المفضلة";
 
 /* Class = "UIButton"; normalTitle = "1 D"; ObjectID = "DXz-DN-Hzl"; */
 "DXz-DN-Hzl.normalTitle" = "1 D";
@@ -326,14 +326,14 @@
 /* Class = "UILabel"; text = "Label"; ObjectID = "DZY-rn-KOL"; */
 "DZY-rn-KOL.text" = "Label";
 
-/* Class = "UILabel"; text = "Working Hours"; ObjectID = "Dbj-Nc-SoW"; */
-"Dbj-Nc-SoW.text" = "Working Hours";
+/* Class = "UILabel"; text = "مواعيد العمل"; ObjectID = "Dbj-Nc-SoW"; */
+"Dbj-Nc-SoW.text" = "مواعيد العمل";
 
-/* Class = "UILabel"; text = "Mailing Address"; ObjectID = "DfI-Q5-nD8"; */
-"DfI-Q5-nD8.text" = "Mailing Address";
+/* Class = "UILabel"; text = "العنوان البريدي"; ObjectID = "DfI-Q5-nD8"; */
+"DfI-Q5-nD8.text" = "العنوان البريدي";
 
-/* Class = "UILabel"; text = "Closed"; ObjectID = "Dl6-jt-e6J"; */
-"Dl6-jt-e6J.text" = "Closed";
+/* Class = "UILabel"; text = "مغلق"; ObjectID = "Dl6-jt-e6J"; */
+"Dl6-jt-e6J.text" = "مغلق";
 
 /* Class = "UILabel"; text = "1"; ObjectID = "Dsy-RQ-7JV"; */
 "Dsy-RQ-7JV.text" = "1";
@@ -341,17 +341,17 @@
 /* Class = "UIButton"; normalTitle = "1 Year"; ObjectID = "DzD-kn-mwg"; */
 "DzD-kn-mwg.normalTitle" = "1 Year";
 
-/* Class = "UILabel"; text = "No. of Shares"; ObjectID = "DzV-pt-i7N"; */
-"DzV-pt-i7N.text" = "No. of Shares";
+/* Class = "UILabel"; text = "عدد الأسهم"; ObjectID = "DzV-pt-i7N"; */
+"DzV-pt-i7N.text" = "عدد الأسهم";
 
-/* Class = "UILabel"; text = "English"; ObjectID = "ECP-Su-IJl"; */
-"ECP-Su-IJl.text" = "English";
+/* Class = "UILabel"; text = "إنجليزي"; ObjectID = "ECP-Su-IJl"; */
+"ECP-Su-IJl.text" = "إنجليزي";
 
 /* Class = "UILabel"; text = "1"; ObjectID = "Eft-kG-PAG"; */
 "Eft-kG-PAG.text" = "1";
 
-/* Class = "UILabel"; text = "Share Price"; ObjectID = "Evt-1l-azn"; */
-"Evt-1l-azn.text" = "Share Price";
+/* Class = "UILabel"; text = "سعر السهم"; ObjectID = "Evt-1l-azn"; */
+"Evt-1l-azn.text" = "سعر السهم";
 
 /* Class = "UILabel"; text = "Label"; ObjectID = "F2P-dg-OdK"; */
 "F2P-dg-OdK.text" = "Label";
@@ -365,38 +365,35 @@
 /* Class = "UILabel"; text = "Label"; ObjectID = "FL8-S5-djd"; */
 "FL8-S5-djd.text" = "Label";
 
-/* Class = "UIButton"; normalTitle = "Market Preview"; ObjectID = "FNk-1n-vmB"; */
-"FNk-1n-vmB.normalTitle" = "Market Preview";
-
 /* Class = "UILabel"; text = "17,602.30"; ObjectID = "Fnt-8s-i5w"; */
 "Fnt-8s-i5w.text" = "17,602.30";
 
 /* Class = "UILabel"; text = "Validity:18-07-2016"; ObjectID = "Fzl-9g-eTU"; */
 "Fzl-9g-eTU.text" = "Validity:18-07-2016";
 
-/* Class = "UILabel"; text = "Day H/L"; ObjectID = "GRg-CC-6He"; */
-"GRg-CC-6He.text" = "Day H/L";
+/* Class = "UILabel"; text = "أعلى/أدنى"; ObjectID = "GRg-CC-6He"; */
+"GRg-CC-6He.text" = "أعلى/أدنى";
 
-/* Class = "UILabel"; text = "Symbol"; ObjectID = "GSO-Bn-BSy"; */
-"GSO-Bn-BSy.text" = "Symbol";
+/* Class = "UILabel"; text = "الرمز"; ObjectID = "GSO-Bn-BSy"; */
+"GSO-Bn-BSy.text" = "الرمز";
 
 /* Class = "UIButton"; normalTitle = "1 M"; ObjectID = "Ge4-H6-TPL"; */
 "Ge4-H6-TPL.normalTitle" = "1 M";
 
-/* Class = "UILabel"; text = "Last Withdrawal"; ObjectID = "HAU-2a-btr"; */
-"HAU-2a-btr.text" = "Last Withdrawal";
+/* Class = "UILabel"; text = "آخر سحب"; ObjectID = "HAU-2a-btr"; */
+"HAU-2a-btr.text" = "آخر سحب";
 
-/* Class = "UILabel"; text = "Regd. Mobile Number"; ObjectID = "HAb-mA-eZl"; */
-"HAb-mA-eZl.text" = "Regd. Mobile Number";
+/* Class = "UILabel"; text = "رقم الجوال المعتمد"; ObjectID = "HAb-mA-eZl"; */
+"HAb-mA-eZl.text" = "رقم الجوال المعتمد";
 
-/* Class = "UITextField"; placeholder = "Symbol"; ObjectID = "HVk-9h-1yk"; */
-"HVk-9h-1yk.placeholder" = "Symbol";
+/* Class = "UITextField"; placeholder = "الرمز"; ObjectID = "HVk-9h-1yk"; */
+"HVk-9h-1yk.placeholder" = "الرمز";
 
 /* Class = "UILabel"; text = "Active"; ObjectID = "HYd-Ne-xpy"; */
-"HYd-Ne-xpy.text" = "Active";
+"HYd-Ne-xpy.text" = "نشط";
 
-/* Class = "UILabel"; text = "12,940.00 QR"; ObjectID = "HgE-6K-czy"; */
-"HgE-6K-czy.text" = "12,940.00 QR";
+/* Class = "UILabel"; text = "1,989,212.50 QR"; ObjectID = "HgE-6K-czy"; */
+"HgE-6K-czy.text" = "1,989,212.50 QR";
 
 /* Class = "UILabel"; text = "+1.71(+0.67%)"; ObjectID = "Hkj-v0-ovB"; */
 "Hkj-v0-ovB.text" = "+1.71(+0.67%)";
@@ -407,38 +404,38 @@
 /* Class = "UILabel"; text = "Label"; ObjectID = "HtG-Eh-jYH"; */
 "HtG-Eh-jYH.text" = "Label";
 
-/* Class = "UILabel"; text = "Change(%)"; ObjectID = "Hvc-oI-CmQ"; */
-"Hvc-oI-CmQ.text" = "Change(%)";
+/* Class = "UILabel"; text = "التغير(%)"; ObjectID = "Hvc-oI-CmQ"; */
+"Hvc-oI-CmQ.text" = "التغير(%)";
 
 /* Class = "UILabel"; text = "01/07/2016 10:00"; ObjectID = "Hwh-Yr-3bk"; */
 "Hwh-Yr-3bk.text" = "01/07/2016 10:00";
 
-/* Class = "UILabel"; text = "Order Value"; ObjectID = "I2W-eo-Fk8"; */
-"I2W-eo-Fk8.text" = "Order Value";
+/* Class = "UILabel"; text = "قيمة الأمر"; ObjectID = "I2W-eo-Fk8"; */
+"I2W-eo-Fk8.text" = "قيمة الأمر";
 
-/* Class = "UISegmentedControl"; I7u-My-eCY.segmentTitles[0] = "Summary"; ObjectID = "I7u-My-eCY"; */
-"I7u-My-eCY.segmentTitles[0]" = "Summary";
+/* Class = "UISegmentedControl"; I7u-My-eCY.segmentTitles[0] = "ملخص"; ObjectID = "I7u-My-eCY"; */
+"I7u-My-eCY.segmentTitles[0]" = "ملخص";
 
-/* Class = "UISegmentedControl"; I7u-My-eCY.segmentTitles[1] = "Market Depth"; ObjectID = "I7u-My-eCY"; */
-"I7u-My-eCY.segmentTitles[1]" = "Market Depth";
+/* Class = "UISegmentedControl"; I7u-My-eCY.segmentTitles[1] = "عمق السوق"; ObjectID = "I7u-My-eCY"; */
+"I7u-My-eCY.segmentTitles[1]" = "عمق السوق";
 
 /* Class = "UIButton"; normalTitle = "+"; ObjectID = "IAx-Mh-t0m"; */
 "IAx-Mh-t0m.normalTitle" = "+";
 
-/* Class = "UILabel"; text = "Ask Qty"; ObjectID = "IOh-jg-Rjg"; */
-"IOh-jg-Rjg.text" = "Ask Qty";
+/* Class = "UILabel"; text = "كمية العرض"; ObjectID = "IOh-jg-Rjg"; */
+"IOh-jg-Rjg.text" = "كمية العرض";
 
 /* Class = "UILabel"; text = "Validity:18-07-2016"; ObjectID = "IU7-Yu-iYh"; */
 "IU7-Yu-iYh.text" = "Validity:18-07-2016";
 
-/* Class = "UILabel"; text = "Buy"; ObjectID = "Ify-Ng-ApJ"; */
-"Ify-Ng-ApJ.text" = "Buy";
+/* Class = "UILabel"; text = "شراء"; ObjectID = "Ify-Ng-ApJ"; */
+"Ify-Ng-ApJ.text" = "شراء";
 
-/* Class = "UILabel"; text = "Selling (Shares)"; ObjectID = "IhU-D8-0rJ"; */
-"IhU-D8-0rJ.text" = "Selling (Shares)";
+/* Class = "UILabel"; text = "البيع(الأسهم)"; ObjectID = "IhU-D8-0rJ"; */
+"IhU-D8-0rJ.text" = "البيع(الأسهم)";
 
 /* Class = "UITabBarItem"; title = "My Orders"; ObjectID = "J4f-SD-xxS"; */
-"J4f-SD-xxS.title" = "My Orders";
+"J4f-SD-xxS.title" = "أوامرى";
 
 /* Class = "UILabel"; text = "Close: 1,673.45"; ObjectID = "JAN-oY-HfI"; */
 "JAN-oY-HfI.text" = "Close: 1,673.45";
@@ -446,11 +443,11 @@
 /* Class = "UILabel"; text = "223,342,414"; ObjectID = "JH4-GT-Ip6"; */
 "JH4-GT-Ip6.text" = "223,342,414";
 
-/* Class = "UILabel"; text = "Duration"; ObjectID = "JVe-17-rMx"; */
-"JVe-17-rMx.text" = "Duration";
+/* Class = "UILabel"; text = "المدة"; ObjectID = "JVe-17-rMx"; */
+"JVe-17-rMx.text" = "المدة";
 
-/* Class = "UILabel"; text = "Sectors"; ObjectID = "Jad-Kd-HOL"; */
-"Jad-Kd-HOL.text" = "Sectors";
+/* Class = "UILabel"; text = "القطاعات"; ObjectID = "Jad-Kd-HOL"; */
+"Jad-Kd-HOL.text" = "القطاعات";
 
 /* Class = "UILabel"; text = "+2.12"; ObjectID = "Jii-Dt-Scm"; */
 "Jii-Dt-Scm.text" = "+2.12";
@@ -461,11 +458,11 @@
 /* Class = "UILabel"; text = "BUY GOOGL"; ObjectID = "KKU-WL-J73"; */
 "KKU-WL-J73.text" = "BUY GOOGL";
 
-/* Class = "UILabel"; text = "Top by Value"; ObjectID = "KMv-gp-S1I"; */
-"KMv-gp-S1I.text" = "Top by Value";
+/* Class = "UILabel"; text = "الأعلى بالقيمة"; ObjectID = "KMv-gp-S1I"; */
+"KMv-gp-S1I.text" = "الأعلى بالقيمة";
 
-/* Class = "UIButton"; normalTitle = "Calculate"; ObjectID = "Khl-rr-r0j"; */
-"Khl-rr-r0j.normalTitle" = "Calculate";
+/* Class = "UIButton"; normalTitle = "إحسب"; ObjectID = "Khl-rr-r0j"; */
+"Khl-rr-r0j.normalTitle" = "إحسب";
 
 /* Class = "UILabel"; text = "5,000"; ObjectID = "Ksc-56-mU7"; */
 "Ksc-56-mU7.text" = "5,000";
@@ -473,8 +470,8 @@
 /* Class = "UILabel"; text = "18,380.30"; ObjectID = "L8g-Cg-RHO"; */
 "L8g-Cg-RHO.text" = "18,380.30";
 
-/* Class = "UILabel"; text = "Arabic"; ObjectID = "LHt-rB-0OU"; */
-"LHt-rB-0OU.text" = "Arabic";
+/* Class = "UILabel"; text = "عربي"; ObjectID = "LHt-rB-0OU"; */
+"LHt-rB-0OU.text" = "عربي";
 
 /* Class = "UILabel"; text = "Label"; ObjectID = "LKb-ly-gfn"; */
 "LKb-ly-gfn.text" = "Label";
@@ -485,8 +482,8 @@
 /* Class = "UILabel"; text = "12/06/2016"; ObjectID = "Lfy-YB-dfZ"; */
 "Lfy-YB-dfZ.text" = "12/06/2016";
 
-/* Class = "UIButton"; normalTitle = "Submit"; ObjectID = "LmB-Pn-2V6"; */
-"LmB-Pn-2V6.normalTitle" = "Submit";
+/* Class = "UIButton"; normalTitle = "ارسال"; ObjectID = "LmB-Pn-2V6"; */
+"LmB-Pn-2V6.normalTitle" = "ارسال";
 
 /* Class = "UILabel"; text = "Label"; ObjectID = "M2J-3W-azQ"; */
 "M2J-3W-azQ.text" = "Label";
@@ -500,41 +497,41 @@
 /* Class = "UILabel"; text = "IFS"; ObjectID = "MNO-pW-Is9"; */
 "MNO-pW-Is9.text" = "IFS";
 
-/* Class = "UILabel"; text = "Language"; ObjectID = "MPp-ug-tZa"; */
-"MPp-ug-tZa.text" = "Language";
+/* Class = "UILabel"; text = "اللغة"; ObjectID = "MPp-ug-tZa"; */
+"MPp-ug-tZa.text" = "اللغة";
 
-/* Class = "UITabBarItem"; title = "New Order"; ObjectID = "MPu-oA-jgg"; */
-"MPu-oA-jgg.title" = "New Order";
+/* Class = "UITabBarItem"; title = "أمر جديد"; ObjectID = "MPu-oA-jgg"; */
+"MPu-oA-jgg.title" = "أمر جديد";
 
-/* Class = "UIButton"; normalTitle = "Month"; ObjectID = "MV4-K0-BVc"; */
-"MV4-K0-BVc.normalTitle" = "Month";
+/* Class = "UIButton"; normalTitle = "شهر"; ObjectID = "MV4-K0-BVc"; */
+"MV4-K0-BVc.normalTitle" = "شهر";
 
 /* Class = "UILabel"; text = "17,512.30"; ObjectID = "MWN-KG-1A0"; */
 "MWN-KG-1A0.text" = "17,512.30";
 
-/* Class = "UIButton"; normalTitle = "Send Order"; ObjectID = "MWu-xg-Mkn"; */
-"MWu-xg-Mkn.normalTitle" = "Send Order";
+/* Class = "UIButton"; normalTitle = "إرسال الأمر"; ObjectID = "MWu-xg-Mkn"; */
+"MWu-xg-Mkn.normalTitle" = "إرسال الأمر";
 
-/* Class = "UILabel"; text = "Market by Price"; ObjectID = "Ml7-2d-jLh"; */
-"Ml7-2d-jLh.text" = "Market by Price";
+/* Class = "UILabel"; text = "السوق حسب السعر"; ObjectID = "Ml7-2d-jLh"; */
+"Ml7-2d-jLh.text" = "السوق حسب السعر";
 
-/* Class = "UILabel"; text = "Order Type"; ObjectID = "MtK-G1-7pC"; */
-"MtK-G1-7pC.text" = "Order Type";
+/* Class = "UILabel"; text = "نوع الأمر"; ObjectID = "MtK-G1-7pC"; */
+"MtK-G1-7pC.text" = "نوع الأمر";
 
-/* Class = "UILabel"; text = "Transaction"; ObjectID = "N2n-dM-8Vl"; */
-"N2n-dM-8Vl.text" = "Transaction";
+/* Class = "UILabel"; text = "الحركة"; ObjectID = "N2n-dM-8Vl"; */
+"N2n-dM-8Vl.text" = "الحركة";
 
 /* Class = "UILabel"; text = "2"; ObjectID = "NAr-3W-o8H"; */
 "NAr-3W-o8H.text" = "2";
 
-/* Class = "UITextField"; placeholder = "Enter OTP"; ObjectID = "Nb9-BK-GG9"; */
-"Nb9-BK-GG9.placeholder" = "Enter OTP";
+/* Class = "UITextField"; placeholder = "إدخال OTP"; ObjectID = "Nb9-BK-GG9"; */
+"Nb9-BK-GG9.placeholder" = "إدخال OTP";
 
-/* Class = "UILabel"; text = "Gain/Loss"; ObjectID = "Ncf-Qg-gzB"; */
-"Ncf-Qg-gzB.text" = "Gain/Loss";
+/* Class = "UILabel"; text = "ربح/خسارة"; ObjectID = "Ncf-Qg-gzB"; */
+"Ncf-Qg-gzB.text" = "ربح/خسارة";
 
-/* Class = "UIButton"; normalTitle = "Sectors"; ObjectID = "Nds-aV-tXV"; */
-"Nds-aV-tXV.normalTitle" = "Sectors";
+/* Class = "UIButton"; normalTitle = "القطاعات"; ObjectID = "Nds-aV-tXV"; */
+"Nds-aV-tXV.normalTitle" = "القطاعات";
 
 /* Class = "UILabel"; text = "Google Inc"; ObjectID = "Nei-r6-j7j"; */
 "Nei-r6-j7j.text" = "Google Inc";
@@ -542,20 +539,20 @@
 /* Class = "UILabel"; text = "2,000.00"; ObjectID = "NfW-hm-sLe"; */
 "NfW-hm-sLe.text" = "2,000.00";
 
-/* Class = "UILabel"; text = "No. of Trades"; ObjectID = "Nia-al-UeT"; */
-"Nia-al-UeT.text" = "No. of Trades";
+/* Class = "UILabel"; text = "عدد الصفقات"; ObjectID = "Nia-al-UeT"; */
+"Nia-al-UeT.text" = "عدد الصفقات";
 
-/* Class = "UILabel"; text = "Disclosed Order"; ObjectID = "NoW-j7-qST"; */
-"NoW-j7-qST.text" = "Disclosed Order";
+/* Class = "UILabel"; text = "الكمية المعلنه"; ObjectID = "NoW-j7-qST"; */
+"NoW-j7-qST.text" = "الكمية المعلنه";
 
 /* Class = "UILabel"; text = "+0.12%"; ObjectID = "Noz-ej-dGT"; */
 "Noz-ej-dGT.text" = "+0.12%";
 
-/* Class = "UILabel"; text = "Day High"; ObjectID = "NpX-tk-B2Y"; */
-"NpX-tk-B2Y.text" = "Day High";
+/* Class = "UILabel"; text = "أعلى سعر"; ObjectID = "NpX-tk-B2Y"; */
+"NpX-tk-B2Y.text" = "أعلى سعر";
 
-/* Class = "UILabel"; text = "Account"; ObjectID = "Nud-kj-Y7X"; */
-"Nud-kj-Y7X.text" = "Account";
+/* Class = "UILabel"; text = "الحساب"; ObjectID = "Nud-kj-Y7X"; */
+"Nud-kj-Y7X.text" = "الحساب";
 
 /* Class = "UILabel"; text = "First Name"; ObjectID = "OAz-Ey-cRA"; */
 "OAz-Ey-cRA.text" = "First Name";
@@ -563,26 +560,26 @@
 /* Class = "UILabel"; text = "17,480.30"; ObjectID = "OB4-sG-zeq"; */
 "OB4-sG-zeq.text" = "17,480.30";
 
-/* Class = "UILabel"; text = "Bid Qty"; ObjectID = "OJZ-Oe-SMO"; */
-"OJZ-Oe-SMO.text" = "Bid Qty";
+/* Class = "UILabel"; text = "كمية الطلب"; ObjectID = "OJZ-Oe-SMO"; */
+"OJZ-Oe-SMO.text" = "كمية الطلب";
 
-/* Class = "UILabel"; text = "Facilities"; ObjectID = "OKI-WH-fdw"; */
-"OKI-WH-fdw.text" = "Facilities";
+/* Class = "UILabel"; text = "تسهيلات"; ObjectID = "OKI-WH-fdw"; */
+"OKI-WH-fdw.text" = "تسهيلات";
 
-/* Class = "UILabel"; text = "Share Price"; ObjectID = "OKd-4b-WMh"; */
-"OKd-4b-WMh.text" = "Share Price";
+/* Class = "UILabel"; text = "سعر السهم"; ObjectID = "OKd-4b-WMh"; */
+"OKd-4b-WMh.text" = "سعر السهم";
 
 /* Class = "UILabel"; text = "Fall Below"; ObjectID = "OQw-ML-W8s"; */
 "OQw-ML-W8s.text" = "Fall Below";
 
-/* Class = "UILabel"; text = "Trading Assistance"; ObjectID = "OdS-Ma-3yL"; */
-"OdS-Ma-3yL.text" = "Trading Assistance";
+/* Class = "UILabel"; text = "مساعدة التداول"; ObjectID = "OdS-Ma-3yL"; */
+"OdS-Ma-3yL.text" = "مساعدة التداول";
 
-/* Class = "UITextField"; placeholder = "User Name"; ObjectID = "OjY-Zo-Fem"; */
-"OjY-Zo-Fem.placeholder" = "User Name";
+/* Class = "UITextField"; placeholder = "اسم المستخدم"; ObjectID = "OjY-Zo-Fem"; */
+"OjY-Zo-Fem.placeholder" = "اسم المستخدم";
 
-/* Class = "UILabel"; text = "Avg. Price"; ObjectID = "P21-NT-Fot"; */
-"P21-NT-Fot.text" = "Avg. Price";
+/* Class = "UILabel"; text = "متوسط السعر"; ObjectID = "P21-NT-Fot"; */
+"P21-NT-Fot.text" = "متوسط السعر";
 
 /* Class = "UILabel"; text = "Label"; ObjectID = "P3a-Fe-txZ"; */
 "P3a-Fe-txZ.text" = "Label";
@@ -599,26 +596,26 @@
 /* Class = "UILabel"; text = "IFS"; ObjectID = "Pmj-Bd-IpW"; */
 "Pmj-Bd-IpW.text" = "IFS";
 
-/* Class = "UILabel"; text = "Limit Up"; ObjectID = "PpN-gg-IFa"; */
-"PpN-gg-IFa.text" = "Limit Up";
+/* Class = "UILabel"; text = "الحد الأعلى"; ObjectID = "PpN-gg-IFa"; */
+"PpN-gg-IFa.text" = "الحد الأعلى";
 
-/* Class = "UILabel"; text = "Sunday - Thursday: 08:00 AM to 02:30 PM"; ObjectID = "QEe-cP-I9h"; */
-"QEe-cP-I9h.text" = "Sunday - Thursday: 08:00 AM to 02:30 PM";
+/* Class = "UILabel"; text = "الاحد - الخميس : 8:00 صباحا الى 2:30 مساء"; ObjectID = "QEe-cP-I9h"; */
+"QEe-cP-I9h.text" = "الاحد - الخميس : 8:00 صباحا الى 2:30 مساء";
 
 /* Class = "UILabel"; text = "My Orders"; ObjectID = "QKs-Zm-ZIB"; */
-"QKs-Zm-ZIB.text" = "My Orders";
+"QKs-Zm-ZIB.text" = "أوامرى";
 
 /* Class = "UILabel"; text = "Label"; ObjectID = "QVT-6N-WsL"; */
 "QVT-6N-WsL.text" = "Label";
 
-/* Class = "UILabel"; text = "Bid Qty"; ObjectID = "QWx-Aa-ZHd"; */
-"QWx-Aa-ZHd.text" = "Bid Qty";
+/* Class = "UILabel"; text = "كمية الطلب"; ObjectID = "QWx-Aa-ZHd"; */
+"QWx-Aa-ZHd.text" = "كمية الطلب";
 
-/* Class = "UILabel"; text = "Bid"; ObjectID = "Qeg-ke-ucY"; */
-"Qeg-ke-ucY.text" = "Bid";
+/* Class = "UILabel"; text = "طلب"; ObjectID = "Qeg-ke-ucY"; */
+"Qeg-ke-ucY.text" = "طلب";
 
 /* Class = "UILabel"; text = "Executed"; ObjectID = "QjS-LJ-umI"; */
-"QjS-LJ-umI.text" = "Executed";
+"QjS-LJ-umI.text" = "الكمية";
 
 /* Class = "UIButton"; normalTitle = "+"; ObjectID = "Qja-5k-KhE"; */
 "Qja-5k-KhE.normalTitle" = "+";
@@ -632,23 +629,23 @@
 /* Class = "UILabel"; text = "Date:18-07-2016 10:30:23 AM"; ObjectID = "Qy5-6G-Sud"; */
 "Qy5-6G-Sud.text" = "Date:18-07-2016 10:30:23 AM";
 
-/* Class = "UILabel"; text = "Change(%)"; ObjectID = "RIU-vM-0bN"; */
-"RIU-vM-0bN.text" = "Change(%)";
+/* Class = "UILabel"; text = "التغير(%)"; ObjectID = "RIU-vM-0bN"; */
+"RIU-vM-0bN.text" = "التغير(%)";
 
-/* Class = "UILabel"; text = "No. of Shares"; ObjectID = "RiB-vi-ajT"; */
-"RiB-vi-ajT.text" = "No. of Shares";
+/* Class = "UILabel"; text = "عدد الأسهم"; ObjectID = "RiB-vi-ajT"; */
+"RiB-vi-ajT.text" = "عدد الأسهم";
 
-/* Class = "UIButton"; normalTitle = "Do Not Send"; ObjectID = "STz-71-BhO"; */
-"STz-71-BhO.normalTitle" = "Do Not Send";
+/* Class = "UIButton"; normalTitle = "عدم الإرسال"; ObjectID = "STz-71-BhO"; */
+"STz-71-BhO.normalTitle" = "عدم الإرسال";
 
-/* Class = "UILabel"; text = "Last Price"; ObjectID = "SUG-GN-5xB"; */
-"SUG-GN-5xB.text" = "Last Price";
+/* Class = "UILabel"; text = "اخر سعر"; ObjectID = "SUG-GN-5xB"; */
+"SUG-GN-5xB.text" = "اخر سعر";
 
-/* Class = "UILabel"; text = "No. of Shares"; ObjectID = "SZ6-YN-l4z"; */
-"SZ6-YN-l4z.text" = "No. of Shares";
+/* Class = "UILabel"; text = "عدد الأسهم"; ObjectID = "SZ6-YN-l4z"; */
+"SZ6-YN-l4z.text" = "عدد الأسهم";
 
-/* Class = "UILabel"; text = "Cash"; ObjectID = "SuZ-4R-kSX"; */
-"SuZ-4R-kSX.text" = "Cash";
+/* Class = "UILabel"; text = "النقد"; ObjectID = "SuZ-4R-kSX"; */
+"SuZ-4R-kSX.text" = "النقد";
 
 /* Class = "UILabel"; text = "Label"; ObjectID = "SwZ-no-3h6"; */
 "SwZ-no-3h6.text" = "Label";
@@ -662,8 +659,8 @@
 /* Class = "UILabel"; text = "Buy 100 AAPL @ Market"; ObjectID = "Taf-ZX-CXb"; */
 "Taf-ZX-CXb.text" = "Buy 100 AAPL @ Market";
 
-/* Class = "UILabel"; text = "Date"; ObjectID = "Td5-Gq-ruD"; */
-"Td5-Gq-ruD.text" = "Date";
+/* Class = "UILabel"; text = "التاريخ"; ObjectID = "Td5-Gq-ruD"; */
+"Td5-Gq-ruD.text" = "التاريخ";
 
 /* Class = "UILabel"; text = "15,440.30"; ObjectID = "TnD-A3-UiZ"; */
 "TnD-A3-UiZ.text" = "15,440.30";
@@ -677,11 +674,11 @@
 /* Class = "UILabel"; text = "Notes:18-07-2016"; ObjectID = "TtW-hZ-jA4"; */
 "TtW-hZ-jA4.text" = "Notes:18-07-2016";
 
-/* Class = "UILabel"; text = "Chg"; ObjectID = "Tw9-ie-zvn"; */
-"Tw9-ie-zvn.text" = "Chg";
+/* Class = "UILabel"; text = "التغير"; ObjectID = "Tw9-ie-zvn"; */
+"Tw9-ie-zvn.text" = "التغير";
 
-/* Class = "UIButton"; normalTitle = "Rate Us"; ObjectID = "U2z-ys-pC3"; */
-"U2z-ys-pC3.normalTitle" = "Rate Us";
+/* Class = "UIButton"; normalTitle = "قيمنا"; ObjectID = "U2z-ys-pC3"; */
+"U2z-ys-pC3.normalTitle" = "قيمنا";
 
 /* Class = "UILabel"; text = "#"; ObjectID = "UB5-Nf-QhM"; */
 "UB5-Nf-QhM.text" = "#";
@@ -692,8 +689,8 @@
 /* Class = "UILabel"; text = "4"; ObjectID = "UCp-kq-nDW"; */
 "UCp-kq-nDW.text" = "4";
 
-/* Class = "UILabel"; text = "Order Value"; ObjectID = "UJf-Gl-yBE"; */
-"UJf-Gl-yBE.text" = "Order Value";
+/* Class = "UILabel"; text = "قيمة الأمر"; ObjectID = "UJf-Gl-yBE"; */
+"UJf-Gl-yBE.text" = "قيمة الأمر";
 
 /* Class = "UILabel"; text = "Label"; ObjectID = "UNm-Jz-uCr"; */
 "UNm-Jz-uCr.text" = "Label";
@@ -704,32 +701,32 @@
 /* Class = "UILabel"; text = "31,000,000.00"; ObjectID = "USh-6E-8ij"; */
 "USh-6E-8ij.text" = "31,000,000.00";
 
-/* Class = "UIButton"; normalTitle = "Cancel"; ObjectID = "UX4-gU-pn1"; */
-"UX4-gU-pn1.normalTitle" = "Cancel";
+/* Class = "UIButton"; normalTitle = "إلغاء"; ObjectID = "UX4-gU-pn1"; */
+"UX4-gU-pn1.normalTitle" = "إلغاء";
 
 /* Class = "UILabel"; text = "GOOGL"; ObjectID = "Ulc-9g-cC4"; */
 "Ulc-9g-cC4.text" = "GOOGL";
 
-/* Class = "UILabel"; text = "CASH POSITION"; ObjectID = "UtJ-Tq-lLI"; */
-"UtJ-Tq-lLI.text" = "CASH POSITION";
+/* Class = "UILabel"; text = "الرصيد النقدي"; ObjectID = "UtJ-Tq-lLI"; */
+"UtJ-Tq-lLI.text" = "الرصيد النقدي";
 
-/* Class = "UILabel"; text = "Bid"; ObjectID = "VCb-pU-pT0"; */
-"VCb-pU-pT0.text" = "Bid";
+/* Class = "UILabel"; text = "طلب"; ObjectID = "VCb-pU-pT0"; */
+"VCb-pU-pT0.text" = "طلب";
 
-/* Class = "UILabel"; text = "Today's Open"; ObjectID = "VX0-iH-cnh"; */
-"VX0-iH-cnh.text" = "Today's Open";
+/* Class = "UILabel"; text = "سعر الافتتاح"; ObjectID = "VX0-iH-cnh"; */
+"VX0-iH-cnh.text" = "سعر الافتتاح";
 
-/* Class = "UILabel"; text = "Buying Power"; ObjectID = "Vfw-gX-ZzH"; */
-"Vfw-gX-ZzH.text" = "Buying Power";
+/* Class = "UILabel"; text = "القوة الشرائية"; ObjectID = "Vfw-gX-ZzH"; */
+"Vfw-gX-ZzH.text" = "القوة الشرائية";
 
 /* Class = "UILabel"; text = "4"; ObjectID = "Vk8-Wu-jn2"; */
 "Vk8-Wu-jn2.text" = "4";
 
-/* Class = "UILabel"; text = "Symbol"; ObjectID = "Vnx-AJ-DpJ"; */
-"Vnx-AJ-DpJ.text" = "Symbol";
+/* Class = "UILabel"; text = "الرمز"; ObjectID = "Vnx-AJ-DpJ"; */
+"Vnx-AJ-DpJ.text" = "الرمز";
 
-/* Class = "UILabel"; text = "Order ID"; ObjectID = "Vth-wL-XpV"; */
-"Vth-wL-XpV.text" = "Order ID";
+/* Class = "UILabel"; text = "رقم الأمر"; ObjectID = "Vth-wL-XpV"; */
+"Vth-wL-XpV.text" = "رقم الأمر";
 
 /* Class = "UILabel"; text = "+0.12%"; ObjectID = "W8H-EU-FVb"; */
 "W8H-EU-FVb.text" = "+0.12%";
@@ -740,14 +737,14 @@
 /* Class = "UILabel"; text = "1"; ObjectID = "WmH-Or-6gT"; */
 "WmH-Or-6gT.text" = "1";
 
-/* Class = "UILabel"; text = "Quantity"; ObjectID = "Wz3-aa-H7q"; */
-"Wz3-aa-H7q.text" = "Quantity";
+/* Class = "UILabel"; text = "الكمية"; ObjectID = "Wz3-aa-H7q"; */
+"Wz3-aa-H7q.text" = "الكمية";
 
-/* Class = "UILabel"; text = "Active"; ObjectID = "X2x-ku-bxf"; */
-"X2x-ku-bxf.text" = "Active";
+/* Class = "UILabel"; text = "نشط"; ObjectID = "X2x-ku-bxf"; */
+"X2x-ku-bxf.text" = "نشط";
 
-/* Class = "UILabel"; text = "Good Till Week"; ObjectID = "XKM-JO-abw"; */
-"XKM-JO-abw.text" = "Good Till Week";
+/* Class = "UILabel"; text = "إسبوع"; ObjectID = "XKM-JO-abw"; */
+"XKM-JO-abw.text" = "إسبوع";
 
 /* Class = "UILabel"; text = "Label"; ObjectID = "XR1-Q0-JBL"; */
 "XR1-Q0-JBL.text" = "Label";
@@ -758,11 +755,11 @@
 /* Class = "UILabel"; text = "Label"; ObjectID = "XhL-nG-Cte"; */
 "XhL-nG-Cte.text" = "Label";
 
-/* Class = "UIButton"; normalTitle = "Create Order"; ObjectID = "Xua-cc-J4V"; */
-"Xua-cc-J4V.normalTitle" = "Create Order";
+/* Class = "UIButton"; normalTitle = "إنشاء أمر"; ObjectID = "Xua-cc-J4V"; */
+"Xua-cc-J4V.normalTitle" = "إنشاء أمر";
 
-/* Class = "UILabel"; text = "Cash"; ObjectID = "YCc-GY-t1X"; */
-"YCc-GY-t1X.text" = "Cash";
+/* Class = "UILabel"; text = "النقد"; ObjectID = "YCc-GY-t1X"; */
+"YCc-GY-t1X.text" = "النقد";
 
 /* Class = "UILabel"; text = "IFS"; ObjectID = "YHF-SQ-PTl"; */
 "YHF-SQ-PTl.text" = "IFS";
@@ -774,10 +771,10 @@
 "Yjv-cD-iJO.normalTitle" = "New User?";
 
 /* Class = "UILabel"; text = "Buy"; ObjectID = "Z5k-Jb-846"; */
-"Z5k-Jb-846.text" = "Buy";
+"Z5k-Jb-846.text" = "شراء";
 
-/* Class = "UIButton"; normalTitle = "New Order"; ObjectID = "Z6J-iY-xlc"; */
-"Z6J-iY-xlc.normalTitle" = "New Order";
+/* Class = "UIButton"; normalTitle = "أمر جديد"; ObjectID = "Z6J-iY-xlc"; */
+"Z6J-iY-xlc.normalTitle" = "أمر جديد";
 
 /* Class = "UILabel"; text = "6,000"; ObjectID = "Z6w-hx-Fps"; */
 "Z6w-hx-Fps.text" = "6,000";
@@ -785,20 +782,17 @@
 /* Class = "UIButton"; normalTitle = "6 M"; ObjectID = "ZDF-tc-zel"; */
 "ZDF-tc-zel.normalTitle" = "6 M";
 
-/* Class = "UILabel"; text = "Limit Down"; ObjectID = "ZRq-Bk-QnN"; */
-"ZRq-Bk-QnN.text" = "Limit Down";
+/* Class = "UILabel"; text = "كلمة المرور الجديدة"; ObjectID = "ZS5-xt-yjW"; */
+"ZS5-xt-yjW.text" = "كلمة المرور الجديدة";
 
-/* Class = "UILabel"; text = "New Password"; ObjectID = "ZS5-xt-yjW"; */
-"ZS5-xt-yjW.text" = "New Password";
+/* Class = "UILabel"; text = "(أدناه OTP الرجاء إدخال)"; ObjectID = "ZXm-CV-ckf"; */
+"ZXm-CV-ckf.text" = "(أدناه OTP الرجاء إدخال)";
 
-/* Class = "UILabel"; text = "(Please enter the OTP below)"; ObjectID = "ZXm-CV-ckf"; */
-"ZXm-CV-ckf.text" = "(Please enter the OTP below)";
+/* Class = "UILabel"; text = "السعر"; ObjectID = "Zc3-NK-rwl"; */
+"Zc3-NK-rwl.text" = "السعر";
 
-/* Class = "UILabel"; text = "Price"; ObjectID = "Zc3-NK-rwl"; */
-"Zc3-NK-rwl.text" = "Price";
-
-/* Class = "UILabel"; text = "Today's Open"; ObjectID = "Zkh-mt-pA3"; */
-"Zkh-mt-pA3.text" = "Today's Open";
+/* Class = "UILabel"; text = "سعر الافتتاح"; ObjectID = "Zkh-mt-pA3"; */
+"Zkh-mt-pA3.text" = "سعر الافتتاح";
 
 /* Class = "UILabel"; text = "273,964.00"; ObjectID = "Zya-Aw-GRg"; */
 "Zya-Aw-GRg.text" = "273,964.00";
@@ -806,11 +800,11 @@
 /* Class = "UILabel"; text = "Rise Above"; ObjectID = "a93-On-xQC"; */
 "a93-On-xQC.text" = "Rise Above";
 
-/* Class = "UILabel"; text = "Prev. Close"; ObjectID = "aCB-7P-ND5"; */
-"aCB-7P-ND5.text" = "Prev. Close";
+/* Class = "UILabel"; text = "الإغلاق السابق"; ObjectID = "aCB-7P-ND5"; */
+"aCB-7P-ND5.text" = "الإغلاق السابق";
 
 /* Class = "UISearchBar"; placeholder = "Symbol/Company Name"; ObjectID = "aCb-6v-vme"; */
-"aCb-6v-vme.placeholder" = "Symbol/Company Name";
+"aCb-6v-vme.placeholder" = "الرمز/إسم الشركة";
 
 /* Class = "UILabel"; text = "12-04-2017 34:34:34"; ObjectID = "aHS-yQ-GKk"; */
 "aHS-yQ-GKk.text" = "12-04-2017 34:34:34";
@@ -827,50 +821,50 @@
 /* Class = "UIButton"; normalTitle = "1 Y"; ObjectID = "aWI-5D-HVV"; */
 "aWI-5D-HVV.normalTitle" = "1 Y";
 
-/* Class = "UILabel"; text = "Qty"; ObjectID = "ajz-ey-l6E"; */
-"ajz-ey-l6E.text" = "Qty";
+/* Class = "UILabel"; text = "الكمية"; ObjectID = "ajz-ey-l6E"; */
+"ajz-ey-l6E.text" = "الكمية";
 
-/* Class = "UISegmentedControl"; an0-ca-BjY.segmentTitles[0] = "Active"; ObjectID = "an0-ca-BjY"; */
-"an0-ca-BjY.segmentTitles[0]" = "Active";
+/* Class = "UISegmentedControl"; an0-ca-BjY.segmentTitles[0] = "نشط"; ObjectID = "an0-ca-BjY"; */
+"an0-ca-BjY.segmentTitles[0]" = "نشط";
 
-/* Class = "UISegmentedControl"; an0-ca-BjY.segmentTitles[1] = "Filled"; ObjectID = "an0-ca-BjY"; */
-"an0-ca-BjY.segmentTitles[1]" = "Filled";
+/* Class = "UISegmentedControl"; an0-ca-BjY.segmentTitles[1] = "منفذ"; ObjectID = "an0-ca-BjY"; */
+"an0-ca-BjY.segmentTitles[1]" = "منفذ";
 
-/* Class = "UISegmentedControl"; an0-ca-BjY.segmentTitles[2] = "P.Filled"; ObjectID = "an0-ca-BjY"; */
-"an0-ca-BjY.segmentTitles[2]" = "P.Filled";
+/* Class = "UISegmentedControl"; an0-ca-BjY.segmentTitles[2] = "منفذ جزئى"; ObjectID = "an0-ca-BjY"; */
+"an0-ca-BjY.segmentTitles[2]" = "منفذ جزئى";
 
-/* Class = "UISegmentedControl"; an0-ca-BjY.segmentTitles[3] = "Cancelled"; ObjectID = "an0-ca-BjY"; */
-"an0-ca-BjY.segmentTitles[3]" = "Cancelled";
+/* Class = "UISegmentedControl"; an0-ca-BjY.segmentTitles[3] = "ملغى"; ObjectID = "an0-ca-BjY"; */
+"an0-ca-BjY.segmentTitles[3]" = "ملغى";
 
-/* Class = "UISegmentedControl"; an0-ca-BjY.segmentTitles[4] = "Expired"; ObjectID = "an0-ca-BjY"; */
-"an0-ca-BjY.segmentTitles[4]" = "Expired";
+/* Class = "UISegmentedControl"; an0-ca-BjY.segmentTitles[4] = "منتهى"; ObjectID = "an0-ca-BjY"; */
+"an0-ca-BjY.segmentTitles[4]" = "منتهى";
 
-/* Class = "UILabel"; text = "Order Confirmation"; ObjectID = "apz-YS-R5b"; */
-"apz-YS-R5b.text" = "Order Confirmation";
+/* Class = "UILabel"; text = "تأكيد الأمر"; ObjectID = "apz-YS-R5b"; */
+"apz-YS-R5b.text" = "تأكيد الأمر";
 
 /* Class = "UITextField"; placeholder = "Notes"; ObjectID = "arn-hi-ckv"; */
 "arn-hi-ckv.placeholder" = "Notes";
 
 /* Class = "UIButton"; normalTitle = "Modify Order"; ObjectID = "awY-x8-mDa"; */
-"awY-x8-mDa.normalTitle" = "Modify Order";
+"awY-x8-mDa.normalTitle" = "تعديل الأمر";
 
-/* Class = "UILabel"; text = "Symbol"; ObjectID = "ayw-QD-PHW"; */
-"ayw-QD-PHW.text" = "Symbol";
+/* Class = "UILabel"; text = "الرمز"; ObjectID = "ayw-QD-PHW"; */
+"ayw-QD-PHW.text" = "الرمز";
 
-/* Class = "UILabel"; text = "52 wk Low"; ObjectID = "b17-RV-gb6"; */
-"b17-RV-gb6.text" = "52 wk Low";
+/* Class = "UILabel"; text = "أدنى 52 إسبوع"; ObjectID = "b17-RV-gb6"; */
+"b17-RV-gb6.text" = "أدنى 52 إسبوع";
 
-/* Class = "UILabel"; text = "Buying (Shares)"; ObjectID = "b4a-8U-efd"; */
-"b4a-8U-efd.text" = "Buying (Shares)";
+/* Class = "UILabel"; text = "شراء (الأسهم)"; ObjectID = "b4a-8U-efd"; */
+"b4a-8U-efd.text" = "شراء (الأسهم)";
 
-/* Class = "UILabel"; text = "Buy"; ObjectID = "b7s-tK-Od5"; */
-"b7s-tK-Od5.text" = "Buy";
+/* Class = "UILabel"; text = "شراء"; ObjectID = "b7s-tK-Od5"; */
+"b7s-tK-Od5.text" = "شراء";
 
-/* Class = "UILabel"; text = "Cost Price"; ObjectID = "bFb-qU-Vf9"; */
-"bFb-qU-Vf9.text" = "Cost Price";
+/* Class = "UILabel"; text = "سعر التكلفة"; ObjectID = "bFb-qU-Vf9"; */
+"bFb-qU-Vf9.text" = "سعر التكلفة";
 
-/* Class = "UILabel"; text = "Buy"; ObjectID = "bGd-08-rU9"; */
-"bGd-08-rU9.text" = "Buy";
+/* Class = "UILabel"; text = "شراء"; ObjectID = "bGd-08-rU9"; */
+"bGd-08-rU9.text" = "شراء";
 
 /* Class = "UILabel"; text = "Label"; ObjectID = "bJL-PG-eZd"; */
 "bJL-PG-eZd.text" = "Label";
@@ -878,20 +872,20 @@
 /* Class = "UILabel"; text = "IFS"; ObjectID = "bYj-YK-rgc"; */
 "bYj-YK-rgc.text" = "IFS";
 
-/* Class = "UILabel"; text = "Volume"; ObjectID = "baI-bg-wQK"; */
-"baI-bg-wQK.text" = "Volume";
+/* Class = "UILabel"; text = "الحجم"; ObjectID = "baI-bg-wQK"; */
+"baI-bg-wQK.text" = "الحجم";
 
-/* Class = "UISegmentedControl"; bf7-F7-G4l.segmentTitles[0] = "Summary"; ObjectID = "bf7-F7-G4l"; */
-"bf7-F7-G4l.segmentTitles[0]" = "Summary";
+/* Class = "UISegmentedControl"; bf7-F7-G4l.segmentTitles[0] = "ملخص"; ObjectID = "bf7-F7-G4l"; */
+"bf7-F7-G4l.segmentTitles[0]" = "ملخص";
 
-/* Class = "UISegmentedControl"; bf7-F7-G4l.segmentTitles[1] = "News"; ObjectID = "bf7-F7-G4l"; */
-"bf7-F7-G4l.segmentTitles[1]" = "News";
+/* Class = "UISegmentedControl"; bf7-F7-G4l.segmentTitles[1] = "الأخبار"; ObjectID = "bf7-F7-G4l"; */
+"bf7-F7-G4l.segmentTitles[1]" = "الأخبار";
 
-/* Class = "UILabel"; text = "Validity"; ObjectID = "bk9-Ic-rPZ"; */
-"bk9-Ic-rPZ.text" = "Validity";
+/* Class = "UILabel"; text = "صلاحية"; ObjectID = "bk9-Ic-rPZ"; */
+"bk9-Ic-rPZ.text" = "صلاحية";
 
-/* Class = "UILabel"; text = "Value"; ObjectID = "bkZ-tX-0oI"; */
-"bkZ-tX-0oI.text" = "Value";
+/* Class = "UILabel"; text = "القيمة"; ObjectID = "bkZ-tX-0oI"; */
+"bkZ-tX-0oI.text" = "القيمة";
 
 /* Class = "UILabel"; text = "Label fjdjdfjjdfjdfjjfd"; ObjectID = "bod-NZ-xVQ"; */
 "bod-NZ-xVQ.text" = "Label fjdjdfjjdfjdfjjfd";
@@ -909,16 +903,16 @@
 "cGo-ez-KLc.text" = "Label";
 
 /* Class = "UILabel"; text = "Validity"; ObjectID = "cMj-39-o1e"; */
-"cMj-39-o1e.text" = "Validity";
+"cMj-39-o1e.text" = "صلاحية";
 
 /* Class = "UILabel"; text = "Label"; ObjectID = "cQ3-zm-6xX"; */
 "cQ3-zm-6xX.text" = "Label";
 
-/* Class = "UILabel"; text = "Ask"; ObjectID = "cSv-n9-Q2P"; */
-"cSv-n9-Q2P.text" = "Ask";
+/* Class = "UILabel"; text = "عرض"; ObjectID = "cSv-n9-Q2P"; */
+"cSv-n9-Q2P.text" = "عرض";
 
-/* Class = "UILabel"; text = "Value"; ObjectID = "cTH-4v-qru"; */
-"cTH-4v-qru.text" = "Value";
+/* Class = "UILabel"; text = "القيمة"; ObjectID = "cTH-4v-qru"; */
+"cTH-4v-qru.text" = "القيمة";
 
 /* Class = "UILabel"; text = "Label"; ObjectID = "cWO-mH-KrY"; */
 "cWO-mH-KrY.text" = "Label";
@@ -929,32 +923,32 @@
 /* Class = "UILabel"; text = "1"; ObjectID = "cdS-VU-qnF"; */
 "cdS-VU-qnF.text" = "1";
 
-/* Class = "UILabel"; text = "Cash"; ObjectID = "cfh-hV-4Sn"; */
-"cfh-hV-4Sn.text" = "Cash";
+/* Class = "UILabel"; text = "النقد"; ObjectID = "cfh-hV-4Sn"; */
+"cfh-hV-4Sn.text" = "النقد";
 
-/* Class = "UILabel"; text = "Ticket ID"; ObjectID = "ciS-8Q-p7T"; */
-"ciS-8Q-p7T.text" = "Ticket ID";
+/* Class = "UILabel"; text = "رقم التنفيذ"; ObjectID = "ciS-8Q-p7T"; */
+"ciS-8Q-p7T.text" = "رقم التنفيذ";
 
 /* Class = "UILabel"; text = "Label"; ObjectID = "cpi-vD-5PF"; */
 "cpi-vD-5PF.text" = "Label";
 
-/* Class = "UILabel"; text = "Price"; ObjectID = "cqH-fK-SU7"; */
-"cqH-fK-SU7.text" = "Price";
+/* Class = "UILabel"; text = "السعر"; ObjectID = "cqH-fK-SU7"; */
+"cqH-fK-SU7.text" = "السعر";
 
-/* Class = "UILabel"; text = "Symbol"; ObjectID = "dKE-9L-Hgy"; */
-"dKE-9L-Hgy.text" = "Symbol";
+/* Class = "UILabel"; text = "الرمز"; ObjectID = "dKE-9L-Hgy"; */
+"dKE-9L-Hgy.text" = "الرمز";
 
 /* Class = "UILabel"; text = "Label"; ObjectID = "dMq-Yy-fkh"; */
 "dMq-Yy-fkh.text" = "Label";
 
-/* Class = "UILabel"; text = "Cancelled"; ObjectID = "dUm-02-uck"; */
-"dUm-02-uck.text" = "Cancelled";
+/* Class = "UILabel"; text = "ملغى"; ObjectID = "dUm-02-uck"; */
+"dUm-02-uck.text" = "ملغى";
 
-/* Class = "UILabel"; text = "User Name"; ObjectID = "dbc-Ij-nyv"; */
-"dbc-Ij-nyv.text" = "User Name";
+/* Class = "UILabel"; text = "اسم المستخدم"; ObjectID = "dbc-Ij-nyv"; */
+"dbc-Ij-nyv.text" = "اسم المستخدم";
 
-/* Class = "UILabel"; text = "No. of Trades"; ObjectID = "dnz-N4-dwj"; */
-"dnz-N4-dwj.text" = "No. of Trades";
+/* Class = "UILabel"; text = "عدد الصفقات"; ObjectID = "dnz-N4-dwj"; */
+"dnz-N4-dwj.text" = "عدد الصفقات";
 
 /* Class = "UILabel"; text = "18,380.30"; ObjectID = "doX-6W-2As"; */
 "doX-6W-2As.text" = "18,380.30";
@@ -965,8 +959,8 @@
 /* Class = "UILabel"; text = "+1.71(+0.67%)"; ObjectID = "dy6-wl-dFF"; */
 "dy6-wl-dFF.text" = "+1.71(+0.67%)";
 
-/* Class = "UILabel"; text = "Cash"; ObjectID = "e4S-7x-9w1"; */
-"e4S-7x-9w1.text" = "Cash";
+/* Class = "UILabel"; text = "النقد"; ObjectID = "e4S-7x-9w1"; */
+"e4S-7x-9w1.text" = "النقد";
 
 /* Class = "UILabel"; text = "Label"; ObjectID = "eR4-ox-x01"; */
 "eR4-ox-x01.text" = "Label";
@@ -983,8 +977,8 @@
 /* Class = "UILabel"; text = "Label"; ObjectID = "emq-cR-1Ld"; */
 "emq-cR-1Ld.text" = "Label";
 
-/* Class = "UILabel"; text = "Blocked Cash"; ObjectID = "epl-TT-jJM"; */
-"epl-TT-jJM.text" = "Blocked Cash";
+/* Class = "UILabel"; text = "الرصيد المحجوز"; ObjectID = "epl-TT-jJM"; */
+"epl-TT-jJM.text" = "الرصيد المحجوز";
 
 /* Class = "UILabel"; text = "IFS"; ObjectID = "esp-jT-Hdb"; */
 "esp-jT-Hdb.text" = "IFS";
@@ -995,11 +989,11 @@
 /* Class = "UILabel"; text = "1"; ObjectID = "euZ-YN-IMX"; */
 "euZ-YN-IMX.text" = "1";
 
-/* Class = "UIButton"; normalTitle = "New Order"; ObjectID = "f4S-7J-2sd"; */
-"f4S-7J-2sd.normalTitle" = "New Order";
+/* Class = "UIButton"; normalTitle = "أمر جديد"; ObjectID = "f4S-7J-2sd"; */
+"f4S-7J-2sd.normalTitle" = "أمر جديد";
 
-/* Class = "UILabel"; text = "52 wk High"; ObjectID = "fBT-DF-IQq"; */
-"fBT-DF-IQq.text" = "52 wk High";
+/* Class = "UILabel"; text = "أعلى 52 إسبوع"; ObjectID = "fBT-DF-IQq"; */
+"fBT-DF-IQq.text" = "أعلى 52 إسبوع";
 
 /* Class = "UILabel"; text = "4646446464"; ObjectID = "fEV-UB-wec"; */
 "fEV-UB-wec.text" = "4646446464";
@@ -1007,32 +1001,32 @@
 /* Class = "UILabel"; text = "IFS"; ObjectID = "fX2-Mr-As1"; */
 "fX2-Mr-As1.text" = "IFS";
 
-/* Class = "UILabel"; text = "Sell"; ObjectID = "fbE-Z0-w9X"; */
-"fbE-Z0-w9X.text" = "Sell";
+/* Class = "UILabel"; text = "بيع"; ObjectID = "fbE-Z0-w9X"; */
+"fbE-Z0-w9X.text" = "بيع";
 
 /* Class = "UILabel"; text = "Qty"; ObjectID = "fd7-hI-6eQ"; */
-"fd7-hI-6eQ.text" = "Qty";
+"fd7-hI-6eQ.text" = "الأصلية";
 
-/* Class = "UIButton"; normalTitle = "Save"; ObjectID = "fjp-xK-842"; */
-"fjp-xK-842.normalTitle" = "Save";
+/* Class = "UIButton"; normalTitle = "حفظ"; ObjectID = "fjp-xK-842"; */
+"fjp-xK-842.normalTitle" = "حفظ";
 
 /* Class = "UILabel"; text = "Label"; ObjectID = "fm7-Xe-3V6"; */
 "fm7-Xe-3V6.text" = "Label";
 
-/* Class = "UILabel"; text = "Percent"; ObjectID = "fnO-8w-oiN"; */
-"fnO-8w-oiN.text" = "Percent";
+/* Class = "UILabel"; text = "النسبة"; ObjectID = "fnO-8w-oiN"; */
+"fnO-8w-oiN.text" = "النسبة";
 
-/* Class = "UILabel"; text = "Account Number"; ObjectID = "fwm-Mk-LXd"; */
-"fwm-Mk-LXd.text" = "Account Number";
+/* Class = "UILabel"; text = "رقم الحساب"; ObjectID = "fwm-Mk-LXd"; */
+"fwm-Mk-LXd.text" = "رقم الحساب";
 
 /* Class = "UILabel"; text = "1"; ObjectID = "fxf-0T-q0S"; */
 "fxf-0T-q0S.text" = "1";
 
-/* Class = "UILabel"; text = "QE Index"; ObjectID = "fz5-mf-N47"; */
-"fz5-mf-N47.text" = "QE Index";
+/* Class = "UILabel"; text = "مؤشر البورصة"; ObjectID = "fz5-mf-N47"; */
+"fz5-mf-N47.text" = "مؤشر البورصة";
 
-/* Class = "UIButton"; normalTitle = "Submit"; ObjectID = "g3P-or-6cl"; */
-"g3P-or-6cl.normalTitle" = "Submit";
+/* Class = "UIButton"; normalTitle = "ارسال"; ObjectID = "g3P-or-6cl"; */
+"g3P-or-6cl.normalTitle" = "ارسال";
 
 /* Class = "UIButton"; normalTitle = "1 D"; ObjectID = "g4K-KI-6nF"; */
 "g4K-KI-6nF.normalTitle" = "1 D";
@@ -1043,14 +1037,14 @@
 /* Class = "UILabel"; text = "IFS"; ObjectID = "gC8-b1-ItU"; */
 "gC8-b1-ItU.text" = "IFS";
 
-/* Class = "UILabel"; text = "Login"; ObjectID = "gIa-mT-Jqj"; */
-"gIa-mT-Jqj.text" = "Login";
+/* Class = "UILabel"; text = "الدخول"; ObjectID = "gIa-mT-Jqj"; */
+"gIa-mT-Jqj.text" = "الدخول";
 
 /* Class = "UILabel"; text = "10,345,450"; ObjectID = "gLi-fO-NCo"; */
 "gLi-fO-NCo.text" = "10,345,450";
 
-/* Class = "UILabel"; text = "Ask"; ObjectID = "gbE-um-2JM"; */
-"gbE-um-2JM.text" = "Ask";
+/* Class = "UILabel"; text = "عرض"; ObjectID = "gbE-um-2JM"; */
+"gbE-um-2JM.text" = "عرض";
 
 /* Class = "UIButton"; normalTitle = "Button"; ObjectID = "gk1-qu-xaS"; */
 "gk1-qu-xaS.normalTitle" = "Button";
@@ -1061,23 +1055,23 @@
 /* Class = "UILabel"; text = "Label"; ObjectID = "h2J-oH-eqB"; */
 "h2J-oH-eqB.text" = "Label";
 
-/* Class = "UILabel"; text = "Language"; ObjectID = "h5V-ML-b2f"; */
-"h5V-ML-b2f.text" = "Language";
+/* Class = "UILabel"; text = "اللغة"; ObjectID = "h5V-ML-b2f"; */
+"h5V-ML-b2f.text" = "اللغة";
 
 /* Class = "UILabel"; text = "IFS"; ObjectID = "h7r-rg-Bnw"; */
 "h7r-rg-Bnw.text" = "IFS";
 
 /* Class = "UILabel"; text = "100XXXXXXX"; ObjectID = "hAV-fe-ORT"; */
-"hAV-fe-ORT.text" = "100XXXXXXX";
+"hAV-fe-ORT.text" = "XXXXXXXXXX";
 
-/* Class = "UILabel"; text = "Calculator"; ObjectID = "hCr-6c-H92"; */
-"hCr-6c-H92.text" = "Calculator";
+/* Class = "UILabel"; text = "الحاسبة"; ObjectID = "hCr-6c-H92"; */
+"hCr-6c-H92.text" = "الحاسبة";
 
-/* Class = "UILabel"; text = "Verification"; ObjectID = "hPd-s5-IJ7"; */
-"hPd-s5-IJ7.text" = "Verification";
+/* Class = "UILabel"; text = "التحقق"; ObjectID = "hPd-s5-IJ7"; */
+"hPd-s5-IJ7.text" = "التحقق";
 
-/* Class = "UILabel"; text = "Technical Support"; ObjectID = "hRE-sO-HG2"; */
-"hRE-sO-HG2.text" = "Technical Support";
+/* Class = "UILabel"; text = "الدعم الفني"; ObjectID = "hRE-sO-HG2"; */
+"hRE-sO-HG2.text" = "الدعم الفني";
 
 /* Class = "UILabel"; text = "Label"; ObjectID = "hfk-1O-Bpg"; */
 "hfk-1O-Bpg.text" = "Label";
@@ -1091,8 +1085,8 @@
 /* Class = "UILabel"; text = "12"; ObjectID = "i07-uK-YUH"; */
 "i07-uK-YUH.text" = "12";
 
-/* Class = "UILabel"; text = "Filled"; ObjectID = "i3H-hE-OOl"; */
-"i3H-hE-OOl.text" = "Filled";
+/* Class = "UILabel"; text = "منفذ"; ObjectID = "i3H-hE-OOl"; */
+"i3H-hE-OOl.text" = "منفذ";
 
 /* Class = "UIButton"; normalTitle = "1 D"; ObjectID = "iBR-bo-a2P"; */
 "iBR-bo-a2P.normalTitle" = "1 D";
@@ -1100,17 +1094,17 @@
 /* Class = "UILabel"; text = "10.00"; ObjectID = "iHK-mw-sJz"; */
 "iHK-mw-sJz.text" = "10.00";
 
-/* Class = "UILabel"; text = "Cost of trade"; ObjectID = "iRu-W3-KbO"; */
-"iRu-W3-KbO.text" = "Cost of trade";
+/* Class = "UILabel"; text = "تكلفة الصفقة"; ObjectID = "iRu-W3-KbO"; */
+"iRu-W3-KbO.text" = "تكلفة الصفقة";
 
-/* Class = "UITextView"; text = "Islamic Financial Securities Co.\n4th Floor, Mackeen Building,\nGrand Hamad Street,\nDoha, Qatar\nP.O. Box: 12402\nFax: (+974) 4449 8802\nE-mail: info@islamicbroker.com.qa"; ObjectID = "iRv-1T-nFc"; */
-"iRv-1T-nFc.text" = "Islamic Financial Securities Co.\n4th Floor, Mackeen Building,\nGrand Hamad Street,\nDoha, Qatar\nP.O. Box: 12402\nFax: (+974) 4449 8802\nE-mail: info@islamicbroker.com.qa";
+/* Class = "UITextView"; text = "الشركه الاسلامية للاوراق المالية\nمبنى مكين القابضة , الدور الرابع\nشارع حمد الكبير\nالدوحة , قطر\nصندوق البريد : 12402\nفاكس : (+974) 4449 8802\nإيميل:info@islamicbroker.com.qa"; ObjectID = "iRv-1T-nFc"; */
+"iRv-1T-nFc.text" = "الشركه الاسلامية للاوراق المالية\nمبنى مكين القابضة , الدور الرابع\nشارع حمد الكبير\nالدوحة , قطر\nصندوق البريد : 12402\nفاكس : (+974) 4449 8802\nإيميل:info@islamicbroker.com.qa";
 
 /* Class = "UILabel"; text = "6,000"; ObjectID = "iUK-d8-npR"; */
 "iUK-d8-npR.text" = "6,000";
 
 /* Class = "UIButton"; normalTitle = "Cancel Order"; ObjectID = "iVO-Uf-ulv"; */
-"iVO-Uf-ulv.normalTitle" = "Cancel Order";
+"iVO-Uf-ulv.normalTitle" = "إلغاء";
 
 /* Class = "UIButton"; normalTitle = "3 Y"; ObjectID = "ilT-92-gnH"; */
 "ilT-92-gnH.normalTitle" = "3 Y";
@@ -1121,29 +1115,29 @@
 /* Class = "UILabel"; text = "GOOGL"; ObjectID = "jIR-dj-NWa"; */
 "jIR-dj-NWa.text" = "GOOGL";
 
-/* Class = "UILabel"; text = "Forgot Password"; ObjectID = "jIZ-Fe-sH2"; */
-"jIZ-Fe-sH2.text" = "Forgot Password";
+/* Class = "UILabel"; text = "نسيت كلمة المرور"; ObjectID = "jIZ-Fe-sH2"; */
+"jIZ-Fe-sH2.text" = "نسيت كلمة المرور";
 
 /* Class = "UILabel"; text = "10.00"; ObjectID = "jMf-TX-Nco"; */
 "jMf-TX-Nco.text" = "10.00";
 
-/* Class = "UILabel"; text = "Value"; ObjectID = "jOq-8q-5hu"; */
-"jOq-8q-5hu.text" = "Value";
+/* Class = "UILabel"; text = "القيمة"; ObjectID = "jOq-8q-5hu"; */
+"jOq-8q-5hu.text" = "القيمة";
 
 /* Class = "UILabel"; text = "Filled"; ObjectID = "jSv-h5-5dM"; */
-"jSv-h5-5dM.text" = "Filled";
+"jSv-h5-5dM.text" = "منفذ";
 
-/* Class = "UISearchBar"; placeholder = "Symbol/Company Name"; ObjectID = "jTC-Mq-aIH"; */
-"jTC-Mq-aIH.placeholder" = "Symbol/Company Name";
+/* Class = "UISearchBar"; placeholder = "الرمز/إسم الشركة"; ObjectID = "jTC-Mq-aIH"; */
+"jTC-Mq-aIH.placeholder" = "الرمز/إسم الشركة";
 
-/* Class = "UILabel"; text = "Order"; ObjectID = "jfY-gP-bzS"; */
-"jfY-gP-bzS.text" = "Order";
+/* Class = "UILabel"; text = "الأمر"; ObjectID = "jfY-gP-bzS"; */
+"jfY-gP-bzS.text" = "الأمر";
 
 /* Class = "UILabel"; text = "Label"; ObjectID = "jxZ-Pv-0Ay"; */
 "jxZ-Pv-0Ay.text" = "Label";
 
-/* Class = "UILabel"; text = "Today's Change"; ObjectID = "jyj-Aj-BVx"; */
-"jyj-Aj-BVx.text" = "Today's Change";
+/* Class = "UILabel"; text = "التغير اليومي"; ObjectID = "jyj-Aj-BVx"; */
+"jyj-Aj-BVx.text" = "التغير اليومي";
 
 /* Class = "UILabel"; text = "Close: 1,673.45"; ObjectID = "k6h-43-hOc"; */
 "k6h-43-hOc.text" = "Close: 1,673.45";
@@ -1154,8 +1148,8 @@
 /* Class = "UILabel"; text = "Alert When Price"; ObjectID = "kBJ-KW-YXP"; */
 "kBJ-KW-YXP.text" = "Alert When Price";
 
-/* Class = "UILabel"; text = "Selling (Cash)"; ObjectID = "kEL-jf-zZW"; */
-"kEL-jf-zZW.text" = "Selling (Cash)";
+/* Class = "UILabel"; text = "البيع (النقد)"; ObjectID = "kEL-jf-zZW"; */
+"kEL-jf-zZW.text" = "البيع (النقد)";
 
 /* Class = "UILabel"; text = "1"; ObjectID = "kG2-cv-Sys"; */
 "kG2-cv-Sys.text" = "1";
@@ -1169,20 +1163,20 @@
 /* Class = "UIButton"; normalTitle = "1 Day"; ObjectID = "l38-vG-94j"; */
 "l38-vG-94j.normalTitle" = "1 Day";
 
-/* Class = "UIButton"; normalTitle = "View Stock Details"; ObjectID = "l5Q-Li-JpN"; */
-"l5Q-Li-JpN.normalTitle" = "View Stock Details";
+/* Class = "UIButton"; normalTitle = "تفاصيل السهم"; ObjectID = "l5Q-Li-JpN"; */
+"l5Q-Li-JpN.normalTitle" = "تفاصيل السهم";
 
 /* Class = "UILabel"; text = "Validity:18-07-2016"; ObjectID = "lJ5-KF-qpw"; */
 "lJ5-KF-qpw.text" = "Validity:18-07-2016";
 
-/* Class = "UILabel"; text = "Last Price"; ObjectID = "lZv-e8-L27"; */
-"lZv-e8-L27.text" = "Last Price";
+/* Class = "UILabel"; text = "اخر سعر"; ObjectID = "lZv-e8-L27"; */
+"lZv-e8-L27.text" = "اخر سعر";
 
-/* Class = "UILabel"; text = "Ask"; ObjectID = "lbk-R2-2jg"; */
-"lbk-R2-2jg.text" = "Ask";
+/* Class = "UILabel"; text = "عرض"; ObjectID = "lbk-R2-2jg"; */
+"lbk-R2-2jg.text" = "عرض";
 
-/* Class = "UIButton"; normalTitle = "Sign In"; ObjectID = "ld4-Xw-HZi"; */
-"ld4-Xw-HZi.normalTitle" = "Sign In";
+/* Class = "UIButton"; normalTitle = "تسجيل الدخول"; ObjectID = "ld4-Xw-HZi"; */
+"ld4-Xw-HZi.normalTitle" = "تسجيل الدخول";
 
 /* Class = "UILabel"; text = "Date: 17-07-2016"; ObjectID = "mEM-f1-ks2"; */
 "mEM-f1-ks2.text" = "Date: 17-07-2016";
@@ -1193,32 +1187,32 @@
 /* Class = "UILabel"; text = "Label"; ObjectID = "mQ6-Tl-UCO"; */
 "mQ6-Tl-UCO.text" = "Label";
 
-/* Class = "UIButton"; normalTitle = "Calculate"; ObjectID = "moN-EE-euH"; */
-"moN-EE-euH.normalTitle" = "Calculate";
+/* Class = "UIButton"; normalTitle = "إحسب"; ObjectID = "moN-EE-euH"; */
+"moN-EE-euH.normalTitle" = "إحسب";
 
-/* Class = "UIButton"; normalTitle = "Rate Us"; ObjectID = "mzk-Lm-4ye"; */
-"mzk-Lm-4ye.normalTitle" = "Rate Us";
+/* Class = "UIButton"; normalTitle = "قيمنا"; ObjectID = "mzk-Lm-4ye"; */
+"mzk-Lm-4ye.normalTitle" = "قيمنا";
 
 /* Class = "UILabel"; text = "Label"; ObjectID = "nLa-N5-1S9"; */
 "nLa-N5-1S9.text" = "Label";
 
-/* Class = "UILabel"; text = "Market by Order"; ObjectID = "ncd-P1-ap0"; */
-"ncd-P1-ap0.text" = "Market by Order";
+/* Class = "UILabel"; text = "السوق حسب الأوامر"; ObjectID = "ncd-P1-ap0"; */
+"ncd-P1-ap0.text" = "السوق حسب الأوامر";
 
 /* Class = "UILabel"; text = "Label"; ObjectID = "nlw-CS-E1f"; */
 "nlw-CS-E1f.text" = "Label";
 
-/* Class = "UILabel"; text = "Buy"; ObjectID = "nmv-qM-K73"; */
-"nmv-qM-K73.text" = "Buy";
+/* Class = "UILabel"; text = "شراء"; ObjectID = "nmv-qM-K73"; */
+"nmv-qM-K73.text" = "شراء";
 
 /* Class = "UILabel"; text = "17,480.30"; ObjectID = "nwP-5v-bpi"; */
 "nwP-5v-bpi.text" = "17,480.30";
 
-/* Class = "UISearchBar"; placeholder = "Symbol/Company Name"; ObjectID = "o30-vx-dCt"; */
-"o30-vx-dCt.placeholder" = "Symbol/Company Name";
+/* Class = "UISearchBar"; placeholder = "الرمز/إسم الشركة"; ObjectID = "o30-vx-dCt"; */
+"o30-vx-dCt.placeholder" = "الرمز/إسم الشركة";
 
-/* Class = "UIButton"; normalTitle = "Market Depth"; ObjectID = "oAu-ZY-qrF"; */
-"oAu-ZY-qrF.normalTitle" = "Market Depth";
+/* Class = "UIButton"; normalTitle = "عمق السوق"; ObjectID = "oAu-ZY-qrF"; */
+"oAu-ZY-qrF.normalTitle" = "عمق السوق";
 
 /* Class = "UILabel"; text = "1"; ObjectID = "oGh-zP-hsf"; */
 "oGh-zP-hsf.text" = "1";
@@ -1235,38 +1229,38 @@
 /* Class = "UIButton"; normalTitle = "3 M"; ObjectID = "oW7-88-fvj"; */
 "oW7-88-fvj.normalTitle" = "3 M";
 
-/* Class = "UILabel"; text = "Closed"; ObjectID = "odg-r5-xJ6"; */
-"odg-r5-xJ6.text" = "Closed";
+/* Class = "UILabel"; text = "مغلق"; ObjectID = "odg-r5-xJ6"; */
+"odg-r5-xJ6.text" = "مغلق";
 
 /* Class = "UILabel"; text = "17,480.30"; ObjectID = "oiw-sF-P8H"; */
 "oiw-sF-P8H.text" = "17,480.30";
 
-/* Class = "UILabel"; text = "NIN Number"; ObjectID = "orm-Mg-5JG"; */
-"orm-Mg-5JG.text" = "NIN Number";
+/* Class = "UILabel"; text = "رقم المساهم"; ObjectID = "orm-Mg-5JG"; */
+"orm-Mg-5JG.text" = "رقم المساهم";
 
-/* Class = "UILabel"; text = "Share Price"; ObjectID = "os5-zf-FHs"; */
-"os5-zf-FHs.text" = "Share Price";
+/* Class = "UILabel"; text = "سعر السهم"; ObjectID = "os5-zf-FHs"; */
+"os5-zf-FHs.text" = "سعر السهم";
 
 /* Class = "UILabel"; text = "Label"; ObjectID = "ovm-ie-kWg"; */
 "ovm-ie-kWg.text" = "Label";
 
-/* Class = "UILabel"; text = "Password"; ObjectID = "p7e-vJ-GSh"; */
-"p7e-vJ-GSh.text" = "Password";
+/* Class = "UILabel"; text = "كلمة المرور"; ObjectID = "p7e-vJ-GSh"; */
+"p7e-vJ-GSh.text" = "كلمة المرور";
 
 /* Class = "UILabel"; text = "660.54"; ObjectID = "pNh-iF-F3C"; */
 "pNh-iF-F3C.text" = "660.54";
 
-/* Class = "UILabel"; text = "Symbol"; ObjectID = "pOM-cN-dqj"; */
-"pOM-cN-dqj.text" = "Symbol";
+/* Class = "UILabel"; text = "الرمز"; ObjectID = "pOM-cN-dqj"; */
+"pOM-cN-dqj.text" = "الرمز";
 
-/* Class = "UISearchBar"; placeholder = "Symbol/Company Name"; ObjectID = "pZN-it-jJ2"; */
-"pZN-it-jJ2.placeholder" = "Symbol/Company Name";
+/* Class = "UISearchBar"; placeholder = "الرمز/إسم الشركة"; ObjectID = "pZN-it-jJ2"; */
+"pZN-it-jJ2.placeholder" = "الرمز/إسم الشركة";
 
 /* Class = "UILabel"; text = "1,000.00"; ObjectID = "pfs-N9-JhU"; */
 "pfs-N9-JhU.text" = "1,000.00";
 
-/* Class = "UILabel"; text = "Volume"; ObjectID = "pjs-Zr-QwA"; */
-"pjs-Zr-QwA.text" = "Volume";
+/* Class = "UILabel"; text = "الحجم"; ObjectID = "pjs-Zr-QwA"; */
+"pjs-Zr-QwA.text" = "الحجم";
 
 /* Class = "UILabel"; text = "#"; ObjectID = "ppc-Fu-Qe1"; */
 "ppc-Fu-Qe1.text" = "#";
@@ -1280,17 +1274,17 @@
 /* Class = "UILabel"; text = "17,512.30"; ObjectID = "pyf-8J-ZV4"; */
 "pyf-8J-ZV4.text" = "17,512.30";
 
-/* Class = "UILabel"; text = "Price"; ObjectID = "q7c-DP-iiG"; */
-"q7c-DP-iiG.text" = "Price";
+/* Class = "UILabel"; text = "السعر"; ObjectID = "q7c-DP-iiG"; */
+"q7c-DP-iiG.text" = "السعر";
 
-/* Class = "UIButton"; normalTitle = "Submit"; ObjectID = "qUA-Fg-DHJ"; */
-"qUA-Fg-DHJ.normalTitle" = "Submit";
+/* Class = "UIButton"; normalTitle = "ارسال"; ObjectID = "qUA-Fg-DHJ"; */
+"qUA-Fg-DHJ.normalTitle" = "ارسال";
 
-/* Class = "UILabel"; text = "Market Value"; ObjectID = "qWI-J5-Yid"; */
-"qWI-J5-Yid.text" = "Market Value";
+/* Class = "UILabel"; text = "القيمة السوقية"; ObjectID = "qWI-J5-Yid"; */
+"qWI-J5-Yid.text" = "القيمة السوقية";
 
-/* Class = "UILabel"; text = "Password must be at least 6 characters"; ObjectID = "qkI-dH-oMx"; */
-"qkI-dH-oMx.text" = "Password must be at least 6 characters";
+/* Class = "UILabel"; text = "كلمة المرور يجب آلا تقل عن 6 احرف"; ObjectID = "qkI-dH-oMx"; */
+"qkI-dH-oMx.text" = "كلمة المرور يجب آلا تقل عن 6 احرف";
 
 /* Class = "UIButton"; normalTitle = "6 Months"; ObjectID = "qov-Jg-LQG"; */
 "qov-Jg-LQG.normalTitle" = "6 Months";
@@ -1301,8 +1295,8 @@
 /* Class = "UILabel"; text = "Last: 1,673.45"; ObjectID = "r6x-ON-SEV"; */
 "r6x-ON-SEV.text" = "Last: 1,673.45";
 
-/* Class = "UILabel"; text = "Qty"; ObjectID = "r9H-FK-sAe"; */
-"r9H-FK-sAe.text" = "Qty";
+/* Class = "UILabel"; text = "الكمية"; ObjectID = "r9H-FK-sAe"; */
+"r9H-FK-sAe.text" = "الكمية";
 
 /* Class = "UILabel"; text = "IFS"; ObjectID = "rOt-o3-EQ3"; */
 "rOt-o3-EQ3.text" = "IFS";
@@ -1313,8 +1307,8 @@
 /* Class = "UILabel"; text = "2,000,000,000.00"; ObjectID = "rq6-CL-MM9"; */
 "rq6-CL-MM9.text" = "2,000,000,000.00";
 
-/* Class = "UILabel"; text = "Bid"; ObjectID = "s51-8b-iAb"; */
-"s51-8b-iAb.text" = "Bid";
+/* Class = "UILabel"; text = "طلب"; ObjectID = "s51-8b-iAb"; */
+"s51-8b-iAb.text" = "طلب";
 
 /* Class = "UITextField"; placeholder = "0.00"; ObjectID = "scx-hp-5Vi"; */
 "scx-hp-5Vi.placeholder" = "0.00";
@@ -1328,35 +1322,32 @@
 /* Class = "UILabel"; text = "Label"; ObjectID = "srK-Ce-UgW"; */
 "srK-Ce-UgW.text" = "Label";
 
-/* Class = "UILabel"; text = "Limit Up  12341vbvhj"; ObjectID = "ssq-H8-cts"; */
-"ssq-H8-cts.text" = "Limit Up  12341vbvhj";
+/* Class = "UITabBarItem"; title = "المحفظة"; ObjectID = "svr-EJ-z3A"; */
+"svr-EJ-z3A.title" = "المحفظة";
 
-/* Class = "UITabBarItem"; title = "My Portfolio"; ObjectID = "svr-EJ-z3A"; */
-"svr-EJ-z3A.title" = "My Portfolio";
-
-/* Class = "UILabel"; text = "Price"; ObjectID = "t6q-BH-yMc"; */
-"t6q-BH-yMc.text" = "Price";
+/* Class = "UILabel"; text = "السعر"; ObjectID = "t6q-BH-yMc"; */
+"t6q-BH-yMc.text" = "السعر";
 
 /* Class = "UILabel"; text = "Date: 17-07-2016"; ObjectID = "t7O-2q-84O"; */
 "t7O-2q-84O.text" = "Date: 17-07-2016";
 
-/* Class = "UITabBarItem"; title = "Stocks"; ObjectID = "tPI-MO-1pa"; */
-"tPI-MO-1pa.title" = "Stocks";
+/* Class = "UITabBarItem"; title = "مخازن"; ObjectID = "tPI-MO-1pa"; */
+"tPI-MO-1pa.title" = "مخازن";
 
-/* Class = "UILabel"; text = "Total Qty"; ObjectID = "tn1-fD-DsO"; */
-"tn1-fD-DsO.text" = "Total Qty";
+/* Class = "UILabel"; text = "إجمالى الكمية"; ObjectID = "tn1-fD-DsO"; */
+"tn1-fD-DsO.text" = "إجمالى الكمية";
 
 /* Class = "UILabel"; text = "Original"; ObjectID = "toa-Vr-Heo"; */
-"toa-Vr-Heo.text" = "Original";
+"toa-Vr-Heo.text" = "الكمية";
 
-/* Class = "UILabel"; text = "52 wk High"; ObjectID = "tx2-ce-eRj"; */
-"tx2-ce-eRj.text" = "52 wk High";
+/* Class = "UILabel"; text = "أعلى 52 إسبوع"; ObjectID = "tx2-ce-eRj"; */
+"tx2-ce-eRj.text" = "أعلى 52 إسبوع";
 
 /* Class = "UILabel"; text = "Label"; ObjectID = "uLQ-Y7-HZx"; */
 "uLQ-Y7-HZx.text" = "Label";
 
 /* Class = "UILabel"; text = "Date"; ObjectID = "uWf-In-bbj"; */
-"uWf-In-bbj.text" = "Date";
+"uWf-In-bbj.text" = "التاريخ";
 
 /* Class = "UILabel"; text = "453,678,789.50"; ObjectID = "ueA-as-xMG"; */
 "ueA-as-xMG.text" = "453,678,789.50";
@@ -1377,22 +1368,22 @@
 "va5-PZ-6wF.text" = "Label";
 
 /* Class = "UILabel"; text = "Price"; ObjectID = "vf1-Rk-Mjg"; */
-"vf1-Rk-Mjg.text" = "Price";
+"vf1-Rk-Mjg.text" = "السعر";
 
 /* Class = "UILabel"; text = "Close: 1,673.45"; ObjectID = "voq-XC-EC5"; */
 "voq-XC-EC5.text" = "Close: 1,673.45";
 
-/* Class = "UILabel"; text = "Last Price"; ObjectID = "vtx-o8-Bpm"; */
-"vtx-o8-Bpm.text" = "Last Price";
+/* Class = "UILabel"; text = "اخر سعر"; ObjectID = "vtx-o8-Bpm"; */
+"vtx-o8-Bpm.text" = "اخر سعر";
 
-/* Class = "UITabBarItem"; title = "My Orders"; ObjectID = "vuc-Sp-x1L"; */
-"vuc-Sp-x1L.title" = "My Orders";
+/* Class = "UITabBarItem"; title = "أوامرى"; ObjectID = "vuc-Sp-x1L"; */
+"vuc-Sp-x1L.title" = "أوامرى";
 
-/* Class = "UILabel"; text = "Day Low"; ObjectID = "vzB-gN-62m"; */
-"vzB-gN-62m.text" = "Day Low";
+/* Class = "UILabel"; text = "أدنى سعر"; ObjectID = "vzB-gN-62m"; */
+"vzB-gN-62m.text" = "أدنى سعر";
 
-/* Class = "UISearchBar"; placeholder = "Symbol/Company Name"; ObjectID = "w76-GU-3Hh"; */
-"w76-GU-3Hh.placeholder" = "Symbol/Company Name";
+/* Class = "UISearchBar"; placeholder = "الرمز/إسم الشركة"; ObjectID = "w76-GU-3Hh"; */
+"w76-GU-3Hh.placeholder" = "الرمز/إسم الشركة";
 
 /* Class = "UILabel"; text = "IFS"; ObjectID = "wAK-8w-eqY"; */
 "wAK-8w-eqY.text" = "IFS";
@@ -1400,8 +1391,8 @@
 /* Class = "UILabel"; text = "127,293.00(+1.23%)"; ObjectID = "wAg-cB-PC5"; */
 "wAg-cB-PC5.text" = "127,293.00(+1.23%)";
 
-/* Class = "UILabel"; text = "Buying (Cash)"; ObjectID = "wRY-JK-z34"; */
-"wRY-JK-z34.text" = "Buying (Cash)";
+/* Class = "UILabel"; text = "شراء (النقد)"; ObjectID = "wRY-JK-z34"; */
+"wRY-JK-z34.text" = "شراء (النقد)";
 
 /* Class = "UILabel"; text = "Label"; ObjectID = "wTH-nm-wC9"; */
 "wTH-nm-wC9.text" = "Label";
@@ -1430,11 +1421,11 @@
 /* Class = "UILabel"; text = "Label"; ObjectID = "xeh-Qj-3Ah"; */
 "xeh-Qj-3Ah.text" = "Label";
 
-/* Class = "UILabel"; text = "Total Order Value"; ObjectID = "y9T-d2-rX8"; */
-"y9T-d2-rX8.text" = "Total Order Value";
+/* Class = "UILabel"; text = "إجمالى قيمة الأمر"; ObjectID = "y9T-d2-rX8"; */
+"y9T-d2-rX8.text" = "إجمالى قيمة الأمر";
 
-/* Class = "UILabel"; text = "English"; ObjectID = "yQt-PT-FMg"; */
-"yQt-PT-FMg.text" = "English";
+/* Class = "UILabel"; text = "إنجليزي"; ObjectID = "yQt-PT-FMg"; */
+"yQt-PT-FMg.text" = "إنجليزي";
 
 /* Class = "UILabel"; text = "17,480.30"; ObjectID = "yWL-JK-W0t"; */
 "yWL-JK-W0t.text" = "17,480.30";
@@ -1442,32 +1433,32 @@
 /* Class = "UILabel"; text = "IFS"; ObjectID = "ybF-Wn-3sW"; */
 "ybF-Wn-3sW.text" = "IFS";
 
-/* Class = "UILabel"; text = "Balance"; ObjectID = "yuG-hd-pD7"; */
-"yuG-hd-pD7.text" = "Balance";
+/* Class = "UILabel"; text = "الرصيد"; ObjectID = "yuG-hd-pD7"; */
+"yuG-hd-pD7.text" = "الرصيد";
 
 /* Class = "UILabel"; text = "Last: 1,673.45"; ObjectID = "yvy-GJ-T9q"; */
 "yvy-GJ-T9q.text" = "Last: 1,673.45";
 
-/* Class = "UISegmentedControl"; zAq-U3-Zj9.segmentTitles[0] = "Active"; ObjectID = "zAq-U3-Zj9"; */
-"zAq-U3-Zj9.segmentTitles[0]" = "Active";
+/* Class = "UISegmentedControl"; zAq-U3-Zj9.segmentTitles[0] = "نشط"; ObjectID = "zAq-U3-Zj9"; */
+"zAq-U3-Zj9.segmentTitles[0]" = "نشط";
 
 /* Class = "UISegmentedControl"; zAq-U3-Zj9.segmentTitles[1] = "Pending"; ObjectID = "zAq-U3-Zj9"; */
 "zAq-U3-Zj9.segmentTitles[1]" = "Pending";
 
-/* Class = "UILabel"; text = "Limit Down"; ObjectID = "zOP-aH-XCM"; */
-"zOP-aH-XCM.text" = "Limit Down";
+/* Class = "UILabel"; text = "الحد الأدنى"; ObjectID = "zOP-aH-XCM"; */
+"zOP-aH-XCM.text" = "الحد الأدنى";
 
-/* Class = "UILabel"; text = "Qty"; ObjectID = "zRi-3o-oNW"; */
-"zRi-3o-oNW.text" = "Qty";
+/* Class = "UILabel"; text = "الكمية"; ObjectID = "zRi-3o-oNW"; */
+"zRi-3o-oNW.text" = "الكمية";
 
-/* Class = "UISearchBar"; placeholder = "Symbol/Company Name"; ObjectID = "zSm-6J-T03"; */
-"zSm-6J-T03.placeholder" = "Symbol/Company Name";
+/* Class = "UISearchBar"; placeholder = "الرمز/إسم الشركة"; ObjectID = "zSm-6J-T03"; */
+"zSm-6J-T03.placeholder" = "الرمز/إسم الشركة";
 
-/* Class = "UIButton"; normalTitle = "Forgot Password"; ObjectID = "zUK-Qf-iki"; */
-"zUK-Qf-iki.normalTitle" = "Forgot Password";
+/* Class = "UIButton"; normalTitle = "نسيت كلمة المرور"; ObjectID = "zUK-Qf-iki"; */
+"zUK-Qf-iki.normalTitle" = "نسيت كلمة المرور";
 
-/* Class = "UIButton"; normalTitle = "Apply"; ObjectID = "zUZ-3z-iQM"; */
-"zUZ-3z-iQM.normalTitle" = "Apply";
+/* Class = "UIButton"; normalTitle = "إضافة"; ObjectID = "zUZ-3z-iQM"; */
+"zUZ-3z-iQM.normalTitle" = "إضافة";
 
 /* Class = "UILabel"; text = "659.02"; ObjectID = "zm2-xF-h1L"; */
 "zm2-xF-h1L.text" = "659.02";

@@ -155,5 +155,7 @@
 #define CHANGE_ARABIC                   NSLocalizedString(@"CHANGE_ARABIC", @"CHANGE_ARABIC")
 #define CHANGE_ENGLISH                  NSLocalizedString(@"CHANGE_ENGLISH", @"CHANGE_ENGLISH")
 #define CHECK_AMOUNT                  NSLocalizedString(@"NOT ENOUGH CASH", @"NOT ENOUGH CASH")
+#define SIGNIN_CONFIRMATION            NSLocalizedString(@"SIGNIN_CONFIRMATION", @"SIGNIN_CONFIRMATION")
+
 
 #endif /* PropertyList_h */

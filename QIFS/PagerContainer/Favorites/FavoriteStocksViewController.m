@@ -72,30 +72,47 @@ NSString *const kFavoriteOptionsViewCellIdentifier = @"OptionsViewCell";
     
     self.tableResults.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
     [self.tableResults setHidden:YES];
-    
+    //[[NSUserDefaults standardUserDefaults] removeObjectForKey:@"ssckey"];
 //    self.arrayMenu = [NSArray arrayWithObjects:@"Cash Position", @"My Orders History", @"Contact Us", @"Settings", @"Sign Out", nil];
+    NSString *str_key = [NSString stringWithFormat:@"%@",[[NSUserDefaults standardUserDefaults] valueForKey:@"ssckey"]];
+    NSString *strSign,*strArsign;
+    if([str_key isEqualToString:@"(null)"])
+    {
+        str_key = @"";
+    }
+    
+    if([str_key isEqualToString:@""])
+    {
+        strSign = @"Sign In";
+        strArsign = @"Sign In";
+        
+    }
+    else{
+        strSign = @"Sign Out";
+        strArsign = @"Sign Out";
+    }
     self.arrayMenu = @[
-                         @{
-                             @"menu_title": NSLocalizedString(@"Cash Position", @"Cash Position"),
-                             @"menu_image": @"icon_cash_position"
-                             },
-                         @{
-                             @"menu_title": NSLocalizedString(@"My Orders History", @"My Orders History"),
-                             @"menu_image": @"icon_my_order_history"
-                             },
-                         @{
-                             @"menu_title": NSLocalizedString(@"Contact Us", @"Contact Us"),
-                             @"menu_image": @"icon_contact_us"
-                             },
-                         @{
-                             @"menu_title": NSLocalizedString(@"Settings", @"Settings"),
-                             @"menu_image": @"icon_settings"
-                             },
-                         @{
-                             @"menu_title": NSLocalizedString(@"Sign Out", @"Sign Out"),
-                             @"menu_image": @"icon_signout"
-                             }
-                         ];
+                       @{
+                           @"menu_title": NSLocalizedString(@"Cash Position", @"Cash Position"),
+                           @"menu_image": @"icon_cash_position"
+                           },
+                       //                       @{
+                       //                           @"menu_title": NSLocalizedString(@"My Orders History", @"My Orders History"),
+                       //                           @"menu_image": @"icon_my_order_history"
+                       //                           },
+                       @{
+                           @"menu_title": NSLocalizedString(@"Contact Us", @"Contact Us"),
+                           @"menu_image": @"icon_contact_us"
+                           },
+                       @{
+                           @"menu_title": NSLocalizedString(@"Settings", @"Settings"),
+                           @"menu_image": @"icon_settings"
+                           },
+                       @{
+                           @"menu_title": NSLocalizedString(strSign, strArsign),
+                           @"menu_image": @"icon_signout"
+                           }
+                       ];
 
 //    [self.tableViewOptionMenu setSeparatorInset:UIEdgeInsetsZero];
 //    [self.tableViewOptionMenu setLayoutMargins:UIEdgeInsetsZero];
@@ -877,15 +894,15 @@ NSString *const kFavoriteOptionsViewCellIdentifier = @"OptionsViewCell";
                 self.tabBarController.tabBar.hidden = YES;
             }];
         }
+//        else if(indexPath.row == 1) {
+//            OrderHistoryViewController *orderHistoryViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"OrderHistoryViewController"];
+//            [[self navigationController] pushViewController:orderHistoryViewController animated:YES];
+//        }
         else if(indexPath.row == 1) {
-            OrderHistoryViewController *orderHistoryViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"OrderHistoryViewController"];
-            [[self navigationController] pushViewController:orderHistoryViewController animated:YES];
-        }
-        else if(indexPath.row == 2) {
             ContactUsViewController *contactUsViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"ContactUsViewController"];
             [[self navigationController] pushViewController:contactUsViewController animated:YES];
         }
-        else if(indexPath.row == 3) {
+        else if(indexPath.row == 2) {
             SettingsViewController *settingsViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"SettingsViewController"];
             [[self navigationController] pushViewController:settingsViewController animated:YES];
         }

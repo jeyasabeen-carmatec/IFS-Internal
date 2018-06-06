@@ -355,6 +355,8 @@
         else {
             strVal = [self.arrayMarketWatch[i][@"update_date"] componentsSeparatedByString:@" "][0];
         }
+        
+        NSLog(@"The array VAL is:%@",_arrayMarketWatch);
 
         NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
         [dateFormat setDateFormat:@"dd-MM-YYYY"];

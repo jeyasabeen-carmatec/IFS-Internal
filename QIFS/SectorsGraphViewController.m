@@ -483,10 +483,17 @@ NSString *const kSectorsGraphCellIdentifier = @"SectorsGraphCell";
 #pragma mark - Table view delegate
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    @try
+    {
     [_labelComapany setText:self.arraySectorList[indexPath.row][(globalShare.myLanguage != ARABIC_LANGUAGE) ? @"security_sector_name_en" : @"security_sector_name_ar"]];
     [_labelComapany setHidden:NO];
     [_imageArrow setHidden:NO];
     [self updateChartData:self.arraySectorList[indexPath.row][@"security_sector"]];
+    }
+    @catch(NSException *exception)
+    {
+        
+    }
 }
 
 #pragma mark - XLPagerTabStripViewControllerDelegate

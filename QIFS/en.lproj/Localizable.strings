@@ -24,6 +24,7 @@
 "My Orders History" = "My Orders History";
 "Settings" = "Settings";
 "Sign Out" = "Sign Out";
+"Sign In" = "Sign In";
 
 "Forgot Password" = "Forgot Password";
 "Enter OTP" = "Enter OTP";
@@ -163,6 +164,7 @@
 "NEWORDER_LIMITGREATERVALID" = "and greater than";
 
 "SIGNOUT_CONFIRMATION" = "Are you sure you want to sign out?";
+"SIGNIN_CONFIRMATION" = "Are you sure you want to sign in?";
 "CHANGE_ARABIC" = "Switch to Arabic?";
 "CHANGE_ENGLISH" = "Switch to English?";
 
