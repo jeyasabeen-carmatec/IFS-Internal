@@ -302,6 +302,9 @@
                                                                        self.labelPreviousClose.text = [GlobalShare createCommaSeparatedTwoDigitString:[GlobalShare formatStringToTwoDigits:dictVal[@"close_price"]]];
                                                                        self.labelNoOfTrades.text = [GlobalShare createCommaSeparatedString:dictVal[@"tot_trade"]];
                                                                        self.labelValue.text = [GlobalShare createCommaSeparatedTwoDigitString:[GlobalShare formatStringToTwoDigits:dictVal[@"value_all"]]];
+                                                                       
+                                                                       //"high_rate" = "0.0000";
+                                                                       //"low_rate" = "0.0000";
                                                                        self.labelDayHigh.text = [GlobalShare createCommaSeparatedTwoDigitString:[GlobalShare formatStringToTwoDigits:dictVal[@"high_rate"]]];
                                                                        self.labelDayLow.text = [GlobalShare createCommaSeparatedTwoDigitString:[GlobalShare formatStringToTwoDigits:dictVal[@"low_rate"]]];
                                                                        self.label52wkHigh.text = [GlobalShare createCommaSeparatedTwoDigitString:[GlobalShare formatStringToTwoDigits:dictVal[@"wk52HighPrice"]]];

@@ -141,6 +141,7 @@ NSString *const kNewOrderOptionsViewCellIdentifier = @"OptionsViewCell";
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+<<<<<<< HEAD:QIFS/NewOrderViewController.m
     
     overLayView = [[UIView alloc] initWithFrame:CGRectMake(0, self.navigationController.navigationBar.frame.origin.y, self.view.frame.size.width, self.view.frame.size.height)];
     overLayView.backgroundColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.5];
@@ -148,6 +149,8 @@ NSString *const kNewOrderOptionsViewCellIdentifier = @"OptionsViewCell";
     overLayView.hidden = YES;
     [self.view addSubview:overLayView];
     
+=======
+>>>>>>> prakash_code:QIFS/NewOrderViewController.m
     _scrollView.translatesAutoresizingMaskIntoConstraints = YES;
 
     // Do any additional setup after loading the view from its nib.
@@ -300,8 +303,17 @@ NSString *const kNewOrderOptionsViewCellIdentifier = @"OptionsViewCell";
 -(void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:YES];
     
+<<<<<<< HEAD:QIFS/NewOrderViewController.m
     _limitDowmLabel.hidden =YES;
     _limitUPLabel.hidden = YES;
+=======
+    overLayView = [[UIView alloc] initWithFrame:CGRectMake(0, self.navigationController.navigationBar.frame.origin.y, self.view.frame.size.width, self.view.frame.size.height)];
+    overLayView.backgroundColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.5];
+    overLayView.clipsToBounds = YES;
+    overLayView.hidden = YES;
+    [self.view addSubview:overLayView];
+    
+>>>>>>> prakash_code:QIFS/NewOrderViewController.m
     
     if(self.tabBarController.selectedIndex == 1)
     {

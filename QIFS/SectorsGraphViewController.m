@@ -104,6 +104,7 @@ NSString *const kSectorsGraphCellIdentifier = @"SectorsGraphCell";
 
     _chartView.legend.enabled = NO;
     _chartView.delegate = self;
+<<<<<<< HEAD:QIFS/SectorsGraphViewController.m
 }
 
 - (void)setDataCount:(int)count range:(double)range
@@ -158,6 +159,62 @@ NSString *const kSectorsGraphCellIdentifier = @"SectorsGraphCell";
     [_chartView highlightValues:nil];
 }
 
+=======
+}
+
+- (void)setDataCount:(int)count range:(double)range
+{
+//    double mult = range;
+    
+    NSMutableArray *values = [[NSMutableArray alloc] init];
+    
+    for (int i = 0; i < count; i++)
+    {
+        NSDictionary *def = self.arraySectorList[i];
+//        cell.labelCompany.text = def[(globalShare.myLanguage != ARABIC_LANGUAGE) ? @"security_sector_name_en" : @"security_sector_name_ar"];
+        //    cell.labelPercent.text = @"14.53 %";e.value / yValueSum * 100.0
+        //    cell.labelValue.text = def[@"Index"];
+
+        
+//        NSDictionary *def = self.arraySectorList[i];
+        [values addObject:[[PieChartDataEntry alloc] initWithValue:[GlobalShare roundoff:[def[@"sector_percentage"] doubleValue] :2] label:def[(globalShare.myLanguage != ARABIC_LANGUAGE) ? @"security_sector_name_en" : @"security_sector_name_ar"] icon: [UIImage imageNamed:@"icon"]]];
+    }
+    
+    PieChartDataSet *dataSet = [[PieChartDataSet alloc] initWithValues:values label:@"Election Results"];
+    
+    dataSet.drawIconsEnabled = NO;
+    
+//    dataSet.sliceSpace = 2.0;
+    dataSet.iconsOffset = CGPointMake(0, 40);
+    
+    // add a lot of colors
+    
+    NSMutableArray *colors = [[NSMutableArray alloc] init];
+    [colors addObjectsFromArray:ChartColorTemplates.vordiplom];
+    [colors addObjectsFromArray:ChartColorTemplates.joyful];
+    [colors addObjectsFromArray:ChartColorTemplates.colorful];
+    [colors addObjectsFromArray:ChartColorTemplates.liberty];
+    [colors addObjectsFromArray:ChartColorTemplates.pastel];
+    [colors addObject:[UIColor colorWithRed:51/255.f green:181/255.f blue:229/255.f alpha:1.f]];
+    
+    dataSet.colors = colors;
+    
+    PieChartData *data = [[PieChartData alloc] initWithDataSet:dataSet];
+    
+    NSNumberFormatter *pFormatter = [[NSNumberFormatter alloc] init];
+    pFormatter.numberStyle = NSNumberFormatterPercentStyle;
+    pFormatter.maximumFractionDigits = 1;
+    pFormatter.multiplier = @1.f;
+    pFormatter.percentSymbol = @" %";
+    [data setValueFormatter:[[ChartDefaultValueFormatter alloc] initWithFormatter:pFormatter]];
+    [data setValueFont:[UIFont fontWithName:@"HelveticaNeue-Light" size:11.f]];
+    [data setValueTextColor:UIColor.whiteColor];
+    
+    _chartView.data = data;
+    [_chartView highlightValues:nil];
+}
+
+>>>>>>> prakash_code:QIFS/SectorsGraphViewController.m
 
 -(void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:YES];
@@ -483,10 +540,17 @@ NSString *const kSectorsGraphCellIdentifier = @"SectorsGraphCell";
 #pragma mark - Table view delegate
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    @try
+    {
     [_labelComapany setText:self.arraySectorList[indexPath.row][(globalShare.myLanguage != ARABIC_LANGUAGE) ? @"security_sector_name_en" : @"security_sector_name_ar"]];
     [_labelComapany setHidden:NO];
     [_imageArrow setHidden:NO];
     [self updateChartData:self.arraySectorList[indexPath.row][@"security_sector"]];
+    }
+    @catch(NSException *exception)
+    {
+        
+    }
 }
 
 #pragma mark - XLPagerTabStripViewControllerDelegate

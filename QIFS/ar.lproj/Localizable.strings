@@ -24,7 +24,11 @@
 "My Orders History" = "تاريخ الأوامر";
 "Settings" = "إعدادات";
 "Sign Out" = "خروج";
+<<<<<<< HEAD
 "Sign In" = "تسجيل الدخول  ";
+=======
+"Sign In" = "تسجيل الدخول";
+>>>>>>> prakash_code
 
 "Forgot Password" = "نسيت كلمة المرور";
 "Enter OTP" = "إدخال OTP";
@@ -168,6 +172,7 @@
 "NEWORDER_LIMITGREATERVALID" = "و اكبر من";
 
 "SIGNOUT_CONFIRMATION" = "هل أنت متأكد أنك تريد الخروج؟";
+"SIGNIN_CONFIRMATION " ="هل أنت متأكد أنك تريد في؟";
 "CHANGE_ARABIC" = "التبديل إلى اللغة العربية؟";
 "CHANGE_ENGLISH" = "التبديل إلى اللغة الإنجليزية؟";
 
@@ -177,6 +182,10 @@
 "TOTAL ORDER VALUE" = "إجمالي قيمة الطلب";
 "NOT ENOUGH CASH" = "لا توجد مبالغ نقدية كافية في حساب سوق العملاء لتغطية هذا الطلب";
 "CHANGE QUANTITY" = "هل أنت متأكد من أنك تريد تغيير الكمية إلى";
+<<<<<<< HEAD
 
 "Limit Up" = "الحد الأعلى";
 "Limit Down" = "الحد الأدنى";
+=======
+//in
+>>>>>>> prakash_code

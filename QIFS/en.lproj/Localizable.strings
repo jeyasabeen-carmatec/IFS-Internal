@@ -164,6 +164,7 @@
 "NEWORDER_LIMITGREATERVALID" = "and greater than";
 
 "SIGNOUT_CONFIRMATION" = "Are you sure you want to sign out?";
+"SIGNIN_CONFIRMATION" = "Are you sure you want to sign in?";
 "CHANGE_ARABIC" = "Switch to Arabic?";
 "CHANGE_ENGLISH" = "Switch to English?";
 
@@ -175,5 +176,8 @@
 "NOT ENOUGH CASH" = "Not enough cash in the customer market account to cover this order";
 "CHANGE QUANTITY" = "Are you sure you want to change Qty to";
 
+<<<<<<< HEAD
 "Limit Up" = "Limit Up";
 "Limit Down" = "Limit Down";
+=======
+>>>>>>> prakash_code

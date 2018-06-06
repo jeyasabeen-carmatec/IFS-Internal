@@ -84,15 +84,32 @@ NSString *const kMyOrdersOptionsViewCellIdentifier = @"OptionsViewCell";
     [self.tableResults setHidden:YES];
 
 //    self.arrayMenu = [NSArray arrayWithObjects:@"Cash Position", @"My Orders History", @"Contact Us", @"Settings", @"Sign Out", nil];
+    NSString *str_key = [NSString stringWithFormat:@"%@",[[NSUserDefaults standardUserDefaults] valueForKey:@"ssckey"]];
+    NSString *strSign,*strArsign;
+    if([str_key isEqualToString:@"(null)"])
+    {
+        str_key = @"";
+    }
+    
+    if([str_key isEqualToString:@""])
+    {
+        strSign = @"Sign In";
+        strArsign = @"Sign In";
+        
+    }
+    else{
+        strSign = @"Sign Out";
+        strArsign = @"Sign Out";
+    }
     self.arrayMenu = @[
                        @{
                            @"menu_title": NSLocalizedString(@"Cash Position", @"Cash Position"),
                            @"menu_image": @"icon_cash_position"
                            },
-//                       @{
-//                           @"menu_title": NSLocalizedString(@"My Orders History", @"My Orders History"),
-//                           @"menu_image": @"icon_my_order_history"
-//                           },
+                       //                       @{
+                       //                           @"menu_title": NSLocalizedString(@"My Orders History", @"My Orders History"),
+                       //                           @"menu_image": @"icon_my_order_history"
+                       //                           },
                        @{
                            @"menu_title": NSLocalizedString(@"Contact Us", @"Contact Us"),
                            @"menu_image": @"icon_contact_us"
@@ -102,10 +119,11 @@ NSString *const kMyOrdersOptionsViewCellIdentifier = @"OptionsViewCell";
                            @"menu_image": @"icon_settings"
                            },
                        @{
-                           @"menu_title": NSLocalizedString(@"Sign Out", @"Sign Out"),
+                           @"menu_title": NSLocalizedString(strSign, strArsign),
                            @"menu_image": @"icon_signout"
                            }
                        ];
+
 
 //    [self.tableViewOptionMenu setSeparatorInset:UIEdgeInsetsZero];
 //    [self.tableViewOptionMenu setLayoutMargins:UIEdgeInsetsZero];

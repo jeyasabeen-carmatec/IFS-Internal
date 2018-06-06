@@ -84,6 +84,7 @@ NSString *const kStocksOptionsViewCellIdentifier = @"OptionsViewCell";
     [self.searchResults setPlaceholder:NSLocalizedString(@"Symbol/Company Name", @"Symbol/Company Name")];
     self.tableResults.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
 
+<<<<<<< HEAD:QIFS/StocksPagerViewController.m
     NSString *loginStatus;
     if ([GlobalShare isUserLogedIn]) {
         
@@ -94,6 +95,26 @@ NSString *const kStocksOptionsViewCellIdentifier = @"OptionsViewCell";
         loginStatus = NSLocalizedString(@"Sign Out", @"Sign Out");
     }
     
+=======
+//    self.arrayMenu = [NSArray arrayWithObjects:@"Cash Position", @"My Orders History", @"Contact Us", @"Settings", @"Sign Out", nil];
+    NSString *str_key = [NSString stringWithFormat:@"%@",[[NSUserDefaults standardUserDefaults] valueForKey:@"ssckey"]];
+    NSString *strSign,*strArsign;
+    if([str_key isEqualToString:@"(null)"])
+    {
+        str_key = @"";
+    }
+    
+    if([str_key isEqualToString:@""])
+    {
+        strSign = @"Sign In";
+        strArsign = @"Sign In";
+        
+    }
+    else{
+        strSign = @"Sign Out";
+        strArsign = @"Sign Out";
+    }
+>>>>>>> prakash_code:QIFS/StocksPagerViewController.m
     self.arrayMenu = @[
                        @{
                            @"menu_title": NSLocalizedString(@"Cash Position", @"Cash Position"),
@@ -112,10 +133,15 @@ NSString *const kStocksOptionsViewCellIdentifier = @"OptionsViewCell";
                            @"menu_image": @"icon_settings"
                            },
                        @{
+<<<<<<< HEAD:QIFS/StocksPagerViewController.m
                            @"menu_title": loginStatus,
+=======
+                           @"menu_title": NSLocalizedString(strSign, strArsign),
+>>>>>>> prakash_code:QIFS/StocksPagerViewController.m
                            @"menu_image": @"icon_signout"
                            }
                        ];
+
 
 //    [self.tableViewOptionMenu setSeparatorInset:UIEdgeInsetsZero];
 //    [self.tableViewOptionMenu setLayoutMargins:UIEdgeInsetsZero];
@@ -1019,6 +1045,7 @@ NSString *const kStocksOptionsViewCellIdentifier = @"OptionsViewCell";
                 [[self navigationController] pushViewController:settingsViewController animated:YES];
             }
             else {
+<<<<<<< HEAD:QIFS/StocksPagerViewController.m
                 
                 if ([GlobalShare isUserLogedIn]) {
                     
@@ -1030,6 +1057,25 @@ NSString *const kStocksOptionsViewCellIdentifier = @"OptionsViewCell";
                      [GlobalShare showSignOutAlertView:self :SIGNOUT_CONFIRMATION];
                 }
                
+=======
+//                [[self navigationController] popToRootViewControllerAnimated:YES];
+                NSString *str_key = [NSString stringWithFormat:@"%@",[[NSUserDefaults standardUserDefaults] valueForKey:@"ssckey"]];
+             
+                if([str_key isEqualToString:@"(null)"])
+                {
+                    str_key = @"";
+                }
+                
+                if([str_key isEqualToString:@""])
+                {
+                     [GlobalShare showSignOutAlertView:self :SIGNIN_CONFIRMATION];
+                    //Market
+                }
+                else{
+                    [GlobalShare showSignOutAlertView:self :SIGNOUT_CONFIRMATION];
+
+                }
+>>>>>>> prakash_code:QIFS/StocksPagerViewController.m
             }
         }
         else {

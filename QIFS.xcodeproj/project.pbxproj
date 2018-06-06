@@ -135,12 +135,20 @@
 		7351BC7820C5421D00F49E27 /* LoginView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7351BC7A20C5421D00F49E27 /* LoginView.xib */; };
 		7351BC8020C5490D00F49E27 /* CashPositionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7351BC7F20C5490D00F49E27 /* CashPositionViewController.m */; };
 		7351BC8B20C6374600F49E27 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7351BC8820C6374600F49E27 /* Foundation.framework */; };
+<<<<<<< HEAD
 		7351BC8C20C6377600F49E27 /* Foundation.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 7351BC8820C6374600F49E27 /* Foundation.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		73CC724120C63BC300E0F35C /* Charts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7351BC4120C50CB800F49E27 /* Charts.framework */; };
+=======
+>>>>>>> prakash_code
 		73CC724420C6447000E0F35C /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 73CC724320C6447000E0F35C /* ViewController.m */; };
 		73CCC06120BD24B6009A662F /* StocksOverviewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 73CCC06020BD24B6009A662F /* StocksOverviewViewController.m */; };
 		73CCC06320BD3978009A662F /* ActiveStocksViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 73CCC06220BD3978009A662F /* ActiveStocksViewController.m */; };
 		73CCC06520BD3A38009A662F /* CompanyGraphViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 73CCC06420BD3A38009A662F /* CompanyGraphViewController.m */; };
+<<<<<<< HEAD
+=======
+		D0787F8820C7A84C0052D8D8 /* Foundation.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 7351BC8820C6374600F49E27 /* Foundation.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		D0787F9520C7B8930052D8D8 /* Charts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7351BC4120C50CB800F49E27 /* Charts.framework */; };
+>>>>>>> prakash_code
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -177,7 +185,11 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+<<<<<<< HEAD
 				7351BC8C20C6377600F49E27 /* Foundation.framework in Embed Frameworks */,
+=======
+				D0787F8820C7A84C0052D8D8 /* Foundation.framework in Embed Frameworks */,
+>>>>>>> prakash_code
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 1;
@@ -439,7 +451,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+<<<<<<< HEAD
 				73CC724120C63BC300E0F35C /* Charts.framework in Frameworks */,
+=======
+				D0787F9520C7B8930052D8D8 /* Charts.framework in Frameworks */,
+>>>>>>> prakash_code
 				7351BC8B20C6374600F49E27 /* Foundation.framework in Frameworks */,
 				514EF68A1DE763AC0071F747 /* libsqlite3.0.tbd in Frameworks */,
 				514382CE1D1DBCBD00E1B739 /* SystemConfiguration.framework in Frameworks */,
@@ -565,8 +581,6 @@
 				511247E31D23AA3100364145 /* ChildExampleViewController.h */,
 				511247E41D23AA3100364145 /* ChildExampleViewController.m */,
 				511247E51D23AA3100364145 /* ChildExampleViewController.xib */,
-				73216D3A20B543CD00D807B2 /* CompanyStocksViewController.h */,
-				73216D3B20B543CD00D807B2 /* CompanyStocksViewController.m */,
 				514C960A1D57A4BE00D7C1DA /* QEGraphViewController.h */,
 				514C960B1D57A4BE00D7C1DA /* QEGraphViewController.m */,
 				51613C6D1E20C3530055505A /* CompanyGraphViewController.h */,
@@ -883,6 +897,8 @@
 		51829C171D269FBB00DF1C73 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				73216D3A20B543CD00D807B2 /* CompanyStocksViewController.h */,
+				73216D3B20B543CD00D807B2 /* CompanyStocksViewController.m */,
 				515AF6311D2E509A00FF837E /* StocksOverviewViewController.h */,
 				73CCC06020BD24B6009A662F /* StocksOverviewViewController.m */,
 				515AF6361D2E509A00FF837E /* StockListViewController.h */,
@@ -1024,12 +1040,22 @@
 				TargetAttributes = {
 					5108D32D1D6EDEB100D23F6E = {
 						CreatedOnToolsVersion = 7.3.1;
+<<<<<<< HEAD
 						DevelopmentTeam = KF8S4V7VM6;
 					};
 					514382A61D1D82D400E1B739 = {
 						CreatedOnToolsVersion = 7.3.1;
 						DevelopmentTeam = 4MCGAH3G26;
 						ProvisioningStyle = Manual;
+=======
+						DevelopmentTeam = AKL9EV8FSY;
+						ProvisioningStyle = Automatic;
+					};
+					514382A61D1D82D400E1B739 = {
+						CreatedOnToolsVersion = 7.3.1;
+						DevelopmentTeam = AKL9EV8FSY;
+						ProvisioningStyle = Automatic;
+>>>>>>> prakash_code
 					};
 				};
 			};
@@ -1296,12 +1322,15 @@
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = AKL9EV8FSY;
 				INFOPLIST_FILE = QIFSToday/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.ifs.mobiletrading.QIFSToday;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ifs.IFS;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SKIP_INSTALL = YES;
 			};
 			name = Debug;
@@ -1310,13 +1339,16 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: ISLAMIC FINANCIAL SECURITIES CO. (MU44929JUZ)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = AKL9EV8FSY;
 				INFOPLIST_FILE = QIFSToday/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.ifs.mobiletrading.QIFSToday;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ifs.IFS;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "736dc37d-1ff9-4646-a12c-425809aab758";
+				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SKIP_INSTALL = YES;
 			};
 			name = Release;
@@ -1430,20 +1462,27 @@
 		514382BF1D1D82D500E1B739 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CODE_SIGN_STYLE = Manual;
+				CODE_SIGN_STYLE = Automatic;
 				DEFINES_MODULE = YES;
+<<<<<<< HEAD
 				DEVELOPMENT_TEAM = 4MCGAH3G26;
+=======
+				DEVELOPMENT_TEAM = AKL9EV8FSY;
+>>>>>>> prakash_code
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/$(PROJECT_NAME)/QIFS-Prefix.pch";
 				INFOPLIST_FILE = QIFS/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+<<<<<<< HEAD
 				PRODUCT_BUNDLE_IDENTIFIER = com.carmatec.Dohasooq;
+=======
+				PRODUCT_BUNDLE_IDENTIFIER = com.ifs.IFS;
+>>>>>>> prakash_code
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "eadc65cf-9fc2-4d6b-91fa-8a5701b40d11";
 				PROVISIONING_PROFILE_SPECIFIER = DEV_DS;
@@ -1457,20 +1496,27 @@
 		514382C01D1D82D500E1B739 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CODE_SIGN_STYLE = Manual;
+				CODE_SIGN_STYLE = Automatic;
 				DEFINES_MODULE = YES;
+<<<<<<< HEAD
 				DEVELOPMENT_TEAM = 4MCGAH3G26;
+=======
+				DEVELOPMENT_TEAM = AKL9EV8FSY;
+>>>>>>> prakash_code
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/$(PROJECT_NAME)/QIFS-Prefix.pch";
 				INFOPLIST_FILE = QIFS/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+<<<<<<< HEAD
 				PRODUCT_BUNDLE_IDENTIFIER = com.carmatec.Dohasooq;
+=======
+				PRODUCT_BUNDLE_IDENTIFIER = com.ifs.IFS;
+>>>>>>> prakash_code
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "eadc65cf-9fc2-4d6b-91fa-8a5701b40d11";
 				PROVISIONING_PROFILE_SPECIFIER = DEV_DS;
