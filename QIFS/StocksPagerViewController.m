@@ -208,7 +208,7 @@ NSString *const kStocksOptionsViewCellIdentifier = @"OptionsViewCell";
                                  CAPSPageMenuOptionBottomMenuHairlineColor: [UIColor colorWithRed:70.0/255.0 green:70.0/255.0 blue:70.0/255.0 alpha:1.0],
                                  CAPSPageMenuOptionMenuItemFont: [UIFont fontWithName:@"HelveticaNeue" size:13.0],
                                  CAPSPageMenuOptionMenuHeight: @(20.0),
-                                 CAPSPageMenuOptionMenuItemWidth: @(70.0),
+                                 CAPSPageMenuOptionMenuItemWidth: @(60.0),
                                  CAPSPageMenuOptionCenterMenuItems: @(YES)
                                  };
     
