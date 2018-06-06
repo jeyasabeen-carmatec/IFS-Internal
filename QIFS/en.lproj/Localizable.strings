@@ -24,6 +24,7 @@
 "My Orders History" = "My Orders History";
 "Settings" = "Settings";
 "Sign Out" = "Sign Out";
+"Sign In" = "Sign In";
 
 "Forgot Password" = "Forgot Password";
 "Enter OTP" = "Enter OTP";
@@ -174,3 +175,5 @@
 "NOT ENOUGH CASH" = "Not enough cash in the customer market account to cover this order";
 "CHANGE QUANTITY" = "Are you sure you want to change Qty to";
 
+"Limit Up" = "Limit Up";
+"Limit Down" = "Limit Down";

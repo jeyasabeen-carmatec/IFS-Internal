@@ -141,6 +141,13 @@ NSString *const kNewOrderOptionsViewCellIdentifier = @"OptionsViewCell";
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    
+    overLayView = [[UIView alloc] initWithFrame:CGRectMake(0, self.navigationController.navigationBar.frame.origin.y, self.view.frame.size.width, self.view.frame.size.height)];
+    overLayView.backgroundColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.5];
+    overLayView.clipsToBounds = YES;
+    overLayView.hidden = YES;
+    [self.view addSubview:overLayView];
+    
     _scrollView.translatesAutoresizingMaskIntoConstraints = YES;
 
     // Do any additional setup after loading the view from its nib.
@@ -150,9 +157,17 @@ NSString *const kNewOrderOptionsViewCellIdentifier = @"OptionsViewCell";
     [self.searchResults setPlaceholder:NSLocalizedString(@"Symbol/Company Name", @"Symbol/Company Name")];
     self.tableResults.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
     [self.tableResults setHidden:YES];
-//    self.allResults = [[NSMutableArray alloc] init];
+
+    NSString *loginStatus;
+    if ([GlobalShare isUserLogedIn]) {
+       
+    loginStatus = NSLocalizedString(@"Sign In", @"Sign In");
+
+    }
+    else{
+        loginStatus = NSLocalizedString(@"Sign Out", @"Sign Out");
+    }
     
-//    self.arrayMenu = [NSArray arrayWithObjects:@"Cash Position", @"My Orders History", @"Contact Us", @"Settings", @"Sign Out", nil];
     self.arrayMenu = @[
                        @{
                            @"menu_title": NSLocalizedString(@"Cash Position", @"Cash Position"),
@@ -171,7 +186,7 @@ NSString *const kNewOrderOptionsViewCellIdentifier = @"OptionsViewCell";
                            @"menu_image": @"icon_settings"
                            },
                        @{
-                           @"menu_title": NSLocalizedString(@"Sign Out", @"Sign Out"),
+                           @"menu_title": loginStatus,
                            @"menu_image": @"icon_signout"
                            }
                        ];
@@ -285,12 +300,8 @@ NSString *const kNewOrderOptionsViewCellIdentifier = @"OptionsViewCell";
 -(void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:YES];
     
-    overLayView = [[UIView alloc] initWithFrame:CGRectMake(0, self.navigationController.navigationBar.frame.origin.y, self.view.frame.size.width, self.view.frame.size.height)];
-    overLayView.backgroundColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.5];
-    overLayView.clipsToBounds = YES;
-    overLayView.hidden = YES;
-    [self.view addSubview:overLayView];
-    
+    _limitDowmLabel.hidden =YES;
+    _limitUPLabel.hidden = YES;
     
     if(self.tabBarController.selectedIndex == 1)
     {
@@ -414,6 +425,10 @@ NSString *const kNewOrderOptionsViewCellIdentifier = @"OptionsViewCell";
                 [self performSelector:@selector(getOrderDetails) withObject:nil afterDelay:0.01f];
             }
             else {
+               
+                self.limitUPLabel.hidden = YES;
+                self.limitDowmLabel.hidden = YES;
+                
                 [self.buttonSearch setHidden:NO];
                 [self.labelTitle setText:NSLocalizedString(@"New Order", @"New Order")];
                 [self.buttonTransaction setEnabled:YES];
@@ -1912,6 +1927,9 @@ NSString *const kNewOrderOptionsViewCellIdentifier = @"OptionsViewCell";
                                                                        
                                                                        NSDictionary *dictVal = returnedDict[@"result"];
                                                                        
+                                                                       
+                                                                       [self getLimitUpLimitDown];
+                                                                       
                                                                        NSString *strcost =[NSString stringWithFormat:@"%.2f",[dictVal[@"OrderValue"]floatValue]] ;
                                                                        [[NSUserDefaults standardUserDefaults] setValue:strcost forKey:@"modified_order_VAL"] ;
                                                                        [[NSUserDefaults standardUserDefaults] synchronize];
@@ -2312,6 +2330,77 @@ NSString *const kNewOrderOptionsViewCellIdentifier = @"OptionsViewCell";
 - (void)callBackSuperviewFromCash {
     self.tabBarController.tabBar.hidden = NO;
 }
+-(void) getLimitUpLimitDown {
+    @try {
+          if([self.securityId length] == 0) return;
+        
+        [self.indicatorView setHidden:NO];
+        
+        NSString *strToken = [[NSUserDefaults standardUserDefaults] stringForKey:@"ssckey"];
+        NSURLSessionConfiguration *defaultConfigObject = [NSURLSessionConfiguration defaultSessionConfiguration];
+        defaultConfigObject.HTTPAdditionalHeaders = @{@"Authorization": strToken};
+        NSURLSession *defaultSession = [NSURLSession sessionWithConfiguration:defaultConfigObject delegate:self delegateQueue:[NSOperationQueue mainQueue]];
+        
+        NSString *strURL = [NSString stringWithFormat:@"%@GetSymbolLimitUpDown?ticker=%@", REQUEST_URL,self.securityId];
+        NSLog(@"URL .. %@",strURL);
+        NSURL *url = [NSURL URLWithString:strURL];
+        
+        NSURLSessionDataTask *dataTask = [defaultSession dataTaskWithURL:url
+                                                       completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
+                                                           [self.indicatorView setHidden:YES];
+                                                           if(error == nil)
+                                                           {
+                                                               NSMutableDictionary *returnedDict = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:&error];
+                                                               if([returnedDict[@"status"] hasPrefix:@"error"]) {
+                                                                   if([returnedDict[@"result"] hasPrefix:@"T5"])
+                                                                       [GlobalShare showSessionExpiredAlertView:self :SESSION_EXPIRED];
+                                                                   else if([returnedDict[@"result"] hasPrefix:@"T4"])
+                                                                       [GlobalShare showBasicAlertView:self :INVALID_HEADER];
+                                                                   else if([returnedDict[@"result"] hasPrefix:@"T3"] || [returnedDict[@"result"] hasPrefix:@"T2"])
+                                                                       [GlobalShare showBasicAlertView:self :INVALID_TOKEN];
+                                                                   else
+                                                                       [GlobalShare showBasicAlertView:self :returnedDict[@"result"]];
+                                                                   return;
+                                                               }
+                                                               if([returnedDict[@"status"] isEqualToString:@"authenticated"]) {
+                                                                   dispatch_async(dispatch_get_main_queue(), ^{
+                                                                     NSDictionary *limitUpDownDict =    [returnedDict valueForKey:@"result"];
+                                                                       self.limitDowmLabel.hidden = NO;
+                                                                       self.limitUPLabel.hidden = NO;
+                                                                       
+                                                                       NSString *str = [NSString stringWithFormat:@"%@: %@",
+                                                                        NSLocalizedString(@"Limit Up", @"Limit Up"),[limitUpDownDict valueForKey:@"LimitUp"]];
+                                                                      
+                                                                       
+                                                                       self.limitUPLabel.text = str;
+                                           
+                                                                       str = [NSString stringWithFormat:@"%@: %@",
+                                                                              NSLocalizedString(@"Limit Down", @"Limit Down"),[limitUpDownDict valueForKey:@"LimitDown"]];
+                                                                       self.limitDowmLabel.text = str;
+                                                                       
+                                                                       
+//                                                                       [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"is_securities_avail"];
+//                                                                       [[NSUserDefaults standardUserDefaults] synchronize];
+//                                                                       [self createSecurity:returnedDict[@"result"]];
+                                                                       
+                                                                       
+                                                                   });
+                                                               }
+                                                           }
+                                                           else {
+                                                               [GlobalShare showBasicAlertView:self :[error localizedDescription]];
+                                                           }
+                                                       }];
+        
+        [dataTask resume];
+    }
+    @catch (NSException * e) {
+        NSLog(@"%@", [e description]);
+    }
+    @finally {
+        
+    }
+}
 
 #pragma mark - UIPickerView
 
@@ -2660,6 +2749,9 @@ NSString *const kNewOrderOptionsViewCellIdentifier = @"OptionsViewCell";
             [self.buttonOrderType setEnabled:YES];
             
             [self performSelector:@selector(getMarketWatchNew) withObject:nil afterDelay:0.01f];
+            [self performSelector:@selector(getLimitUpLimitDown) withObject:nil afterDelay:0.01f];
+            
+            
         }
         
 ////        self.selectVal = 0;

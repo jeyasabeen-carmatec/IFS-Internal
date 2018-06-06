@@ -83,18 +83,26 @@ NSString *const kStocksOptionsViewCellIdentifier = @"OptionsViewCell";
     [self.labelTitle setText:NSLocalizedString(@"QE Market", @"QE Market")];
     [self.searchResults setPlaceholder:NSLocalizedString(@"Symbol/Company Name", @"Symbol/Company Name")];
     self.tableResults.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
-//    self.allResults = [[NSMutableArray alloc] init];
 
-//    self.arrayMenu = [NSArray arrayWithObjects:@"Cash Position", @"My Orders History", @"Contact Us", @"Settings", @"Sign Out", nil];
+    NSString *loginStatus;
+    if ([GlobalShare isUserLogedIn]) {
+        
+        loginStatus = NSLocalizedString(@"Sign In", @"Sign In");
+        
+    }
+    else{
+        loginStatus = NSLocalizedString(@"Sign Out", @"Sign Out");
+    }
+    
     self.arrayMenu = @[
                        @{
                            @"menu_title": NSLocalizedString(@"Cash Position", @"Cash Position"),
                            @"menu_image": @"icon_cash_position"
                            },
-//                       @{
-//                           @"menu_title": NSLocalizedString(@"My Orders History", @"My Orders History"),
-//                           @"menu_image": @"icon_my_order_history"
-//                           },
+                       //                       @{
+                       //                           @"menu_title": NSLocalizedString(@"My Orders History", @"My Orders History"),
+                       //                           @"menu_image": @"icon_my_order_history"
+                       //                           },
                        @{
                            @"menu_title": NSLocalizedString(@"Contact Us", @"Contact Us"),
                            @"menu_image": @"icon_contact_us"
@@ -104,7 +112,7 @@ NSString *const kStocksOptionsViewCellIdentifier = @"OptionsViewCell";
                            @"menu_image": @"icon_settings"
                            },
                        @{
-                           @"menu_title": NSLocalizedString(@"Sign Out", @"Sign Out"),
+                           @"menu_title": loginStatus,
                            @"menu_image": @"icon_signout"
                            }
                        ];
@@ -1011,8 +1019,17 @@ NSString *const kStocksOptionsViewCellIdentifier = @"OptionsViewCell";
                 [[self navigationController] pushViewController:settingsViewController animated:YES];
             }
             else {
-//                [[self navigationController] popToRootViewControllerAnimated:YES];
-                [GlobalShare showSignOutAlertView:self :SIGNOUT_CONFIRMATION];
+                
+                if ([GlobalShare isUserLogedIn]) {
+                    
+                 [self.navigationController popToRootViewControllerAnimated:YES];
+                    
+                }
+                else{
+                    //loginStatus = NSLocalizedString(@"Sign Out", @"Sign Out");
+                     [GlobalShare showSignOutAlertView:self :SIGNOUT_CONFIRMATION];
+                }
+               
             }
         }
         else {

@@ -682,35 +682,27 @@ static GlobalShare *_shareInstane;
     NSString *str = [languageBundle localizedStringForKey:passKey value:@"" table:@"Localization"];
     return str;
 }
-+ (void)showLoginAlertView:(id)viewController :(NSString *)strMessage {
-    
-    NSString *alertTitle = NSLocalizedString(@"Login", @"Login");
-        UIAlertController * alertController = [UIAlertController alertControllerWithTitle: alertTitle
-                                                                              message: @""
-                                                                       preferredStyle:UIAlertControllerStyleAlert];
-    [alertController addTextFieldWithConfigurationHandler:^(UITextField *textField) {
-        textField.placeholder = @"name";
-        textField.textColor = [UIColor blueColor];
-        textField.clearButtonMode = UITextFieldViewModeWhileEditing;
-        textField.borderStyle = UITextBorderStyleRoundedRect;
-    }];
-    [alertController addTextFieldWithConfigurationHandler:^(UITextField *textField) {
-        textField.placeholder = @"password";
-        textField.textColor = [UIColor blueColor];
-        textField.clearButtonMode = UITextFieldViewModeWhileEditing;
-        textField.borderStyle = UITextBorderStyleRoundedRect;
-        textField.secureTextEntry = YES;
-    }];
-    [alertController addAction:[UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
-        NSArray * textfields = alertController.textFields;
-        UITextField * namefield = textfields[0];
-        UITextField * passwordfiled = textfields[1];
-        NSLog(@"%@:%@",namefield.text,passwordfiled.text);
-        
-    }]];
-    [viewController presentViewController:alertController animated:YES completion:nil];
-    
++(BOOL)isUserLogedIn{
+    NSString *strToken = [NSString stringWithFormat:@"%@", [[NSUserDefaults standardUserDefaults] stringForKey:@"ssckey"]];
+    if (strToken == nil || [strToken isEqualToString:@"(null)"]) {
+        return YES;
+    }
+    else{
+        return NO;
+    }
 }
-
-
++(NSString*)checkingNullsAndNills:(NSString *)strValue{
+    @try{
+      
+        if ([strValue isKindOfClass:[NSNull class]] || [strValue isEqualToString:@"(null)"] || strValue == nil || [strValue isEqualToString:@"<nil>"] || [strValue isEqualToString:@""]) {
+            return @"";
+        }else{
+            return strValue;
+        }
+        
+    }
+    @catch(NSException *exception){
+        NSLog(@"Exception in Null Values Checking...");
+    }
+}
 @end
