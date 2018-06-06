@@ -24,6 +24,7 @@
 "My Orders History" = "تاريخ الأوامر";
 "Settings" = "إعدادات";
 "Sign Out" = "خروج";
+"Sign In" = "تسجيل الدخول  ";
 
 "Forgot Password" = "نسيت كلمة المرور";
 "Enter OTP" = "إدخال OTP";
@@ -176,3 +177,6 @@
 "TOTAL ORDER VALUE" = "إجمالي قيمة الطلب";
 "NOT ENOUGH CASH" = "لا توجد مبالغ نقدية كافية في حساب سوق العملاء لتغطية هذا الطلب";
 "CHANGE QUANTITY" = "هل أنت متأكد من أنك تريد تغيير الكمية إلى";
+
+"Limit Up" = "الحد الأعلى";
+"Limit Down" = "الحد الأدنى";
