@@ -12,13 +12,17 @@
 #import "MDOrderBidCell.h"
 #import "MDOrderAskCell.h"
 #import "MDBarView.h"
+#import "LoginView.h"
 
 NSString *const kMDPriceBidCellIdentifier = @"MDPriceBidCell";
 NSString *const kMDPriceAskCellIdentifier = @"MDPriceAskCell";
 NSString *const kMDOrderBidCellIdentifier = @"MDOrderBidCell";
 NSString *const kMDOrderAskCellIdentifier = @"MDOrderAskCell";
 
-@interface MarketDepthViewController () <NSURLSessionDelegate>
+@interface MarketDepthViewController () <NSURLSessionDelegate,UITextFieldDelegate>{
+    LoginView *loginVw;
+    UIView *overLayView;
+}
 
 @property (nonatomic, weak) IBOutlet UILabel *labelTitle;
 @property (nonatomic, weak) IBOutlet UITableView *tableViewPriceBid;
@@ -86,6 +90,12 @@ NSString *const kMDOrderAskCellIdentifier = @"MDOrderAskCell";
     self.tableViewPriceAsk.scrollEnabled = NO;
     self.tableViewOrderBid.scrollEnabled = NO;
     self.tableViewOrderAsk.scrollEnabled = NO;
+    
+    overLayView = [[UIView alloc] initWithFrame:CGRectMake(0, self.navigationController.navigationBar.frame.origin.y, self.view.frame.size.width, self.view.frame.size.height)];
+    overLayView.backgroundColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.5];
+    overLayView.clipsToBounds = YES;
+    overLayView.hidden = YES;
+    [self.view addSubview:overLayView];
     
 //    self.tableViewPriceBid.layer.borderWidth = 1.0;
 //    self.tableViewPriceBid.layer.borderColor = [UIColor darkGrayColor].CGColor;
@@ -231,6 +241,8 @@ NSString *const kMDOrderAskCellIdentifier = @"MDOrderAskCell";
 -(void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:YES];
     
+  
+    
     if(globalShare.myLanguage == ARABIC_LANGUAGE) {
         [self.view setSemanticContentAttribute:UISemanticContentAttributeForceRightToLeft];
         [self.labelOrderBidQtyCaption setTextAlignment:NSTextAlignmentLeft];
@@ -256,7 +268,13 @@ NSString *const kMDOrderAskCellIdentifier = @"MDOrderAskCell";
 //    [self performSelector:@selector(getMarketByPrice) withObject:nil afterDelay:0.01f];
 //    [self performSelector:@selector(getMarketByOrder) withObject:nil afterDelay:0.01f];
 
+    NSString *strToken = [NSString stringWithFormat:@"%@", [[NSUserDefaults standardUserDefaults] stringForKey:@"ssckey"]];
+    if (strToken == nil || [strToken isEqualToString:@"(null)"]) {
+        [self showsLoginPopUp];
+    }
+    else{
     [self performSelector:@selector(getMarketDepthValues) withObject:nil afterDelay:0.01f];
+    }
 }
 
 -(void)viewWillDisappear:(BOOL)animated {
@@ -272,9 +290,85 @@ NSString *const kMDOrderAskCellIdentifier = @"MDOrderAskCell";
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+#pragma mark Loading Login PopUp when guest User
+-(void)showsLoginPopUp{
+    overLayView.hidden = NO;
+    loginVw  = [[[NSBundle mainBundle] loadNibNamed:@"LoginView" owner:self options:nil] objectAtIndex:0];
+    [self.view addSubview:loginVw];
+    loginVw.frame = CGRectMake(0, 0, self.view.frame.size.width-70, loginVw.frame.size.height);
+    loginVw.center = self.view.center;
+    
+    [loginVw.cancelButton addTarget:self action:@selector(cancelButtonAction) forControlEvents:UIControlEventTouchUpInside];
+    [loginVw.loginButton addTarget:self action:@selector(loginButtonAction) forControlEvents:UIControlEventTouchUpInside];
+    loginVw.userNameTF.delegate =self;
+    loginVw.passwordTF.delegate = self;
+    
+    if(globalShare.myLanguage == ARABIC_LANGUAGE) {
+        // [[UIView appearance] setSemanticContentAttribute:UISemanticContentAttributeForceRightToLeft];
+        [loginVw setSemanticContentAttribute:UISemanticContentAttributeForceRightToLeft];
+        
+    }
+    else {
+        //[[UIView appearance] setSemanticContentAttribute:UISemanticContentAttributeForceLeftToRight];
+        [loginVw setSemanticContentAttribute:UISemanticContentAttributeForceLeftToRight];
+        
+    }
+    
+}
+
 
 #pragma mark - Common actions
 
+-(BOOL)verifyUserLogin:(NSString *)stringUserName andPassword:(NSString*)stringPassword{
+    @try {
+        
+        
+        [loginVw removeFromSuperview];
+        overLayView.hidden = YES;
+        
+        NSURLSessionConfiguration *defaultConfigObject = [NSURLSessionConfiguration defaultSessionConfiguration];
+        NSURLSession *defaultSession = [NSURLSession sessionWithConfiguration:defaultConfigObject delegate:self delegateQueue:[NSOperationQueue mainQueue]];
+        
+        NSString *strURL = [NSString stringWithFormat:@"%@SetCredentials?username=%@&password=%@", REQUEST_URL, stringUserName, stringPassword];
+        NSURL *url = [NSURL URLWithString:strURL];
+        
+        NSURLSessionDataTask *dataTask = [defaultSession dataTaskWithURL:url
+                                                       completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
+                                                           
+                                                           
+                                                           if(error == nil)
+                                                           {
+                                                               
+                                                               NSMutableDictionary *returnedDict = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:&error];
+                                                               if([[returnedDict objectForKey:@"status"] hasPrefix:@"error"]) {
+                                                                   if([[returnedDict objectForKey:@"result"] hasPrefix:@"T4"])
+                                                                       [GlobalShare showBasicAlertView:self :INVALID_HEADER];
+                                                                   else
+                                                                       [GlobalShare showBasicAlertView:self :[returnedDict objectForKey:@"result"]];
+                                                                   return;
+                                                               }
+                                                               NSString *strToken = [returnedDict objectForKey:@"result"];
+                                                               [[NSUserDefaults standardUserDefaults] setObject:strToken forKey:@"ssckey"];
+                                                               [[NSUserDefaults standardUserDefaults] synchronize];
+                                                               [self viewWillAppear:YES];
+                                                               
+                                                               
+                                                           }
+                                                           else {
+                                                               
+                                                               [GlobalShare showBasicAlertView:self :[error localizedDescription]];
+                                                           }
+                                                       }];
+        
+        [dataTask resume];
+    }
+    @catch (NSException * e) {
+        NSLog(@"%@", [e description]);
+    }
+    @finally {
+        
+    }
+}
 - (void)callHeartBeatUpdate {
     [[GlobalShare sharedInstance] setIsTimerMarketDepthRun:YES];
     globalShare.timerMarketDepth = [NSTimer scheduledTimerWithTimeInterval:AUTO_SYNC_INTERVAL target:self selector:@selector(getMarketDepthValues) userInfo:nil repeats:YES];
@@ -490,6 +584,46 @@ NSString *const kMDOrderAskCellIdentifier = @"MDOrderAskCell";
 
 #pragma mark - Button actions
 
+-(void)cancelButtonAction{
+    overLayView.hidden = YES;
+    [loginVw removeFromSuperview];
+    [self.navigationController popViewControllerAnimated:YES];
+}
+-(void)loginButtonAction{
+    
+    @try {
+        
+        [loginVw.userNameTF resignFirstResponder];
+        [loginVw.passwordTF resignFirstResponder];
+        
+        NSString *stringUserName = [loginVw.userNameTF.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
+        NSString *stringPassword = [loginVw.passwordTF.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
+        
+        if([stringUserName length] == 0) {
+            [GlobalShare showBasicAlertView:self :USERNAME];
+            return;
+        } else if([stringPassword length] == 0) {
+            [GlobalShare showBasicAlertView:self :PASSWORD];
+            return;
+        }
+        
+        if (![GlobalShare isConnectedInternet]) {
+            [GlobalShare showBasicAlertView:self :INTERNET_CONNECTION];
+            return;
+        }
+        [self verifyUserLogin:stringUserName andPassword:stringPassword];
+        
+        
+    }
+    @catch (NSException * e) {
+        NSLog(@"%@", [e description]);
+    }
+    @finally {
+        //        [self toEnableControls];
+    }
+    
+}
+
 - (IBAction)actionPhoneCall:(id)sender {
 //    NSString *stringTitle = [GlobalShare replaceSpecialCharsFromMobileNumber:@"44498818"];
 //    NSString *stringUrl = [NSString stringWithFormat:@"tel://%@", stringTitle];
@@ -504,6 +638,22 @@ NSString *const kMDOrderAskCellIdentifier = @"MDOrderAskCell";
 - (IBAction)actionBack:(id)sender {
     [self.navigationController popViewControllerAnimated:YES];
 }
+#pragma mark - UITextField Delegate
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField {
+    [textField resignFirstResponder];
+    return YES;
+}
+
+- (BOOL)textFieldShouldBeginEditing:(UITextField *)textField {
+    
+    return YES;
+}
+
+- (void)textFieldDidEndEditing:(UITextField *)textField {
+    
+}
+
 
 #pragma mark - Table view data source
 

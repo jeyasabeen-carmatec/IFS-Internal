@@ -60,7 +60,7 @@ NSString *const kStockListCellIdentifier = @"StockListCell";
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
-//    globalShare = [GlobalShare sharedInstance];
+    //globalShare = [GlobalShare sharedInstance];
 //    self.tableViewStocks.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
 //
 ////    self.contentVC = [self.storyboard instantiateViewControllerWithIdentifier:@"PopoverViewController"];
@@ -264,6 +264,8 @@ NSString *const kStockListCellIdentifier = @"StockListCell";
 //    [self dismissPopup];
 
     NSString *strToken = [[NSUserDefaults standardUserDefaults] stringForKey:@"ssckey"];
+     strToken = [GlobalShare checkingNullValues:strToken];
+
     NSURLSessionConfiguration *defaultConfigObject = [NSURLSessionConfiguration defaultSessionConfiguration];
     defaultConfigObject.HTTPAdditionalHeaders = @{@"Authorization": strToken};
     NSURLSession *defaultSession = [NSURLSession sessionWithConfiguration:defaultConfigObject delegate:self delegateQueue:[NSOperationQueue mainQueue]];

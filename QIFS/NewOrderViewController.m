@@ -2733,8 +2733,14 @@ NSString *const kNewOrderOptionsViewCellIdentifier = @"OptionsViewCell";
             [[self navigationController] pushViewController:settingsViewController animated:YES];
         }
         else {
-//            [[self navigationController] popToRootViewControllerAnimated:YES];
-            [GlobalShare showSignOutAlertView:self :SIGNOUT_CONFIRMATION];
+            if ([GlobalShare isUserLogedIn]) {
+                
+                [self.navigationController popToRootViewControllerAnimated:YES];
+                
+            }
+            else{
+                [GlobalShare showSignOutAlertView:self :SIGNOUT_CONFIRMATION];
+            }
         }
         
         if(indexPath.row != 0) {

@@ -172,24 +172,30 @@ NSString *const kStockNewsCellIdentifier = @"StockNewsCell";
 }
 
 - (IBAction)segmentedControlIndexChanged:(id)sender {
-    switch (self.segmentMenu.selectedSegmentIndex) {
-        case 0:
-            //            [newsView removeFromSuperview];
-            //            [self.view addSubview:summaryView];
-            [_newsView setHidden:YES];
-            [_summaryView setHidden:NO];
-            break;
-        case 1:
-            //            [summaryView removeFromSuperview];
-            //            [self.view addSubview:newsView];
-            [_newsView setHidden:NO];
-            [_summaryView setHidden:YES];
-            break;
-        default:
-            break;
+    if (self.segmentMenu.selectedSegmentIndex == 0) {
+        [_newsView setHidden:YES];
+        [_summaryView setHidden:NO];
+    }
+    else{
+        [self newsAction];
     }
 }
-
+-(void)newsAction{
+    NSString *str;
+    //https://www.islamicbroker.com.qa/
+    if(globalShare.myLanguage == ARABIC_LANGUAGE) {
+       // str = [NSString stringWithFormat:@"https://www.islamicbroker.com.qa/ar/stories/c/3/0/%D8%A3%D9%87 %D9%85-%D8%A7%D9%84%D8%A3%D8%AE%D8%A8%D8%A7%D8%B1"];
+        str = [NSString stringWithFormat:@"%@%@",webSite_Url,@"ar/stories/c/3/0/%D8%A3%D9%87 %D9%85-%D8%A7%D9%84%D8%A3%D8%AE%D8%A8%D8%A7%D8%B1"];
+    }
+    else{
+        //str= @"https://www.islamicbroker.com.qa/en/stories/c/3/0/News";
+        str = [NSString stringWithFormat:@"%@en/stories/c/3/0/News",webSite_Url];
+    }
+    // [[UIApplication sharedApplication]openURL:[NSURL URLWithString:str] options:@{} completionHandler:nil];
+    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:str]];
+    [self.segmentMenu setSelectedSegmentIndex:0];
+    
+}
 #pragma mark - Common actions
 
 -(void) getMarketIndex {
@@ -199,6 +205,7 @@ NSString *const kStockNewsCellIdentifier = @"StockNewsCell";
 
 //    NSString *strToken = [[NSUserDefaults standardUserDefaults] stringForKey:@"ssckey"];
     NSString *strToken = [NSString stringWithFormat:@"%@", [[NSUserDefaults standardUserDefaults] stringForKey:@"ssckey"]];
+        strToken = [GlobalShare checkingNullValues:strToken];
     NSURLSessionConfiguration *defaultConfigObject = [NSURLSessionConfiguration defaultSessionConfiguration];
     defaultConfigObject.HTTPAdditionalHeaders = @{@"Authorization": strToken};
     NSURLSession *defaultSession = [NSURLSession sessionWithConfiguration:defaultConfigObject delegate:self delegateQueue:[NSOperationQueue mainQueue]];

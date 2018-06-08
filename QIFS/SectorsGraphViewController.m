@@ -55,7 +55,7 @@ NSString *const kSectorsGraphCellIdentifier = @"SectorsGraphCell";
     _chartView.extraRightOffset = -5.0f;
 
     _chartView.drawCenterTextEnabled = YES;
-    _chartView.userInteractionEnabled = NO;
+    _chartView.userInteractionEnabled = YES;
     _chartView.chartDescription.text = @"";
     
 //    [_labelComapany setText:@""];
@@ -111,6 +111,7 @@ NSString *const kSectorsGraphCellIdentifier = @"SectorsGraphCell";
 //    double mult = range;
     
     NSMutableArray *values = [[NSMutableArray alloc] init];
+     @try{
     
     for (int i = 0; i < count; i++)
     {
@@ -122,8 +123,13 @@ NSString *const kSectorsGraphCellIdentifier = @"SectorsGraphCell";
         
 //        NSDictionary *def = self.arraySectorList[i];
         [values addObject:[[PieChartDataEntry alloc] initWithValue:[GlobalShare roundoff:[def[@"sector_percentage"] doubleValue] :2] label:def[(globalShare.myLanguage != ARABIC_LANGUAGE) ? @"security_sector_name_en" : @"security_sector_name_ar"] icon: [UIImage imageNamed:@"icon"]]];
+       
+    } // For Loop Close
+        
+    } @catch(NSException *exception){
+          NSLog(@"%@",values);
+        NSLog(@"Sectors Exception ....");
     }
-    
     PieChartDataSet *dataSet = [[PieChartDataSet alloc] initWithValues:values label:@"Election Results"];
     
     dataSet.drawIconsEnabled = NO;
@@ -152,7 +158,7 @@ NSString *const kSectorsGraphCellIdentifier = @"SectorsGraphCell";
     pFormatter.percentSymbol = @" %";
     [data setValueFormatter:[[ChartDefaultValueFormatter alloc] initWithFormatter:pFormatter]];
     [data setValueFont:[UIFont fontWithName:@"HelveticaNeue-Light" size:11.f]];
-    [data setValueTextColor:UIColor.whiteColor];
+    [data setValueTextColor:UIColor.blackColor];
     
     _chartView.data = data;
     [_chartView highlightValues:nil];
@@ -364,7 +370,7 @@ NSString *const kSectorsGraphCellIdentifier = @"SectorsGraphCell";
         [companyName addObject:([passCompanyId isEqualToString:@"100"]) ? self.arraySectorList[i][(globalShare.myLanguage != ARABIC_LANGUAGE) ? @"security_sector_name_en" : @"security_sector_name_ar"] : self.arrayCompanyList[i][@"ticker"]];
     }
 
-//     yVals1 = [[NSMutableArray alloc] init];
+   NSMutableArray  *yVals1 = [[NSMutableArray alloc] init];
     
     // IMPORTANT: In a PieChart, no values (Entry) should have the same xIndex (even if from different DataSets), since no values can be drawn above each other.[GlobalShare returnDoubleFromStringActive:[GlobalShare formatStringToTwoDigits:self.arrayVolumeStocks[0][@"volume_all"]]]
     for (int i = 0; i < count; i++)
@@ -487,6 +493,8 @@ NSString *const kSectorsGraphCellIdentifier = @"SectorsGraphCell";
     [_labelComapany setHidden:NO];
     [_imageArrow setHidden:NO];
     [self updateChartData:self.arraySectorList[indexPath.row][@"security_sector"]];
+    
+    NSLog(@"Did select ...%@",[self.arraySectorList objectAtIndex:indexPath.row]);
 }
 
 #pragma mark - XLPagerTabStripViewControllerDelegate

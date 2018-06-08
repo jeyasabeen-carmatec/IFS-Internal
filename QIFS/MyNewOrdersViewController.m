@@ -90,8 +90,22 @@ NSString *const kMyNewOrdersOptionsViewCellIdentifier = @"OptionsViewCell";
     self.tableResults.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
     self.tableViewOrders.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
     [self.tableResults setHidden:YES];
+    
+    overLayView = [[UIView alloc] initWithFrame:CGRectMake(0, self.navigationController.navigationBar.frame.origin.y, self.view.frame.size.width, self.view.frame.size.height)];
+    overLayView.backgroundColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.5];
+    overLayView.clipsToBounds = YES;
+    overLayView.hidden = YES;
+    [self.view addSubview:overLayView];
 
-//    self.arrayMenu = [NSArray arrayWithObjects:@"Cash Position", @"My Orders History", @"Contact Us", @"Settings", @"Sign Out", nil];
+    NSString *loginStatus;
+    if ([GlobalShare isUserLogedIn]) {
+        
+        loginStatus = NSLocalizedString(@"Sign In", @"Sign In");
+        
+    }
+    else{
+        loginStatus = NSLocalizedString(@"Sign Out", @"Sign Out");
+    }
     self.arrayMenu = @[
                        @{
                            @"menu_title": NSLocalizedString(@"Cash Position", @"Cash Position"),
@@ -110,7 +124,7 @@ NSString *const kMyNewOrdersOptionsViewCellIdentifier = @"OptionsViewCell";
                            @"menu_image": @"icon_settings"
                            },
                        @{
-                           @"menu_title": NSLocalizedString(@"Sign Out", @"Sign Out"),
+                           @"menu_title": loginStatus,
                            @"menu_image": @"icon_signout"
                            }
                        ];
@@ -195,11 +209,6 @@ NSString *const kMyNewOrdersOptionsViewCellIdentifier = @"OptionsViewCell";
 -(void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:YES];
     
-    overLayView = [[UIView alloc] initWithFrame:CGRectMake(0, self.navigationController.navigationBar.frame.origin.y, self.view.frame.size.width, self.view.frame.size.height)];
-    overLayView.backgroundColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.5];
-    overLayView.clipsToBounds = YES;
-    overLayView.hidden = YES;
-    [self.view addSubview:overLayView];
     
     if(globalShare.myLanguage == ARABIC_LANGUAGE) {
         [[UIView appearance] setSemanticContentAttribute:UISemanticContentAttributeForceRightToLeft];
@@ -1097,8 +1106,15 @@ NSString *const kMyNewOrdersOptionsViewCellIdentifier = @"OptionsViewCell";
             [[self navigationController] pushViewController:settingsViewController animated:YES];
         }
         else {
-//            [[self navigationController] popToRootViewControllerAnimated:YES];
-            [GlobalShare showSignOutAlertView:self :SIGNOUT_CONFIRMATION];
+            if ([GlobalShare isUserLogedIn]) {
+                
+                [self.navigationController popToRootViewControllerAnimated:YES];
+                
+            }
+            else{
+                //loginStatus = NSLocalizedString(@"Sign Out", @"Sign Out");
+                [GlobalShare showSignOutAlertView:self :SIGNOUT_CONFIRMATION];
+            }
         }
     }
     else if([tableView isEqual:self.tableResults]) {

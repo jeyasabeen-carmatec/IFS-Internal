@@ -691,7 +691,8 @@ static GlobalShare *_shareInstane;
         return NO;
     }
 }
-+(NSString*)checkingNullsAndNills:(NSString *)strValue{
+
++ (NSString *)checkingNullValues:(NSString *)strValue{
     @try{
       
         if ([strValue isKindOfClass:[NSNull class]] || [strValue isEqualToString:@"(null)"] || strValue == nil || [strValue isEqualToString:@"<nil>"] || [strValue isEqualToString:@""]) {

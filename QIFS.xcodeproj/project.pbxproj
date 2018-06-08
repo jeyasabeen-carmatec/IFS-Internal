@@ -127,7 +127,6 @@
 		7351BC5820C53D2000F49E27 /* PortfoliosViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7351BC5720C53D2000F49E27 /* PortfoliosViewController.m */; };
 		7351BC6120C53D3C00F49E27 /* NewOrderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7351BC5920C53D3B00F49E27 /* NewOrderViewController.m */; };
 		7351BC6220C53D3C00F49E27 /* CalculatorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7351BC5D20C53D3C00F49E27 /* CalculatorViewController.m */; };
-		7351BC6320C53D3C00F49E27 /* MarketDepthViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7351BC5E20C53D3C00F49E27 /* MarketDepthViewController.m */; };
 		7351BC6420C53D3C00F49E27 /* OrderConfirmViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7351BC6020C53D3C00F49E27 /* OrderConfirmViewController.m */; };
 		7351BC6720C53DBB00F49E27 /* GlobalShare.m in Sources */ = {isa = PBXBuildFile; fileRef = 7351BC6520C53DBB00F49E27 /* GlobalShare.m */; };
 		7351BC6C20C5416F00F49E27 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7351BC6E20C5416F00F49E27 /* Main.storyboard */; };
@@ -141,6 +140,10 @@
 		73CCC06120BD24B6009A662F /* StocksOverviewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 73CCC06020BD24B6009A662F /* StocksOverviewViewController.m */; };
 		73CCC06320BD3978009A662F /* ActiveStocksViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 73CCC06220BD3978009A662F /* ActiveStocksViewController.m */; };
 		73CCC06520BD3A38009A662F /* CompanyGraphViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 73CCC06420BD3A38009A662F /* CompanyGraphViewController.m */; };
+		770BA38B20C94197001B7ACA /* Charts.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 7351BC4120C50CB800F49E27 /* Charts.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		770BA38D20C959FC001B7ACA /* MarketDepthViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 770BA38C20C959FB001B7ACA /* MarketDepthViewController.m */; };
+		77C46A1E20C9128E002C6538 /* Charts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7351BC4120C50CB800F49E27 /* Charts.framework */; };
+		77C46A1F20C9128E002C6538 /* Charts.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 7351BC4120C50CB800F49E27 /* Charts.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -157,6 +160,13 @@
 			proxyType = 2;
 			remoteGlobalIDString = 1CBBC58C6CE1EBEE9852CE41;
 			remoteInfo = ChartsTests;
+		};
+		77C46A2020C9128E002C6538 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 7351BC3B20C50CB800F49E27 /* Charts.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = A58A4ED274A941CA248EA921;
+			remoteInfo = Charts;
 		};
 /* End PBXContainerItemProxy section */
 
@@ -178,9 +188,20 @@
 			dstSubfolderSpec = 10;
 			files = (
 				7351BC8C20C6377600F49E27 /* Foundation.framework in Embed Frameworks */,
+				77C46A1F20C9128E002C6538 /* Charts.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 1;
+		};
+		770BA38920C94187001B7ACA /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				770BA38B20C94197001B7ACA /* Charts.framework in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXCopyFilesBuildPhase section */
 
@@ -405,7 +426,6 @@
 		7351BC5B20C53D3B00F49E27 /* OrderConfirmViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrderConfirmViewController.h; sourceTree = "<group>"; };
 		7351BC5C20C53D3B00F49E27 /* CalculatorViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CalculatorViewController.h; sourceTree = "<group>"; };
 		7351BC5D20C53D3C00F49E27 /* CalculatorViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CalculatorViewController.m; sourceTree = "<group>"; };
-		7351BC5E20C53D3C00F49E27 /* MarketDepthViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MarketDepthViewController.m; sourceTree = "<group>"; };
 		7351BC5F20C53D3C00F49E27 /* NewOrderViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewOrderViewController.h; sourceTree = "<group>"; };
 		7351BC6020C53D3C00F49E27 /* OrderConfirmViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrderConfirmViewController.m; sourceTree = "<group>"; };
 		7351BC6520C53DBB00F49E27 /* GlobalShare.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GlobalShare.m; sourceTree = "<group>"; };
@@ -424,6 +444,7 @@
 		73CCC06020BD24B6009A662F /* StocksOverviewViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StocksOverviewViewController.m; sourceTree = "<group>"; };
 		73CCC06220BD3978009A662F /* ActiveStocksViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActiveStocksViewController.m; sourceTree = "<group>"; };
 		73CCC06420BD3A38009A662F /* CompanyGraphViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CompanyGraphViewController.m; sourceTree = "<group>"; };
+		770BA38C20C959FB001B7ACA /* MarketDepthViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MarketDepthViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -441,6 +462,7 @@
 			files = (
 				73CC724120C63BC300E0F35C /* Charts.framework in Frameworks */,
 				7351BC8B20C6374600F49E27 /* Foundation.framework in Frameworks */,
+				77C46A1E20C9128E002C6538 /* Charts.framework in Frameworks */,
 				514EF68A1DE763AC0071F747 /* libsqlite3.0.tbd in Frameworks */,
 				514382CE1D1DBCBD00E1B739 /* SystemConfiguration.framework in Frameworks */,
 			);
@@ -835,7 +857,7 @@
 				7351BC5C20C53D3B00F49E27 /* CalculatorViewController.h */,
 				7351BC5D20C53D3C00F49E27 /* CalculatorViewController.m */,
 				7351BC5A20C53D3B00F49E27 /* MarketDepthViewController.h */,
-				7351BC5E20C53D3C00F49E27 /* MarketDepthViewController.m */,
+				770BA38C20C959FB001B7ACA /* MarketDepthViewController.m */,
 				7351BC5F20C53D3C00F49E27 /* NewOrderViewController.h */,
 				7351BC5920C53D3B00F49E27 /* NewOrderViewController.m */,
 				7351BC5B20C53D3B00F49E27 /* OrderConfirmViewController.h */,
@@ -1003,10 +1025,12 @@
 				514382A51D1D82D400E1B739 /* Resources */,
 				510C49D81D1FAB4D005FDB70 /* Embed Frameworks */,
 				5108D3401D6EDEB300D23F6E /* Embed App Extensions */,
+				770BA38920C94187001B7ACA /* CopyFiles */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				77C46A2120C9128E002C6538 /* PBXTargetDependency */,
 			);
 			name = QIFS;
 			productName = QIFS;
@@ -1173,7 +1197,6 @@
 				7319814820BD873D00719955 /* RadarMarkerView.swift in Sources */,
 				51332C3C1DE8AB97001536CD /* FMDatabase.m in Sources */,
 				5102EDD31D494805005B04F8 /* MDPriceBidCell.m in Sources */,
-				7351BC6320C53D3C00F49E27 /* MarketDepthViewController.m in Sources */,
 				515C1B1A1D3AC310008B6946 /* MyOrdersCell.m in Sources */,
 				7319814620BD873D00719955 /* XYMarkerView.swift in Sources */,
 				5102EDD91D494816005B04F8 /* SearchStocksViewController.m in Sources */,
@@ -1200,6 +1223,7 @@
 				514D322F1D1E70F200E78C71 /* ForgotPasswordViewController.m in Sources */,
 				51332C3D1DE8AB97001536CD /* FMDatabaseAdditions.m in Sources */,
 				514382D21D1DBE5500E1B739 /* Reachability.m in Sources */,
+				770BA38D20C959FC001B7ACA /* MarketDepthViewController.m in Sources */,
 				5102EDD81D494816005B04F8 /* FavoriteStocksViewController.m in Sources */,
 				7319815320BD87E200719955 /* IntAxisValueFormatter.m in Sources */,
 				7319815620BD87EE00719955 /* DayAxisValueFormatter.m in Sources */,
@@ -1237,6 +1261,14 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		77C46A2120C9128E002C6538 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = Charts;
+			targetProxy = 77C46A2020C9128E002C6538 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		5108D3361D6EDEB200D23F6E /* MainInterface.storyboard */ = {
@@ -1441,7 +1473,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/$(PROJECT_NAME)/QIFS-Prefix.pch";
 				INFOPLIST_FILE = QIFS/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.carmatec.Dohasooq;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1468,7 +1500,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/$(PROJECT_NAME)/QIFS-Prefix.pch";
 				INFOPLIST_FILE = QIFS/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.carmatec.Dohasooq;
 				PRODUCT_NAME = "$(TARGET_NAME)";

@@ -9,13 +9,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "QIFS/NewOrderViewController.m"
-            timestampString = "549960387.247462"
+            filePath = "QIFS/PagerContainer/OptionsMenu/SettingsViewController.m"
+            timestampString = "550067341.18497"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "418"
-            endingLineNumber = "418"
-            landmarkName = "-viewWillAppear:"
+            startingLineNumber = "101"
+            endingLineNumber = "101"
+            landmarkName = "-actionAbout:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -25,13 +25,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "QIFS/NewOrderViewController.m"
-            timestampString = "549960387.247556"
+            filePath = "QIFS/CompanyStocksViewController.m"
+            timestampString = "550068311.893611"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "2344"
-            endingLineNumber = "2344"
-            landmarkName = "-getLimitUpLimitDown"
+            startingLineNumber = "104"
+            endingLineNumber = "104"
+            landmarkName = "-viewWillAppear:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

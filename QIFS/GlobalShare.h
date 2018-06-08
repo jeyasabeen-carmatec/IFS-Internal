@@ -106,7 +106,8 @@
 + (NSInteger)getSelectedLanguage;
 + (NSString *)languageSelectedStringForKey:(NSString *)passKey;
 +(BOOL)isUserLogedIn;
-+(NSString *)checkingNullsAndNills:(NSString*)strValue;
++ (NSString *)checkingNullValues:(NSString *)strValue;
+
 
 //+(void)login_alert_view_creating:(UIViewController *)viewcontroller;//Praash_code
 
