@@ -117,7 +117,6 @@
 		7319814820BD873D00719955 /* RadarMarkerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7319814520BD873C00719955 /* RadarMarkerView.swift */; };
 		7319815320BD87E200719955 /* IntAxisValueFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 7319815220BD87E100719955 /* IntAxisValueFormatter.m */; };
 		7319815620BD87EE00719955 /* DayAxisValueFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 7319815520BD87ED00719955 /* DayAxisValueFormatter.m */; };
-		731EF9CD20BBEE2100EEDF7D /* SectorsGraphViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 731EF9CC20BBEE2100EEDF7D /* SectorsGraphViewController.m */; };
 		73216D3C20B543CE00D807B2 /* CompanyStocksViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 73216D3B20B543CD00D807B2 /* CompanyStocksViewController.m */; };
 		7351BC4920C53C3F00F49E27 /* StocksPagerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7351BC4820C53C3F00F49E27 /* StocksPagerViewController.m */; };
 		7351BC5220C53CFE00F49E27 /* MyNewOrdersViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7351BC4A20C53CFE00F49E27 /* MyNewOrdersViewController.m */; };
@@ -144,6 +143,7 @@
 		770BA38D20C959FC001B7ACA /* MarketDepthViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 770BA38C20C959FB001B7ACA /* MarketDepthViewController.m */; };
 		77C46A1E20C9128E002C6538 /* Charts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7351BC4120C50CB800F49E27 /* Charts.framework */; };
 		77C46A1F20C9128E002C6538 /* Charts.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 7351BC4120C50CB800F49E27 /* Charts.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		77F2506720CA465000AF27C0 /* SectorsGraphViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 77F2506620CA465000AF27C0 /* SectorsGraphViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -406,7 +406,6 @@
 		7319815220BD87E100719955 /* IntAxisValueFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IntAxisValueFormatter.m; sourceTree = "<group>"; };
 		7319815420BD87ED00719955 /* DayAxisValueFormatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DayAxisValueFormatter.h; sourceTree = "<group>"; };
 		7319815520BD87ED00719955 /* DayAxisValueFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DayAxisValueFormatter.m; sourceTree = "<group>"; };
-		731EF9CC20BBEE2100EEDF7D /* SectorsGraphViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SectorsGraphViewController.m; sourceTree = "<group>"; };
 		73216D3A20B543CD00D807B2 /* CompanyStocksViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CompanyStocksViewController.h; sourceTree = "<group>"; };
 		73216D3B20B543CD00D807B2 /* CompanyStocksViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CompanyStocksViewController.m; sourceTree = "<group>"; };
 		7351BC3B20C50CB800F49E27 /* Charts.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Charts.xcodeproj; path = charts/Charts.xcodeproj; sourceTree = SOURCE_ROOT; };
@@ -445,6 +444,7 @@
 		73CCC06220BD3978009A662F /* ActiveStocksViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActiveStocksViewController.m; sourceTree = "<group>"; };
 		73CCC06420BD3A38009A662F /* CompanyGraphViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CompanyGraphViewController.m; sourceTree = "<group>"; };
 		770BA38C20C959FB001B7ACA /* MarketDepthViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MarketDepthViewController.m; sourceTree = "<group>"; };
+		77F2506620CA465000AF27C0 /* SectorsGraphViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SectorsGraphViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -910,7 +910,7 @@
 				515AF6361D2E509A00FF837E /* StockListViewController.h */,
 				515AF6301D2E509A00FF837E /* StockListViewController.m */,
 				515AF6351D2E509A00FF837E /* SectorsGraphViewController.h */,
-				731EF9CC20BBEE2100EEDF7D /* SectorsGraphViewController.m */,
+				77F2506620CA465000AF27C0 /* SectorsGraphViewController.m */,
 				515AF6341D2E509A00FF837E /* GainLossViewController.h */,
 				515AF62E1D2E509A00FF837E /* GainLossViewController.m */,
 				515AF6331D2E509A00FF837E /* ActiveStocksViewController.h */,
@@ -1189,6 +1189,7 @@
 				7351BC5320C53CFE00F49E27 /* OrderTicketViewController.m in Sources */,
 				51D340321E9569DA00455815 /* EnterOTPViewController.m in Sources */,
 				511DBAE81EE4823B00A416FE /* LanguageManager.m in Sources */,
+				77F2506720CA465000AF27C0 /* SectorsGraphViewController.m in Sources */,
 				73CCC06120BD24B6009A662F /* StocksOverviewViewController.m in Sources */,
 				51DA15911F8173E5001EAF83 /* MyNewOrdersCell.m in Sources */,
 				7351BC5820C53D2000F49E27 /* PortfoliosViewController.m in Sources */,
@@ -1251,7 +1252,6 @@
 				512379301D5667CE0096C0E2 /* AddAlertViewController.m in Sources */,
 				515AF6431D2E50B100FF837E /* SectorsGraphCell.m in Sources */,
 				73CC724420C6447000E0F35C /* ViewController.m in Sources */,
-				731EF9CD20BBEE2100EEDF7D /* SectorsGraphViewController.m in Sources */,
 				51031E351D5DDC6B0049137E /* SearchResultsTableViewController.m in Sources */,
 				7351BC6420C53D3C00F49E27 /* OrderConfirmViewController.m in Sources */,
 				7351BC5520C53CFE00F49E27 /* ActiveOrdersViewController.m in Sources */,

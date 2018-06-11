@@ -26,7 +26,9 @@ NSString *const kSectorsGraphCellIdentifier = @"SectorsGraphCell";
 @property (nonatomic, strong) NSArray *arraySectorList;
 @property (nonatomic, strong) NSArray *arrayCompanyList;
 @property (nonatomic, strong) NSArray *legendColors;
-@property (nonatomic, strong) NSString *companyId;
+@property (nonatomic, strong) NSString *companyId;//_passCompanyId
+@property (nonatomic, strong) NSString *passCompanyId;//_passCompanyId
+
 
 
 @end
@@ -55,7 +57,7 @@ NSString *const kSectorsGraphCellIdentifier = @"SectorsGraphCell";
     _chartView.extraRightOffset = -5.0f;
 
     _chartView.drawCenterTextEnabled = YES;
-    _chartView.userInteractionEnabled = YES;
+    _chartView.userInteractionEnabled = NO;
     _chartView.chartDescription.text = @"";
     
 //    [_labelComapany setText:@""];
@@ -108,33 +110,54 @@ NSString *const kSectorsGraphCellIdentifier = @"SectorsGraphCell";
 
 - (void)setDataCount:(int)count range:(double)range
 {
-//    double mult = range;
+    //    double mult = range;
+    NSLog(@"%@",_arraySectorList);
     
     NSMutableArray *values = [[NSMutableArray alloc] init];
-     @try{
     
-    for (int i = 0; i < count; i++)
-    {
-        NSDictionary *def = self.arraySectorList[i];
-//        cell.labelCompany.text = def[(globalShare.myLanguage != ARABIC_LANGUAGE) ? @"security_sector_name_en" : @"security_sector_name_ar"];
-        //    cell.labelPercent.text = @"14.53 %";e.value / yValueSum * 100.0
-        //    cell.labelValue.text = def[@"Index"];
-
+    @try{
         
-//        NSDictionary *def = self.arraySectorList[i];
-        [values addObject:[[PieChartDataEntry alloc] initWithValue:[GlobalShare roundoff:[def[@"sector_percentage"] doubleValue] :2] label:def[(globalShare.myLanguage != ARABIC_LANGUAGE) ? @"security_sector_name_en" : @"security_sector_name_ar"] icon: [UIImage imageNamed:@"icon"]]];
-       
-    } // For Loop Close
+        for (int i = 0; i < count; i++)
+        {
+            //NSDictionary *def = self.arraySectorList[i];
+            
+            //  NSInteger count = ([passCompanyId isEqualToString:@"100"]) ? (int)self.arraySectorList.count : (int)self.arrayCompanyList.count;
+            
+            NSDictionary *def=([_passCompanyId isEqualToString:@"100"]) ? (NSDictionary *)self.arraySectorList[i] : (NSDictionary *)self.arrayCompanyList[i];
+            
+            //        cell.labelCompany.text = def[(globalShare.myLanguage != ARABIC_LANGUAGE) ? @"security_sector_name_en" : @"security_sector_name_ar"];
+            //    cell.labelPercent.text = @"14.53 %";e.value / yValueSum * 100.0
+            //    cell.labelValue.text = def[@"Index"];
+            
+            
+            //        NSDictionary *def = self.arraySectorList[i];
+            // [values addObject:[[PieChartDataEntry alloc] initWithValue:[GlobalShare roundoff:[def[@"sector_percentage"] doubleValue] :2] label:def[(globalShare.myLanguage != ARABIC_LANGUAGE) ? @"security_sector_name_en" : @"security_sector_name_ar"] icon: [UIImage imageNamed:@"icon"]]];
+            
+            //  [companyName addObject:([passCompanyId isEqualToString:@"100"]) ? self.arraySectorList[i][(globalShare.myLanguage != ARABIC_LANGUAGE) ? @"security_sector_name_en" : @"security_sector_name_ar"] : self.arrayCompanyList[i][@"ticker"]];
+            
+            if ([_passCompanyId isEqualToString:@"100"]) {
+                [values addObject:[[PieChartDataEntry alloc] initWithValue:[GlobalShare roundoff:[def[@"sector_percentage"] doubleValue] :2] label:def[(globalShare.myLanguage != ARABIC_LANGUAGE) ? @"security_sector_name_en" : @"security_sector_name_ar"] icon: [UIImage imageNamed:@"icon"]]];
+            }
+            else{
+                [values addObject:[[PieChartDataEntry alloc] initWithValue:[GlobalShare roundoff:[def[@"value_all"] doubleValue] :2] label:def[(globalShare.myLanguage != ARABIC_LANGUAGE) ? @"ticker" : @"ticker"] icon: [UIImage imageNamed:@"icon"]]];
+                
+                //[self.arrayCompanyList valueForKeyPath:@"@sum.value_all"];
+            }
+            
+            
+        }
+        NSLog(@"values ::: %@",values);
         
-    } @catch(NSException *exception){
-          NSLog(@"%@",values);
-        NSLog(@"Sectors Exception ....");
     }
+    @catch(NSException *e){
+        NSLog(@"Sector Exception ...");
+    }
+    
     PieChartDataSet *dataSet = [[PieChartDataSet alloc] initWithValues:values label:@"Election Results"];
     
     dataSet.drawIconsEnabled = NO;
     
-//    dataSet.sliceSpace = 2.0;
+    //    dataSet.sliceSpace = 2.0;
     dataSet.iconsOffset = CGPointMake(0, 40);
     
     // add a lot of colors
@@ -163,6 +186,7 @@ NSString *const kSectorsGraphCellIdentifier = @"SectorsGraphCell";
     _chartView.data = data;
     [_chartView highlightValues:nil];
 }
+
 
 
 -(void)viewWillAppear:(BOOL)animated {
@@ -342,6 +366,7 @@ NSString *const kSectorsGraphCellIdentifier = @"SectorsGraphCell";
 - (void)updateChartData:(NSString *)passCompanyId
 {
     [_chartView animateWithXAxisDuration:1.4 easingOption:ChartEasingOptionEaseOutBack];
+    _passCompanyId = passCompanyId;
     [self setDataCount:passCompanyId];
 }
 
@@ -370,7 +395,7 @@ NSString *const kSectorsGraphCellIdentifier = @"SectorsGraphCell";
         [companyName addObject:([passCompanyId isEqualToString:@"100"]) ? self.arraySectorList[i][(globalShare.myLanguage != ARABIC_LANGUAGE) ? @"security_sector_name_en" : @"security_sector_name_ar"] : self.arrayCompanyList[i][@"ticker"]];
     }
 
-   NSMutableArray  *yVals1 = [[NSMutableArray alloc] init];
+//     yVals1 = [[NSMutableArray alloc] init];
     
     // IMPORTANT: In a PieChart, no values (Entry) should have the same xIndex (even if from different DataSets), since no values can be drawn above each other.[GlobalShare returnDoubleFromStringActive:[GlobalShare formatStringToTwoDigits:self.arrayVolumeStocks[0][@"volume_all"]]]
     for (int i = 0; i < count; i++)
@@ -493,8 +518,6 @@ NSString *const kSectorsGraphCellIdentifier = @"SectorsGraphCell";
     [_labelComapany setHidden:NO];
     [_imageArrow setHidden:NO];
     [self updateChartData:self.arraySectorList[indexPath.row][@"security_sector"]];
-    
-    NSLog(@"Did select ...%@",[self.arraySectorList objectAtIndex:indexPath.row]);
 }
 
 #pragma mark - XLPagerTabStripViewControllerDelegate

@@ -7937,8 +7937,8 @@ E-mail: info@islamicbroker.com.qa</string>
                         <rect key="frame" x="0.0" y="0.0" width="834" height="1112"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="IFS" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WNd-ue-wrU">
-                                <rect key="frame" x="0.0" y="20" width="600" height="44"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="IFS" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WNd-ue-wrU">
+                                <rect key="frame" x="0.0" y="20" width="834" height="44"/>
                                 <color key="backgroundColor" red="0.98039215690000003" green="0.52941176469999995" blue="0.15686274510000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="d14-fk-fpn"/>
@@ -7948,7 +7948,7 @@ E-mail: info@islamicbroker.com.qa</string>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="F5C-CL-gb2">
-                                <rect key="frame" x="0.0" y="40" width="40" height="44"/>
+                                <rect key="frame" x="0.0" y="20" width="40" height="44"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="7mK-6g-8UO"/>
                                     <constraint firstAttribute="width" constant="40" id="w33-Zl-CCt"/>
@@ -7959,7 +7959,7 @@ E-mail: info@islamicbroker.com.qa</string>
                                 </connections>
                             </button>
                             <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Mjo-tD-jVX">
-                                <rect key="frame" x="20" y="40" width="40" height="44"/>
+                                <rect key="frame" x="20" y="20" width="40" height="44"/>
                                 <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="40" id="4Oa-Nv-ge2"/>
@@ -7969,8 +7969,8 @@ E-mail: info@islamicbroker.com.qa</string>
                                     <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                             </button>
-                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Qbg-hY-4ex">
-                                <rect key="frame" x="5" y="68" width="590" height="300"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Qbg-hY-4ex">
+                                <rect key="frame" x="5" y="68" width="824" height="556"/>
                                 <subviews>
                                     <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Order Confirmation" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="apz-YS-R5b">
                                         <rect key="frame" x="312" y="5" width="200" height="20"/>
@@ -8199,16 +8199,16 @@ E-mail: info@islamicbroker.com.qa</string>
                                     </mask>
                                 </variation>
                             </view>
-                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" misplaced="YES" animating="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="NvS-K1-64u">
-                                <rect key="frame" x="290" y="290" width="20" height="20"/>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="NvS-K1-64u">
+                                <rect key="frame" x="407" y="556" width="20" height="20"/>
                             </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="NvS-K1-64u" firstAttribute="centerY" secondItem="qP1-VF-ofa" secondAttribute="centerYWithinMargins" id="0XF-1o-eaT"/>
-                            <constraint firstItem="F5C-CL-gb2" firstAttribute="top" secondItem="qP1-VF-ofa" secondAttribute="topMargin" constant="20" id="3e0-ul-gt1"/>
+                            <constraint firstItem="F5C-CL-gb2" firstAttribute="top" secondItem="YyU-5R-sin" secondAttribute="top" placeholder="YES" id="3e0-ul-gt1"/>
                             <constraint firstItem="Mjo-tD-jVX" firstAttribute="bottom" secondItem="F5C-CL-gb2" secondAttribute="bottom" id="IAC-VK-ksj"/>
-                            <constraint firstItem="WNd-ue-wrU" firstAttribute="top" secondItem="qP1-VF-ofa" secondAttribute="topMargin" constant="20" id="JWN-mm-eA0"/>
+                            <constraint firstItem="WNd-ue-wrU" firstAttribute="top" secondItem="YyU-5R-sin" secondAttribute="top" id="JWN-mm-eA0"/>
                             <constraint firstItem="Qbg-hY-4ex" firstAttribute="height" secondItem="qP1-VF-ofa" secondAttribute="height" multiplier="0.5" id="JsS-iq-PHB"/>
                             <constraint firstItem="Qbg-hY-4ex" firstAttribute="top" secondItem="WNd-ue-wrU" secondAttribute="bottom" constant="4" id="LEI-pB-MF7"/>
                             <constraint firstItem="NvS-K1-64u" firstAttribute="centerX" secondItem="qP1-VF-ofa" secondAttribute="centerXWithinMargins" id="Ojd-yT-J8B"/>
@@ -9987,7 +9987,7 @@ E-mail: info@islamicbroker.com.qa</string>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Eft-kG-PAG">
-                                                    <rect key="frame" x="-7" y="2" width="48" height="20"/>
+                                                    <rect key="frame" x="-4.5" y="2" width="66.5" height="20"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="20" id="k21-yf-1UL"/>
                                                     </constraints>
@@ -9996,7 +9996,7 @@ E-mail: info@islamicbroker.com.qa</string>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" alpha="0.10000000149011612" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6vS-CN-mwZ">
-                                                    <rect key="frame" x="41" y="3" width="1" height="24"/>
+                                                    <rect key="frame" x="62" y="3" width="1" height="24"/>
                                                     <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="1" id="UkL-F3-Ew5"/>
@@ -10007,20 +10007,20 @@ E-mail: info@islamicbroker.com.qa</string>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Buy" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="b7s-tK-Od5">
-                                                    <rect key="frame" x="42" y="2" width="138" height="20"/>
+                                                    <rect key="frame" x="63" y="2" width="192" height="20"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                     <color key="textColor" red="0.33333333333333331" green="0.33333333333333331" blue="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" alpha="0.10000000149011612" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kG2-cv-Sys">
-                                                    <rect key="frame" x="180" y="3" width="1" height="24"/>
+                                                    <rect key="frame" x="255" y="3" width="1" height="24"/>
                                                     <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                     <color key="textColor" red="0.33333333333333331" green="0.33333333333333331" blue="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7y1-eq-v88">
-                                                    <rect key="frame" x="183" y="2" width="108" height="20"/>
+                                                    <rect key="frame" x="258" y="2" width="150" height="20"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                     <color key="textColor" red="0.33333333333333331" green="0.33333333333333331" blue="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
@@ -10080,7 +10080,7 @@ E-mail: info@islamicbroker.com.qa</string>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HtG-Eh-jYH">
-                                                    <rect key="frame" x="2" y="2" width="108" height="20"/>
+                                                    <rect key="frame" x="2" y="2" width="150" height="20"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="20" id="eZK-dZ-JLs"/>
                                                     </constraints>
@@ -10089,7 +10089,7 @@ E-mail: info@islamicbroker.com.qa</string>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" alpha="0.10000000149011612" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6oS-vd-MDQ">
-                                                    <rect key="frame" x="112" y="3" width="1" height="24"/>
+                                                    <rect key="frame" x="154" y="3" width="1" height="24"/>
                                                     <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="24" id="5zA-ww-ShL"/>
@@ -10100,20 +10100,20 @@ E-mail: info@islamicbroker.com.qa</string>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sell" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fbE-Z0-w9X">
-                                                    <rect key="frame" x="113" y="2" width="138" height="20"/>
+                                                    <rect key="frame" x="155" y="2" width="192" height="20"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                     <color key="textColor" red="0.33333333333333331" green="0.33333333333333331" blue="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" alpha="0.10000000149011612" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="euZ-YN-IMX">
-                                                    <rect key="frame" x="251" y="3" width="1" height="24"/>
+                                                    <rect key="frame" x="347" y="3" width="1" height="24"/>
                                                     <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                     <color key="textColor" red="0.33333333333333331" green="0.33333333333333331" blue="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8Dp-kV-OMI">
-                                                    <rect key="frame" x="252" y="2" width="48" height="20"/>
+                                                    <rect key="frame" x="348" y="2" width="66.5" height="20"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                     <color key="textColor" red="0.33333333333333331" green="0.33333333333333331" blue="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
@@ -10244,7 +10244,7 @@ E-mail: info@islamicbroker.com.qa</string>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Buy" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ify-Ng-ApJ">
-                                                    <rect key="frame" x="-7" y="2" width="186" height="20"/>
+                                                    <rect key="frame" x="-4.5" y="2" width="258.5" height="20"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="20" id="xS2-eE-t2u"/>
                                                     </constraints>
@@ -10253,7 +10253,7 @@ E-mail: info@islamicbroker.com.qa</string>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label hidden="YES" opaque="NO" userInteractionEnabled="NO" alpha="0.10000000149011612" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0o0-5G-UWK">
-                                                    <rect key="frame" x="180" y="0.0" width="1" height="24"/>
+                                                    <rect key="frame" x="255" y="0.0" width="1" height="24"/>
                                                     <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="1" id="1fX-dZ-npN"/>
@@ -10264,7 +10264,7 @@ E-mail: info@islamicbroker.com.qa</string>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ekZ-Px-ink">
-                                                    <rect key="frame" x="183" y="2" width="108" height="20"/>
+                                                    <rect key="frame" x="258" y="2" width="150" height="20"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                     <color key="textColor" red="0.33333333333333331" green="0.33333333333333331" blue="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
@@ -10315,7 +10315,7 @@ E-mail: info@islamicbroker.com.qa</string>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xeh-Qj-3Ah">
-                                                    <rect key="frame" x="2" y="2" width="108" height="20"/>
+                                                    <rect key="frame" x="2" y="2" width="150" height="20"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="20" id="vUA-yv-lye"/>
                                                     </constraints>
@@ -10324,7 +10324,7 @@ E-mail: info@islamicbroker.com.qa</string>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label hidden="YES" opaque="NO" userInteractionEnabled="NO" alpha="0.10000000149011612" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oIe-c7-l6x">
-                                                    <rect key="frame" x="112" y="3" width="1" height="24"/>
+                                                    <rect key="frame" x="154" y="3" width="1" height="24"/>
                                                     <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="1" id="EQX-3Q-tHy"/>
@@ -10335,7 +10335,7 @@ E-mail: info@islamicbroker.com.qa</string>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sell" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4Cs-2L-nsm">
-                                                    <rect key="frame" x="114" y="2" width="180" height="20"/>
+                                                    <rect key="frame" x="156" y="2" width="250.5" height="20"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                     <color key="textColor" red="0.33333333333333331" green="0.33333333333333331" blue="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
@@ -10647,13 +10647,16 @@ E-mail: info@islamicbroker.com.qa</string>
                                 <exclude reference="ce7-od-CpV"/>
                                 <exclude reference="aTi-Xd-x3U"/>
                                 <exclude reference="yRc-Co-TVx"/>
+                                <exclude reference="8Rt-I3-0Ow"/>
+                                <exclude reference="I1K-Id-sfi"/>
                                 <exclude reference="nh2-pe-XDw"/>
                                 <exclude reference="27r-p0-aHV"/>
                                 <exclude reference="uDG-5T-YTM"/>
-                                <exclude reference="8Rt-I3-0Ow"/>
-                                <exclude reference="I1K-Id-sfi"/>
                                 <exclude reference="kiC-fn-YbJ"/>
                                 <exclude reference="sNI-kQ-FRf"/>
+                                <exclude reference="Q7A-z0-W4n"/>
+                                <exclude reference="jdU-6I-kFW"/>
+                                <exclude reference="Vzc-Dj-o7s"/>
                                 <exclude reference="C2v-eJ-KP8"/>
                                 <exclude reference="D6e-h1-Uhl"/>
                                 <exclude reference="Xdu-vu-AnN"/>
@@ -10661,24 +10664,21 @@ E-mail: info@islamicbroker.com.qa</string>
                                 <exclude reference="ldB-gW-9Do"/>
                                 <exclude reference="t4E-CT-J6f"/>
                                 <exclude reference="z2t-tw-oLb"/>
-                                <exclude reference="Q7A-z0-W4n"/>
-                                <exclude reference="jdU-6I-kFW"/>
-                                <exclude reference="Vzc-Dj-o7s"/>
                                 <exclude reference="mj7-W3-w7q"/>
                                 <exclude reference="nb0-zT-Beg"/>
                                 <exclude reference="HCe-xC-dda"/>
                                 <exclude reference="Xaf-oK-jfn"/>
                                 <exclude reference="hSo-1r-NIl"/>
                                 <exclude reference="5Db-Qt-9rn"/>
+                                <exclude reference="3lw-LK-dTa"/>
+                                <exclude reference="Go0-ej-1jl"/>
+                                <exclude reference="PFV-MW-p4b"/>
+                                <exclude reference="nN0-wJ-eld"/>
                                 <exclude reference="bUc-Gm-5v5"/>
                                 <exclude reference="L99-9e-1fE"/>
                                 <exclude reference="zZs-m2-ecM"/>
                                 <exclude reference="qTZ-eM-S48"/>
                                 <exclude reference="Vfr-Ts-0H9"/>
-                                <exclude reference="3lw-LK-dTa"/>
-                                <exclude reference="Go0-ej-1jl"/>
-                                <exclude reference="PFV-MW-p4b"/>
-                                <exclude reference="nN0-wJ-eld"/>
                                 <exclude reference="Jax-WH-bz8"/>
                                 <exclude reference="INl-lr-ldg"/>
                                 <exclude reference="VWm-qK-kAe"/>
