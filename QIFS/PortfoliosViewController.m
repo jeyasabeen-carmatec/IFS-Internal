@@ -467,8 +467,13 @@ NSString *const kPortfoliosOptionsViewCellIdentifier = @"OptionsViewCell";
                                                                dispatch_async(dispatch_get_main_queue(), ^{
                                                                    NSDictionary *dictVal = returnedDict[@"result"];
 //                                                                   self.labelPortfolioValue.text = [GlobalShare createCommaSeparatedTwoDigitString:dictVal[@"total_portfolio_value"]];
+                                                                
                                                                    self.labelPortfolioValue.text = [GlobalShare createCommaSeparatedTwoDigitString:dictVal[@"total_market_value"]];
+                                                                   
+                                                                   self.labelPortfolioValue.text = [GlobalShare checkingNullValues:self.labelPortfolioValue.text];
                                                                    self.labelGainLoss.text = [NSString stringWithFormat:@"%@(%@%%)", [GlobalShare createCommaSeparatedTwoDigitString:dictVal[@"total_gain_loss_value"]], [GlobalShare formatStringToTwoDigits:dictVal[@"total_gain_loss_perc"]]];
+                                                                   
+                                                                   self.labelGainLoss.text = [GlobalShare checkingNullValues:self.labelGainLoss.text];
                                                                    
 //                                                                   if([[dictVal[@"total_gain_loss_value"] stringValue] hasPrefix:@"-"] || [[dictVal[@"total_gain_loss_value"] stringValue] hasPrefix:@"+"]) {
 //                                                                       if([[dictVal[@"total_gain_loss_value"] stringValue] hasPrefix:@"+"]) {
@@ -491,6 +496,8 @@ NSString *const kPortfoliosOptionsViewCellIdentifier = @"OptionsViewCell";
                                                                    else {
                                                                        if([GlobalShare returnIfGreaterThanZero:[dictVal[@"total_gain_loss_value"] doubleValue]]) {
                                                                            self.labelGainLoss.text = [NSString stringWithFormat:@"+%@(+%@%%)", [GlobalShare createCommaSeparatedTwoDigitString:dictVal[@"total_gain_loss_value"]], [GlobalShare formatStringToTwoDigits:dictVal[@"total_gain_loss_perc"]]];
+                                                                           
+                                                                            self.labelGainLoss.text = [GlobalShare checkingNullValues:self.labelGainLoss.text];
                                                                            self.labelGainLoss.textColor = [UIColor colorWithRed:0/255.f green:100/255.f blue:25/255.f alpha:1.f];
                                                                        }
                                                                        else {
@@ -595,13 +602,19 @@ NSString *const kPortfoliosOptionsViewCellIdentifier = @"OptionsViewCell";
         if (cell == nil) {
             cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
         }
-        
+        @try
+        {
         cell.textLabel.text = self.visibleResults[indexPath.row][@"ticker"];
         cell.detailTextLabel.text = self.visibleResults[indexPath.row][(globalShare.myLanguage != ARABIC_LANGUAGE) ? @"security_name_e" : @"security_name_a"];
         
         cell.textLabel.font = [UIFont systemFontOfSize:14.0];
         cell.accessoryType = UITableViewCellAccessoryNone;
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
+        }
+        @catch(NSException *exception)
+        {
+            
+        }
         
         return cell;
     }
@@ -620,15 +633,27 @@ NSString *const kPortfoliosOptionsViewCellIdentifier = @"OptionsViewCell";
     //    ([def[@"GainLoss"] hasPrefix:@"-"]) ? cell.labelGainLoss.textColor = [UIColor colorWithRed:171/255.f green:0/255.f blue:2/255.f alpha:1.f] : (cell.labelGainLoss.textColor = [UIColor colorWithRed:0/255.f green:111/255.f blue:46/255.f alpha:1.f]);
     //    ([def[@"GainLoss"] hasPrefix:@"-"]) ? cell.labelGainLossVal.textColor = [UIColor colorWithRed:171/255.f green:0/255.f blue:2/255.f alpha:1.f] : (cell.labelGainLossVal.textColor = [UIColor colorWithRed:0/255.f green:111/255.f blue:46/255.f alpha:1.f]);
         
+        @try
+        {
 
         cell.labelSymbol.text = def[@"ticker"];
+        cell.labelSymbol.text = [GlobalShare checkingNullValues:cell.labelSymbol.text];
         cell.label_AR_Symbol.text = def[@"security_name_a"];
+        cell.label_AR_Symbol.text = [GlobalShare checkingNullValues:cell.label_AR_Symbol.text];
+
         cell.labelQty.text = [GlobalShare createCommaSeparatedString:def[@"qty"]];
+        cell.labelQty.text = [GlobalShare checkingNullValues:cell.labelQty.text];
+
         cell.labelAvgPrice.text = [GlobalShare formatStringToTwoDigits:def[@"cost_price"]];
+        cell.labelAvgPrice.text = [GlobalShare checkingNullValues:cell.labelAvgPrice.text];
         cell.labelMktValue.text = [GlobalShare createCommaSeparatedTwoDigitString:def[@"market_value"]];
+        cell.labelMktValue.text = [GlobalShare checkingNullValues:cell.labelMktValue.text];
+
         cell.labelGainLoss.text = [NSString stringWithFormat:@"%@%%", [GlobalShare formatStringToTwoDigits:def[@"gain_loss_percentage"]]];
+
         cell.labelGainLossVal.text = [GlobalShare createCommaSeparatedTwoDigitString:def[@"gain_loss_value"]];
-        
+            cell.labelGainLoss.text = [GlobalShare checkingNullValues:cell.labelGainLoss.text];
+
     //    ([def[@"gain_loss_percentage"] hasPrefix:@"-"]) ? cell.labelGainLoss.textColor = [UIColor colorWithRed:171/255.f green:0/255.f blue:2/255.f alpha:1.f] : (cell.labelGainLoss.textColor = [UIColor colorWithRed:0/255.f green:111/255.f blue:46/255.f alpha:1.f]);
     //    ([def[@"gain_loss_value"] hasPrefix:@"-"]) ? cell.labelGainLossVal.textColor = [UIColor colorWithRed:171/255.f green:0/255.f blue:2/255.f alpha:1.f] : (cell.labelGainLossVal.textColor = [UIColor colorWithRed:0/255.f green:111/255.f blue:46/255.f alpha:1.f]);
 
@@ -658,7 +683,10 @@ NSString *const kPortfoliosOptionsViewCellIdentifier = @"OptionsViewCell";
         else {
             if([GlobalShare returnIfGreaterThanZero:[def[@"gain_loss_percentage"] doubleValue]]) {
                 cell.labelGainLoss.text = [NSString stringWithFormat:@"+%@%%", [GlobalShare formatStringToTwoDigits:def[@"gain_loss_percentage"]]];
+
                 cell.labelGainLossVal.text = [NSString stringWithFormat:@"+%@", [GlobalShare createCommaSeparatedTwoDigitString:def[@"gain_loss_value"]]];
+                cell.labelGainLoss.text = [GlobalShare checkingNullValues:cell.labelGainLoss.text];
+
                 cell.labelGainLoss.textColor = [UIColor colorWithRed:0/255.f green:100/255.f blue:25/255.f alpha:1.f];
                 cell.labelGainLossVal.textColor = [UIColor colorWithRed:0/255.f green:100/255.f blue:25/255.f alpha:1.f];
             }
@@ -709,7 +737,11 @@ NSString *const kPortfoliosOptionsViewCellIdentifier = @"OptionsViewCell";
 //        }
 
         //#endif
-        
+        }
+        @catch(NSException *exception)
+        {
+            
+        }
         return cell;
     }
 }

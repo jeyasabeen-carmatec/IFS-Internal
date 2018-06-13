@@ -135,15 +135,15 @@
 		7351BC8C20C6377600F49E27 /* Foundation.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 7351BC8820C6374600F49E27 /* Foundation.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		73CC724120C63BC300E0F35C /* Charts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7351BC4120C50CB800F49E27 /* Charts.framework */; };
 		73CC724420C6447000E0F35C /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 73CC724320C6447000E0F35C /* ViewController.m */; };
-		73CCC06120BD24B6009A662F /* StocksOverviewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 73CCC06020BD24B6009A662F /* StocksOverviewViewController.m */; };
 		73CCC06320BD3978009A662F /* ActiveStocksViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 73CCC06220BD3978009A662F /* ActiveStocksViewController.m */; };
-		73CCC06520BD3A38009A662F /* CompanyGraphViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 73CCC06420BD3A38009A662F /* CompanyGraphViewController.m */; };
 		770BA38B20C94197001B7ACA /* Charts.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 7351BC4120C50CB800F49E27 /* Charts.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		770BA38D20C959FC001B7ACA /* MarketDepthViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 770BA38C20C959FB001B7ACA /* MarketDepthViewController.m */; };
 		77C46A1E20C9128E002C6538 /* Charts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7351BC4120C50CB800F49E27 /* Charts.framework */; };
 		77C46A1F20C9128E002C6538 /* Charts.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 7351BC4120C50CB800F49E27 /* Charts.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		77E07E5620D1219900706616 /* UIAlertController+Orientation.m in Sources */ = {isa = PBXBuildFile; fileRef = 77E07E5520D1219900706616 /* UIAlertController+Orientation.m */; };
-		77E07E5820D1229E00706616 /* QEGraphViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 77E07E5720D1229E00706616 /* QEGraphViewController.m */; };
+		77E07E6020D1311D00706616 /* UIAlertController+Orientation.m in Sources */ = {isa = PBXBuildFile; fileRef = 77E07E5D20D1311D00706616 /* UIAlertController+Orientation.m */; };
+		77E07E6220D1313C00706616 /* QEGraphViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 77E07E6120D1313C00706616 /* QEGraphViewController.m */; };
+		77E07E6420D1316300706616 /* CompanyGraphViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 77E07E6320D1316300706616 /* CompanyGraphViewController.m */; };
+		77E07E6620D131B300706616 /* StocksOverviewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 77E07E6520D131B300706616 /* StocksOverviewViewController.m */; };
 		77F2506720CA465000AF27C0 /* SectorsGraphViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 77F2506620CA465000AF27C0 /* SectorsGraphViewController.m */; };
 /* End PBXBuildFile section */
 
@@ -440,13 +440,13 @@
 		7351BC7F20C5490D00F49E27 /* CashPositionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CashPositionViewController.m; sourceTree = "<group>"; };
 		7351BC8820C6374600F49E27 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		73CC724320C6447000E0F35C /* ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
-		73CCC06020BD24B6009A662F /* StocksOverviewViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StocksOverviewViewController.m; sourceTree = "<group>"; };
 		73CCC06220BD3978009A662F /* ActiveStocksViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActiveStocksViewController.m; sourceTree = "<group>"; };
-		73CCC06420BD3A38009A662F /* CompanyGraphViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CompanyGraphViewController.m; sourceTree = "<group>"; };
 		770BA38C20C959FB001B7ACA /* MarketDepthViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MarketDepthViewController.m; sourceTree = "<group>"; };
-		77E07E5420D1219900706616 /* UIAlertController+Orientation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIAlertController+Orientation.h"; sourceTree = "<group>"; };
-		77E07E5520D1219900706616 /* UIAlertController+Orientation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIAlertController+Orientation.m"; sourceTree = "<group>"; };
-		77E07E5720D1229E00706616 /* QEGraphViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QEGraphViewController.m; sourceTree = "<group>"; };
+		77E07E5D20D1311D00706616 /* UIAlertController+Orientation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIAlertController+Orientation.m"; sourceTree = "<group>"; };
+		77E07E5F20D1311D00706616 /* UIAlertController+Orientation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIAlertController+Orientation.h"; sourceTree = "<group>"; };
+		77E07E6120D1313C00706616 /* QEGraphViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QEGraphViewController.m; sourceTree = "<group>"; };
+		77E07E6320D1316300706616 /* CompanyGraphViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CompanyGraphViewController.m; sourceTree = "<group>"; };
+		77E07E6520D131B300706616 /* StocksOverviewViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StocksOverviewViewController.m; sourceTree = "<group>"; };
 		77F2506620CA465000AF27C0 /* SectorsGraphViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SectorsGraphViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -557,8 +557,8 @@
 			isa = PBXGroup;
 			children = (
 				5108D3331D6EDEB200D23F6E /* TodayViewController.h */,
-				5108D3411D6EE0A100D23F6E /* WidgetListCell.h */,
 				5108D3341D6EDEB200D23F6E /* TodayViewController.m */,
+				5108D3411D6EE0A100D23F6E /* WidgetListCell.h */,
 				5108D3421D6EE0A100D23F6E /* WidgetListCell.m */,
 				5108D3361D6EDEB200D23F6E /* MainInterface.storyboard */,
 				5108D3391D6EDEB300D23F6E /* Info.plist */,
@@ -593,9 +593,9 @@
 				73216D3A20B543CD00D807B2 /* CompanyStocksViewController.h */,
 				73216D3B20B543CD00D807B2 /* CompanyStocksViewController.m */,
 				514C960A1D57A4BE00D7C1DA /* QEGraphViewController.h */,
-				77E07E5720D1229E00706616 /* QEGraphViewController.m */,
+				77E07E6120D1313C00706616 /* QEGraphViewController.m */,
 				51613C6D1E20C3530055505A /* CompanyGraphViewController.h */,
-				73CCC06420BD3A38009A662F /* CompanyGraphViewController.m */,
+				77E07E6320D1316300706616 /* CompanyGraphViewController.m */,
 				7319814420BD873C00719955 /* BalloonMarker.swift */,
 				7319814520BD873C00719955 /* RadarMarkerView.swift */,
 				7319814320BD873C00719955 /* XYMarkerView.swift */,
@@ -767,8 +767,8 @@
 		514382C31D1D9FF500E1B739 /* Utility */ = {
 			isa = PBXGroup;
 			children = (
-				77E07E5420D1219900706616 /* UIAlertController+Orientation.h */,
-				77E07E5520D1219900706616 /* UIAlertController+Orientation.m */,
+				77E07E5F20D1311D00706616 /* UIAlertController+Orientation.h */,
+				77E07E5D20D1311D00706616 /* UIAlertController+Orientation.m */,
 				7351BC6620C53DBB00F49E27 /* GlobalShare.h */,
 				7351BC6520C53DBB00F49E27 /* GlobalShare.m */,
 				514382CB1D1DBB8C00E1B739 /* PropertyList.h */,
@@ -911,7 +911,7 @@
 			isa = PBXGroup;
 			children = (
 				515AF6311D2E509A00FF837E /* StocksOverviewViewController.h */,
-				73CCC06020BD24B6009A662F /* StocksOverviewViewController.m */,
+				77E07E6520D131B300706616 /* StocksOverviewViewController.m */,
 				515AF6361D2E509A00FF837E /* StockListViewController.h */,
 				515AF6301D2E509A00FF837E /* StockListViewController.m */,
 				515AF6351D2E509A00FF837E /* SectorsGraphViewController.h */,
@@ -1058,7 +1058,7 @@
 					514382A61D1D82D400E1B739 = {
 						CreatedOnToolsVersion = 7.3.1;
 						DevelopmentTeam = 4MCGAH3G26;
-						ProvisioningStyle = Manual;
+						ProvisioningStyle = Automatic;
 					};
 				};
 			};
@@ -1181,12 +1181,13 @@
 				515AF63A1D2E509A00FF837E /* StockListViewController.m in Sources */,
 				51332C3F1DE8AB97001536CD /* FMDatabaseQueue.m in Sources */,
 				515B0EAB1D54CD6E00D15698 /* OrderTicketStaticCell.m in Sources */,
+				77E07E6620D131B300706616 /* StocksOverviewViewController.m in Sources */,
 				512379311D5667CE0096C0E2 /* AlertsViewController.m in Sources */,
 				514D32341D1E827D00E78C71 /* ChangePasswordViewController.m in Sources */,
 				512379291D5616CC0096C0E2 /* OrderHistoryViewController.m in Sources */,
 				5180B5DE1D4CEA4C0023553B /* PopoverViewController.m in Sources */,
 				7351BC6720C53DBB00F49E27 /* GlobalShare.m in Sources */,
-				73CCC06520BD3A38009A662F /* CompanyGraphViewController.m in Sources */,
+				77E07E6420D1316300706616 /* CompanyGraphViewController.m in Sources */,
 				73216D3C20B543CE00D807B2 /* CompanyStocksViewController.m in Sources */,
 				7351BC5220C53CFE00F49E27 /* MyNewOrdersViewController.m in Sources */,
 				511247E01D239BDD00364145 /* XLButtonBarViewCell.m in Sources */,
@@ -1195,10 +1196,9 @@
 				51D340321E9569DA00455815 /* EnterOTPViewController.m in Sources */,
 				511DBAE81EE4823B00A416FE /* LanguageManager.m in Sources */,
 				77F2506720CA465000AF27C0 /* SectorsGraphViewController.m in Sources */,
-				73CCC06120BD24B6009A662F /* StocksOverviewViewController.m in Sources */,
 				51DA15911F8173E5001EAF83 /* MyNewOrdersCell.m in Sources */,
 				7351BC5820C53D2000F49E27 /* PortfoliosViewController.m in Sources */,
-				77E07E5620D1219900706616 /* UIAlertController+Orientation.m in Sources */,
+				77E07E6020D1311D00706616 /* UIAlertController+Orientation.m in Sources */,
 				511247DF1D239BDD00364145 /* XLButtonBarView.m in Sources */,
 				51332C431DE8ABB7001536CD /* DataManager.m in Sources */,
 				7319814820BD873D00719955 /* RadarMarkerView.swift in Sources */,
@@ -1216,7 +1216,7 @@
 				514382AF1D1D82D500E1B739 /* AppDelegate.m in Sources */,
 				51332C401DE8AB97001536CD /* FMResultSet.m in Sources */,
 				515AF6291D2E508100FF837E /* PageLoadViewController.m in Sources */,
-				77E07E5820D1229E00706616 /* QEGraphViewController.m in Sources */,
+				77E07E6220D1313C00706616 /* QEGraphViewController.m in Sources */,
 				515AF6421D2E50B100FF837E /* BarView.m in Sources */,
 				5102EDE01D494827005B04F8 /* FavoriteStocksCell.m in Sources */,
 				514382AC1D1D82D500E1B739 /* main.m in Sources */,
@@ -1473,18 +1473,18 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CODE_SIGN_STYLE = Manual;
+				CODE_SIGN_STYLE = Automatic;
 				DEFINES_MODULE = YES;
-				DEVELOPMENT_TEAM = 4MCGAH3G26;
+				DEVELOPMENT_TEAM = "";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/$(PROJECT_NAME)/QIFS-Prefix.pch";
 				INFOPLIST_FILE = QIFS/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.carmatec.Dohasooq;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "eadc65cf-9fc2-4d6b-91fa-8a5701b40d11";
-				PROVISIONING_PROFILE_SPECIFIER = DEV_DS;
+				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "QIFS/Utility/QIFS-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.0;
@@ -1500,18 +1500,18 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CODE_SIGN_STYLE = Manual;
+				CODE_SIGN_STYLE = Automatic;
 				DEFINES_MODULE = YES;
-				DEVELOPMENT_TEAM = 4MCGAH3G26;
+				DEVELOPMENT_TEAM = "";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/$(PROJECT_NAME)/QIFS-Prefix.pch";
 				INFOPLIST_FILE = QIFS/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.carmatec.Dohasooq;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "eadc65cf-9fc2-4d6b-91fa-8a5701b40d11";
-				PROVISIONING_PROFILE_SPECIFIER = DEV_DS;
+				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "QIFS/Utility/QIFS-Bridging-Header.h";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";

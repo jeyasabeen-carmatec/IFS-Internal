@@ -18,6 +18,8 @@
 @property (nonatomic, weak) IBOutlet UILabel *labelCostOfTrade;
 @property (nonatomic, weak) IBOutlet UILabel *labelOrderValue;
 @property (nonatomic, weak) IBOutlet UILabel *labelNewBuyPower;
+@property (nonatomic, weak) IBOutlet UIButton *BTN_send_order;
+@property (nonatomic, weak) IBOutlet UIButton *BTN_cancel;
 
 @property (nonatomic, weak) IBOutlet UIActivityIndicatorView *indicatorView;
 
@@ -41,17 +43,27 @@
     _viewBg.layer.borderColor = [UIColor darkGrayColor].CGColor;
     _viewBg.layer.cornerRadius = 3;
     _viewBg.layer.masksToBounds = YES;
-    
+    @try
+    {
     self.labelTransaction.text = passOrderValues[@"Transaction"];
     //self.labelAccount.text = passOrderValues[@"Account"];
     self.labelValidity.text = passOrderValues[@"Validity"];
     self.labelCostOfTrade.text = passOrderValues[@"CostOfTrade"];
     self.labelOrderValue.text = passOrderValues[@"OrderValue"];
     self.labelNewBuyPower.text = passOrderValues[@"NewBuyPower"];
+    }
+    @catch(NSException *exception)
+    {
+        
+    }
 }
 
 -(void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:YES];
+    
+    NSString *str_send = NSLocalizedString(@"Send Order", @"Send Order");
+    NSString *str_do_not_send = NSLocalizedString(@"Do Not Send", @"Do Not Send");
+
     
     if(globalShare.myLanguage == ARABIC_LANGUAGE) {
         [self.view setSemanticContentAttribute:UISemanticContentAttributeForceRightToLeft];
@@ -60,9 +72,15 @@
         [self.labelCostOfTrade setTextAlignment:NSTextAlignmentLeft];
         [self.labelOrderValue setTextAlignment:NSTextAlignmentLeft];
         [self.labelNewBuyPower setTextAlignment:NSTextAlignmentLeft];
-       
-
         
+        [_BTN_cancel setBackgroundImage:[UIImage imageNamed:@"button_dark_bg"] forState:UIControlStateNormal];
+        [_BTN_send_order setBackgroundImage:[UIImage imageNamed:@"button_light_bg"] forState:UIControlStateNormal];
+        [_BTN_cancel addTarget:self action:@selector(actionSendOrder) forControlEvents:UIControlEventTouchUpInside];
+        [_BTN_send_order addTarget:self action:@selector(action_back) forControlEvents:UIControlEventTouchUpInside];
+        
+        [_BTN_cancel setTitle:str_send forState:UIControlStateNormal];
+        [_BTN_send_order setTitle:str_do_not_send forState:UIControlStateNormal];
+
 
     }
     else {
@@ -73,6 +91,14 @@
         [self.labelOrderValue setTextAlignment:NSTextAlignmentRight];
         [self.labelNewBuyPower setTextAlignment:NSTextAlignmentRight];
         
+        
+        [_BTN_send_order setBackgroundImage:[UIImage imageNamed:@"button_dark_bg"] forState:UIControlStateNormal];
+        [_BTN_cancel setBackgroundImage:[UIImage imageNamed:@"button_light_bg"] forState:UIControlStateNormal];
+        [_BTN_send_order addTarget:self action:@selector(actionSendOrder) forControlEvents:UIControlEventTouchUpInside];
+        [_BTN_cancel addTarget:self action:@selector(action_back) forControlEvents:UIControlEventTouchUpInside];
+        
+        [_BTN_send_order setTitle:str_send forState:UIControlStateNormal];
+        [_BTN_cancel setTitle:str_do_not_send forState:UIControlStateNormal];
     }
     [self getCashPosition];
 }
@@ -87,8 +113,14 @@
 - (IBAction)actionBack:(id)sender {
     [self.navigationController popViewControllerAnimated:YES];
 }
+-(void)action_back
+{
+    [self.navigationController popViewControllerAnimated:YES];
 
-- (IBAction)actionSendOrder:(id)sender {
+}
+
+- (void)actionSendOrder
+{
     if (![GlobalShare isConnectedInternet]) {
         [GlobalShare showBasicAlertView:self :INTERNET_CONNECTION];
         return;

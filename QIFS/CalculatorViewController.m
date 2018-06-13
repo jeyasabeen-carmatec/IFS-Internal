@@ -441,6 +441,7 @@
                                                            if(error == nil)
                                                            {
                                                                NSMutableDictionary *returnedDict = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:&error];
+                                                               NSLog(@"%@",returnedDict);
                                                                if([returnedDict[@"status"] hasPrefix:@"error"]) {
                                                                    if([returnedDict[@"result"] hasPrefix:@"T5"])
                                                                        [GlobalShare showSessionExpiredAlertView:self :SESSION_EXPIRED];
@@ -460,15 +461,23 @@
                                                                     {
                                                                         NSString *str_order_val = [[NSUserDefaults standardUserDefaults] valueForKey:@"modified_order_VAL"];
                                                                         
-                                                                        self.textFieldBuyCash1.text = [NSString stringWithFormat:@"%@", str_order_val];
+                                                                        self.textFieldBuyCash1.text = [NSString stringWithFormat:@"%.2f", [str_order_val floatValue]];
                                                                         
-                                                                        self.textFieldSellCash2.text = [NSString stringWithFormat:@"%@", str_order_val];
+                                                                        self.textFieldBuyCash1.text = [GlobalShare checkingNullValues:self.textFieldBuyCash1.text];
+                                                                        
+                                                                        self.textFieldSellCash2.text = [NSString stringWithFormat:@"%.2f", [str_order_val floatValue]];
+                                                                        
+                                                                         self.textFieldSellCash2.text = [GlobalShare checkingNullValues:self.textFieldSellCash2.text];
 //                                                                        [globalShare setIsmodifyOrder:false];
                                                                     }
                                                                     else{
-                                                                        self.textFieldBuyCash1.text = [NSString stringWithFormat:@"%@", dictVal[@"Current_Balance"]];
+                                                                        self.textFieldBuyCash1.text = [NSString stringWithFormat:@"%.2f", [dictVal[@"Current_Balance"]floatValue]];
+                                                                        
+                                                                          self.textFieldBuyCash1.text = [NSString stringWithFormat:@"%.2f", [dictVal[@"Current_Balance"]floatValue]];
                                                                         
                                                                         self.textFieldSellCash2.text = [NSString stringWithFormat:@"%@", dictVal[@"Current_Balance"]];
+                                                                        
+                                                                          self.textFieldSellCash2.text = [GlobalShare checkingNullValues:self.textFieldSellCash2.text];
                                                                     }
                                                                       
                                                                        

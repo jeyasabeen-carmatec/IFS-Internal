@@ -97,6 +97,20 @@
 }
 
 - (IBAction)actionLatestNews:(id)sender {
+    
+    NSString *str;
+    //https://www.islamicbroker.com.qa/
+    if(globalShare.myLanguage == ARABIC_LANGUAGE) {
+        // str = [NSString stringWithFormat:@"https://www.islamicbroker.com.qa/ar/stories/c/3/0/%D8%A3%D9%87 %D9%85-%D8%A7%D9%84%D8%A3%D8%AE%D8%A8%D8%A7%D8%B1"];
+        str = [NSString stringWithFormat:@"%@%@",webSite_Url,@"ar/stories/c/3/0/%D8%A3%D9%87%D9%85-%D8%A7%D9%84%D8%A3%D8%AE%D8%A8%D8%A7%D8%B1"];
+    }
+    else{
+        //str= @"https://www.islamicbroker.com.qa/en/stories/c/3/0/News";
+        str = [NSString stringWithFormat:@"%@en/stories/c/3/0/News",webSite_Url];
+    }
+    // [[UIApplication sharedApplication]openURL:[NSURL URLWithString:str] options:@{} completionHandler:nil];
+    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:str]];
+   // [self.segmentMenu setSelectedSegmentIndex:0];
 //    NewOrderViewController *newOrderViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"NewOrderViewController"];
 //    [[GlobalShare sharedInstance] setIsDirectOrder:NO];
 //    [globalShare.topNavController pushViewController:newOrderViewController animated:YES];

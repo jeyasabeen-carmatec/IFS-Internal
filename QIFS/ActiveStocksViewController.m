@@ -175,6 +175,9 @@
     double firstVal, percentVal = 0;
     NSMutableArray *arrVal = [[NSMutableArray alloc] init];
     
+    
+    @try
+    {
     firstVal = [GlobalShare returnDoubleFromString:[GlobalShare formatStringToTwoDigits:self.arrayVolumeStocks[0][@"volume_all"]]];
     
     for(int i = 0; i<[self.arrayVolumeStocks count]; i++) {
@@ -185,7 +188,11 @@
         [newDict setValue:[NSString stringWithFormat:@"%.2f", percentVal] forKey:@"Percent"];
         [arrVal addObject:newDict];
     }
-    
+    }
+    @catch(NSException *exception)
+    {
+        
+    }
     [self.labelVolume layoutIfNeeded];
     
     if(self.barViewVolume != nil) [self.barViewVolume removeFromSuperview];
@@ -281,6 +288,7 @@
     NSString *strToken = [[NSUserDefaults standardUserDefaults] stringForKey:@"ssckey"];
         strToken = [GlobalShare checkingNullValues:strToken];
 
+        
     NSURLSessionConfiguration *defaultConfigObject = [NSURLSessionConfiguration defaultSessionConfiguration];
     defaultConfigObject.HTTPAdditionalHeaders = @{@"Authorization": strToken};
     NSURLSession *defaultSession = [NSURLSession sessionWithConfiguration:defaultConfigObject delegate:self delegateQueue:[NSOperationQueue mainQueue]];
@@ -343,6 +351,8 @@
     [self.view bringSubviewToFront:self.indicatorView];
 
     NSString *strToken = [[NSUserDefaults standardUserDefaults] stringForKey:@"ssckey"];
+        strToken = [GlobalShare checkingNullValues:strToken];
+
     NSURLSessionConfiguration *defaultConfigObject = [NSURLSessionConfiguration defaultSessionConfiguration];
     defaultConfigObject.HTTPAdditionalHeaders = @{@"Authorization": strToken};
     NSURLSession *defaultSession = [NSURLSession sessionWithConfiguration:defaultConfigObject delegate:self delegateQueue:[NSOperationQueue mainQueue]];

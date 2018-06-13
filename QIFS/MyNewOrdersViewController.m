@@ -1164,9 +1164,19 @@ NSString *const kMyNewOrdersOptionsViewCellIdentifier = @"OptionsViewCell";
         
         NSString *strTransaction;
         if(globalShare.myLanguage == ARABIC_LANGUAGE)
+        {
+            
+        
             strTransaction = [NSString stringWithFormat:@"%@ - %@ %@ %@", [GlobalShare formatStringToTwoDigits:def[@"price"]], def[@"symbol"], [GlobalShare createCommaSeparatedString:def[@"qty"]], (globalShare.myLanguage != ARABIC_LANGUAGE) ? def[@"order_type_desc_e"] : def[@"order_type_desc_a"]];
+        
+        strTransaction = [GlobalShare checkingNullValues:strTransaction];
+        }
         else
+        {
             strTransaction = [NSString stringWithFormat:@"%@ %@ %@ - %@", (globalShare.myLanguage != ARABIC_LANGUAGE) ? def[@"order_type_desc_e"] : def[@"order_type_desc_a"], [GlobalShare createCommaSeparatedString:def[@"qty"]], def[@"symbol"], [GlobalShare formatStringToTwoDigits:def[@"price"]]];
+            strTransaction = [GlobalShare checkingNullValues:strTransaction];
+
+        }
 
         self.activeContentView = [self.storyboard instantiateViewControllerWithIdentifier:@"ActiveOrdersViewController"];
         self.activeContentView.view.frame = CGRectMake(0, [[UIScreen mainScreen] bounds].size.height, [[UIScreen mainScreen] bounds].size.width, [[UIScreen mainScreen] bounds].size.height);

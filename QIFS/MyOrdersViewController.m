@@ -572,9 +572,21 @@ NSString *const kMyOrdersOptionsViewCellIdentifier = @"OptionsViewCell";
                                                                        NSDictionary *dictVal = returnedDict[@"result"];
                                                                        
                                                                        self.labelMyOrderCount.text = dictVal[@"MyOrderCount"];
+                                                                       
+                                                                       self.labelMyOrderCount.text = [GlobalShare checkingNullValues:self.labelMyOrderCount.text];
+                                                                       
                                                                        self.labelActiveCount.text = dictVal[@"ActiveOrderCount"];
+                                                                       
+                                                                       self.labelActiveCount.text = [GlobalShare checkingNullValues:self.labelActiveCount.text];
+                                                                       
                                                                        self.labelFilledCount.text = dictVal[@"FilledOrderCount"];
+                                                                       
+                                                                       self.labelFilledCount.text = [GlobalShare checkingNullValues:self.labelFilledCount.text];
+                                                                       
                                                                        self.labelCancelledCount.text = dictVal[@"CancelledOrderCount"];
+                                                                       
+                                                                       self.labelCancelledCount.text = [GlobalShare checkingNullValues:self.labelCancelledCount.text];
+                                                                       
                                                                        
                                                                        [self.arrayMyOrdersCount removeAllObjects];
                                                                        [self.arrayMyOrdersCount addObject:dictVal[@"ActiveOrderCount"]];

@@ -321,8 +321,6 @@ NSString *const kMDOrderAskCellIdentifier = @"MDOrderAskCell";
 
 -(BOOL)verifyUserLogin:(NSString *)stringUserName andPassword:(NSString*)stringPassword{
     @try {
-        
-        
         [loginVw removeFromSuperview];
         overLayView.hidden = YES;
         

@@ -135,7 +135,6 @@ NSString *const kGainLossCellIdentifier = @"GainLossCell";
     
     NSString *strToken = [[NSUserDefaults standardUserDefaults] stringForKey:@"ssckey"];
         strToken = [GlobalShare checkingNullValues:strToken];
-
     NSURLSessionConfiguration *defaultConfigObject = [NSURLSessionConfiguration defaultSessionConfiguration];
     defaultConfigObject.HTTPAdditionalHeaders = @{@"Authorization": strToken};
     NSURLSession *defaultSession = [NSURLSession sessionWithConfiguration:defaultConfigObject delegate:self delegateQueue:[NSOperationQueue mainQueue]];
