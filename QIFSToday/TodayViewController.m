@@ -211,8 +211,10 @@ NSString *const kWidgetListCellIdentifier = @"WidgetListCell";
 //        [cell.imageUpDown setImage:[UIImage imageNamed:[NSString stringWithFormat:@"%@_Arrow.png",def[@"UpDown"]]]];
 //        ([def[@"UpDown"] isEqualToString:@"Up"]) ? cell.labelColor.backgroundColor = [UIColor colorWithRed:0/255.f green:100/255.f blue:25/255.f alpha:1.f] : (cell.labelColor.backgroundColor = [UIColor colorWithRed:171/255.f green:0/255.f blue:2/255.f alpha:1.f]);
 //    }
-    
+    @try
+    {
     cell.labelSymbol.text = def[@"ticker"];
+    
     cell.labelSecurityName.text = def[@"security_name_e"];
     cell.labelPrice.text = [self formatStringToTwoDigits:def[@"comp_current_price"]];
     cell.labelHighLow.text = [NSString stringWithFormat:@"H:%@  L:%@", [self formatStringToTwoDigits:def[@"high"]], [self formatStringToTwoDigits:def[@"low"]]];
@@ -250,7 +252,11 @@ NSString *const kWidgetListCellIdentifier = @"WidgetListCell";
     
     cell.labelColor.layer.cornerRadius = 3;
     cell.labelColor.layer.masksToBounds = YES;
-    
+    }
+    @catch(NSException *exception)
+    {
+        
+    }
     return cell;
 }
 

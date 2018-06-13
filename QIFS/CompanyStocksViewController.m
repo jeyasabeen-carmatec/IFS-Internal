@@ -296,18 +296,57 @@
                                                                        }
 
                                                                        self.labelVolume.text = [GlobalShare createCommaSeparatedString:dictVal[@"volume"]];
+                                                                       self.labelVolume.text = [GlobalShare checkingNullValues:self.labelVolume.text];
+                                                                       
                                                                        self.labelUpdatedTime.text = dictVal[@"update_date"];
+                                                                       
+                                                                       self.labelUpdatedTime.text = [GlobalShare checkingNullValues:self.labelUpdatedTime.text];
+                                                                       
                                                                        self.labelMarketStatus.text = (globalShare.myLanguage != ARABIC_LANGUAGE) ? dictVal[@"market_status_en"] : dictVal[@"market_status_ar"];
+                                                                       
+                                                                         self.labelMarketStatus.text = [GlobalShare checkingNullValues:self.labelMarketStatus.text];
+                                                                       
                                                                        self.labelTodayOpen.text = [GlobalShare createCommaSeparatedTwoDigitString:[GlobalShare formatStringToTwoDigits:dictVal[@"open_price"]]];
+                                                                       
+                                                                         self.labelTodayOpen.text = [GlobalShare checkingNullValues:self.labelTodayOpen.text];
+                                                                       
                                                                        self.labelPreviousClose.text = [GlobalShare createCommaSeparatedTwoDigitString:[GlobalShare formatStringToTwoDigits:dictVal[@"close_price"]]];
+                                                                       
+                                                                        self.labelPreviousClose.text = [GlobalShare checkingNullValues:self.labelPreviousClose.text];
+                                                                       
                                                                        self.labelNoOfTrades.text = [GlobalShare createCommaSeparatedString:dictVal[@"tot_trade"]];
+                                                                       
+                                                                        self.labelNoOfTrades.text = [GlobalShare checkingNullValues:self.labelNoOfTrades.text];
+                                                                       
                                                                        self.labelValue.text = [GlobalShare createCommaSeparatedTwoDigitString:[GlobalShare formatStringToTwoDigits:dictVal[@"value_all"]]];
+                                                                       
+                                                                        self.labelValue.text = [GlobalShare checkingNullValues:self.labelValue.text];
+                                                                       
                                                                        self.labelDayHigh.text = [GlobalShare createCommaSeparatedTwoDigitString:[GlobalShare formatStringToTwoDigits:dictVal[@"high_rate"]]];
+                                                                       
+                                                                        self.labelDayHigh.text = [GlobalShare checkingNullValues:self.labelDayHigh.text];
+                                                                       
                                                                        self.labelDayLow.text = [GlobalShare createCommaSeparatedTwoDigitString:[GlobalShare formatStringToTwoDigits:dictVal[@"low_rate"]]];
+                                                                       
+                                                                        self.labelDayLow.text = [GlobalShare checkingNullValues:self.labelDayLow.text];
+                                                                       
                                                                        self.label52wkHigh.text = [GlobalShare createCommaSeparatedTwoDigitString:[GlobalShare formatStringToTwoDigits:dictVal[@"wk52HighPrice"]]];
+                                                                       
+                                                                       
+                                                                        self.label52wkHigh.text = [GlobalShare checkingNullValues:self.label52wkHigh.text];
+                                                                       
                                                                        self.label52wkLow.text = [GlobalShare createCommaSeparatedTwoDigitString:[GlobalShare formatStringToTwoDigits:dictVal[@"wk52LowPrice"]]];
+                                                                       
+                                                                       self.label52wkLow.text = [GlobalShare checkingNullValues:self.label52wkLow.text];
+                                                                       
+                                                                       
                                                                        self.labelLimitUp.text = [GlobalShare createCommaSeparatedTwoDigitString:[GlobalShare formatStringToTwoDigits:dictVal[@"max_price"]]];
+                                                                       
+                                                                        self.labelLimitUp.text = [GlobalShare checkingNullValues:self.labelLimitUp.text];
+                                                                       
                                                                        self.labelLimitDown.text = [GlobalShare createCommaSeparatedTwoDigitString:[GlobalShare formatStringToTwoDigits:dictVal[@"min_price"]]];
+                                                                       
+                                                                         self.labelLimitDown.text = [GlobalShare checkingNullValues:self.labelLimitDown.text];
                                                                        
                                                                        if([[dictVal[@"market_status_en"] lowercaseString] isEqualToString:@"pre-open"])
                                                                            self.labelMarketStatus.textColor = [UIColor colorWithRed:250/255.f green:135/255.f blue:40/255.f alpha:1.f];

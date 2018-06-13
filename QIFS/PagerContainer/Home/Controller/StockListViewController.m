@@ -347,7 +347,8 @@ NSString *const kStockListCellIdentifier = @"StockListCell";
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     if ([tableView isEqual:_tableViewStocks]) {
         StockListCell *cell = (StockListCell *) [tableView dequeueReusableCellWithIdentifier:kStockListCellIdentifier forIndexPath:indexPath];
-
+    @try
+        {
         NSDictionary *def = self.arrayStockList[indexPath.row];
         
 //        cell.labelSymbol.text = def[@"Symbol"];
@@ -369,12 +370,31 @@ NSString *const kStockListCellIdentifier = @"StockListCell";
 //        cell.labelBid.text = [NSString stringWithFormat:@"Bid: %@",def[@"Bid"]];
 
         cell.labelSymbol.text = def[@"ticker"];
+         
+        cell.labelSymbol.text = [GlobalShare checkingNullValues:cell.labelSymbol.text];
+
         cell.labelSecurityName.text = (globalShare.myLanguage != ARABIC_LANGUAGE) ? def[@"security_name_e"] : def[@"security_name_a"];
+            
+            cell.labelSecurityName.text = [GlobalShare checkingNullValues:cell.labelSecurityName.text];
+
 //        cell.labelSecurityName.text = @"Al Khalij Commercial Bank";
         cell.labelPrice.text = [GlobalShare formatStringToTwoDigits:def[@"comp_current_price"]];
+            
+            cell.labelPrice.text = [GlobalShare checkingNullValues:cell.labelPrice.text];
+
         cell.labelHighLow.text = [NSString stringWithFormat:@"H:%@  L:%@", [GlobalShare formatStringToTwoDigits:def[@"high"]], [GlobalShare formatStringToTwoDigits:def[@"low"]]];
+            
+            cell.labelHighLow.text = [GlobalShare checkingNullValues:cell.labelHighLow.text];
+
         cell.labelChange.text = [GlobalShare formatStringToTwoDigits:def[@"change"]];
+            
+            cell.labelChange.text = [GlobalShare checkingNullValues:cell.labelChange.text];
+
+            
         cell.labelPercentChange.text = [NSString stringWithFormat:@"%@%%", [GlobalShare formatStringToTwoDigits:def[@"change_perc"]]];
+            
+            cell.labelPercentChange.text = [GlobalShare checkingNullValues:cell.labelPercentChange.text];
+
         
 //        if([def[@"change"] hasPrefix:@"-"] || [def[@"change"] hasPrefix:@"+"]) {
 //            if([def[@"change"] hasPrefix:@"+"]) {
@@ -404,6 +424,9 @@ NSString *const kStockListCellIdentifier = @"StockListCell";
         else {
             if([GlobalShare returnIfGreaterThanZero:[def[@"change"] doubleValue]]) {
                 cell.labelChange.text = [NSString stringWithFormat:@"+%@", [GlobalShare formatStringToTwoDigits:def[@"change"]]];
+                
+                cell.labelChange.text = [GlobalShare checkingNullValues:cell.labelChange.text];
+
                 cell.labelPercentChange.text = [NSString stringWithFormat:@"+%@%%", [GlobalShare formatStringToTwoDigits:def[@"change_perc"]]];
                 [cell.imageUpDown setImage:[UIImage imageNamed:@"icon_up_arrow"]];
 //                cell.labelColor.backgroundColor = [UIColor colorWithRed:0/255.f green:130/255.f blue:2/255.f alpha:1.f];
@@ -421,6 +444,8 @@ NSString *const kStockListCellIdentifier = @"StockListCell";
             [cell.labelAsk setTextAlignment:NSTextAlignmentRight];
             
             cell.labelAsk.text = [NSString stringWithFormat:@"%@: %@ x %@", NSLocalizedString(@"Ask", @"Ask"), ([def[@"ASK"] hasPrefix:@"-"]) ? @"M.P" : [GlobalShare formatStringToTwoDigits:def[@"ASK"]], [GlobalShare createCommaSeparatedString:def[@"ASK_VOL"]]];
+            
+            
             cell.labelBid.text = [NSString stringWithFormat:@"%@: %@ x %@", NSLocalizedString(@"Bid", @"Bid"), ([def[@"BID"] hasPrefix:@"-"]) ? @"M.P" : [GlobalShare formatStringToTwoDigits:def[@"BID"]], [GlobalShare createCommaSeparatedString:def[@"BID_VOL"]]];
         }
         else {
@@ -457,6 +482,11 @@ NSString *const kStockListCellIdentifier = @"StockListCell";
 //                                cell.backgroundColor = [UIColor whiteColor];
 //                            }];
 //        }
+        }
+        @catch(NSException *exception)
+        {
+            
+        }
         
         return cell;
     }

@@ -47,6 +47,10 @@
 /* Class = "UILabel"; text = "قيمة المحفظة"; ObjectID = "1yD-4H-NDQ"; */
 "1yD-4H-NDQ.text" = "قيمة المحفظة";
 
+
+/* Class = "UIButton"; normalTitle = "Market Preview"; ObjectID = "FNk-1n-vmB"; */
+"FNk-1n-vmB.normalTitle" = "السوق";
+
 /* Class = "UIButton"; normalTitle = "مفضلة"; ObjectID = "2FW-0V-TWm"; */
 "2FW-0V-TWm.normalTitle" = "مفضلة";
 

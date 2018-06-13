@@ -152,6 +152,7 @@
                                                                        
                                                                        self.labelOrderTitle.text = [NSString stringWithFormat:@"%@ %@", (globalShare.myLanguage != ARABIC_LANGUAGE) ? self.dictTicket[@"order_type_en"] : self.dictTicket[@"order_type_ar"], [self.dictTicket[@"security_id"] componentsSeparatedByString:@"."][1]];
                                                                        self.labelOrderValue.text = [NSString stringWithFormat:@"%@ QR", [GlobalShare createCommaSeparatedTwoDigitString:self.dictTicket[@"total_order_value"]]];
+                                                                       self.labelOrderValue.text = [NSString stringWithFormat:@"%@",self.labelOrderValue.text];
                                                                        
                                                                        [self.tableViewTicket reloadData];
                                                                   });
@@ -233,13 +234,22 @@
             NSArray *nibObjects = [[NSBundle mainBundle] loadNibNamed:@"OrderTicketCell" owner:nil options:nil];
             cell = [nibObjects objectAtIndex:0];
         }
-        
+        @try
+        {
         NSDictionary *def = self.dictTicket[@"Tickets"][indexPath.row];
         
         cell.labelTickedID.text = def[@"ticket_id"];
+        cell.labelTickedID.text = [GlobalShare checkingNullValues:cell.labelTickedID.text];
         cell.labelPrice.text = [GlobalShare formatStringToTwoDigits:def[@"ticket_price"]];
+        cell.labelPrice.text = [GlobalShare checkingNullValues:cell.labelPrice.text];
+
         cell.labelQty.text = [GlobalShare createCommaSeparatedString:def[@"ticket_qty"]];
+            
+        cell.labelQty.text = [GlobalShare checkingNullValues:cell.labelQty.text];
+
         cell.labelDate.text = def[@"ticket_date"];
+        cell.labelDate.text = [GlobalShare checkingNullValues:cell.labelDate.text];
+
         
         if(globalShare.myLanguage == ARABIC_LANGUAGE) {
             [cell.labelPrice setTextAlignment:NSTextAlignmentLeft];
@@ -250,7 +260,11 @@
 
         cell.accessoryType = UITableViewCellAccessoryNone;
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
-        
+        }
+        @catch(NSException *exception)
+        {
+            
+        }
         //    if(indexPath.row % 2 == 0)
         //        cell.backgroundColor = [UIColor whiteColor];
         //    else
