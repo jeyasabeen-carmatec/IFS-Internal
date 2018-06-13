@@ -221,6 +221,7 @@
 - (IBAction)marketPreviewAction:(id)sender {
 
    [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"ssckey"];
+   [[NSUserDefaults standardUserDefaults]synchronize];
    
     UITabBarController *tabController = [self.storyboard instantiateViewControllerWithIdentifier:@"StockTabBarController"];
     tabController.delegate = self;

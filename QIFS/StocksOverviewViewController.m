@@ -7,6 +7,7 @@
 //
 
 #import "StocksOverviewViewController.h"
+#import "QEGraphViewController.h"
 #import <Charts/Charts.h>
 #import "StockNewsCell.h"
 
@@ -42,6 +43,7 @@ NSString *const kStockNewsCellIdentifier = @"StockNewsCell";
 
 @property (weak, nonatomic) IBOutlet UILabel *labelVolumeCaption;
 @property (weak, nonatomic) IBOutlet UIView *viewChart;
+@property(strong,nonatomic) QEGraphViewController *graphContentView;
 
 @end
 
@@ -168,7 +170,14 @@ NSString *const kStockNewsCellIdentifier = @"StockNewsCell";
 }
 
 - (IBAction)actionChartClick:(id)sender {
-    [self.delegate handleTapOnChartView];
+    
+    [[[[UIApplication sharedApplication] delegate] window] setWindowLevel:UIWindowLevelStatusBar+1];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:@"UIDeviceOrientationDidChangeNotification" object:nil];
+    [[GlobalShare sharedInstance] setCanRotateOnClick:YES];
+    self.graphContentView = [self.storyboard instantiateViewControllerWithIdentifier:@"QEGraphViewController"];
+    
+   // [self presentViewController:self.graphContentView animated:NO completion:nil];
+    [self.view.window.rootViewController presentViewController:self.graphContentView animated:YES completion:nil];
 }
 
 - (IBAction)segmentedControlIndexChanged:(id)sender {

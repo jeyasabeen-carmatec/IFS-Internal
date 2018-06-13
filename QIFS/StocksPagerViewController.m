@@ -653,6 +653,7 @@ NSString *const kStocksOptionsViewCellIdentifier = @"OptionsViewCell";
 }
 
 - (void)handleTapOnChartView {
+    
     [[[[UIApplication sharedApplication] delegate] window] setWindowLevel:UIWindowLevelStatusBar+1];
     [[NSNotificationCenter defaultCenter] removeObserver:self name:@"UIDeviceOrientationDidChangeNotification" object:nil];
     [[GlobalShare sharedInstance] setCanRotateOnClick:YES];

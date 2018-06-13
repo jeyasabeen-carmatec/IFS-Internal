@@ -10,6 +10,7 @@
 #import <Charts/Charts.h>
 #import "QIFS-Swift.h"
 #import "DateValueFormatter.h"
+#import "UIAlertController+Orientation.h"
 
 @interface CompanyGraphViewController () <ChartViewDelegate, NSURLSessionDelegate>
 
@@ -353,24 +354,32 @@
             strVal = [NSString stringWithFormat:@"%@:%@", [strVal componentsSeparatedByString:@":"][0], [strVal componentsSeparatedByString:@":"][1]];
         }
         else {
-            strVal = [self.arrayMarketWatch[i][@"update_date"] componentsSeparatedByString:@" "][0];
+        strVal = [self.arrayMarketWatch[i][@"update_date"] componentsSeparatedByString:@" "][0];
+            
         }
-
-        NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
-        [dateFormat setDateFormat:@"dd-MM-YYYY"];
+      
         
-        NSDate *to = [NSDate date];
+     NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
+        //[dateFormat setDateFormat:@"dd-MM-YYYY"];
+//        [dateFormat setTimeZone:[NSTimeZone timeZoneWithAbbreviation:@"UTC"]];
+
+       [dateFormat setDateFormat:@"dd-MM-yyyy"];
+
+
+//        NSDate *to = [NSDate date];
         NSDate *from = [dateFormat dateFromString:strVal];
-//
-//        NSTimeInterval now = [dateFormat dateFromString:strVal];
-//        NSTimeInterval hourSeconds = 3600.0;
-//
-        NSTimeInterval point = [to timeIntervalSinceDate:from];
-////        NSTimeInterval to = now + (count / 2.0) * hourSeconds;
-//
-        NSTimeInterval x = point;
-        NSNumber *num = [NSNumber numberWithDouble:x];
+
+       // NSTimeInterval point = [to timeIntervalSinceDate:from];
+       NSTimeInterval point = [from timeIntervalSince1970] ;
+
+       // NSTimeInterval x = point;
+      NSNumber *num = [NSNumber numberWithDouble:point];
+
+       // NSNumber *num = [NSNumber numberWithDouble:point];
         [xVals addObject:num];
+        
+           NSLog(@"%@ -- > %@ ----> %@",strVal,from,num);
+        
     }
     
     NSMutableArray *yVals = [[NSMutableArray alloc] init];
@@ -421,7 +430,7 @@
         [values addObject:[[ChartDataEntry alloc] initWithX:[[xVals objectAtIndex:i] doubleValue] y:[[yVals objectAtIndex:i] doubleValue]]];
     }
     
-    NSLog(@"Line data values \n%@\nX values = %@",values,xVals);
+//    NSLog(@"Line data values \n%@\nX values = %@",values,xVals);
     
     LineChartDataSet *set1 = nil;
     if (_lineChartViewQE.data.dataSetCount > 0)

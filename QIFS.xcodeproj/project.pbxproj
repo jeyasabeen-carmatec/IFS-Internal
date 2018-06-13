@@ -70,7 +70,6 @@
 		514383301D1DCC9B00E1B739 /* RegisterViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5143832E1D1DCC9B00E1B739 /* RegisterViewController.xib */; };
 		514383341D1DD18F00E1B739 /* leftArrow.png in Resources */ = {isa = PBXBuildFile; fileRef = 514383321D1DD18F00E1B739 /* leftArrow.png */; };
 		514383351D1DD18F00E1B739 /* leftArrow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 514383331D1DD18F00E1B739 /* leftArrow@2x.png */; };
-		514C960C1D57A4BE00D7C1DA /* QEGraphViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 514C960B1D57A4BE00D7C1DA /* QEGraphViewController.m */; };
 		514D322F1D1E70F200E78C71 /* ForgotPasswordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 514D322D1D1E70F200E78C71 /* ForgotPasswordViewController.m */; };
 		514D32301D1E70F200E78C71 /* ForgotPasswordViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 514D322E1D1E70F200E78C71 /* ForgotPasswordViewController.xib */; };
 		514D32341D1E827D00E78C71 /* ChangePasswordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 514D32321D1E827D00E78C71 /* ChangePasswordViewController.m */; };
@@ -143,6 +142,8 @@
 		770BA38D20C959FC001B7ACA /* MarketDepthViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 770BA38C20C959FB001B7ACA /* MarketDepthViewController.m */; };
 		77C46A1E20C9128E002C6538 /* Charts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7351BC4120C50CB800F49E27 /* Charts.framework */; };
 		77C46A1F20C9128E002C6538 /* Charts.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 7351BC4120C50CB800F49E27 /* Charts.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		77E07E5620D1219900706616 /* UIAlertController+Orientation.m in Sources */ = {isa = PBXBuildFile; fileRef = 77E07E5520D1219900706616 /* UIAlertController+Orientation.m */; };
+		77E07E5820D1229E00706616 /* QEGraphViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 77E07E5720D1229E00706616 /* QEGraphViewController.m */; };
 		77F2506720CA465000AF27C0 /* SectorsGraphViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 77F2506620CA465000AF27C0 /* SectorsGraphViewController.m */; };
 /* End PBXBuildFile section */
 
@@ -327,7 +328,6 @@
 		514383321D1DD18F00E1B739 /* leftArrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = leftArrow.png; path = Images/leftArrow.png; sourceTree = "<group>"; };
 		514383331D1DD18F00E1B739 /* leftArrow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "leftArrow@2x.png"; path = "Images/leftArrow@2x.png"; sourceTree = "<group>"; };
 		514C960A1D57A4BE00D7C1DA /* QEGraphViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = QEGraphViewController.h; path = PagerContainer/QEGraphViewController.h; sourceTree = "<group>"; };
-		514C960B1D57A4BE00D7C1DA /* QEGraphViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; name = QEGraphViewController.m; path = PagerContainer/QEGraphViewController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		514D322C1D1E70F200E78C71 /* ForgotPasswordViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ForgotPasswordViewController.h; path = UserManagement/ForgotPasswordViewController.h; sourceTree = "<group>"; };
 		514D322D1D1E70F200E78C71 /* ForgotPasswordViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; name = ForgotPasswordViewController.m; path = UserManagement/ForgotPasswordViewController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		514D322E1D1E70F200E78C71 /* ForgotPasswordViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ForgotPasswordViewController.xib; path = UserManagement/ForgotPasswordViewController.xib; sourceTree = "<group>"; };
@@ -444,6 +444,9 @@
 		73CCC06220BD3978009A662F /* ActiveStocksViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActiveStocksViewController.m; sourceTree = "<group>"; };
 		73CCC06420BD3A38009A662F /* CompanyGraphViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CompanyGraphViewController.m; sourceTree = "<group>"; };
 		770BA38C20C959FB001B7ACA /* MarketDepthViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MarketDepthViewController.m; sourceTree = "<group>"; };
+		77E07E5420D1219900706616 /* UIAlertController+Orientation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIAlertController+Orientation.h"; sourceTree = "<group>"; };
+		77E07E5520D1219900706616 /* UIAlertController+Orientation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIAlertController+Orientation.m"; sourceTree = "<group>"; };
+		77E07E5720D1229E00706616 /* QEGraphViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QEGraphViewController.m; sourceTree = "<group>"; };
 		77F2506620CA465000AF27C0 /* SectorsGraphViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SectorsGraphViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -590,7 +593,7 @@
 				73216D3A20B543CD00D807B2 /* CompanyStocksViewController.h */,
 				73216D3B20B543CD00D807B2 /* CompanyStocksViewController.m */,
 				514C960A1D57A4BE00D7C1DA /* QEGraphViewController.h */,
-				514C960B1D57A4BE00D7C1DA /* QEGraphViewController.m */,
+				77E07E5720D1229E00706616 /* QEGraphViewController.m */,
 				51613C6D1E20C3530055505A /* CompanyGraphViewController.h */,
 				73CCC06420BD3A38009A662F /* CompanyGraphViewController.m */,
 				7319814420BD873C00719955 /* BalloonMarker.swift */,
@@ -764,6 +767,8 @@
 		514382C31D1D9FF500E1B739 /* Utility */ = {
 			isa = PBXGroup;
 			children = (
+				77E07E5420D1219900706616 /* UIAlertController+Orientation.h */,
+				77E07E5520D1219900706616 /* UIAlertController+Orientation.m */,
 				7351BC6620C53DBB00F49E27 /* GlobalShare.h */,
 				7351BC6520C53DBB00F49E27 /* GlobalShare.m */,
 				514382CB1D1DBB8C00E1B739 /* PropertyList.h */,
@@ -1193,6 +1198,7 @@
 				73CCC06120BD24B6009A662F /* StocksOverviewViewController.m in Sources */,
 				51DA15911F8173E5001EAF83 /* MyNewOrdersCell.m in Sources */,
 				7351BC5820C53D2000F49E27 /* PortfoliosViewController.m in Sources */,
+				77E07E5620D1219900706616 /* UIAlertController+Orientation.m in Sources */,
 				511247DF1D239BDD00364145 /* XLButtonBarView.m in Sources */,
 				51332C431DE8ABB7001536CD /* DataManager.m in Sources */,
 				7319814820BD873D00719955 /* RadarMarkerView.swift in Sources */,
@@ -1210,6 +1216,7 @@
 				514382AF1D1D82D500E1B739 /* AppDelegate.m in Sources */,
 				51332C401DE8AB97001536CD /* FMResultSet.m in Sources */,
 				515AF6291D2E508100FF837E /* PageLoadViewController.m in Sources */,
+				77E07E5820D1229E00706616 /* QEGraphViewController.m in Sources */,
 				515AF6421D2E50B100FF837E /* BarView.m in Sources */,
 				5102EDE01D494827005B04F8 /* FavoriteStocksCell.m in Sources */,
 				514382AC1D1D82D500E1B739 /* main.m in Sources */,
@@ -1217,7 +1224,6 @@
 				51829C161D269F2900DF1C73 /* XLPagerTabStripViewController.m in Sources */,
 				512379361D5667ED0096C0E2 /* ActiveAlertsCell.m in Sources */,
 				51332C3E1DE8AB97001536CD /* FMDatabasePool.m in Sources */,
-				514C960C1D57A4BE00D7C1DA /* QEGraphViewController.m in Sources */,
 				5102EDDF1D494827005B04F8 /* SearchStocksCell.m in Sources */,
 				515E8D561EED9B03000852B9 /* OptionsViewCell.m in Sources */,
 				510B993E1D6C17B200D7703F /* StockList.m in Sources */,

@@ -7,12 +7,14 @@
 //
 
 #import "QEGraphViewController.h"
-//#import <Charts/Charts.h>
+#import <Charts/Charts.h>
 #import "QIFS-Swift.h"
+#import "DateValueFormatter.h"
+#import "UIAlertController+Orientation.h"
 
-@interface QEGraphViewController () < NSURLSessionDelegate> //ChartViewDelegate
+@interface QEGraphViewController () < NSURLSessionDelegate,ChartViewDelegate>
 
-//@property (nonatomic, weak) IBOutlet LineChartView *lineChartViewQE;
+@property (nonatomic, weak) IBOutlet LineChartView *lineChartViewQE;
 @property (nonatomic, assign) UIDeviceOrientation orientation;
 //@property (nonatomic, strong) BalloonMarker *markerView;
 @property (nonatomic, weak) IBOutlet UIButton *buttonPlus;
@@ -50,59 +52,46 @@
     [self.buttonOneDay setBackgroundColor:[UIColor colorWithRed:170.0f/255.0f green:170.0f/255.0f blue:170.0f/255.0f alpha:1]];
     self.selectedIndexOption = 0;
     self.buttonRecent = self.buttonOneDay;
-//    
-//    _lineChartViewQE.backgroundColor = [UIColor colorWithRed:252/255.f green:252/255.f blue:252/255.f alpha:0.7f];
-//    _lineChartViewQE.delegate = self;
-//    _lineChartViewQE.descriptionText = @"";
-//    _lineChartViewQE.noDataText = CHART_DATA_UNAVAILABLE;
-////    _lineChartViewQE.noDataTextDescription = CHART_DATA_UNAVAILABLE;
-//    
-//    _lineChartViewQE.dragEnabled = YES;
-//    _lineChartViewQE.pinchZoomEnabled = YES;
-//    _lineChartViewQE.drawGridBackgroundEnabled = NO;
-//    _lineChartViewQE.scaleXEnabled = YES;
-//    _lineChartViewQE.scaleYEnabled = NO;
-//    
-//    //    // x-axis limit line
-//    //    ChartLimitLine *llXAxis = [[ChartLimitLine alloc] initWithLimit:10.0 label:@"Index 10"];
-//    //    llXAxis.lineWidth = 4.0;
-//    //    llXAxis.lineDashLengths = @[@(10.f), @(10.f), @(0.f)];
-//    //    llXAxis.labelPosition = ChartLimitLabelPositionRightBottom;
-//    //    llXAxis.valueFont = [UIFont systemFontOfSize:10.f];
-//
-//    _lineChartViewQE.rightAxis.enabled = YES;
-//    _lineChartViewQE.leftAxis.enabled = NO;
-//    _lineChartViewQE.rightAxis.drawGridLinesEnabled = YES;
-//    _lineChartViewQE.xAxis.drawGridLinesEnabled = YES;
-//    _lineChartViewQE.rightAxis.gridLineWidth = 0.1;
-//    _lineChartViewQE.xAxis.gridLineWidth = 0.1;
-//    _lineChartViewQE.xAxis.labelPosition = XAxisLabelPositionBottom;
-//    _lineChartViewQE.rightAxis.drawTopYLabelEntryEnabled = YES;
-//    _lineChartViewQE._defaultValueFormatter.minimumSignificantDigits = 0;
-//
-//    //    _lineChartViewQE.xAxis.drawAxisLineEnabled = YES;
-//    //    lineChartView.leftAxis.axisLineColor = [UIColor redColor];
-//    
-//    _lineChartViewQE.legend.enabled = NO;
-//    self.markerView = [[BalloonMarker alloc] initWithColor:[UIColor lightGrayColor] font:[UIFont systemFontOfSize:12.0] insets: UIEdgeInsetsMake(8.0, 8.0, 20.0, 8.0)];
-//    self.markerView.minimumSize = CGSizeMake(120.f, 40.f);
-////    _lineChartViewQE.marker = _markerView;
-////    _lineChartViewQE.marker.image = [UIImage imageNamed:@"icon_marker.png"];
-//    _lineChartViewQE.drawMarkers = NO;
-//    
-//    self.circleMarker = [[CircleMarker alloc] initWithColor:[UIColor lightGrayColor] font:[UIFont systemFontOfSize:12.0] insets: UIEdgeInsetsMake(8.0, 8.0, 20.0, 8.0)];
-//    self.circleMarker.minimumSize = CGSizeMake(10.f, 10.f);
-//    _lineChartViewQE.marker = _circleMarker;
+    
+    
+    
+    ChartXAxis *xAxis = _lineChartViewQE.xAxis;
+    xAxis.valueFormatter = [[DateValueFormatter alloc] init];
+    //    xAxis.granularity = 3600.0;
+    
+    _lineChartViewQE.backgroundColor = [UIColor colorWithRed:252/255.f green:252/255.f blue:252/255.f alpha:0.7f];
+    _lineChartViewQE.delegate = self;
+    //    _lineChartViewQE.descriptionText = @"";
+    _lineChartViewQE.chartDescription.enabled = NO;
+    _lineChartViewQE.noDataText = CHART_DATA_UNAVAILABLE;
+    //    _lineChartViewQE.noDataTextDescription = CHART_DATA_UNAVAILABLE;
+    
+    _lineChartViewQE.dragEnabled = YES;
+    _lineChartViewQE.pinchZoomEnabled = YES;
+    _lineChartViewQE.drawGridBackgroundEnabled = NO;
+    _lineChartViewQE.scaleXEnabled = YES;
+    _lineChartViewQE.scaleYEnabled = NO;
+    
+   
+    
+    _lineChartViewQE.rightAxis.enabled = YES;
+    _lineChartViewQE.leftAxis.enabled = NO;
+    _lineChartViewQE.rightAxis.drawGridLinesEnabled = YES;
+    _lineChartViewQE.xAxis.drawGridLinesEnabled = YES;
+    _lineChartViewQE.rightAxis.gridLineWidth = 0.1;
+    _lineChartViewQE.xAxis.gridLineWidth = 0.1;
+    _lineChartViewQE.xAxis.labelPosition = XAxisLabelPositionBottom;
+    _lineChartViewQE.rightAxis.drawTopYLabelEntryEnabled = YES;
+   ;
+    
+    _lineChartViewQE.legend.enabled = NO;
+    
+    _lineChartViewQE.drawMarkers = NO;
+    
 }
 
 -(void)viewWillAppear:(BOOL)animated {
-//    UIApplication* application = [UIApplication sharedApplication];
-//    if (application.statusBarOrientation != UIInterfaceOrientationPortrait)
-//    {
-//        UIViewController *c = [[UIViewController alloc]init];
-//        [self presentViewController:c animated:NO completion:nil];
-//        [self dismissViewControllerAnimated:NO completion:nil];
-//    }
+    
     [[UIDevice currentDevice] beginGeneratingDeviceOrientationNotifications];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didRotate:) name:@"UIDeviceOrientationDidChangeNotification"  object:nil];
     _orientation = [[UIDevice currentDevice] orientation];
@@ -118,7 +107,6 @@
     NSDate *fromDate = [GlobalShare returnCalendarDate:0];
     [self performSelector:@selector(getQEIndexLandscape:) withObject:fromDate afterDelay:0.01f];
 
-//    [self updateChartData];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -126,16 +114,10 @@
     // Dispose of any resources that can be recreated.
 }
 
+
 /*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
+ Uidevice orientation related...
  */
-
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
     if(![[GlobalShare sharedInstance] canAutoRotateL])
@@ -145,25 +127,32 @@
 }
 
 - (BOOL)shouldAutorotate  // iOS 6 autorotation fix
-{
-    if(![[GlobalShare sharedInstance] canAutoRotateL])
-        return NO;
-    else
-        return YES;
+{       @try{
+                if(![[GlobalShare sharedInstance] canAutoRotateL])
+                    return NO;
+                else
+                    return YES;
+        }@catch(NSException *exception){
+            NSLog(@"shouldAutorotate Exception .....");
+        }
 }
 
 - (UIInterfaceOrientationMask)supportedInterfaceOrientations // iOS 6 autorotation fix
 {
-    if(![[GlobalShare sharedInstance] canAutoRotateL])
-        return UIInterfaceOrientationMaskPortrait;
-    else
-        return UIInterfaceOrientationMaskLandscapeRight | UIInterfaceOrientationMaskLandscapeLeft;
+    @try{
+        if(![[GlobalShare sharedInstance] canAutoRotateL])
+            return UIInterfaceOrientationMaskPortrait;
+        else
+            return UIInterfaceOrientationMaskLandscapeRight | UIInterfaceOrientationMaskLandscapeLeft;
+    }@catch(NSException *exception){
+        NSLog(@"supportedInterfaceOrientations Exception .....");
+
+    }
+    
+    
 }
 
-//- (UIInterfaceOrientation)preferredInterfaceOrientationForPresentation // iOS 6 autorotation fix
-//{
-//    return UIInterfaceOrientationPortrait;
-//}
+
 
 - (IBAction)actionAddRemoveMarker:(id)sender {
 //    LineChartDataSet *set1 = nil;
@@ -310,147 +299,43 @@
 
 - (void)updateChartData
 {
-//    [_lineChartViewQE animateWithYAxisDuration:2.5 easingOption:ChartEasingOptionEaseInOutQuart];
+   [_lineChartViewQE animateWithYAxisDuration:2.5 easingOption:ChartEasingOptionEaseInOutQuart];
     [self setDataCount:30 range:100];
 }
 
 -(void)didRotate:(NSNotification *)notification {
     _orientation = [[UIDevice currentDevice] orientation];
-//    UIDeviceOrientation newOrientation = [[UIDevice currentDevice] orientation];
-//    if (newOrientation != UIDeviceOrientationUnknown && newOrientation != UIDeviceOrientationFaceUp && newOrientation != UIDeviceOrientationFaceDown) {
-//        _orientation = newOrientation;
-//    }
+    //    UIDeviceOrientation newOrientation = [[UIDevice currentDevice] orientation];
+    //    if (newOrientation != UIDeviceOrientationUnknown && newOrientation != UIDeviceOrientationFaceUp && newOrientation != UIDeviceOrientationFaceDown) {
+    //        _orientation = newOrientation;
+    //    }
     
     // Do your orientation logic here
     if (_orientation == UIDeviceOrientationLandscapeLeft || _orientation == UIDeviceOrientationLandscapeRight) {
     } else if (_orientation == UIDeviceOrientationPortrait)
     {
         // Clear the current view and insert the orientation specific view.
-//        if([[GlobalShare sharedInstance] canAutoRotateL]) {
-//            [self.navigationController popViewControllerAnimated:NO];
-//        [self.view removeFromSuperview];
-//        }
+        //        if([[GlobalShare sharedInstance] canAutoRotateL]) {
+        //            [self.navigationController popViewControllerAnimated:NO];
+        //        [self.view removeFromSuperview];
+        //        }
         [[GlobalShare sharedInstance] setCanRotateOnClick:NO];
-//        [self.navigationController popViewControllerAnimated:NO];
+        //        [self.navigationController popViewControllerAnimated:NO];
         [[NSNotificationCenter defaultCenter] removeObserver:self name:@"UIDeviceOrientationDidChangeNotification" object:nil];
         [self dismissViewControllerAnimated:NO completion:nil];
         [[[[UIApplication sharedApplication] delegate] window] setWindowLevel:UIWindowLevelNormal];
     }
 }
 
-//- (void)setDataCount:(int)count range:(double)range
-//{
-//    NSMutableArray *xVals = [[NSMutableArray alloc] init];
-//    
-//    for (int i = 0; i < count; i++)
-//    {
-//        [xVals addObject:[@(i) stringValue]];
-//    }
-//    
-//    NSMutableArray *yVals = [[NSMutableArray alloc] init];
-//    
-//    for (int i = 0; i < count; i++)
-//    {
-//        double mult = (range + 1);
-//        double val = (double) (arc4random_uniform(mult)) + 3;
-//        [yVals addObject:[[ChartDataEntry alloc] initWithValue:val xIndex:i]];
-//    }
-//    
-//    LineChartDataSet *set1 = nil;
-//    if (_lineChartViewQE.data.dataSetCount > 0)
-//    {
-//        set1 = (LineChartDataSet *)_lineChartViewQE.data.dataSets[0];
-//        set1.yVals = yVals;
-//        _lineChartViewQE.data.xValsObjc = xVals;
-//        [_lineChartViewQE.data notifyDataChanged];
-//        [_lineChartViewQE notifyDataSetChanged];
-//    }
-//    else
-//    {
-//        set1 = [[LineChartDataSet alloc] initWithYVals:yVals label:@""];
-//        
-//        //        [set1 setColor:[UIColor colorWithRed:154/255.f green:203/255.f blue:205/255.f alpha:0.7f]];
-//        [set1 setColor:[UIColor colorWithRed:204/255.f green:224/255.f blue:255/255.f alpha:1.f]];
-//        //        [set1 setColor:[UIColor colorWithRed:0/255.f green:100/255.f blue:25/255.f alpha:1.f]];
-//        //        [set1 setColor:[UIColor colorWithRed:126/255.f green:170/255.f blue:206/255.f alpha:1.f]];
-//        //        [set1 setColor:[UIColor colorWithRed:204/255.f green:204/255.f blue:204/255.f alpha:.8f]];
-//        [set1 setCircleColor:UIColor.blackColor];
-//        set1.lineWidth = 2.0;
-//        set1.circleRadius = 3.0;
-//        set1.drawCircleHoleEnabled = NO;
-//        set1.valueFont = [UIFont systemFontOfSize:9.f];
-//        
-//        //        NSArray *gradientColors = @[
-//        //                                    (id)[ChartColorTemplates colorFromString:@"#00ff0000"].CGColor,
-//        //                                    (id)[ChartColorTemplates colorFromString:@"#ffff0000"].CGColor
-//        //                                    ];
-//        
-//        //        NSArray *gradientColors = @[
-//        //                                    (id)[UIColor colorWithRed:218/255.f green:236/255.f blue:237/255.f alpha:0.7f].CGColor,
-//        //                                    (id)[UIColor colorWithRed:218/255.f green:236/255.f blue:237/255.f alpha:0.7f].CGColor
-//        //                                    ];
-//        
-//        //        NSArray *gradientColors = @[
-//        //                                    (id)[UIColor colorWithRed:204/255.f green:243/255.f blue:255/255.f alpha:0.7f].CGColor,
-//        //                                    (id)[UIColor colorWithRed:204/255.f green:243/255.f blue:255/255.f alpha:0.7f].CGColor
-//        //                                    ];
-//        
-//        //        NSArray *gradientColors = @[
-//        //                                    (id)[UIColor colorWithRed:237/255.f green:243/255.f blue:248/255.f alpha:.7f].CGColor,
-//        //                                    (id)[UIColor colorWithRed:209/255.f green:225/255.f blue:237/255.f alpha:.7f].CGColor
-//        //                                    ];
-//        
-//        NSArray *gradientColors = @[
-//                                    (id)[UIColor colorWithRed:230/255.f green:240/255.f blue:255/255.f alpha:1.f].CGColor,
-//                                    (id)[UIColor colorWithRed:230/255.f green:240/255.f blue:255/255.f alpha:1.f].CGColor
-//                                    ];
-//        
-//        
-//        CGGradientRef gradient = CGGradientCreateWithColors(nil, (CFArrayRef)gradientColors, nil);
-//        
-//        //        set1.fillAlpha = .7f;
-//        set1.fill = [ChartFill fillWithLinearGradient:gradient angle:90.f];
-//        set1.drawFilledEnabled = YES;
-//        set1.drawCubicEnabled = NO;
-//        set1.drawValuesEnabled = NO;
-//        set1.drawCirclesEnabled = NO;
-//        set1.drawVerticalHighlightIndicatorEnabled = NO;
-//        set1.drawHorizontalHighlightIndicatorEnabled = NO;
-//        set1.highlightColor = [UIColor orangeColor];
-//        set1.highlightLineWidth = 0.2;
-//        
-//        CGGradientRelease(gradient);
-//        
-//        NSMutableArray *dataSets = [[NSMutableArray alloc] init];
-//        [dataSets addObject:set1];
-//        
-//        LineChartData *data = [[LineChartData alloc] initWithXVals:xVals dataSets:dataSets];
-//        
-//        _lineChartViewQE.data = data;
-//    }
-//}
-
 - (void)setDataCount:(int)count range:(double)range
 {
     if([self.arrayMarketIndex count] == 0) {
-//        NSMutableArray *xVals = [[NSMutableArray alloc] init];
-//        NSMutableArray *yVals = [[NSMutableArray alloc] init];
-//        LineChartDataSet *set1 = (LineChartDataSet *)_lineChartViewQE.data.dataSets[0];
-//        set1.yVals = yVals;
-//        _lineChartViewQE.data.xValsObjc = xVals;
-//        [_lineChartViewQE.data notifyDataChanged];
-//        [_lineChartViewQE notifyDataSetChanged];
-//        _lineChartViewQE.data = nil;
+        _lineChartViewQE.data = nil;
         return;
     }
     
     [_indicatorView setHidden:NO];
     NSMutableArray *xVals = [[NSMutableArray alloc] init];
-    
-//    for (int i = 0; i < self.arrayTimes.count; i++)
-//    {
-//        [xVals addObject:self.arrayTimes[i]];
-//    }
     
     NSString *strVal;
     for (int i = 0; i < self.arrayMarketIndex.count; i++)
@@ -461,77 +346,133 @@
         }
         else {
             strVal = [self.arrayMarketIndex[i][@"update_date"] componentsSeparatedByString:@" "][0];
+            
         }
-        [xVals addObject:strVal];
+        
+        
+        NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
+        
+        
+        [dateFormat setDateFormat:@"dd-MM-yyyy"];
+        
+        
+        //        NSDate *to = [NSDate date];
+        NSDate *from = [dateFormat dateFromString:strVal];
+        
+        // NSTimeInterval point = [to timeIntervalSinceDate:from];
+        NSTimeInterval point = [from timeIntervalSince1970] ;
+        
+        // NSTimeInterval x = point;
+        NSNumber *num = [NSNumber numberWithDouble:point];
+        
+        // NSNumber *num = [NSNumber numberWithDouble:point];
+        [xVals addObject:num];
+        
+        NSLog(@"%@ -- > %@ ----> %@",strVal,from,num);
+        
     }
     
-//    NSMutableArray *yVals = [[NSMutableArray alloc] init];
+    NSMutableArray *yVals = [[NSMutableArray alloc] init];
     
-//    for (int i = 0; i < 7; i++)
-//    {
-//        double val = (double) RAND_FROM_TO(10000, 10100);
-//        [yVals addObject:[[ChartDataEntry alloc] initWithValue:val xIndex:i]];
-//    }
+    //    for (int i = 0; i < 7; i++)
+    //    {
+    //        double val = (double) RAND_FROM_TO(10000, 10100);
+    //        [yVals addObject:[[ChartDataEntry alloc] initWithValue:val xIndex:i]];
+    //    }
     
     for (int i = 0; i < self.arrayMarketIndex.count; i++)
     {
-//        double val = [self.arrayMarketIndex[i][@"index_1"] doubleValue];
-//        [yVals addObject:[[ChartDataEntry alloc] initWithValue:val xIndex:i]];
+        //        double val = [self.arrayMarketWatch[i][@"comp_current_price"] doubleValue];
+        [yVals addObject:self.arrayMarketIndex[i][@"index_1"]];
     }
     
-//    _chartView.xAxis._axisMaximum = [self.arrayMarketIndex count]-1;
-//    _chartView.xAxis._axisMinimum = 0;
-//    _chartView.xAxis.axisMaxValue = [self.arrayMarketIndex count]-1;
-//    _chartView.xAxis.axisMinValue = 0;
-//    
-//    LineChartDataSet *set1 = nil;
-//    if (_lineChartViewQE.data.dataSetCount > 0)
-//    {
-//        set1 = (LineChartDataSet *)_lineChartViewQE.data.dataSets[0];
-//        set1.yVals = yVals;
-//        _lineChartViewQE.data.xValsObjc = xVals;
-//        [_lineChartViewQE.data notifyDataChanged];
-//        [_lineChartViewQE notifyDataSetChanged];
-//        [_indicatorView setHidden:YES];
-//    }
-//    else
-//    {
-//        set1 = [[LineChartDataSet alloc] initWithYVals:yVals label:@""];
-//        
-//        [set1 setColor:[UIColor colorWithRed:204/255.f green:224/255.f blue:255/255.f alpha:1.f]];
-//        [set1 setCircleColor:UIColor.blackColor];
-//        set1.lineWidth = 2.0;
-//        set1.circleRadius = 3.0;
-//        set1.drawCircleHoleEnabled = NO;
-//        set1.valueFont = [UIFont systemFontOfSize:9.f];
-//        
-//        NSArray *gradientColors = @[
-//                                    (id)[UIColor colorWithRed:230/255.f green:240/255.f blue:255/255.f alpha:1.f].CGColor,
-//                                    (id)[UIColor colorWithRed:230/255.f green:240/255.f blue:255/255.f alpha:1.f].CGColor
-//                                    ];
-//        CGGradientRef gradient = CGGradientCreateWithColors(nil, (CFArrayRef)gradientColors, nil);
-//        
-//        set1.fill = [ChartFill fillWithLinearGradient:gradient angle:90.f];
-//        set1.drawFilledEnabled = YES;
-//        set1.drawCubicEnabled = NO;
-//        set1.drawValuesEnabled = NO;
-//        set1.drawCirclesEnabled = NO;
-//        set1.drawVerticalHighlightIndicatorEnabled = NO;
-//        set1.drawHorizontalHighlightIndicatorEnabled = NO;
-//        set1.highlightColor = [UIColor orangeColor];
-//        set1.highlightLineWidth = 0.2;
-//        set1.axisDependency = AxisDependencyRight;
-//        
-//        CGGradientRelease(gradient);
-//        
-//        NSMutableArray *dataSets = [[NSMutableArray alloc] init];
-//        [dataSets addObject:set1];
-//        
-//        LineChartData *data = [[LineChartData alloc] initWithXVals:xVals dataSets:dataSets];
-//        
-//        _lineChartViewQE.data = data;
-//        [_indicatorView setHidden:YES];
-//    }
+    
+    //    _chartView.xAxis._axisMaximum = [self.arrayMarketIndex count]-1;
+    //    _chartView.xAxis._axisMinimum = 0;
+    //    _chartView.xAxis.axisMaxValue = [self.arrayMarketIndex count]-1;
+    //    _chartView.xAxis.axisMinValue = 0;
+    
+    NSMutableArray *values = [[NSMutableArray alloc] init];
+    //    NSString *strVal;
+    for (int i = 0; i < self.arrayMarketIndex.count; i++)//
+    {
+        //        if(self.selectedIndexOption == 0) {
+        //            strVal = [self.arrayMarketWatch[i][@"update_date"] componentsSeparatedByString:@" "][1];
+        //            strVal = [NSString stringWithFormat:@"%@:%@", [strVal componentsSeparatedByString:@":"][0], [strVal componentsSeparatedByString:@":"][1]];
+        //        }
+        //        else {
+        //            strVal = [self.arrayMarketWatch[i][@"update_date"] componentsSeparatedByString:@" "][0];
+        //        }
+        //
+        //        NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
+        //        [dateFormat setDateFormat:@"dd-MM-YYYY"];
+        //
+        //        NSTimeInterval now = [[dateFormat dateFromString:strVal] timeIntervalSince1970];
+        //        NSTimeInterval hourSeconds = 3600.0;
+        //
+        //        NSTimeInterval from = now - (count / 2.0) * hourSeconds;
+        //        //        NSTimeInterval to = now + (count / 2.0) * hourSeconds;
+        //
+        //        NSTimeInterval x = from;
+        //
+        //        NSLog(@"\nX values %f\nY values %@",x,yVals);
+        
+        [values addObject:[[ChartDataEntry alloc] initWithX:[[xVals objectAtIndex:i] doubleValue] y:[[yVals objectAtIndex:i] doubleValue]]];
+    }
+    
+    //    NSLog(@"Line data values \n%@\nX values = %@",values,xVals);
+    
+    LineChartDataSet *set1 = nil;
+    if (_lineChartViewQE.data.dataSetCount > 0)
+    {
+        set1 = (LineChartDataSet *)_lineChartViewQE.data.dataSets[0];
+        //        set1.yVals = yVals;
+        //        _lineChartViewQE.data.xValsObjc = xVals;
+        set1.values = values;
+        [_lineChartViewQE.data notifyDataChanged];
+        [_lineChartViewQE notifyDataSetChanged];
+        [_indicatorView setHidden:YES];
+    }
+    else
+    {
+        //        set1 = [[LineChartDataSet alloc] initWithYVals:yVals label:@""];
+        
+        set1 = [[LineChartDataSet alloc] initWithValues:values label:@"DataSet 1"];
+        [set1 setColor:[UIColor colorWithRed:204/255.f green:224/255.f blue:255/255.f alpha:1.f]];
+        [set1 setCircleColor:UIColor.blackColor];
+        set1.lineWidth = 2.0;
+        set1.circleRadius = 3.0;
+        set1.drawCircleHoleEnabled = NO;
+        set1.valueFont = [UIFont systemFontOfSize:9.f];
+        
+        NSArray *gradientColors = @[
+                                    (id)[UIColor colorWithRed:230/255.f green:240/255.f blue:255/255.f alpha:1.f].CGColor,
+                                    (id)[UIColor colorWithRed:230/255.f green:240/255.f blue:255/255.f alpha:1.f].CGColor
+                                    ];
+        CGGradientRef gradient = CGGradientCreateWithColors(nil, (CFArrayRef)gradientColors, nil);
+        
+        set1.fill = [ChartFill fillWithLinearGradient:gradient angle:90.f];
+        set1.drawFilledEnabled = YES;
+        //        set1.drawCubicEnabled = NO;
+        set1.drawValuesEnabled = NO;
+        set1.drawCirclesEnabled = NO;
+        set1.drawVerticalHighlightIndicatorEnabled = NO;
+        set1.drawHorizontalHighlightIndicatorEnabled = NO;
+        set1.highlightColor = [UIColor orangeColor];
+        set1.highlightLineWidth = 0.2;
+        set1.axisDependency = AxisDependencyRight;
+        
+        CGGradientRelease(gradient);
+        
+        NSMutableArray *dataSets = [[NSMutableArray alloc] init];
+        [dataSets addObject:set1];
+        
+        //        LineChartData *data = [[LineChartData alloc] initWithXVals:xVals dataSets:dataSets];
+        LineChartData *data = [[LineChartData alloc] initWithDataSets:dataSets];
+        
+        _lineChartViewQE.data = data;
+        [_indicatorView setHidden:YES];
+    }
 }
 
 -(void) clearMarketValues {
@@ -541,8 +482,7 @@
 }
 
 #pragma mark - ChartViewDelegate
-
-/*- (void)chartValueSelected:(ChartViewBase * __nonnull)chartView entry:(ChartDataEntry * __nonnull)entry dataSetIndex:(NSInteger)dataSetIndex highlight:(ChartHighlight * __nonnull)highlight
+- (void)chartValueSelected:(ChartViewBase * __nonnull)chartView entry:(ChartDataEntry * __nonnull)entry dataSetIndex:(NSInteger)dataSetIndex highlight:(ChartHighlight * __nonnull)highlight
 {
 //    NSLog(@"chartValueSelected %ld", (long)dataSetIndex);
     //let markerPosition =
@@ -556,18 +496,18 @@
     //    _labelMarker.center = myPoint;
     //    [self.lineChartView addSubview:_labelMarker];
 
-    self.labelClose.text = [NSString stringWithFormat:@"%@: %.2f", NSLocalizedString(@"Close", @"Close"), entry.value];
-    NSString *strVal;
-    if(self.selectedIndexOption == 0) {
-        strVal = [self.arrayMarketIndex[entry.xIndex][@"update_date"] componentsSeparatedByString:@" "][1];
-        strVal = [NSString stringWithFormat:@"%@:%@", [strVal componentsSeparatedByString:@":"][0], [strVal componentsSeparatedByString:@":"][1]];
-    }
-    else {
-        strVal = [self.arrayMarketIndex[entry.xIndex][@"update_date"] componentsSeparatedByString:@" "][0];
-    }
-
-    self.labelDate.text = [NSString stringWithFormat:@"%@: %@", NSLocalizedString(@"Date", @"Date"), strVal];
-//    self.labelDate.text = [NSString stringWithFormat:@"Date: %ld", (long)entry.xIndex];
+//    self.labelClose.text = [NSString stringWithFormat:@"%@: %.2f", NSLocalizedString(@"Close", @"Close"), entry.value];
+//    NSString *strVal;
+//    if(self.selectedIndexOption == 0) {
+//        strVal = [self.arrayMarketIndex[entry.xIndex][@"update_date"] componentsSeparatedByString:@" "][1];
+//        strVal = [NSString stringWithFormat:@"%@:%@", [strVal componentsSeparatedByString:@":"][0], [strVal componentsSeparatedByString:@":"][1]];
+//    }
+//    else {
+//        strVal = [self.arrayMarketIndex[entry.xIndex][@"update_date"] componentsSeparatedByString:@" "][0];
+//    }
+//
+//    self.labelDate.text = [NSString stringWithFormat:@"%@: %@", NSLocalizedString(@"Date", @"Date"), strVal];
+////    self.labelDate.text = [NSString stringWithFormat:@"Date: %ld", (long)entry.xIndex];
 }
 
 - (void)chartValueNothingSelected:(ChartViewBase * __nonnull)chartView
@@ -581,7 +521,7 @@
 
 -(void)chartTranslated:(ChartViewBase *)chartView dX:(CGFloat)dX dY:(CGFloat)dY {
     
-}*/
+}
 
 
 @end

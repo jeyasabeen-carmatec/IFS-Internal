@@ -563,8 +563,6 @@ NSString *const kNewOrderOptionsViewCellIdentifier = @"OptionsViewCell";
     overLayView.hidden = YES;
     [loginVw removeFromSuperview];
     [self.tabBarController setSelectedIndex:0];
-   
-    
 }
 /*
  Custom Login Screen Login Button Actions
