@@ -8,6 +8,8 @@
 
 #import "AppDelegate.h"
 #import "QIFS-Swift.h"
+#import "TIMERUIApplication.h"
+#import "UIAlertController+Orientation.h"
 
 @interface AppDelegate ()
 
@@ -17,7 +19,11 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    // Override point for customization after application launch.
+    // Override point for customization after applic ation launch.
+    
+     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(applicationDidTimeout:) name:kApplicationDidTimeoutNotification object:nil];
+    
+    
     globalShare = [GlobalShare sharedInstance];
     [GlobalShare insertDocumentIntoPath:@"QIFS_Trade.sqlite"];
     
@@ -56,6 +62,9 @@
 //    UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:self.viewController];
 //    self.window.rootViewController = navController;
 //    [navController setNavigationBarHidden:YES];
+    
+    
+    
     [self.window makeKeyAndVisible];
     self.window.clipsToBounds = YES;
     
@@ -111,6 +120,25 @@
 - (void)applicationDidEnterBackground:(UIApplication *)application {
     // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
     // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
+    
+    UIApplication *app = [UIApplication sharedApplication];
+    
+    //create new uiBackgroundTask
+    __block UIBackgroundTaskIdentifier bgTask = [app beginBackgroundTaskWithExpirationHandler:^{
+        [app endBackgroundTask:bgTask];
+        bgTask = UIBackgroundTaskInvalid;
+    }];
+    
+    //and create new timer with async call:
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        //run function methodRunAfterBackground
+        NSTimer* t = [NSTimer scheduledTimerWithTimeInterval:10 target:self selector:@selector(methodRunAfterBackground) userInfo:nil repeats:NO];
+        [[NSRunLoop currentRunLoop] addTimer:t forMode:NSDefaultRunLoopMode];
+        [[NSRunLoop currentRunLoop] run];
+    });
+    
+    
+    
 }
 
 - (void)applicationWillEnterForeground:(UIApplication *)application {
@@ -212,5 +240,121 @@
         return rootViewController;
     }
 }
+-(void)applicationDidTimeout:(NSNotification *) notif
+{
+    NSLog (@"time exceeded!!");
+    
+
+    //This is where storyboarding vs xib files comes in. Whichever view controller you want to revert back to, on your storyboard, make sure it is given the identifier that matches the following code. In my case, "mainView". My storyboard file is called MainStoryboard.storyboard, so make sure your file name matches the storyboardWithName property.
+    
+//    UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"Alert" message:@"Your Session Expired Please Login" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+//    [alert show];
+    
+    [self presentAlertController];
+}
+/*
++ (void)showSignOutAlertView:(NSString *)strMessage {
+    GlobalShare *globalShare = [GlobalShare sharedInstance];
+    
+    NSString *alertTitle = NSLocalizedString(@"Islamic Financial Securities", @"Basic Alert Style");
+    NSString *alertMessage = NSLocalizedString(strMessage, @"BasicAlertMessage");
+    
+    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:alertTitle
+                                                                             message:alertMessage
+                                                                      preferredStyle:UIAlertControllerStyleAlert];
+    
+//    UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:NSLocalizedString(@"NO", @"NO")
+//                                                           style:UIAlertActionStyleDefault
+//                                                         handler:^(UIAlertAction *action)
+//                                   {
+//
+//                                   }];
+    
+    UIAlertAction *okAction = [UIAlertAction actionWithTitle:NSLocalizedString(@"YES", @"YES")
+                                                       style:UIAlertActionStyleDefault
+                                                     handler:^(UIAlertAction *action)
+                               {
+                                   UIWindow *keyWindow = [[UIApplication sharedApplication] keyWindow];
+                                   
+                                   
+                                   UIStoryboard *storyboard = keyWindow.rootViewController.storyboard;
+                                   UIViewController *rootViewController = [storyboard instantiateViewControllerWithIdentifier:@"ViewController"];
+                                   keyWindow.rootViewController = rootViewController;
+                                   [keyWindow makeKeyAndVisible];
+                                   
+                               }];
+    
+    if(globalShare.myLanguage == ARABIC_LANGUAGE) {
+       // [alertController addAction:cancelAction];
+        [alertController addAction:okAction];
+    }
+    else {
+        [alertController addAction:okAction];
+        //[alertController addAction:cancelAction];
+    }
+    
+    dispatch_async(dispatch_get_main_queue(), ^{
+        
+        [self presentViewController:alertController animated:YES completion:nil];
+
+       
+        
+    });
+}
+*/
+
+-(void)presentAlertController{
+    
+    UIWindow* topWindow = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
+    topWindow.rootViewController = [UIViewController new];
+    topWindow.windowLevel = UIWindowLevelAlert + 1;
+    
+    NSString *alertTitle = NSLocalizedString(@"Islamic Financial Securities", @"Basic Alert Style");
+    NSString *alertMessage = NSLocalizedString(@"EXpired Session", @"EXpired Session");
+
+
+    UIAlertController* alert = [UIAlertController alertControllerWithTitle:alertTitle message:alertMessage preferredStyle:UIAlertControllerStyleAlert];
+    
+    [alert addAction:[UIAlertAction actionWithTitle:NSLocalizedString(@"Login",@"Login") style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+        // continue your work
+        
+        // important to hide the window after work completed.
+        // this also keeps a reference to the window until the action is invoked.
+        topWindow.hidden = YES; // if you want to hide the topwindow then use this
+       // if you want to remove the topwindow then use this
+        
+        
+        
+        //UIWindow *keyWindow = [[UIApplication sharedApplication] keyWindow];
+//        UIStoryboard *storyboard = keyWindow.rootViewController.storyboard;
+//        ViewController *rootViewController = [storyboard instantiateViewControllerWithIdentifier:@"ViewController"];
+//        keyWindow.rootViewController = rootViewController;
+//        [keyWindow makeKeyAndVisible];
+        
+        
+        
+//        self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+//        self.viewController = [[ViewController alloc] initWithNibName:@"ViewController" bundle:nil];
+//        UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:self.viewController];
+//        self.window.rootViewController = navController;
+//        [navController setNavigationBarHidden:YES];
+        
+         UIWindow *keyWindow = [[UIApplication sharedApplication] keyWindow];
+         UIStoryboard *storyboard = keyWindow.rootViewController.storyboard;
+        ViewController *vc = [storyboard instantiateViewControllerWithIdentifier:@"ViewController"];
+        
+        UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:vc];
+        
+        self.window.rootViewController = navigationController;
+        navigationController.navigationBar.hidden = YES;
+        
+        
+    }]];
+    
+    [topWindow makeKeyAndVisible];
+    [topWindow.rootViewController presentViewController:alert animated:YES completion:nil];
+    
+}
+
 
 @end

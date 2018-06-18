@@ -138,11 +138,12 @@
 		73CCC06320BD3978009A662F /* ActiveStocksViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 73CCC06220BD3978009A662F /* ActiveStocksViewController.m */; };
 		770BA38B20C94197001B7ACA /* Charts.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 7351BC4120C50CB800F49E27 /* Charts.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		770BA38D20C959FC001B7ACA /* MarketDepthViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 770BA38C20C959FB001B7ACA /* MarketDepthViewController.m */; };
+		777C67D120D39E650085961A /* TIMERUIApplication.m in Sources */ = {isa = PBXBuildFile; fileRef = 777C67D020D39E650085961A /* TIMERUIApplication.m */; };
+		77885DE620D2902E00721217 /* CompanyGraphViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 77885DE520D2902E00721217 /* CompanyGraphViewController.m */; };
 		77C46A1E20C9128E002C6538 /* Charts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7351BC4120C50CB800F49E27 /* Charts.framework */; };
 		77C46A1F20C9128E002C6538 /* Charts.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 7351BC4120C50CB800F49E27 /* Charts.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		77E07E6020D1311D00706616 /* UIAlertController+Orientation.m in Sources */ = {isa = PBXBuildFile; fileRef = 77E07E5D20D1311D00706616 /* UIAlertController+Orientation.m */; };
 		77E07E6220D1313C00706616 /* QEGraphViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 77E07E6120D1313C00706616 /* QEGraphViewController.m */; };
-		77E07E6420D1316300706616 /* CompanyGraphViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 77E07E6320D1316300706616 /* CompanyGraphViewController.m */; };
 		77E07E6620D131B300706616 /* StocksOverviewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 77E07E6520D131B300706616 /* StocksOverviewViewController.m */; };
 		77F2506720CA465000AF27C0 /* SectorsGraphViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 77F2506620CA465000AF27C0 /* SectorsGraphViewController.m */; };
 /* End PBXBuildFile section */
@@ -442,10 +443,12 @@
 		73CC724320C6447000E0F35C /* ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		73CCC06220BD3978009A662F /* ActiveStocksViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActiveStocksViewController.m; sourceTree = "<group>"; };
 		770BA38C20C959FB001B7ACA /* MarketDepthViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MarketDepthViewController.m; sourceTree = "<group>"; };
+		777C67CF20D39E650085961A /* TIMERUIApplication.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TIMERUIApplication.h; sourceTree = "<group>"; };
+		777C67D020D39E650085961A /* TIMERUIApplication.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TIMERUIApplication.m; sourceTree = "<group>"; };
+		77885DE520D2902E00721217 /* CompanyGraphViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CompanyGraphViewController.m; sourceTree = "<group>"; };
 		77E07E5D20D1311D00706616 /* UIAlertController+Orientation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIAlertController+Orientation.m"; sourceTree = "<group>"; };
 		77E07E5F20D1311D00706616 /* UIAlertController+Orientation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIAlertController+Orientation.h"; sourceTree = "<group>"; };
 		77E07E6120D1313C00706616 /* QEGraphViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QEGraphViewController.m; sourceTree = "<group>"; };
-		77E07E6320D1316300706616 /* CompanyGraphViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CompanyGraphViewController.m; sourceTree = "<group>"; };
 		77E07E6520D131B300706616 /* StocksOverviewViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StocksOverviewViewController.m; sourceTree = "<group>"; };
 		77F2506620CA465000AF27C0 /* SectorsGraphViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SectorsGraphViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -595,7 +598,7 @@
 				514C960A1D57A4BE00D7C1DA /* QEGraphViewController.h */,
 				77E07E6120D1313C00706616 /* QEGraphViewController.m */,
 				51613C6D1E20C3530055505A /* CompanyGraphViewController.h */,
-				77E07E6320D1316300706616 /* CompanyGraphViewController.m */,
+				77885DE520D2902E00721217 /* CompanyGraphViewController.m */,
 				7319814420BD873C00719955 /* BalloonMarker.swift */,
 				7319814520BD873C00719955 /* RadarMarkerView.swift */,
 				7319814320BD873C00719955 /* XYMarkerView.swift */,
@@ -767,8 +770,9 @@
 		514382C31D1D9FF500E1B739 /* Utility */ = {
 			isa = PBXGroup;
 			children = (
-				77E07E5F20D1311D00706616 /* UIAlertController+Orientation.h */,
 				77E07E5D20D1311D00706616 /* UIAlertController+Orientation.m */,
+				77E07E5F20D1311D00706616 /* UIAlertController+Orientation.h */,
+				777C67CD20D39E360085961A /* UserInActivity */,
 				7351BC6620C53DBB00F49E27 /* GlobalShare.h */,
 				7351BC6520C53DBB00F49E27 /* GlobalShare.m */,
 				514382CB1D1DBB8C00E1B739 /* PropertyList.h */,
@@ -1001,6 +1005,15 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		777C67CD20D39E360085961A /* UserInActivity */ = {
+			isa = PBXGroup;
+			children = (
+				777C67CF20D39E650085961A /* TIMERUIApplication.h */,
+				777C67D020D39E650085961A /* TIMERUIApplication.m */,
+			);
+			name = UserInActivity;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -1058,7 +1071,7 @@
 					514382A61D1D82D400E1B739 = {
 						CreatedOnToolsVersion = 7.3.1;
 						DevelopmentTeam = 4MCGAH3G26;
-						ProvisioningStyle = Automatic;
+						ProvisioningStyle = Manual;
 					};
 				};
 			};
@@ -1186,8 +1199,8 @@
 				514D32341D1E827D00E78C71 /* ChangePasswordViewController.m in Sources */,
 				512379291D5616CC0096C0E2 /* OrderHistoryViewController.m in Sources */,
 				5180B5DE1D4CEA4C0023553B /* PopoverViewController.m in Sources */,
+				77885DE620D2902E00721217 /* CompanyGraphViewController.m in Sources */,
 				7351BC6720C53DBB00F49E27 /* GlobalShare.m in Sources */,
-				77E07E6420D1316300706616 /* CompanyGraphViewController.m in Sources */,
 				73216D3C20B543CE00D807B2 /* CompanyStocksViewController.m in Sources */,
 				7351BC5220C53CFE00F49E27 /* MyNewOrdersViewController.m in Sources */,
 				511247E01D239BDD00364145 /* XLButtonBarViewCell.m in Sources */,
@@ -1243,6 +1256,7 @@
 				51FB2B331D393FD900D6EACE /* CAPSPageMenu.m in Sources */,
 				51434D501DE19473003F303B /* MDPriceAskCell.m in Sources */,
 				7351BC5420C53CFE00F49E27 /* MyOrdersViewController.m in Sources */,
+				777C67D120D39E650085961A /* TIMERUIApplication.m in Sources */,
 				5102EDD21D494805005B04F8 /* MDOrderBidCell.m in Sources */,
 				512379261D5616CC0096C0E2 /* ContactUsViewController.m in Sources */,
 				515AF6441D2E50B100FF837E /* StockListCell.m in Sources */,
@@ -1471,11 +1485,11 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_STYLE = Manual;
 				DEFINES_MODULE = YES;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = 4MCGAH3G26;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/$(PROJECT_NAME)/QIFS-Prefix.pch";
 				INFOPLIST_FILE = QIFS/Info.plist;
@@ -1483,8 +1497,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.carmatec.Dohasooq;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
-				PROVISIONING_PROFILE_SPECIFIER = "";
+				PROVISIONING_PROFILE = "eadc65cf-9fc2-4d6b-91fa-8a5701b40d11";
+				PROVISIONING_PROFILE_SPECIFIER = DEV_DS;
 				SWIFT_OBJC_BRIDGING_HEADER = "QIFS/Utility/QIFS-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.0;
@@ -1498,11 +1512,11 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_STYLE = Manual;
 				DEFINES_MODULE = YES;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = 4MCGAH3G26;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/$(PROJECT_NAME)/QIFS-Prefix.pch";
 				INFOPLIST_FILE = QIFS/Info.plist;
@@ -1510,8 +1524,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.carmatec.Dohasooq;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
-				PROVISIONING_PROFILE_SPECIFIER = "";
+				PROVISIONING_PROFILE = "eadc65cf-9fc2-4d6b-91fa-8a5701b40d11";
+				PROVISIONING_PROFILE_SPECIFIER = DEV_DS;
 				SWIFT_OBJC_BRIDGING_HEADER = "QIFS/Utility/QIFS-Bridging-Header.h";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";

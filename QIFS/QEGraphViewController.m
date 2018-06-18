@@ -50,7 +50,7 @@
     [self clearMarketValues];
     
     [self.buttonOneDay setBackgroundColor:[UIColor colorWithRed:170.0f/255.0f green:170.0f/255.0f blue:170.0f/255.0f alpha:1]];
-    self.selectedIndexOption = 0;
+    self.selectedIndexOption = 1;
     self.buttonRecent = self.buttonOneDay;
     
     
@@ -104,7 +104,7 @@
         return;
     }
     
-    NSDate *fromDate = [GlobalShare returnCalendarDate:0];
+    NSDate *fromDate = [GlobalShare returnCalendarDate:1];
     [self performSelector:@selector(getQEIndexLandscape:) withObject:fromDate afterDelay:0.01f];
 
 }
@@ -155,16 +155,16 @@
 
 
 - (IBAction)actionAddRemoveMarker:(id)sender {
-//    LineChartDataSet *set1 = nil;
-//    if (_lineChartViewQE.data.dataSetCount > 0)
-//    {
-//        set1 = (LineChartDataSet *)_lineChartViewQE.data.dataSets[0];
-//        [set1 setDrawVerticalHighlightIndicatorEnabled:!set1.drawVerticalHighlightIndicatorEnabled];
-//        [set1 setDrawHorizontalHighlightIndicatorEnabled:!set1.drawHorizontalHighlightIndicatorEnabled];
-//        [_lineChartViewQE.data notifyDataChanged];
-//        [_lineChartViewQE notifyDataSetChanged];
-//    }
-//    [_lineChartViewQE setDrawMarkers:!_lineChartViewQE.drawMarkers];
+    LineChartDataSet *set1 = nil;
+    if (_lineChartViewQE.data.dataSetCount > 0)
+    {
+        set1 = (LineChartDataSet *)_lineChartViewQE.data.dataSets[0];
+        [set1 setDrawVerticalHighlightIndicatorEnabled:!set1.drawVerticalHighlightIndicatorEnabled];
+        [set1 setDrawHorizontalHighlightIndicatorEnabled:!set1.drawHorizontalHighlightIndicatorEnabled];
+        [_lineChartViewQE.data notifyDataChanged];
+        [_lineChartViewQE notifyDataSetChanged];
+    }
+    [_lineChartViewQE setDrawMarkers:!_lineChartViewQE.drawMarkers];
     
     if([_buttonPlus.backgroundColor isEqual:[UIColor colorWithRed:85.0f/255.0f green:85.0f/255.0f blue:85.0f/255.0f alpha:1]]) {
         [self.labelClose setHidden:NO];
@@ -292,6 +292,22 @@
     }
 }
 
+-(NSString *)convertingTimeStampToDate:(double)timeStamp{
+
+    @try{
+        NSTimeInterval timeInterval=timeStamp;
+        NSDate *date = [NSDate dateWithTimeIntervalSince1970:timeInterval];
+        NSDateFormatter *dateformatter=[[NSDateFormatter alloc]init];
+        [dateformatter setDateFormat:@"dd-MM-yyyy"];
+        NSString *dateString=[dateformatter stringFromDate:date];
+        return dateString;
+    }
+    @catch(NSException *e){
+        NSLog(@"convertingTimeStampToDate Exception...");
+    }
+   
+}
+
 - (BOOL)canAutoRotate
 {
     return YES;
@@ -326,6 +342,7 @@
         [[[[UIApplication sharedApplication] delegate] window] setWindowLevel:UIWindowLevelNormal];
     }
 }
+
 
 - (void)setDataCount:(int)count range:(double)range
 {
@@ -368,7 +385,7 @@
         // NSNumber *num = [NSNumber numberWithDouble:point];
         [xVals addObject:num];
         
-        NSLog(@"%@ -- > %@ ----> %@",strVal,from,num);
+//        NSLog(@"%@ -- > %@ ----> %@",strVal,from,num);
         
     }
     
@@ -482,6 +499,25 @@
 }
 
 #pragma mark - ChartViewDelegate
+
+-(void)chartValueSelected:(ChartViewBase *)chartView entry:(ChartDataEntry *)entry highlight:(ChartHighlight *)highlight{
+    
+    
+    @try{
+        
+    self.labelClose.text = [NSString stringWithFormat:@"%@: %.2f", NSLocalizedString(@"Close", @"Close"), entry.y];
+    
+    NSString *dateStr = [self convertingTimeStampToDate:entry.x];
+    self.labelDate.text = [NSString stringWithFormat:@"%@: %@", NSLocalizedString(@"Date", @"Date"), dateStr];
+    }
+    @catch(NSException *e){
+        NSLog(@"chartValueSelected");
+    }
+    
+    //NSLog(@"%@ ---- >%f",dateStr,entry.x);
+}
+
+/*
 - (void)chartValueSelected:(ChartViewBase * __nonnull)chartView entry:(ChartDataEntry * __nonnull)entry dataSetIndex:(NSInteger)dataSetIndex highlight:(ChartHighlight * __nonnull)highlight
 {
 //    NSLog(@"chartValueSelected %ld", (long)dataSetIndex);
@@ -509,6 +545,7 @@
 //    self.labelDate.text = [NSString stringWithFormat:@"%@: %@", NSLocalizedString(@"Date", @"Date"), strVal];
 ////    self.labelDate.text = [NSString stringWithFormat:@"Date: %ld", (long)entry.xIndex];
 }
+*/
 
 - (void)chartValueNothingSelected:(ChartViewBase * __nonnull)chartView
 {
