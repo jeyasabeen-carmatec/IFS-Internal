@@ -61,6 +61,7 @@
     [self clearMarketWatch];
 
     self.labelSymbol.text = self.labelTitle.text = self.securityId;
+   
     self.labelSecurityName.text = self.securityName;
     self.arrayTimes = @[
                         @"09:30", @"09:30", @"10:00", @"10:30", @"11:00",

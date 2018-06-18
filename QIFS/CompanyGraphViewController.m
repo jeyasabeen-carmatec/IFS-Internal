@@ -55,7 +55,7 @@
     self.labelSymbol.text = self.securityId;
 
     [self.buttonOneDay setBackgroundColor:[UIColor colorWithRed:170.0f/255.0f green:170.0f/255.0f blue:170.0f/255.0f alpha:1]];
-    self.selectedIndexOption = 0;
+    self.selectedIndexOption = 1;
     self.buttonRecent = self.buttonOneDay;
     
     ChartXAxis *xAxis = _lineChartViewQE.xAxis;
@@ -128,7 +128,7 @@
         return;
     }
     
-    NSDate *fromDate = [GlobalShare returnCalendarDate:0];
+    NSDate *fromDate = [GlobalShare returnCalendarDate:1];
     [self performSelector:@selector(getStockLandscape:) withObject:fromDate afterDelay:0.01f];
 
 //    [self updateChartData];
@@ -254,6 +254,8 @@
                                                            if(error == nil)
                                                            {
                                                                NSMutableDictionary *returnedDict = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:&error];
+                                                              
+                                                               
                                                                if([returnedDict[@"status"] hasPrefix:@"error"]) {
                                                                    if([returnedDict[@"result"] hasPrefix:@"T5"])
                                                                        [GlobalShare showSessionExpiredAlertView:self :SESSION_EXPIRED];
@@ -330,7 +332,17 @@
         [[[[UIApplication sharedApplication] delegate] window] setWindowLevel:UIWindowLevelNormal];
     }
 }
+-(NSString *)convertingTimeStampToDate:(double)timeStamp{
+    // double timeStamp = 1474914600000;
+    NSTimeInterval timeInterval=timeStamp;
+    NSDate *date = [NSDate dateWithTimeIntervalSince1970:timeInterval];
+    NSDateFormatter *dateformatter=[[NSDateFormatter alloc]init];
+    [dateformatter setDateFormat:@"dd-MM-yyyy"];
+    NSString *dateString=[dateformatter stringFromDate:date];
+    return dateString;
+}
 
+// Related to Charts ......
 - (void)setDataCount:(int)count range:(double)range
 {
     if([self.arrayMarketWatch count] == 0) {
@@ -378,7 +390,7 @@
        // NSNumber *num = [NSNumber numberWithDouble:point];
         [xVals addObject:num];
         
-           NSLog(@"%@ -- > %@ ----> %@",strVal,from,num);
+          // NSLog(@"%@ -- > %@ ----> %@",strVal,from,num);
         
     }
     
@@ -493,20 +505,21 @@
 
 #pragma mark - ChartViewDelegate
 
+-(void)chartValueSelected:(ChartViewBase *)chartView entry:(ChartDataEntry *)entry highlight:(ChartHighlight *)highlight{
+    
+    self.labelClose.text = [NSString stringWithFormat:@"%@: %.2f", NSLocalizedString(@"Close", @"Close"), entry.y];
+    
+    NSString *dateStr = [self convertingTimeStampToDate:entry.x];
+    self.labelDate.text = [NSString stringWithFormat:@"%@: %@", NSLocalizedString(@"Date", @"Date"), dateStr];
+    
+    NSLog(@"%@ ---- >%f",dateStr,entry.x);
+}
+/*
 - (void)chartValueSelected:(ChartViewBase * __nonnull)chartView entry:(ChartDataEntry * __nonnull)entry dataSetIndex:(NSInteger)dataSetIndex highlight:(ChartHighlight * __nonnull)highlight
 {
-//    NSLog(@"chartValueSelected %ld", (long)dataSetIndex);
-    //let markerPosition =
-    //    CGPoint myPoint = [chartView getMarkerPositionWithEntry:entry highlight:highlight];
-    //    NSLog(@"Point %ld %ld", (long)myPoint.x, (long)myPoint.y);
-    //
-    //    _labelMarker = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 50, 16)];
-    //    _labelMarker.text = @"Marker";
-    //    _labelMarker.textColor = [UIColor blueColor];
-    //    _labelMarker.font = [UIFont systemFontOfSize:10.0f];
-    //    _labelMarker.center = myPoint;
-    //    [self.lineChartView addSubview:_labelMarker];
 
+      NSLog(@"entry............. %@",entry);
+    
 //    self.labelClose.text = [NSString stringWithFormat:@"%@: %.2f", NSLocalizedString(@"Close", @"Close"), entry.value];
 //    NSString *strVal;
 //    if(self.selectedIndexOption == 0) {
@@ -516,14 +529,14 @@
 //    else {
 //        strVal = [self.arrayMarketWatch[entry.xIndex][@"update_date"] componentsSeparatedByString:@" "][0];
 //    }
-    
+//
 //    self.labelDate.text = [NSString stringWithFormat:@"%@: %@", NSLocalizedString(@"Date", @"Date"), strVal];
-    //    self.labelDate.text = [NSString stringWithFormat:@"Date: %ld", (long)entry.xIndex];
+//
 }
-
+*/
 - (void)chartValueNothingSelected:(ChartViewBase * __nonnull)chartView
 {
-    //    NSLog(@"chartValueNothingSelected");
+        NSLog(@"chartValueNothingSelected");
 }
 
 -(void)chartScaled:(ChartViewBase *)chartView scaleX:(CGFloat)scaleX scaleY:(CGFloat)scaleY {

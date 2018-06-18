@@ -4593,7 +4593,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Qja-5k-KhE">
-                                <rect key="frame" x="-1" y="20" width="118.5" height="28"/>
+                                <rect key="frame" x="-1" y="20" width="138" height="28"/>
                                 <color key="backgroundColor" red="0.33333333333333331" green="0.33333333333333331" blue="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="28" id="L5i-B5-GLZ"/>
@@ -4606,30 +4606,8 @@
                                     <action selector="actionAddRemoveMarker:" destination="Ncs-cr-pp0" eventType="touchUpInside" id="fnC-8J-Jmd"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="g4K-KI-6nF">
-                                <rect key="frame" x="118.5" y="20" width="118.5" height="28"/>
-                                <color key="backgroundColor" red="0.33333333333333331" green="0.33333333333333331" blue="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                <state key="normal" title="1 D">
-                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                </state>
-                                <connections>
-                                    <action selector="actionselectedIndexData:" destination="Ncs-cr-pp0" eventType="touchUpInside" id="nf9-nk-wiG"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AdD-bz-3zi">
-                                <rect key="frame" x="238" y="20" width="118.5" height="28"/>
-                                <color key="backgroundColor" red="0.33333333333333331" green="0.33333333333333331" blue="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                <state key="normal" title="1 M">
-                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                </state>
-                                <connections>
-                                    <action selector="actionselectedIndexData:" destination="Ncs-cr-pp0" eventType="touchUpInside" id="DkH-Nj-rrm"/>
-                                </connections>
-                            </button>
                             <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PNd-IS-AXA">
-                                <rect key="frame" x="357.5" y="20" width="118" height="28"/>
+                                <rect key="frame" x="277.5" y="20" width="138.5" height="28"/>
                                 <color key="backgroundColor" red="0.33333333333333331" green="0.33333333333333331" blue="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                 <state key="normal" title="3 M">
@@ -4640,7 +4618,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Qxt-Vn-Mhr">
-                                <rect key="frame" x="476.5" y="20" width="118.5" height="28"/>
+                                <rect key="frame" x="417" y="20" width="138" height="28"/>
                                 <color key="backgroundColor" red="0.33333333333333331" green="0.33333333333333331" blue="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                 <state key="normal" title="6 M">
@@ -4651,7 +4629,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" tag="4" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="F6c-vi-9Hd">
-                                <rect key="frame" x="596" y="20" width="118.5" height="28"/>
+                                <rect key="frame" x="556" y="20" width="139" height="28"/>
                                 <color key="backgroundColor" red="0.33333333333333331" green="0.33333333333333331" blue="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                 <state key="normal" title="1 Y">
@@ -4662,7 +4640,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" tag="5" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ilT-92-gnH">
-                                <rect key="frame" x="715.5" y="20" width="118.5" height="28"/>
+                                <rect key="frame" x="696" y="20" width="138" height="28"/>
                                 <color key="backgroundColor" red="0.33333333333333331" green="0.33333333333333331" blue="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                 <state key="normal" title="3 Y">
@@ -4706,11 +4684,20 @@
                             <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="hcn-eM-Uh7">
                                 <rect key="frame" x="407" y="556" width="20" height="20"/>
                             </activityIndicatorView>
+                            <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AdD-bz-3zi">
+                                <rect key="frame" x="138" y="20" width="138.5" height="28"/>
+                                <color key="backgroundColor" red="0.33333333333333331" green="0.33333333333333331" blue="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                <state key="normal" title="1 M">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="actionselectedIndexData:" destination="Ncs-cr-pp0" eventType="touchUpInside" id="DkH-Nj-rrm"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="AdD-bz-3zi" firstAttribute="top" secondItem="g4K-KI-6nF" secondAttribute="top" id="08a-Vl-RQt"/>
-                            <constraint firstItem="g4K-KI-6nF" firstAttribute="top" secondItem="Qja-5k-KhE" secondAttribute="top" id="0IN-6k-ARh"/>
                             <constraint firstItem="JAN-oY-HfI" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="Ned-gR-Lmw" secondAttribute="leading" constant="20" symbolic="YES" id="3KY-cq-a7x"/>
                             <constraint firstItem="JAN-oY-HfI" firstAttribute="top" secondItem="4Io-3s-AqO" secondAttribute="top" id="3f4-U6-jee"/>
                             <constraint firstItem="ilT-92-gnH" firstAttribute="leading" secondItem="F6c-vi-9Hd" secondAttribute="trailing" constant="1" id="4xu-wG-BMp"/>
@@ -4723,7 +4710,6 @@
                             <constraint firstItem="8eo-XN-2Ci" firstAttribute="top" secondItem="JAN-oY-HfI" secondAttribute="top" id="8nd-ev-26v"/>
                             <constraint firstItem="F6c-vi-9Hd" firstAttribute="top" secondItem="Qxt-Vn-Mhr" secondAttribute="top" id="9IG-06-1GW"/>
                             <constraint firstItem="PNd-IS-AXA" firstAttribute="bottom" secondItem="AdD-bz-3zi" secondAttribute="bottom" id="9q4-wW-yqP"/>
-                            <constraint firstItem="AdD-bz-3zi" firstAttribute="leading" secondItem="g4K-KI-6nF" secondAttribute="trailing" constant="1" id="BxA-NY-dkD"/>
                             <constraint firstItem="hcn-eM-Uh7" firstAttribute="centerX" secondItem="Ned-gR-Lmw" secondAttribute="centerXWithinMargins" id="Bzg-uH-cBI"/>
                             <constraint firstItem="Qxt-Vn-Mhr" firstAttribute="width" secondItem="Qja-5k-KhE" secondAttribute="width" id="CH3-Iq-lK1"/>
                             <constraint firstItem="8eo-XN-2Ci" firstAttribute="width" secondItem="JAN-oY-HfI" secondAttribute="width" id="Dwa-PG-7qX"/>
@@ -4731,19 +4717,19 @@
                             <constraint firstItem="hcn-eM-Uh7" firstAttribute="centerX" secondItem="6Yp-24-A4r" secondAttribute="centerX" id="I8D-Jv-6fY"/>
                             <constraint firstItem="yvy-GJ-T9q" firstAttribute="top" secondItem="8eo-XN-2Ci" secondAttribute="top" id="JAa-2S-HgJ"/>
                             <constraint firstItem="8eo-XN-2Ci" firstAttribute="bottom" secondItem="JAN-oY-HfI" secondAttribute="bottom" id="JwJ-yo-HCo"/>
-                            <constraint firstItem="AdD-bz-3zi" firstAttribute="bottom" secondItem="g4K-KI-6nF" secondAttribute="bottom" id="K86-8A-r8v"/>
+                            <constraint firstItem="Qja-5k-KhE" firstAttribute="height" secondItem="AdD-bz-3zi" secondAttribute="height" id="LVc-5C-Rcs"/>
                             <constraint firstItem="AdD-bz-3zi" firstAttribute="width" secondItem="Qja-5k-KhE" secondAttribute="width" id="LeY-O0-vum"/>
                             <constraint firstItem="Qxt-Vn-Mhr" firstAttribute="top" secondItem="PNd-IS-AXA" secondAttribute="top" id="Mq4-LW-s7r"/>
                             <constraint firstItem="uS2-1U-H1e" firstAttribute="trailing" secondItem="6Yp-24-A4r" secondAttribute="trailing" id="OJE-Sg-kgG"/>
                             <constraint firstItem="yvy-GJ-T9q" firstAttribute="bottom" secondItem="8eo-XN-2Ci" secondAttribute="bottom" id="Omu-Gp-XWj"/>
                             <constraint firstItem="ilT-92-gnH" firstAttribute="bottom" secondItem="F6c-vi-9Hd" secondAttribute="bottom" id="PBK-oT-wkI"/>
+                            <constraint firstItem="Qja-5k-KhE" firstAttribute="top" secondItem="AdD-bz-3zi" secondAttribute="top" id="PZ3-un-iDd"/>
                             <constraint firstItem="PNd-IS-AXA" firstAttribute="top" secondItem="AdD-bz-3zi" secondAttribute="top" id="PgW-JE-mmU"/>
                             <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="4Io-3s-AqO" secondAttribute="trailing" constant="20" symbolic="YES" id="RPG-bc-br4"/>
                             <constraint firstItem="ilT-92-gnH" firstAttribute="top" secondItem="F6c-vi-9Hd" secondAttribute="top" id="UrZ-6V-tVA"/>
                             <constraint firstAttribute="bottomMargin" secondItem="6Yp-24-A4r" secondAttribute="bottom" id="V4c-QY-ytA"/>
                             <constraint firstItem="8eo-XN-2Ci" firstAttribute="leading" secondItem="JAN-oY-HfI" secondAttribute="trailing" id="W3C-1n-mcv"/>
                             <constraint firstItem="6Yp-24-A4r" firstAttribute="leading" secondItem="uS2-1U-H1e" secondAttribute="leading" id="WiV-yJ-dhV"/>
-                            <constraint firstItem="g4K-KI-6nF" firstAttribute="leading" secondItem="Qja-5k-KhE" secondAttribute="trailing" constant="1" id="YP7-Aa-TGX"/>
                             <constraint firstItem="yvy-GJ-T9q" firstAttribute="trailing" secondItem="8eo-XN-2Ci" secondAttribute="trailing" id="Z07-4g-yPt"/>
                             <constraint firstItem="F6c-vi-9Hd" firstAttribute="width" secondItem="Qja-5k-KhE" secondAttribute="width" id="ahu-as-HLw"/>
                             <constraint firstItem="ilT-92-gnH" firstAttribute="width" secondItem="Qja-5k-KhE" secondAttribute="width" id="aso-rF-RfF"/>
@@ -4751,15 +4737,14 @@
                             <constraint firstAttribute="topMargin" secondItem="Qja-5k-KhE" secondAttribute="top" id="dGP-YM-QCl"/>
                             <constraint firstItem="Qja-5k-KhE" firstAttribute="leading" secondItem="uS2-1U-H1e" secondAttribute="leading" constant="-1" id="g5A-Kp-F2r"/>
                             <constraint firstItem="4Io-3s-AqO" firstAttribute="width" secondItem="Ned-gR-Lmw" secondAttribute="width" multiplier="0.17" id="hF7-5a-beO"/>
-                            <constraint firstItem="g4K-KI-6nF" firstAttribute="width" secondItem="Qja-5k-KhE" secondAttribute="width" id="jZB-zh-jA7"/>
                             <constraint firstItem="PNd-IS-AXA" firstAttribute="width" secondItem="Qja-5k-KhE" secondAttribute="width" id="jtA-jX-YEX"/>
                             <constraint firstItem="yvy-GJ-T9q" firstAttribute="leading" secondItem="8eo-XN-2Ci" secondAttribute="leading" id="m4T-7D-9Ip"/>
                             <constraint firstAttribute="trailingMargin" secondItem="8eo-XN-2Ci" secondAttribute="trailing" id="o0W-9f-RpA"/>
                             <constraint firstItem="Qxt-Vn-Mhr" firstAttribute="bottom" secondItem="PNd-IS-AXA" secondAttribute="bottom" id="sLK-jH-zxk"/>
                             <constraint firstItem="6Yp-24-A4r" firstAttribute="top" secondItem="4Io-3s-AqO" secondAttribute="bottom" id="sjq-MR-p8P"/>
                             <constraint firstItem="PNd-IS-AXA" firstAttribute="leading" secondItem="AdD-bz-3zi" secondAttribute="trailing" constant="1" id="uPn-WE-hLq"/>
-                            <constraint firstItem="g4K-KI-6nF" firstAttribute="bottom" secondItem="Qja-5k-KhE" secondAttribute="bottom" id="vhi-bb-sVu"/>
                             <constraint firstItem="JAN-oY-HfI" firstAttribute="width" secondItem="Ned-gR-Lmw" secondAttribute="width" multiplier="0.25" id="vmp-XA-3ZQ"/>
+                            <constraint firstItem="AdD-bz-3zi" firstAttribute="leading" secondItem="Qja-5k-KhE" secondAttribute="trailing" constant="1" id="yt3-mK-LOK"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="uS2-1U-H1e"/>
                         <variation key="default">
@@ -4771,7 +4756,6 @@
                     <navigationItem key="navigationItem" id="by1-qH-Dlp"/>
                     <nil key="simulatedStatusBarMetrics"/>
                     <connections>
-                        <outlet property="buttonOneDay" destination="g4K-KI-6nF" id="FBd-aW-EPu"/>
                         <outlet property="buttonPlus" destination="Qja-5k-KhE" id="bpY-HJ-tWo"/>
                         <outlet property="indicatorView" destination="hcn-eM-Uh7" id="61D-ua-Kh1"/>
                         <outlet property="labelClose" destination="JAN-oY-HfI" id="gLS-eE-cHX"/>
@@ -4783,7 +4767,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mzG-hi-7fj" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="483" y="-764"/>
+            <point key="canvasLocation" x="282.01438848920867" y="-854.67625899280574"/>
         </scene>
         <!--RegisterViewController-->
         <scene sceneID="Ac9-cN-3Yi">
@@ -9504,7 +9488,7 @@ E-mail: info@islamicbroker.com.qa</string>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aU9-Kf-0ce">
-                                <rect key="frame" x="-1" y="20" width="118.5" height="28"/>
+                                <rect key="frame" x="-1" y="20" width="138.5" height="28"/>
                                 <color key="backgroundColor" red="0.33333333333333331" green="0.33333333333333331" blue="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="28" id="ubF-5e-QDh"/>
@@ -9517,30 +9501,8 @@ E-mail: info@islamicbroker.com.qa</string>
                                     <action selector="actionAddRemoveMarker:" destination="ncn-1w-olj" eventType="touchUpInside" id="LpF-d8-cP6"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DXz-DN-Hzl">
-                                <rect key="frame" x="118.5" y="20" width="118.5" height="28"/>
-                                <color key="backgroundColor" red="0.33333333333333331" green="0.33333333333333331" blue="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                <state key="normal" title="1 D">
-                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                </state>
-                                <connections>
-                                    <action selector="actionselectedStockData:" destination="ncn-1w-olj" eventType="touchUpInside" id="WZa-vm-rfI"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ToY-o0-qca">
-                                <rect key="frame" x="238" y="20" width="118.5" height="28"/>
-                                <color key="backgroundColor" red="0.33333333333333331" green="0.33333333333333331" blue="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                <state key="normal" title="1 M">
-                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                </state>
-                                <connections>
-                                    <action selector="actionselectedStockData:" destination="ncn-1w-olj" eventType="touchUpInside" id="M0F-kI-ua5"/>
-                                </connections>
-                            </button>
                             <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pyX-3q-eOB">
-                                <rect key="frame" x="357.5" y="20" width="118" height="28"/>
+                                <rect key="frame" x="277.5" y="20" width="138.5" height="28"/>
                                 <color key="backgroundColor" red="0.33333333333333331" green="0.33333333333333331" blue="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                 <state key="normal" title="3 M">
@@ -9551,7 +9513,7 @@ E-mail: info@islamicbroker.com.qa</string>
                                 </connections>
                             </button>
                             <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3eF-hF-hxF">
-                                <rect key="frame" x="476.5" y="20" width="118.5" height="28"/>
+                                <rect key="frame" x="417" y="20" width="138.5" height="28"/>
                                 <color key="backgroundColor" red="0.33333333333333331" green="0.33333333333333331" blue="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                 <state key="normal" title="6 M">
@@ -9562,7 +9524,7 @@ E-mail: info@islamicbroker.com.qa</string>
                                 </connections>
                             </button>
                             <button opaque="NO" tag="4" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aWI-5D-HVV">
-                                <rect key="frame" x="596" y="20" width="118.5" height="28"/>
+                                <rect key="frame" x="556.5" y="20" width="138" height="28"/>
                                 <color key="backgroundColor" red="0.33333333333333331" green="0.33333333333333331" blue="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                 <state key="normal" title="1 Y">
@@ -9573,7 +9535,7 @@ E-mail: info@islamicbroker.com.qa</string>
                                 </connections>
                             </button>
                             <button opaque="NO" tag="5" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5es-KY-xcg">
-                                <rect key="frame" x="715.5" y="20" width="118.5" height="28"/>
+                                <rect key="frame" x="695.5" y="20" width="138.5" height="28"/>
                                 <color key="backgroundColor" red="0.33333333333333331" green="0.33333333333333331" blue="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                 <state key="normal" title="3 Y">
@@ -9593,19 +9555,19 @@ E-mail: info@islamicbroker.com.qa</string>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Close: 1,673.45" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="k6h-43-hOc">
-                                <rect key="frame" x="397" y="55" width="208.5" height="20"/>
+                                <rect key="frame" x="396" y="55" width="209" height="20"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                 <color key="textColor" red="0.33333333333333331" green="0.33333333333333331" blue="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Date: 17-07-2016" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="t7O-2q-84O">
-                                <rect key="frame" x="605.5" y="55" width="208.5" height="20"/>
+                                <rect key="frame" x="605" y="55" width="209" height="20"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                 <color key="textColor" red="0.33333333333333331" green="0.33333333333333331" blue="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Last: 1,673.45" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bq2-iw-TB0">
-                                <rect key="frame" x="605.5" y="55" width="208.5" height="20"/>
+                                <rect key="frame" x="605" y="55" width="209" height="20"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                 <color key="textColor" red="0.33333333333333331" green="0.33333333333333331" blue="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
@@ -9617,35 +9579,42 @@ E-mail: info@islamicbroker.com.qa</string>
                             <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="l2e-m2-Lzy">
                                 <rect key="frame" x="407" y="556" width="20" height="20"/>
                             </activityIndicatorView>
+                            <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ToY-o0-qca">
+                                <rect key="frame" x="138.5" y="20" width="138" height="28"/>
+                                <color key="backgroundColor" red="0.33333333333333331" green="0.33333333333333331" blue="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                <state key="normal" title="1 M">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="actionselectedStockData:" destination="ncn-1w-olj" eventType="touchUpInside" id="M0F-kI-ua5"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="ToY-o0-qca" firstAttribute="bottom" secondItem="DXz-DN-Hzl" secondAttribute="bottom" id="0ZA-cy-geu"/>
                             <constraint firstItem="4Ls-xE-t7Q" firstAttribute="leading" secondItem="7CO-ng-Zbh" secondAttribute="leading" constant="5" id="25k-RR-sOd"/>
                             <constraint firstItem="5es-KY-xcg" firstAttribute="width" secondItem="aU9-Kf-0ce" secondAttribute="width" id="3FR-ni-C4J"/>
                             <constraint firstItem="bq2-iw-TB0" firstAttribute="top" secondItem="t7O-2q-84O" secondAttribute="top" id="3KU-Fu-OhO"/>
                             <constraint firstItem="t7O-2q-84O" firstAttribute="bottom" secondItem="k6h-43-hOc" secondAttribute="bottom" id="61D-Oc-MWN"/>
-                            <constraint firstItem="DXz-DN-Hzl" firstAttribute="width" secondItem="aU9-Kf-0ce" secondAttribute="width" id="6XD-wy-vFr"/>
                             <constraint firstItem="ToY-o0-qca" firstAttribute="width" secondItem="aU9-Kf-0ce" secondAttribute="width" id="7TO-kV-amL"/>
                             <constraint firstItem="k6h-43-hOc" firstAttribute="top" secondItem="4Ls-xE-t7Q" secondAttribute="top" id="7ps-XT-IA0"/>
                             <constraint firstItem="l2e-m2-Lzy" firstAttribute="centerX" secondItem="HKV-vF-NrM" secondAttribute="centerX" id="9Db-Bz-wmO"/>
                             <constraint firstItem="HKV-vF-NrM" firstAttribute="leading" secondItem="7CO-ng-Zbh" secondAttribute="leading" id="9cb-f2-JXr"/>
-                            <constraint firstItem="DXz-DN-Hzl" firstAttribute="leading" secondItem="aU9-Kf-0ce" secondAttribute="trailing" constant="1" id="APS-Yj-yMb"/>
                             <constraint firstItem="k6h-43-hOc" firstAttribute="bottom" secondItem="4Ls-xE-t7Q" secondAttribute="bottom" id="Fm7-OQ-pc9"/>
                             <constraint firstItem="pyX-3q-eOB" firstAttribute="top" secondItem="ToY-o0-qca" secondAttribute="top" id="Guf-mr-1KE"/>
                             <constraint firstItem="k6h-43-hOc" firstAttribute="width" secondItem="QJD-IF-oAg" secondAttribute="width" multiplier="0.25" id="Gxn-SD-hQf"/>
                             <constraint firstItem="HKV-vF-NrM" firstAttribute="top" secondItem="4Ls-xE-t7Q" secondAttribute="bottom" id="IP9-Mj-hAx"/>
                             <constraint firstItem="pyX-3q-eOB" firstAttribute="bottom" secondItem="ToY-o0-qca" secondAttribute="bottom" id="JLa-Zu-3lK"/>
                             <constraint firstItem="5es-KY-xcg" firstAttribute="top" secondItem="aWI-5D-HVV" secondAttribute="top" id="K8f-Eh-bom"/>
+                            <constraint firstItem="ToY-o0-qca" firstAttribute="leading" secondItem="aU9-Kf-0ce" secondAttribute="trailing" constant="1" id="Mj4-tS-rWK"/>
                             <constraint firstItem="l2e-m2-Lzy" firstAttribute="centerX" secondItem="QJD-IF-oAg" secondAttribute="centerXWithinMargins" id="Pg4-Qi-DOP"/>
                             <constraint firstItem="5es-KY-xcg" firstAttribute="bottom" secondItem="aWI-5D-HVV" secondAttribute="bottom" id="RE3-XQ-A48"/>
                             <constraint firstAttribute="trailingMargin" secondItem="t7O-2q-84O" secondAttribute="trailing" id="SN2-fn-7Mv"/>
-                            <constraint firstItem="ToY-o0-qca" firstAttribute="top" secondItem="DXz-DN-Hzl" secondAttribute="top" id="Sif-WP-p3p"/>
                             <constraint firstItem="pyX-3q-eOB" firstAttribute="width" secondItem="aU9-Kf-0ce" secondAttribute="width" id="TtQ-ic-W3j"/>
                             <constraint firstItem="aWI-5D-HVV" firstAttribute="width" secondItem="aU9-Kf-0ce" secondAttribute="width" id="U6M-H8-MMt"/>
                             <constraint firstItem="l2e-m2-Lzy" firstAttribute="centerY" secondItem="QJD-IF-oAg" secondAttribute="centerYWithinMargins" id="Ukc-YU-xpl"/>
                             <constraint firstItem="aWI-5D-HVV" firstAttribute="bottom" secondItem="3eF-hF-hxF" secondAttribute="bottom" id="WQa-F4-p1K"/>
-                            <constraint firstItem="ToY-o0-qca" firstAttribute="leading" secondItem="DXz-DN-Hzl" secondAttribute="trailing" constant="1" id="WTX-KI-VGs"/>
                             <constraint firstItem="pyX-3q-eOB" firstAttribute="leading" secondItem="ToY-o0-qca" secondAttribute="trailing" constant="1" id="Wni-BV-khg"/>
                             <constraint firstAttribute="topMargin" secondItem="aU9-Kf-0ce" secondAttribute="top" id="X7R-Ls-6Lo"/>
                             <constraint firstItem="aWI-5D-HVV" firstAttribute="leading" secondItem="3eF-hF-hxF" secondAttribute="trailing" constant="1" id="XvW-D3-kZC"/>
@@ -9654,14 +9623,15 @@ E-mail: info@islamicbroker.com.qa</string>
                             <constraint firstItem="3eF-hF-hxF" firstAttribute="width" secondItem="aU9-Kf-0ce" secondAttribute="width" id="djg-eZ-0t8"/>
                             <constraint firstItem="aWI-5D-HVV" firstAttribute="top" secondItem="3eF-hF-hxF" secondAttribute="top" id="dul-wD-LAa"/>
                             <constraint firstItem="3eF-hF-hxF" firstAttribute="top" secondItem="pyX-3q-eOB" secondAttribute="top" id="fez-Nw-bxh"/>
+                            <constraint firstItem="aU9-Kf-0ce" firstAttribute="height" secondItem="ToY-o0-qca" secondAttribute="height" id="fp6-DP-Ekf"/>
                             <constraint firstAttribute="bottomMargin" secondItem="HKV-vF-NrM" secondAttribute="bottom" id="gie-5y-jqt"/>
                             <constraint firstItem="l2e-m2-Lzy" firstAttribute="centerX" secondItem="pyX-3q-eOB" secondAttribute="centerX" id="grC-IG-YjJ"/>
                             <constraint firstItem="bq2-iw-TB0" firstAttribute="leading" secondItem="t7O-2q-84O" secondAttribute="leading" id="jRH-2R-qBQ"/>
                             <constraint firstItem="t7O-2q-84O" firstAttribute="width" secondItem="k6h-43-hOc" secondAttribute="width" id="kOZ-IZ-HNA"/>
                             <constraint firstItem="t7O-2q-84O" firstAttribute="top" secondItem="k6h-43-hOc" secondAttribute="top" id="kTL-bK-ZyT"/>
                             <constraint firstItem="3eF-hF-hxF" firstAttribute="leading" secondItem="pyX-3q-eOB" secondAttribute="trailing" constant="1" id="l4t-Yq-cZI"/>
-                            <constraint firstItem="DXz-DN-Hzl" firstAttribute="bottom" secondItem="aU9-Kf-0ce" secondAttribute="bottom" id="lGa-3O-Zs0"/>
                             <constraint firstItem="bq2-iw-TB0" firstAttribute="bottom" secondItem="t7O-2q-84O" secondAttribute="bottom" id="lKf-eW-WQ8"/>
+                            <constraint firstItem="ToY-o0-qca" firstAttribute="top" secondItem="aU9-Kf-0ce" secondAttribute="top" id="lcr-E2-dfR"/>
                             <constraint firstItem="t7O-2q-84O" firstAttribute="leading" secondItem="k6h-43-hOc" secondAttribute="trailing" id="nft-6h-Rdg"/>
                             <constraint firstItem="7CO-ng-Zbh" firstAttribute="trailing" secondItem="HKV-vF-NrM" secondAttribute="trailing" id="nsU-Pq-0qM"/>
                             <constraint firstItem="5es-KY-xcg" firstAttribute="leading" secondItem="aWI-5D-HVV" secondAttribute="trailing" constant="1" id="oJc-d8-nE0"/>
@@ -9669,7 +9639,6 @@ E-mail: info@islamicbroker.com.qa</string>
                             <constraint firstItem="7CO-ng-Zbh" firstAttribute="trailing" secondItem="5es-KY-xcg" secondAttribute="trailing" id="tMx-yj-VbU"/>
                             <constraint firstItem="4Ls-xE-t7Q" firstAttribute="width" secondItem="QJD-IF-oAg" secondAttribute="width" multiplier="0.17" id="xp7-ec-sAn"/>
                             <constraint firstItem="bq2-iw-TB0" firstAttribute="trailing" secondItem="t7O-2q-84O" secondAttribute="trailing" id="ygB-Gj-lj5"/>
-                            <constraint firstItem="DXz-DN-Hzl" firstAttribute="top" secondItem="aU9-Kf-0ce" secondAttribute="top" id="zG9-hp-N3X"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="7CO-ng-Zbh"/>
                         <variation key="default">
@@ -9682,7 +9651,6 @@ E-mail: info@islamicbroker.com.qa</string>
                     <navigationItem key="navigationItem" id="yEj-LF-dOR"/>
                     <nil key="simulatedStatusBarMetrics"/>
                     <connections>
-                        <outlet property="buttonOneDay" destination="DXz-DN-Hzl" id="BgJ-Yu-jdy"/>
                         <outlet property="buttonPlus" destination="aU9-Kf-0ce" id="sEI-lL-crn"/>
                         <outlet property="indicatorView" destination="l2e-m2-Lzy" id="pHK-ct-Dqo"/>
                         <outlet property="labelClose" destination="k6h-43-hOc" id="pTa-ip-m83"/>
@@ -9694,7 +9662,7 @@ E-mail: info@islamicbroker.com.qa</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FYU-qz-qxe" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1119" y="-764"/>
+            <point key="canvasLocation" x="1118.7050359712232" y="-764.02877697841734"/>
         </scene>
         <!--EnterOTPViewController-->
         <scene sceneID="DB3-n0-TSS">
