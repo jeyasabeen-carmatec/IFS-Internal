@@ -82,9 +82,7 @@
 -(void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:YES];
     
-    
-    
-    
+    globalShare.strNewOrderFlow = @"";
 //    [self.textFieldUserName setText:@"1000015535"];
 //    [self.textFieldPassword setText:@"123456"];
 //    [self.textFieldUserName setText:@"1000555647"];
