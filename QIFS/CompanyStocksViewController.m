@@ -184,6 +184,9 @@
 }
 
 - (IBAction)actionNewOrder:(id)sender {
+    
+    globalShare.strNewOrderFlow = @"CompanyStocksViewController";
+
     NewOrderViewController *newOrderViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"NewOrderViewController"];
     newOrderViewController.securityId = self.securityId;
     [[GlobalShare sharedInstance] setIsDirectOrder:NO];

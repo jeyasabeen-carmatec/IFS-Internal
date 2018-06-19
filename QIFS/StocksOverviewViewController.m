@@ -255,7 +255,7 @@ NSString *const kStockNewsCellIdentifier = @"StockNewsCell";
                                                                dispatch_async(dispatch_get_main_queue(), ^{
                                                                    NSDictionary *dictVal = returnedDict[@"result"];
                                                                    self.labelCurrentIndex.text = [GlobalShare createCommaSeparatedTwoDigitString:dictVal[@"index_1"]];
-                                                                   self.labelTodayChanges.text = [NSString stringWithFormat:@"%@(%@%%)", [GlobalShare formatStringToTwoDigits:dictVal[@"change"]], [GlobalShare formatStringToTwoDigits:dictVal[@"change_perc"]]];
+                                                                   self.labelTodayChanges.text = [NSString stringWithFormat:@"%@(%@%%)", [GlobalShare formatStringToTwoDigits:dictVal[@"change_perc"]], [GlobalShare formatStringToTwoDigits:dictVal[@"change"]]];
 
 //                                                                   if([dictVal[@"change"] hasPrefix:@"-"] || [dictVal[@"change"] hasPrefix:@"+"]) {
 //                                                                       if([dictVal[@"change"] hasPrefix:@"+"]) {
@@ -277,7 +277,7 @@ NSString *const kStockNewsCellIdentifier = @"StockNewsCell";
                                                                    }
                                                                    else {
                                                                        if([GlobalShare returnIfGreaterThanZero:[dictVal[@"change"] doubleValue]]) {
-                                                                           self.labelTodayChanges.text = [NSString stringWithFormat:@"+%@(+%@%%)", [GlobalShare formatStringToTwoDigits:dictVal[@"change"]], [GlobalShare formatStringToTwoDigits:dictVal[@"change_perc"]]];
+                                                                           self.labelTodayChanges.text = [NSString stringWithFormat:@"+%@(+%@%%)", [GlobalShare formatStringToTwoDigits:dictVal[@"change_perc"]], [GlobalShare formatStringToTwoDigits:dictVal[@"change"]]];
                                                                            self.labelTodayChanges.textColor = [UIColor colorWithRed:0/255.f green:100/255.f blue:25/255.f alpha:1.f];
                                                                        }
                                                                        else {

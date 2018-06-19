@@ -16,9 +16,9 @@
 
 @property (nonatomic, weak) IBOutlet LineChartView *lineChartViewQE;
 @property (nonatomic, assign) UIDeviceOrientation orientation;
-//@property (nonatomic, strong) BalloonMarker *markerView;
+@property (nonatomic, strong) BalloonMarker *markerView;
 @property (nonatomic, weak) IBOutlet UIButton *buttonPlus;
-@property (nonatomic, weak) IBOutlet UIButton *buttonOneDay;
+@property (nonatomic, weak) IBOutlet UIButton *buttonOneMonth;
 @property (nonatomic, weak) IBOutlet UILabel *labelSymbol;
 @property (nonatomic, weak) IBOutlet UILabel *labelClose;
 @property (nonatomic, weak) IBOutlet UILabel *labelDate;
@@ -49,9 +49,9 @@
 //    }
     [self clearMarketValues];
     
-    [self.buttonOneDay setBackgroundColor:[UIColor colorWithRed:170.0f/255.0f green:170.0f/255.0f blue:170.0f/255.0f alpha:1]];
+    [self.buttonOneMonth setBackgroundColor:[UIColor colorWithRed:170.0f/255.0f green:170.0f/255.0f blue:170.0f/255.0f alpha:1]];
     self.selectedIndexOption = 1;
-    self.buttonRecent = self.buttonOneDay;
+    self.buttonRecent = self.buttonOneMonth;
     
     
     
@@ -82,7 +82,9 @@
     _lineChartViewQE.xAxis.gridLineWidth = 0.1;
     _lineChartViewQE.xAxis.labelPosition = XAxisLabelPositionBottom;
     _lineChartViewQE.rightAxis.drawTopYLabelEntryEnabled = YES;
-   ;
+//
+//   self.markerView = [[BalloonMarker alloc] initWithColor:[UIColor lightGrayColor] font:[UIFont systemFontOfSize:12.0] insets: UIEdgeInsetsMake(8.0, 8.0, 20.0, 8.0)];
+//
     
     _lineChartViewQE.legend.enabled = NO;
     
@@ -250,6 +252,8 @@
                                                            if(error == nil)
                                                            {
                                                                NSMutableDictionary *returnedDict = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:&error];
+                                                               NSLog(@"%@",returnedDict);
+                                                               
                                                                if([returnedDict[@"status"] hasPrefix:@"error"]) {
                                                                    if([returnedDict[@"result"] hasPrefix:@"T5"])
                                                                        [GlobalShare showSessionExpiredAlertView:self :SESSION_EXPIRED];
@@ -385,7 +389,7 @@
         // NSNumber *num = [NSNumber numberWithDouble:point];
         [xVals addObject:num];
         
-//        NSLog(@"%@ -- > %@ ----> %@",strVal,from,num);
+      // NSLog(@"%@ -- > %@ ----> %@",strVal,from,num);
         
     }
     
@@ -463,8 +467,8 @@
         set1.valueFont = [UIFont systemFontOfSize:9.f];
         
         NSArray *gradientColors = @[
-                                    (id)[UIColor colorWithRed:230/255.f green:240/255.f blue:255/255.f alpha:1.f].CGColor,
-                                    (id)[UIColor colorWithRed:230/255.f green:240/255.f blue:255/255.f alpha:1.f].CGColor
+                                    (id)[UIColor colorWithRed:179/255.f green:236/255.f blue:255/255.f alpha:1.f].CGColor,
+                                    (id)[UIColor colorWithRed:179/255.f green:236/255.f blue:255/255.f alpha:1.f].CGColor
                                     ];
         CGGradientRef gradient = CGGradientCreateWithColors(nil, (CFArrayRef)gradientColors, nil);
         
@@ -476,7 +480,7 @@
         set1.drawVerticalHighlightIndicatorEnabled = NO;
         set1.drawHorizontalHighlightIndicatorEnabled = NO;
         set1.highlightColor = [UIColor orangeColor];
-        set1.highlightLineWidth = 0.2;
+        set1.highlightLineWidth = 0.5;
         set1.axisDependency = AxisDependencyRight;
         
         CGGradientRelease(gradient);

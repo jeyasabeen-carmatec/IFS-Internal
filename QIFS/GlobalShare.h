@@ -49,6 +49,8 @@
 @property (nonatomic, assign) BOOL isTimerMarketDepthRun;
 
 @property (nonatomic, strong) NSString *strCommission;
+@property (nonatomic, strong) NSString *strNewOrderFlow;
+
 
 @property (nonatomic, strong) NSArray *pickerData1;
 @property (nonatomic, strong) NSArray *pickerData2;

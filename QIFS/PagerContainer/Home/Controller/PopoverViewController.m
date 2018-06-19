@@ -117,6 +117,7 @@
 }
 
 - (IBAction)actionNewOrder:(id)sender {
+    globalShare.strNewOrderFlow = @"PopoverViewController";
     NewOrderViewController *newOrderViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"NewOrderViewController"];
     newOrderViewController.securityId = self.securityId;
     [[GlobalShare sharedInstance] setIsDirectOrder:NO];
