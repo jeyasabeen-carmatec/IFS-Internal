@@ -11,6 +11,7 @@
 #import "ForgotPasswordViewController.h"
 #import "LoginView.h"
 
+
 @implementation UIView (ShakeAnimation)
 
 - (void)triggerShakeAnimation {
