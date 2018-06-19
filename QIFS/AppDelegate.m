@@ -5,7 +5,6 @@
 //  Created by zylog on 24/06/16.
 //  Copyright © 2016 zsl. All rights reserved.
 //
-
 #import "AppDelegate.h"
 #import "QIFS-Swift.h"
 #import "TIMERUIApplication.h"
@@ -320,7 +319,7 @@
         
         // important to hide the window after work completed.
         // this also keeps a reference to the window until the action is invoked.
-        topWindow.hidden = YES; // if you want to hide the topwindow then use this
+      //  topWindow.hidden = YES; // if you want to hide the topwindow then use this
        // if you want to remove the topwindow then use this
         
         
@@ -339,15 +338,30 @@
 //        self.window.rootViewController = navController;
 //        [navController setNavigationBarHidden:YES];
         
-         UIWindow *keyWindow = [[UIApplication sharedApplication] keyWindow];
-         UIStoryboard *storyboard = keyWindow.rootViewController.storyboard;
-        ViewController *vc = [storyboard instantiateViewControllerWithIdentifier:@"ViewController"];
+       // UIWindow *keyWindow = [[UIApplication sharedApplication] keyWindow];
+       //  UIStoryboard *storyboard = keyWindow.rootViewController.storyboard;
+       // ViewController *vc = [storyboard instantiateViewControllerWithIdentifier:@"ViewController"];
+        //self.window.rootViewController = vc;
+          UIStoryboard *sb = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+        ViewController *vc = [sb instantiateViewControllerWithIdentifier:@"ViewController"];
+        // self.window.rootViewController = vc;
+        //ViewController *listingVC = [[ViewController alloc] init];
+        [(UINavigationController *)self.window.rootViewController pushViewController:vc animated:YES];
         
-        UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:vc];
         
-        self.window.rootViewController = navigationController;
-        navigationController.navigationBar.hidden = YES;
         
+        //ShowDetailsArtistAlbumViewController *vc =
+      // ViewController *vc= [[ViewController alloc]
+      //   initWithNibName:@"ViewController" bundle:nil];
+     // [[[[TIMERUIApplication sharedApplication] keyWindow] rootViewController]presentViewController:vc animated:YES completion:^{}];
+
+        
+    //UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:vc];
+        
+   //     self.window.rootViewController = navigationController;
+    //   navigationController.navigationBar.hidden = YES;
+      //   [[[[UIApplication sharedApplication]keyWindow] rootViewController]presentViewController:vc animated:NO completion:nil];
+        //  [self methodRunAfterBackground];
         
     }]];
     
@@ -355,6 +369,15 @@
     [topWindow.rootViewController presentViewController:alert animated:YES completion:nil];
     
 }
-
-
+-(void)methodRunAfterBackground
+{
+    NSLog(@"hi");
+    UIWindow *keyWindow = [[UIApplication sharedApplication] keyWindow];
+    UIStoryboard *storyboard = keyWindow.rootViewController.storyboard;
+    ViewController *vc = [storyboard instantiateViewControllerWithIdentifier:@"ViewController"];
+    
+    UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:vc];
+    
+    self.window.rootViewController = navigationController;
+    navigationController.navigationBar.hidden = YES;}
 @end

@@ -132,8 +132,6 @@
 		7351BC7820C5421D00F49E27 /* LoginView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7351BC7A20C5421D00F49E27 /* LoginView.xib */; };
 		7351BC8020C5490D00F49E27 /* CashPositionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7351BC7F20C5490D00F49E27 /* CashPositionViewController.m */; };
 		7351BC8B20C6374600F49E27 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7351BC8820C6374600F49E27 /* Foundation.framework */; };
-		7351BC8C20C6377600F49E27 /* Foundation.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 7351BC8820C6374600F49E27 /* Foundation.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		73CC724120C63BC300E0F35C /* Charts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7351BC4120C50CB800F49E27 /* Charts.framework */; };
 		73CC724420C6447000E0F35C /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 73CC724320C6447000E0F35C /* ViewController.m */; };
 		73CCC06320BD3978009A662F /* ActiveStocksViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 73CCC06220BD3978009A662F /* ActiveStocksViewController.m */; };
 		770BA38B20C94197001B7ACA /* Charts.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 7351BC4120C50CB800F49E27 /* Charts.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -189,7 +187,6 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				7351BC8C20C6377600F49E27 /* Foundation.framework in Embed Frameworks */,
 				77C46A1F20C9128E002C6538 /* Charts.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
@@ -466,7 +463,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				73CC724120C63BC300E0F35C /* Charts.framework in Frameworks */,
 				7351BC8B20C6374600F49E27 /* Foundation.framework in Frameworks */,
 				77C46A1E20C9128E002C6538 /* Charts.framework in Frameworks */,
 				514EF68A1DE763AC0071F747 /* libsqlite3.0.tbd in Frameworks */,
@@ -1486,7 +1482,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = 4MCGAH3G26;
@@ -1495,10 +1491,10 @@
 				INFOPLIST_FILE = QIFS/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.carmatec.Dohasooq;
+				PRODUCT_BUNDLE_IDENTIFIER = com.carmatec.ifs;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "eadc65cf-9fc2-4d6b-91fa-8a5701b40d11";
-				PROVISIONING_PROFILE_SPECIFIER = DEV_DS;
+				PROVISIONING_PROFILE = "a12cc9c3-1e85-4a1c-b7c6-9242ac0ed1fb";
+				PROVISIONING_PROFILE_SPECIFIER = "IFS ADHOC";
 				SWIFT_OBJC_BRIDGING_HEADER = "QIFS/Utility/QIFS-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.0;
@@ -1513,19 +1509,20 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = 4MCGAH3G26;
+				ENABLE_TESTABILITY = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/$(PROJECT_NAME)/QIFS-Prefix.pch";
 				INFOPLIST_FILE = QIFS/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.carmatec.Dohasooq;
+				PRODUCT_BUNDLE_IDENTIFIER = com.carmatec.ifs;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "eadc65cf-9fc2-4d6b-91fa-8a5701b40d11";
-				PROVISIONING_PROFILE_SPECIFIER = DEV_DS;
+				PROVISIONING_PROFILE = "a12cc9c3-1e85-4a1c-b7c6-9242ac0ed1fb";
+				PROVISIONING_PROFILE_SPECIFIER = "IFS ADHOC";
 				SWIFT_OBJC_BRIDGING_HEADER = "QIFS/Utility/QIFS-Bridging-Header.h";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
