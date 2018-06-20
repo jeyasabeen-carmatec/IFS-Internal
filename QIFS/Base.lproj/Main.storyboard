@@ -4607,7 +4607,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PNd-IS-AXA">
-                                <rect key="frame" x="277.5" y="20" width="138.5" height="28"/>
+                                <rect key="frame" x="278" y="20" width="138.5" height="28"/>
                                 <color key="backgroundColor" red="0.33333333333333331" green="0.33333333333333331" blue="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                 <state key="normal" title="3 M">
@@ -4618,7 +4618,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Qxt-Vn-Mhr">
-                                <rect key="frame" x="417" y="20" width="138" height="28"/>
+                                <rect key="frame" x="417.5" y="20" width="138" height="28"/>
                                 <color key="backgroundColor" red="0.33333333333333331" green="0.33333333333333331" blue="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                 <state key="normal" title="6 M">
@@ -4629,7 +4629,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" tag="4" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="F6c-vi-9Hd">
-                                <rect key="frame" x="556" y="20" width="139" height="28"/>
+                                <rect key="frame" x="556.5" y="20" width="138.5" height="28"/>
                                 <color key="backgroundColor" red="0.33333333333333331" green="0.33333333333333331" blue="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                 <state key="normal" title="1 Y">
@@ -4685,7 +4685,7 @@
                                 <rect key="frame" x="407" y="556" width="20" height="20"/>
                             </activityIndicatorView>
                             <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AdD-bz-3zi">
-                                <rect key="frame" x="138" y="20" width="138.5" height="28"/>
+                                <rect key="frame" x="138" y="20" width="139" height="28"/>
                                 <color key="backgroundColor" red="0.33333333333333331" green="0.33333333333333331" blue="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                 <state key="normal" title="1 M">
@@ -4734,7 +4734,7 @@
                             <constraint firstItem="F6c-vi-9Hd" firstAttribute="width" secondItem="Qja-5k-KhE" secondAttribute="width" id="ahu-as-HLw"/>
                             <constraint firstItem="ilT-92-gnH" firstAttribute="width" secondItem="Qja-5k-KhE" secondAttribute="width" id="aso-rF-RfF"/>
                             <constraint firstItem="4Io-3s-AqO" firstAttribute="top" secondItem="Qja-5k-KhE" secondAttribute="bottom" constant="7" id="cX1-ed-fm0"/>
-                            <constraint firstAttribute="topMargin" secondItem="Qja-5k-KhE" secondAttribute="top" id="dGP-YM-QCl"/>
+                            <constraint firstItem="uS2-1U-H1e" firstAttribute="top" secondItem="Qja-5k-KhE" secondAttribute="top" id="dGP-YM-QCl"/>
                             <constraint firstItem="Qja-5k-KhE" firstAttribute="leading" secondItem="uS2-1U-H1e" secondAttribute="leading" constant="-1" id="g5A-Kp-F2r"/>
                             <constraint firstItem="4Io-3s-AqO" firstAttribute="width" secondItem="Ned-gR-Lmw" secondAttribute="width" multiplier="0.17" id="hF7-5a-beO"/>
                             <constraint firstItem="PNd-IS-AXA" firstAttribute="width" secondItem="Qja-5k-KhE" secondAttribute="width" id="jtA-jX-YEX"/>
@@ -4756,6 +4756,7 @@
                     <navigationItem key="navigationItem" id="by1-qH-Dlp"/>
                     <nil key="simulatedStatusBarMetrics"/>
                     <connections>
+                        <outlet property="buttonOneMonth" destination="AdD-bz-3zi" id="3Vh-pp-WSb"/>
                         <outlet property="buttonPlus" destination="Qja-5k-KhE" id="bpY-HJ-tWo"/>
                         <outlet property="indicatorView" destination="hcn-eM-Uh7" id="61D-ua-Kh1"/>
                         <outlet property="labelClose" destination="JAN-oY-HfI" id="gLS-eE-cHX"/>
@@ -9616,7 +9617,7 @@ E-mail: info@islamicbroker.com.qa</string>
                             <constraint firstItem="l2e-m2-Lzy" firstAttribute="centerY" secondItem="QJD-IF-oAg" secondAttribute="centerYWithinMargins" id="Ukc-YU-xpl"/>
                             <constraint firstItem="aWI-5D-HVV" firstAttribute="bottom" secondItem="3eF-hF-hxF" secondAttribute="bottom" id="WQa-F4-p1K"/>
                             <constraint firstItem="pyX-3q-eOB" firstAttribute="leading" secondItem="ToY-o0-qca" secondAttribute="trailing" constant="1" id="Wni-BV-khg"/>
-                            <constraint firstAttribute="topMargin" secondItem="aU9-Kf-0ce" secondAttribute="top" id="X7R-Ls-6Lo"/>
+                            <constraint firstItem="7CO-ng-Zbh" firstAttribute="top" secondItem="aU9-Kf-0ce" secondAttribute="top" id="X7R-Ls-6Lo"/>
                             <constraint firstItem="aWI-5D-HVV" firstAttribute="leading" secondItem="3eF-hF-hxF" secondAttribute="trailing" constant="1" id="XvW-D3-kZC"/>
                             <constraint firstItem="aU9-Kf-0ce" firstAttribute="leading" secondItem="7CO-ng-Zbh" secondAttribute="leading" constant="-1" id="cWl-Wj-dKU"/>
                             <constraint firstItem="3eF-hF-hxF" firstAttribute="bottom" secondItem="pyX-3q-eOB" secondAttribute="bottom" id="d3x-yU-Pdq"/>
@@ -9651,6 +9652,7 @@ E-mail: info@islamicbroker.com.qa</string>
                     <navigationItem key="navigationItem" id="yEj-LF-dOR"/>
                     <nil key="simulatedStatusBarMetrics"/>
                     <connections>
+                        <outlet property="buttonOneMonth" destination="ToY-o0-qca" id="Dia-5w-hBX"/>
                         <outlet property="buttonPlus" destination="aU9-Kf-0ce" id="sEI-lL-crn"/>
                         <outlet property="indicatorView" destination="l2e-m2-Lzy" id="pHK-ct-Dqo"/>
                         <outlet property="labelClose" destination="k6h-43-hOc" id="pTa-ip-m83"/>

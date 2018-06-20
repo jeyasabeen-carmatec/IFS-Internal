@@ -18,13 +18,13 @@
 #define webSite_Url @"https://www.islamicbroker.com.qa/"
 
 //UATPUBLIC
-#define REQUEST_URL @"http://212.77.209.101/OrderManagerWebAPI/WebAPI/"
+//#define REQUEST_URL @"http://212.77.209.101/OrderManagerWebAPI/WebAPI/"
 
 //UATPRIVATE
 //#define REQUEST_URL @"http://192.168.28.79/OrderManagerWebAPI/WebAPI/"
 
 //PRODUCTION
-//#define REQUEST_URL @"http://212.77.209.102/OrderManagerWebAPI/WebAPI/"
+#define REQUEST_URL @"http://212.77.209.102/OrderManagerWebAPI/WebAPI/"
 
 //#define INTERNET_CONNECTION @"No internet connection. Please try again later."
 //#define USERNAME @"Please enter the User Name."

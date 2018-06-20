@@ -22,7 +22,7 @@
 
 NSString *const kNewOrderOptionsViewCellIdentifier = @"OptionsViewCell";
 
-@interface NewOrderViewController () <UIPickerViewDelegate, UIPickerViewDataSource, NSURLSessionDelegate, orderConfirmDelegate, tabBarManageCashDelegate,UITextFieldDelegate>{
+@interface NewOrderViewController () <UIPickerViewDelegate, UIPickerViewDataSource, NSURLSessionDelegate, orderConfirmDelegate, tabBarManageCashDelegate,UITextFieldDelegate,UITabBarDelegate>{
     LoginView *loginVw;
     UIView *overLayView;
 }
@@ -562,7 +562,25 @@ NSString *const kNewOrderOptionsViewCellIdentifier = @"OptionsViewCell";
 -(void)cancelButtonAction{
     overLayView.hidden = YES;
     [loginVw removeFromSuperview];
-    [self.tabBarController setSelectedIndex:0];
+  
+    
+    if ([globalShare.strNewOrderFlow isEqualToString:@"CompanyStocksViewController"]) {
+        [globalShare.topNavController popViewControllerAnimated:YES];
+    }
+    
+  else if([globalShare.strNewOrderFlow isEqualToString:@"PopoverViewController"])//PopoverViewController
+    {
+        
+        UITabBarController *tabController = [self.storyboard instantiateViewControllerWithIdentifier:@"StockTabBarController"];
+        tabController.delegate = self;
+        [[self navigationController] pushViewController:tabController animated:YES];
+        
+    }
+    else {
+        [self.tabBarController setSelectedIndex:0];
+
+    }
+   
 }
 /*
  Custom Login Screen Login Button Actions
@@ -1515,6 +1533,12 @@ NSString *const kNewOrderOptionsViewCellIdentifier = @"OptionsViewCell";
                                                                        self.strLimitUpPrice = [GlobalShare formatStringToTwoDigits:dictVal[@"max_price"]];
                                                                        self.strLimitDownPrice = [GlobalShare formatStringToTwoDigits:dictVal[@"min_price"]];
                                                                        
+                                                                       [self getLimitUpLimitDown];
+//                                                                       self.limitUPLabel.hidden = NO;
+//                                                                       self.limitDowmLabel.hidden = NO;
+                                                                       
+                                                                       
+                                                                       
 //                                                                       if([dictVal[@"change"] hasPrefix:@"-"] || [dictVal[@"change"] hasPrefix:@"+"]) {
 //                                                                           if([dictVal[@"change"] hasPrefix:@"+"]) {
 //                                                                               self.labelChange.textColor = [UIColor colorWithRed:0/255.f green:100/255.f blue:25/255.f alpha:1.f];
@@ -1926,7 +1950,7 @@ NSString *const kNewOrderOptionsViewCellIdentifier = @"OptionsViewCell";
                                                                        NSDictionary *dictVal = returnedDict[@"result"];
                                                                        
                                                                        
-                                                                       [self getLimitUpLimitDown];
+                                                                      // [self getLimitUpLimitDown];
                                                                        
                                                                        NSString *strcost =[NSString stringWithFormat:@"%.2f",[dictVal[@"OrderValue"]floatValue]] ;
                                                                        [[NSUserDefaults standardUserDefaults] setValue:strcost forKey:@"modified_order_VAL"] ;
@@ -2753,7 +2777,7 @@ NSString *const kNewOrderOptionsViewCellIdentifier = @"OptionsViewCell";
             [self.buttonOrderType setEnabled:YES];
             
             [self performSelector:@selector(getMarketWatchNew) withObject:nil afterDelay:0.01f];
-            [self performSelector:@selector(getLimitUpLimitDown) withObject:nil afterDelay:0.01f];
+           // [self performSelector:@selector(getLimitUpLimitDown) withObject:nil afterDelay:0.01f];
             
             
         }
