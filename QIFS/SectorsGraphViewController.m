@@ -111,7 +111,6 @@ NSString *const kSectorsGraphCellIdentifier = @"SectorsGraphCell";
 - (void)setDataCount:(int)count range:(double)range
 {
     //    double mult = range;
-    NSLog(@"%@",_arraySectorList);
     
     NSMutableArray *values = [[NSMutableArray alloc] init];
     
@@ -146,11 +145,11 @@ NSString *const kSectorsGraphCellIdentifier = @"SectorsGraphCell";
             
             
         }
-        NSLog(@"values ::: %@",values);
+       
         
     }
     @catch(NSException *e){
-        NSLog(@"Sector Exception ...");
+        //NSLog(@"Sector Exception ...");
     }
     
     PieChartDataSet *dataSet = [[PieChartDataSet alloc] initWithValues:values label:@"Election Results"];

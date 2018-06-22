@@ -21,7 +21,7 @@
 NSString *const kPortfoliosCellIdentifier = @"PortfoliosCell";
 NSString *const kPortfoliosOptionsViewCellIdentifier = @"OptionsViewCell";
 
-@interface PortfoliosViewController () <tabBarManageCashDelegate, NSURLSessionDelegate,UITextFieldDelegate>{
+@interface PortfoliosViewController () <tabBarManageCashDelegate, NSURLSessionDelegate,UITextFieldDelegate,UITextFieldDelegate>{
     LoginView *loginVw;
     UIView *overLayView;
 }
@@ -52,6 +52,9 @@ NSString *const kPortfoliosOptionsViewCellIdentifier = @"OptionsViewCell";
 
 @property (weak, nonatomic) IBOutlet UILabel *labelGainLossCaption;
 
+@property (nonatomic, strong) UITextField *textFieldCurrent;
+
+
 @end
 
 @implementation PortfoliosViewController
@@ -67,37 +70,39 @@ NSString *const kPortfoliosOptionsViewCellIdentifier = @"OptionsViewCell";
     self.tableResults.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
     [self.tableResults setHidden:YES];
     
-    NSString *loginStatus;
-    if ([GlobalShare isUserLogedIn]) {
-        
-        loginStatus = NSLocalizedString(@"Sign In", @"Sign In");
-        
-    }
-    else{
-        loginStatus = NSLocalizedString(@"Sign Out", @"Sign Out");
-    }
-    self.arrayMenu = @[
-                       @{
-                           @"menu_title": NSLocalizedString(@"Cash Position", @"Cash Position"),
-                           @"menu_image": @"icon_cash_position"
-                           },
+    [self menuDataSetUp];
+//
+//    NSString *loginStatus;
+//    if ([GlobalShare isUserLogedIn]) {
+//
+//        loginStatus = NSLocalizedString(@"Sign In", @"Sign In");
+//
+//    }
+//    else{
+//        loginStatus = NSLocalizedString(@"Sign Out", @"Sign Out");
+//    }
+//    self.arrayMenu = @[
 //                       @{
-//                           @"menu_title": NSLocalizedString(@"My Orders History", @"My Orders History"),
-//                           @"menu_image": @"icon_my_order_history"
+//                           @"menu_title": NSLocalizedString(@"Cash Position", @"Cash Position"),
+//                           @"menu_image": @"icon_cash_position"
 //                           },
-                       @{
-                           @"menu_title": NSLocalizedString(@"Contact Us", @"Contact Us"),
-                           @"menu_image": @"icon_contact_us"
-                           },
-                       @{
-                           @"menu_title": NSLocalizedString(@"Settings", @"Settings"),
-                           @"menu_image": @"icon_settings"
-                           },
-                       @{
-                           @"menu_title": loginStatus,
-                           @"menu_image": @"icon_signout"
-                           }
-                       ];
+////                       @{
+////                           @"menu_title": NSLocalizedString(@"My Orders History", @"My Orders History"),
+////                           @"menu_image": @"icon_my_order_history"
+////                           },
+//                       @{
+//                           @"menu_title": NSLocalizedString(@"Contact Us", @"Contact Us"),
+//                           @"menu_image": @"icon_contact_us"
+//                           },
+//                       @{
+//                           @"menu_title": NSLocalizedString(@"Settings", @"Settings"),
+//                           @"menu_image": @"icon_settings"
+//                           },
+//                       @{
+//                           @"menu_title": loginStatus,
+//                           @"menu_image": @"icon_signout"
+//                           }
+//                       ];
 
 //    [self.tableViewOptionMenu setSeparatorInset:UIEdgeInsetsZero];
 //    [self.tableViewOptionMenu setLayoutMargins:UIEdgeInsetsZero];
@@ -155,6 +160,17 @@ NSString *const kPortfoliosOptionsViewCellIdentifier = @"OptionsViewCell";
 //    if(![[GlobalShare sharedInstance] isTimerPortfolioRun])
 //        [self performSelectorInBackground:@selector(callHeartBeatUpdate) withObject:nil];
     
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(keyboardWillShow:)
+                                                 name:UIKeyboardWillShowNotification
+                                               object:nil];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(keyboardWillHide:)
+                                                 name:UIKeyboardWillHideNotification
+                                               object:nil];
+    
     if(globalShare.myLanguage == ARABIC_LANGUAGE) {
         [[UIView appearance] setSemanticContentAttribute:UISemanticContentAttributeForceRightToLeft];
         [self.tableViewOptionMenu setSemanticContentAttribute:UISemanticContentAttributeForceRightToLeft];
@@ -195,7 +211,11 @@ NSString *const kPortfoliosOptionsViewCellIdentifier = @"OptionsViewCell";
         [self.viewOptionMenu setHidden:YES];
     [self.transparencyButton removeFromSuperview];
     self.transparencyButton = nil;
+    
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:UIKeyboardWillShowNotification object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:UIKeyboardWillHideNotification object:nil];
 }
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
@@ -228,6 +248,42 @@ NSString *const kPortfoliosOptionsViewCellIdentifier = @"OptionsViewCell";
     
 }
 
+#pragma mark Menu Data SetUp...
+-(void)menuDataSetUp{
+    NSString *loginStatus;
+    if ([GlobalShare isUserLogedIn]) {
+        
+        loginStatus = NSLocalizedString(@"Sign In", @"Sign In");
+        
+    }
+    else{
+        loginStatus = NSLocalizedString(@"Sign Out", @"Sign Out");
+    }
+    
+    self.arrayMenu = @[
+                       @{
+                           @"menu_title": NSLocalizedString(@"Cash Position", @"Cash Position"),
+                           @"menu_image": @"icon_cash_position"
+                           },
+                       //                       @{
+                       //                           @"menu_title": NSLocalizedString(@"My Orders History", @"My Orders History"),
+                       //                           @"menu_image": @"icon_my_order_history"
+                       //                           },
+                       @{
+                           @"menu_title": NSLocalizedString(@"Contact Us", @"Contact Us"),
+                           @"menu_image": @"icon_contact_us"
+                           },
+                       @{
+                           @"menu_title": NSLocalizedString(@"Settings", @"Settings"),
+                           @"menu_image": @"icon_settings"
+                           },
+                       @{
+                           @"menu_title": loginStatus,
+                           @"menu_image": @"icon_signout"
+                           }
+                       ];
+    [self.tableViewOptionMenu reloadData];
+}
 
 
 
@@ -379,6 +435,7 @@ NSString *const kPortfoliosOptionsViewCellIdentifier = @"OptionsViewCell";
     @try {
         
         
+        loginVw.hidden = YES;
         [loginVw removeFromSuperview];
         overLayView.hidden = YES;
         
@@ -406,6 +463,7 @@ NSString *const kPortfoliosOptionsViewCellIdentifier = @"OptionsViewCell";
                                                                NSString *strToken = [returnedDict objectForKey:@"result"];
                                                                [[NSUserDefaults standardUserDefaults] setObject:strToken forKey:@"ssckey"];
                                                                [[NSUserDefaults standardUserDefaults] synchronize];
+                                                               [self menuDataSetUp];
                                                                [self viewWillAppear:YES];
                                                                
                                                                
@@ -962,6 +1020,44 @@ NSString *const kPortfoliosOptionsViewCellIdentifier = @"OptionsViewCell";
     self.visibleResults = [self.allResults filteredArrayUsingPredicate:filterPredicate];
     
     [self.tableResults reloadData];
+}
+
+#pragma mark - UITextField Delegate
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField {
+    [textField resignFirstResponder];
+    return YES;
+}
+-(BOOL)textFieldShouldEndEditing:(UITextField *)textField{
+    //[textField becomeFirstResponder];
+    self.textFieldCurrent = textField;
+
+    return YES;
+}
+
+- (void)keyboardWillShow:(NSNotification *)notification {
+    CGSize keyboardSize = [[[notification userInfo] objectForKey:UIKeyboardFrameBeginUserInfoKey] CGRectValue].size;
+    
+    double viewWidth = [UIScreen mainScreen].bounds.size.width;
+    double viewHeight = [UIScreen mainScreen].bounds.size.height;
+    
+    CGRect viewableAreaFrame = CGRectMake(0.0, 0.0, viewWidth, viewHeight - keyboardSize.height);
+    CGRect activeTextFieldFrame = [self.textFieldCurrent convertRect:self.textFieldCurrent.bounds toView:self.view];
+    
+    if (!CGRectContainsRect(viewableAreaFrame, activeTextFieldFrame))
+    {
+        [UIView animateWithDuration:0.3 animations:^{
+            CGRect f = self.view.frame;
+            f.origin.y = -keyboardSize.height;
+            self.view.frame = f;
+        }];
+    }
+}
+
+- (void)keyboardWillHide:(NSNotification *)notification {
+    [UIView animateWithDuration:0.3 animations:^{
+        self.view.frame = self.view.bounds;
+    }];
 }
 
 @end

@@ -473,9 +473,9 @@
                                                                     else{
                                                                         self.textFieldBuyCash1.text = [NSString stringWithFormat:@"%.2f", [dictVal[@"Current_Balance"]floatValue]];
                                                                         
-                                                                          self.textFieldBuyCash1.text = [NSString stringWithFormat:@"%.2f", [dictVal[@"Current_Balance"]floatValue]];
+                                                                        self.textFieldBuyCash1.text = [GlobalShare checkingNullValues:self.textFieldBuyCash1.text];
                                                                         
-                                                                        self.textFieldSellCash2.text = [NSString stringWithFormat:@"%@", dictVal[@"Current_Balance"]];
+                                                                        self.textFieldSellCash2.text = [NSString stringWithFormat:@"%.2f", [dictVal[@"Current_Balance"] floatValue]];
                                                                         
                                                                           self.textFieldSellCash2.text = [GlobalShare checkingNullValues:self.textFieldSellCash2.text];
                                                                     }

@@ -555,7 +555,7 @@
 "NpX-tk-B2Y.text" = "Day High";
 
 /* Class = "UILabel"; text = "Account"; ObjectID = "Nud-kj-Y7X"; */
-"Nud-kj-Y7X.text" = "Account";
+"Nud-kj-Y7X.text" = "Account Number";
 
 /* Class = "UILabel"; text = "First Name"; ObjectID = "OAz-Ey-cRA"; */
 "OAz-Ey-cRA.text" = "First Name";
@@ -888,7 +888,7 @@
 "bf7-F7-G4l.segmentTitles[1]" = "News";
 
 /* Class = "UILabel"; text = "Validity"; ObjectID = "bk9-Ic-rPZ"; */
-"bk9-Ic-rPZ.text" = "Validity";
+"bk9-Ic-rPZ.text" = "Order Validity";
 
 /* Class = "UILabel"; text = "Value"; ObjectID = "bkZ-tX-0oI"; */
 "bkZ-tX-0oI.text" = "Value";

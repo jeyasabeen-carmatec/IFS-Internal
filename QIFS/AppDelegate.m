@@ -372,12 +372,5 @@
 -(void)methodRunAfterBackground
 {
     NSLog(@"hi");
-    UIWindow *keyWindow = [[UIApplication sharedApplication] keyWindow];
-    UIStoryboard *storyboard = keyWindow.rootViewController.storyboard;
-    ViewController *vc = [storyboard instantiateViewControllerWithIdentifier:@"ViewController"];
-    
-    UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:vc];
-    
-    self.window.rootViewController = navigationController;
-    navigationController.navigationBar.hidden = YES;}
+}
 @end

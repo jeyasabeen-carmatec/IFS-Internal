@@ -556,7 +556,7 @@
 "NpX-tk-B2Y.text" = "أعلى سعر";
 
 /* Class = "UILabel"; text = "الحساب"; ObjectID = "Nud-kj-Y7X"; */
-"Nud-kj-Y7X.text" = "الحساب";
+"Nud-kj-Y7X.text" = "رقم حساب";
 
 /* Class = "UILabel"; text = "First Name"; ObjectID = "OAz-Ey-cRA"; */
 "OAz-Ey-cRA.text" = "First Name";
@@ -886,7 +886,7 @@
 "bf7-F7-G4l.segmentTitles[1]" = "الأخبار";
 
 /* Class = "UILabel"; text = "صلاحية"; ObjectID = "bk9-Ic-rPZ"; */
-"bk9-Ic-rPZ.text" = "صلاحية";
+"bk9-Ic-rPZ.text" = "صلاحية الطلب";
 
 /* Class = "UILabel"; text = "القيمة"; ObjectID = "bkZ-tX-0oI"; */
 "bkZ-tX-0oI.text" = "القيمة";
