@@ -21,7 +21,7 @@
 @property (nonatomic, weak) IBOutlet UIView *summaryView;
 @property (nonatomic, weak) IBOutlet UISegmentedControl *segmentMenu;
 @property (nonatomic, weak) IBOutlet UIActivityIndicatorView *indicatorView;
-@property (nonatomic, strong) NSArray *arrayTimes;
+//@property (nonatomic, strong) NSArray *arrayTimes;
 @property (nonatomic, strong) NSArray *arrayMarketWatch;
 @property (nonatomic, strong) CompanyGraphViewController *graphContentView;
 
@@ -63,16 +63,17 @@
     self.labelSymbol.text = self.labelTitle.text = self.securityId;
    
     self.labelSecurityName.text = self.securityName;
-    self.arrayTimes = @[
-                        @"09:30", @"09:30", @"10:00", @"10:30", @"11:00",
-                        @"11:30", @"12:00", @"12:30", @"13:00", @"13:15"
-                        ];
+//    self.arrayTimes = @[
+//                        @"09:30", @"09:30", @"10:00", @"10:30", @"11:00",
+//                        @"11:30", @"12:00", @"12:30", @"13:00", @"13:15"
+//                        ];
 
     _chartView.backgroundColor = [UIColor colorWithRed:252/255.f green:252/255.f blue:252/255.f alpha:0.7f];
     _chartView.delegate = self;
 //    _chartView.descriptionText = @"";
     _chartView.noDataText = CHART_DATA_UNAVAILABLE;
 //    _chartView.noDataTextDescription = CHART_DATA_UNAVAILABLE;
+    _chartView.chartDescription.enabled = NO;
     
     _chartView.dragEnabled = NO;
     _chartView.pinchZoomEnabled = NO;

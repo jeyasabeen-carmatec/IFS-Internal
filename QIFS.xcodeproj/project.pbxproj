@@ -124,7 +124,6 @@
 		7351BC5520C53CFE00F49E27 /* ActiveOrdersViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7351BC5120C53CFE00F49E27 /* ActiveOrdersViewController.m */; };
 		7351BC5820C53D2000F49E27 /* PortfoliosViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7351BC5720C53D2000F49E27 /* PortfoliosViewController.m */; };
 		7351BC6120C53D3C00F49E27 /* NewOrderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7351BC5920C53D3B00F49E27 /* NewOrderViewController.m */; };
-		7351BC6220C53D3C00F49E27 /* CalculatorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7351BC5D20C53D3C00F49E27 /* CalculatorViewController.m */; };
 		7351BC6420C53D3C00F49E27 /* OrderConfirmViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7351BC6020C53D3C00F49E27 /* OrderConfirmViewController.m */; };
 		7351BC6720C53DBB00F49E27 /* GlobalShare.m in Sources */ = {isa = PBXBuildFile; fileRef = 7351BC6520C53DBB00F49E27 /* GlobalShare.m */; };
 		7351BC6C20C5416F00F49E27 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7351BC6E20C5416F00F49E27 /* Main.storyboard */; };
@@ -144,6 +143,7 @@
 		77E07E6220D1313C00706616 /* QEGraphViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 77E07E6120D1313C00706616 /* QEGraphViewController.m */; };
 		77E07E6620D131B300706616 /* StocksOverviewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 77E07E6520D131B300706616 /* StocksOverviewViewController.m */; };
 		77F2506720CA465000AF27C0 /* SectorsGraphViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 77F2506620CA465000AF27C0 /* SectorsGraphViewController.m */; };
+		D02BD3E520DCB2130075874E /* CalculatorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D02BD3E420DCB2120075874E /* CalculatorViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -422,7 +422,6 @@
 		7351BC5A20C53D3B00F49E27 /* MarketDepthViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MarketDepthViewController.h; sourceTree = "<group>"; };
 		7351BC5B20C53D3B00F49E27 /* OrderConfirmViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrderConfirmViewController.h; sourceTree = "<group>"; };
 		7351BC5C20C53D3B00F49E27 /* CalculatorViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CalculatorViewController.h; sourceTree = "<group>"; };
-		7351BC5D20C53D3C00F49E27 /* CalculatorViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CalculatorViewController.m; sourceTree = "<group>"; };
 		7351BC5F20C53D3C00F49E27 /* NewOrderViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewOrderViewController.h; sourceTree = "<group>"; };
 		7351BC6020C53D3C00F49E27 /* OrderConfirmViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrderConfirmViewController.m; sourceTree = "<group>"; };
 		7351BC6520C53DBB00F49E27 /* GlobalShare.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GlobalShare.m; sourceTree = "<group>"; };
@@ -448,6 +447,7 @@
 		77E07E6120D1313C00706616 /* QEGraphViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QEGraphViewController.m; sourceTree = "<group>"; };
 		77E07E6520D131B300706616 /* StocksOverviewViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StocksOverviewViewController.m; sourceTree = "<group>"; };
 		77F2506620CA465000AF27C0 /* SectorsGraphViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SectorsGraphViewController.m; sourceTree = "<group>"; };
+		D02BD3E420DCB2120075874E /* CalculatorViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CalculatorViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -860,7 +860,7 @@
 			isa = PBXGroup;
 			children = (
 				7351BC5C20C53D3B00F49E27 /* CalculatorViewController.h */,
-				7351BC5D20C53D3C00F49E27 /* CalculatorViewController.m */,
+				D02BD3E420DCB2120075874E /* CalculatorViewController.m */,
 				7351BC5A20C53D3B00F49E27 /* MarketDepthViewController.h */,
 				770BA38C20C959FB001B7ACA /* MarketDepthViewController.m */,
 				7351BC5F20C53D3C00F49E27 /* NewOrderViewController.h */,
@@ -1062,7 +1062,8 @@
 				TargetAttributes = {
 					5108D32D1D6EDEB100D23F6E = {
 						CreatedOnToolsVersion = 7.3.1;
-						DevelopmentTeam = KF8S4V7VM6;
+						DevelopmentTeam = 4MCGAH3G26;
+						ProvisioningStyle = Manual;
 					};
 					514382A61D1D82D400E1B739 = {
 						CreatedOnToolsVersion = 7.3.1;
@@ -1091,8 +1092,8 @@
 			);
 			projectRoot = "";
 			targets = (
-				514382A61D1D82D400E1B739 /* QIFS */,
 				5108D32D1D6EDEB100D23F6E /* QIFSToday */,
+				514382A61D1D82D400E1B739 /* QIFS */,
 			);
 		};
 /* End PBXProject section */
@@ -1229,7 +1230,6 @@
 				515AF6421D2E50B100FF837E /* BarView.m in Sources */,
 				5102EDE01D494827005B04F8 /* FavoriteStocksCell.m in Sources */,
 				514382AC1D1D82D500E1B739 /* main.m in Sources */,
-				7351BC6220C53D3C00F49E27 /* CalculatorViewController.m in Sources */,
 				51829C161D269F2900DF1C73 /* XLPagerTabStripViewController.m in Sources */,
 				512379361D5667ED0096C0E2 /* ActiveAlertsCell.m in Sources */,
 				51332C3E1DE8AB97001536CD /* FMDatabasePool.m in Sources */,
@@ -1273,6 +1273,7 @@
 				7351BC5520C53CFE00F49E27 /* ActiveOrdersViewController.m in Sources */,
 				51829C151D269F2900DF1C73 /* XLButtonBarPagerTabStripViewController.m in Sources */,
 				512379191D5614110096C0E2 /* StockNewsCell.m in Sources */,
+				D02BD3E520DCB2130075874E /* CalculatorViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1343,13 +1344,16 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = 4MCGAH3G26;
 				INFOPLIST_FILE = QIFSToday/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.ifs.mobiletrading.QIFSToday;
+				PRODUCT_BUNDLE_IDENTIFIER = com.carmatec.ifs;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "32870f70-e90c-410b-a1b3-6d6e21e00b94";
+				PROVISIONING_PROFILE_SPECIFIER = "IFS ADHOC";
 				SKIP_INSTALL = YES;
 			};
 			name = Debug;
@@ -1358,13 +1362,16 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: ISLAMIC FINANCIAL SECURITIES CO. (MU44929JUZ)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = 4MCGAH3G26;
 				INFOPLIST_FILE = QIFSToday/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.ifs.mobiletrading.QIFSToday;
+				PRODUCT_BUNDLE_IDENTIFIER = com.carmatec.ifs;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "736dc37d-1ff9-4646-a12c-425809aab758";
+				PROVISIONING_PROFILE = "32870f70-e90c-410b-a1b3-6d6e21e00b94";
+				PROVISIONING_PROFILE_SPECIFIER = "IFS ADHOC";
 				SKIP_INSTALL = YES;
 			};
 			name = Release;

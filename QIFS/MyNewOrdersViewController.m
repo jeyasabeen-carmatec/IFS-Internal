@@ -28,7 +28,7 @@ NSString *const kMyNewOrdersOptionsViewCellIdentifier = @"OptionsViewCell";
 #define DEGREES_TO_RADIANS(degrees)((M_PI * degrees)/180)
 #define TEST_USE_MG_DELEGATE 1
 
-@interface MyNewOrdersViewController () <tabBarManageOrderDelegate,tapNewOrderDelegate, tabBarManageCashDelegate, NSURLSessionDelegate>{
+@interface MyNewOrdersViewController () <tabBarManageOrderDelegate,tapNewOrderDelegate, tabBarManageCashDelegate, NSURLSessionDelegate,UITextFieldDelegate>{
     LoginView *loginVw;
     UIView *overLayView;
 }
@@ -96,110 +96,47 @@ NSString *const kMyNewOrdersOptionsViewCellIdentifier = @"OptionsViewCell";
     overLayView.clipsToBounds = YES;
     overLayView.hidden = YES;
     [self.view addSubview:overLayView];
+    [self menuDataSetUp];
 
-    NSString *loginStatus;
-    if ([GlobalShare isUserLogedIn]) {
-        
-        loginStatus = NSLocalizedString(@"Sign In", @"Sign In");
-        
-    }
-    else{
-        loginStatus = NSLocalizedString(@"Sign Out", @"Sign Out");
-    }
-    self.arrayMenu = @[
-                       @{
-                           @"menu_title": NSLocalizedString(@"Cash Position", @"Cash Position"),
-                           @"menu_image": @"icon_cash_position"
-                           },
+//    NSString *loginStatus;
+//    if ([GlobalShare isUserLogedIn]) {
+//
+//        loginStatus = NSLocalizedString(@"Sign In", @"Sign In");
+//
+//    }
+//    else{
+//        loginStatus = NSLocalizedString(@"Sign Out", @"Sign Out");
+//    }
+//    self.arrayMenu = @[
 //                       @{
-//                           @"menu_title": NSLocalizedString(@"My Orders History", @"My Orders History"),
-//                           @"menu_image": @"icon_my_order_history"
+//                           @"menu_title": NSLocalizedString(@"Cash Position", @"Cash Position"),
+//                           @"menu_image": @"icon_cash_position"
 //                           },
-                       @{
-                           @"menu_title": NSLocalizedString(@"Contact Us", @"Contact Us"),
-                           @"menu_image": @"icon_contact_us"
-                           },
-                       @{
-                           @"menu_title": NSLocalizedString(@"Settings", @"Settings"),
-                           @"menu_image": @"icon_settings"
-                           },
-                       @{
-                           @"menu_title": loginStatus,
-                           @"menu_image": @"icon_signout"
-                           }
-                       ];
+////                       @{
+////                           @"menu_title": NSLocalizedString(@"My Orders History", @"My Orders History"),
+////                           @"menu_image": @"icon_my_order_history"
+////                           },
+//                       @{
+//                           @"menu_title": NSLocalizedString(@"Contact Us", @"Contact Us"),
+//                           @"menu_image": @"icon_contact_us"
+//                           },
+//                       @{
+//                           @"menu_title": NSLocalizedString(@"Settings", @"Settings"),
+//                           @"menu_image": @"icon_settings"
+//                           },
+//                       @{
+//                           @"menu_title": loginStatus,
+//                           @"menu_image": @"icon_signout"
+//                           }
+//                       ];
+    
+    
 
 //    [self.tableViewOptionMenu setSeparatorInset:UIEdgeInsetsZero];
 //    [self.tableViewOptionMenu setLayoutMargins:UIEdgeInsetsZero];
     self.tableViewOptionMenu.scrollEnabled = NO;
 
-//    self.arrayMyOrders = @[
-//                         @{
-//                             @"Symbol": @"CMCSA",
-//                             @"Name": @"Comcast Corp",
-//                             @"Order": @"Buy",
-//                             @"Price": @"59.47",
-//                             @"OrgQty": @"12,234",
-//                             @"Duration": @"17/07/2016",
-//                             @"ExpCanDate": @"17/07/2016 11:57:23"
-//                             },
-//                         @{
-//                             @"Symbol": @"GOOGL",
-//                             @"Name": @"Google Class A",
-//                             @"Order": @"Buy",
-//                             @"Price": @"566.24",
-//                             @"OrgQty": @"12",
-//                             @"Duration": @"Week",
-//                             @"ExpCanDate": @""
-//                             },
-//                         @{
-//                             @"Symbol": @"FB",
-//                             @"Name": @"Facebook",
-//                             @"Order": @"Sell",
-//                             @"Price": @"83.38",
-//                             @"OrgQty": @"12",
-//                             @"Duration": @"Month",
-//                             @"ExpCanDate": @"17/07/2016 13:15:15"
-//                             },
-//                         @{
-//                             @"Symbol": @"AAPL",
-//                             @"Name": @"Apple",
-//                             @"Order": @"Sell",
-//                             @"Price": @"93.38",
-//                             @"OrgQty": @"12",
-//                             @"Duration": @"Day",
-//                             @"ExpCanDate": @""
-//                             }
-//                         ];
-    
-//    self.arrayOrdersCount = @[
-//                              @{
-//                                  @"Status": @"A",
-//                                  @"Value": @"2"
-//                                  },
-//                              @{
-//                                  @"Status": @"B",
-//                                  @"Value": @"1"
-//                                  },
-//                              @{
-//                                  @"Status": @"C",
-//                                  @"Value": @"1"
-//                                  }
-//                              ];
-//
-//    float angleToStart = 0, angleToEnd = 0;
-//    float total = 0;
-//    for(NSDictionary *dic in self.arrayOrdersCount) {
-//        total = total + [dic[@"Value"] floatValue];
-//    }
-//    for(NSDictionary *dic in self.arrayOrdersCount) {
-//        float factor = total/[dic[@"Value"] floatValue];
-//        angleToStart = angleToEnd;
-//        angleToEnd = (360/factor) + angleToStart;
-//        
-//        [self createCircleWithStartAngle:DEGREES_TO_RADIANS(angleToStart) endAngle:DEGREES_TO_RADIANS(angleToEnd) name:dic[@"Status"] view:_viewOrders];
-//    }
-    
+
     UIFont *font = [UIFont systemFontOfSize:12.0f];
     NSDictionary *attributes = [NSDictionary dictionaryWithObject:font
                                                            forKey:NSFontAttributeName];
@@ -296,6 +233,44 @@ NSString *const kMyNewOrdersOptionsViewCellIdentifier = @"OptionsViewCell";
     }
     
 }
+
+#pragma mark Menu Data SetUp...
+-(void)menuDataSetUp{
+    NSString *loginStatus;
+    if ([GlobalShare isUserLogedIn]) {
+        
+        loginStatus = NSLocalizedString(@"Sign In", @"Sign In");
+        
+    }
+    else{
+        loginStatus = NSLocalizedString(@"Sign Out", @"Sign Out");
+    }
+    
+    self.arrayMenu = @[
+                       @{
+                           @"menu_title": NSLocalizedString(@"Cash Position", @"Cash Position"),
+                           @"menu_image": @"icon_cash_position"
+                           },
+                       //                       @{
+                       //                           @"menu_title": NSLocalizedString(@"My Orders History", @"My Orders History"),
+                       //                           @"menu_image": @"icon_my_order_history"
+                       //                           },
+                       @{
+                           @"menu_title": NSLocalizedString(@"Contact Us", @"Contact Us"),
+                           @"menu_image": @"icon_contact_us"
+                           },
+                       @{
+                           @"menu_title": NSLocalizedString(@"Settings", @"Settings"),
+                           @"menu_image": @"icon_settings"
+                           },
+                       @{
+                           @"menu_title": loginStatus,
+                           @"menu_image": @"icon_signout"
+                           }
+                       ];
+    [self.tableViewOptionMenu reloadData];
+}
+
 
 #pragma mark - Button actions
 -(void)cancelButtonAction{
@@ -508,8 +483,9 @@ NSString *const kMyNewOrdersOptionsViewCellIdentifier = @"OptionsViewCell";
 -(BOOL)verifyUserLogin:(NSString *)stringUserName andPassword:(NSString*)stringPassword{
     @try {
         
-        
+        loginVw.hidden = YES;
         [loginVw removeFromSuperview];
+        
         overLayView.hidden = YES;
         
         NSURLSessionConfiguration *defaultConfigObject = [NSURLSessionConfiguration defaultSessionConfiguration];
@@ -536,6 +512,8 @@ NSString *const kMyNewOrdersOptionsViewCellIdentifier = @"OptionsViewCell";
                                                                NSString *strToken = [returnedDict objectForKey:@"result"];
                                                                [[NSUserDefaults standardUserDefaults] setObject:strToken forKey:@"ssckey"];
                                                                [[NSUserDefaults standardUserDefaults] synchronize];
+                                                               [self menuDataSetUp];
+                                                               
                                                                [self viewWillAppear:YES];
                                                                
                                                                
@@ -1370,6 +1348,13 @@ NSString *const kMyNewOrdersOptionsViewCellIdentifier = @"OptionsViewCell";
     self.visibleResults = [self.allResults filteredArrayUsingPredicate:filterPredicate];
     
     [self.tableResults reloadData];
+}
+
+#pragma mark - UITextField Delegate
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField {
+    [textField resignFirstResponder];
+    return YES;
 }
 
 @end

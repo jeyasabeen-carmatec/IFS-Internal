@@ -4,6 +4,7 @@
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14086"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -58,7 +59,7 @@
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <textInputTraits key="textInputTraits"/>
                 </textField>
-                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="bezel" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="LqQ-B2-USC">
+                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="bezel" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="LqQ-B2-USC">
                     <rect key="frame" x="93" y="107" width="192" height="30"/>
                     <color key="tintColor" red="0.98039215690000003" green="0.52941176469999995" blue="0.15686274510000001" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="textColor"/>
@@ -66,7 +67,7 @@
                     <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                 </textField>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CUD-hx-n5u">
-                    <rect key="frame" x="16" y="167" width="102" height="30"/>
+                    <rect key="frame" x="16" y="167" width="124" height="30"/>
                     <color key="backgroundColor" red="0.98039215690000003" green="0.52941176469999995" blue="0.15686274510000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
                         <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="102" id="1SE-OQ-vhT"/>
@@ -78,7 +79,7 @@
                     </state>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="e7q-f7-Yd1">
-                    <rect key="frame" x="173" y="167" width="102" height="30"/>
+                    <rect key="frame" x="160" y="167" width="124" height="30"/>
                     <color key="backgroundColor" red="0.98039215690000003" green="0.52941176469999995" blue="0.15686274510000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="13"/>
                     <state key="normal" title="Cancel">
@@ -88,9 +89,10 @@
             </subviews>
             <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
             <constraints>
+                <constraint firstItem="e7q-f7-Yd1" firstAttribute="leading" secondItem="CUD-hx-n5u" secondAttribute="trailing" constant="20" id="0ep-ry-Sss"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="top" secondItem="qbQ-u3-Gmd" secondAttribute="bottom" constant="-31" id="5lQ-Fq-XgX"/>
                 <constraint firstItem="LqQ-B2-USC" firstAttribute="top" secondItem="20T-dn-t8j" secondAttribute="top" id="5uo-Ym-FkG"/>
-                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="e7q-f7-Yd1" secondAttribute="trailing" constant="25" id="7vR-03-euR"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="e7q-f7-Yd1" secondAttribute="trailing" constant="16" id="7vR-03-euR"/>
                 <constraint firstItem="e7q-f7-Yd1" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="iN0-l3-epB" secondAttribute="leading" constant="20" symbolic="YES" id="9y8-NM-vh5"/>
                 <constraint firstItem="qbQ-u3-Gmd" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="AEi-we-R8U"/>
                 <constraint firstItem="e7q-f7-Yd1" firstAttribute="height" secondItem="CUD-hx-n5u" secondAttribute="height" id="EXj-mM-rfM"/>
@@ -105,7 +107,6 @@
                 <constraint firstItem="LgU-rk-4Nh" firstAttribute="top" secondItem="dLJ-N9-PD0" secondAttribute="top" id="faU-tL-g3d"/>
                 <constraint firstItem="dLJ-N9-PD0" firstAttribute="top" secondItem="qbQ-u3-Gmd" secondAttribute="bottom" constant="27" id="kMn-x3-jdu"/>
                 <constraint firstItem="CUD-hx-n5u" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="16" id="n5B-7d-mKY"/>
-                <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="CUD-hx-n5u" secondAttribute="trailing" constant="20" symbolic="YES" id="nkN-4c-1WI"/>
                 <constraint firstItem="dLJ-N9-PD0" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="8" id="nsh-hO-KGU"/>
                 <constraint firstItem="CUD-hx-n5u" firstAttribute="top" secondItem="20T-dn-t8j" secondAttribute="bottom" constant="30" id="ob6-Lm-HKT"/>
                 <constraint firstItem="20T-dn-t8j" firstAttribute="trailing" secondItem="dLJ-N9-PD0" secondAttribute="trailing" id="yjR-N1-eDv"/>

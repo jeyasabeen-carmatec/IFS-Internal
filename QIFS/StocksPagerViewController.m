@@ -84,38 +84,38 @@ NSString *const kStocksOptionsViewCellIdentifier = @"OptionsViewCell";
     [self.searchResults setPlaceholder:NSLocalizedString(@"Symbol/Company Name", @"Symbol/Company Name")];
     self.tableResults.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
 
-    NSString *loginStatus;
-    if ([GlobalShare isUserLogedIn]) {
-        
-        loginStatus = NSLocalizedString(@"Sign In", @"Sign In");
-        
-    }
-    else{
-        loginStatus = NSLocalizedString(@"Sign Out", @"Sign Out");
-    }
-    
-    self.arrayMenu = @[
-                       @{
-                           @"menu_title": NSLocalizedString(@"Cash Position", @"Cash Position"),
-                           @"menu_image": @"icon_cash_position"
-                           },
-                       //                       @{
-                       //                           @"menu_title": NSLocalizedString(@"My Orders History", @"My Orders History"),
-                       //                           @"menu_image": @"icon_my_order_history"
-                       //                           },
-                       @{
-                           @"menu_title": NSLocalizedString(@"Contact Us", @"Contact Us"),
-                           @"menu_image": @"icon_contact_us"
-                           },
-                       @{
-                           @"menu_title": NSLocalizedString(@"Settings", @"Settings"),
-                           @"menu_image": @"icon_settings"
-                           },
-                       @{
-                           @"menu_title": loginStatus,
-                           @"menu_image": @"icon_signout"
-                           }
-                       ];
+//    NSString *loginStatus;
+//    if ([GlobalShare isUserLogedIn]) {
+//
+//        loginStatus = NSLocalizedString(@"Sign In", @"Sign In");
+//
+//    }
+//    else{
+//        loginStatus = NSLocalizedString(@"Sign Out", @"Sign Out");
+//    }
+//
+//    self.arrayMenu = @[
+//                       @{
+//                           @"menu_title": NSLocalizedString(@"Cash Position", @"Cash Position"),
+//                           @"menu_image": @"icon_cash_position"
+//                           },
+//                       //                       @{
+//                       //                           @"menu_title": NSLocalizedString(@"My Orders History", @"My Orders History"),
+//                       //                           @"menu_image": @"icon_my_order_history"
+//                       //                           },
+//                       @{
+//                           @"menu_title": NSLocalizedString(@"Contact Us", @"Contact Us"),
+//                           @"menu_image": @"icon_contact_us"
+//                           },
+//                       @{
+//                           @"menu_title": NSLocalizedString(@"Settings", @"Settings"),
+//                           @"menu_image": @"icon_settings"
+//                           },
+//                       @{
+//                           @"menu_title": loginStatus,
+//                           @"menu_image": @"icon_signout"
+//                           }
+//                       ];
 
 //    [self.tableViewOptionMenu setSeparatorInset:UIEdgeInsetsZero];
 //    [self.tableViewOptionMenu setLayoutMargins:UIEdgeInsetsZero];
@@ -278,11 +278,26 @@ NSString *const kStocksOptionsViewCellIdentifier = @"OptionsViewCell";
     }
      //_pageMenu = [[CAPSPageMenu alloc] initWithViewControllers:controllerArray frame:CGRectMake(0.0, 64.0, self.view.frame.size.width, self.view.frame.size.height-49-64) options:parameters index:passIndex];
     
-    _pageMenu = [[CAPSPageMenu alloc] initWithViewControllers:controllerArray frame:CGRectMake(0.0, _labelTitle.frame.origin.y+_labelTitle.frame.size.height+20, self.view.frame.size.width, self.view.frame.size.height-(_labelTitle.frame.origin.y+_labelTitle.frame.size.height+20)-49) options:parameters index:passIndex];//labelTitle
     
-    NSLog(@"..... %f",_labelTitle.frame.origin.y+_labelTitle.frame.size.height+10);
-    NSLog(@"Height %f",self.view.frame.size.height-(_labelTitle.frame.origin.y+_labelTitle.frame.size.height+30)-49);
-    //NSLog(@"y %f",_labelTitle.frame.origin.y);
+    
+    if([[UIDevice currentDevice]userInterfaceIdiom]==UIUserInterfaceIdiomPhone) {
+        
+        switch ((int)[[UIScreen mainScreen] nativeBounds].size.height) {
+            case 2436:
+                _pageMenu = [[CAPSPageMenu alloc] initWithViewControllers:controllerArray frame:CGRectMake(0.0, _labelTitle.frame.origin.y+_labelTitle.frame.size.height+20, self.view.frame.size.width, self.view.frame.size.height-(_labelTitle.frame.origin.y+_labelTitle.frame.size.height+20)-80) options:parameters index:passIndex];//labelTitle
+                
+                printf("iPhone X");
+                break;
+            default:
+                _pageMenu = [[CAPSPageMenu alloc] initWithViewControllers:controllerArray frame:CGRectMake(0.0, _labelTitle.frame.origin.y+_labelTitle.frame.size.height+20, self.view.frame.size.width, self.view.frame.size.height-(_labelTitle.frame.origin.y+_labelTitle.frame.size.height+20)-49) options:parameters index:passIndex];//labelTitle
+                printf("unknown");
+        }
+    }
+    
+    //_pageMenu = [[CAPSPageMenu alloc] initWithViewControllers:controllerArray frame:CGRectMake(0.0, _labelTitle.frame.origin.y+_labelTitle.frame.size.height+20, self.view.frame.size.width, self.view.frame.size.height-(_labelTitle.frame.origin.y+_labelTitle.frame.size.height+20)-49) options:parameters index:passIndex];//labelTitle
+    
+//    NSLog(@"..... %f",_labelTitle.frame.origin.y+_labelTitle.frame.size.height+10);
+//    NSLog(@"Height %f",self.view.frame.size.height-(_labelTitle.frame.origin.y+_labelTitle.frame.size.height+30)-49);
 
     
     
@@ -298,6 +313,10 @@ NSString *const kStocksOptionsViewCellIdentifier = @"OptionsViewCell";
 //    if (_orientation == UIDeviceOrientationUnknown || _orientation == UIDeviceOrientationFaceUp || _orientation == UIDeviceOrientationFaceDown) {
 //        _orientation = UIDeviceOrientationPortrait;
 //    }
+    
+    
+    [self menuDataSetUp];
+    
     [super viewWillAppear:YES];
     
     if(globalShare.dictValues == nil)
@@ -507,6 +526,46 @@ NSString *const kStocksOptionsViewCellIdentifier = @"OptionsViewCell";
     }
 }
 
+
+#pragma mark- Menu Data SetUp...
+-(void)menuDataSetUp{
+    NSString *loginStatus;
+    if ([GlobalShare isUserLogedIn]) {
+        
+        loginStatus = NSLocalizedString(@"Sign In", @"Sign In");
+        
+    }
+    else{
+        loginStatus = NSLocalizedString(@"Sign Out", @"Sign Out");
+    }
+    
+    self.arrayMenu = @[
+                       @{
+                           @"menu_title": NSLocalizedString(@"Cash Position", @"Cash Position"),
+                           @"menu_image": @"icon_cash_position"
+                           },
+                       //                       @{
+                       //                           @"menu_title": NSLocalizedString(@"My Orders History", @"My Orders History"),
+                       //                           @"menu_image": @"icon_my_order_history"
+                       //                           },
+                       @{
+                           @"menu_title": NSLocalizedString(@"Contact Us", @"Contact Us"),
+                           @"menu_image": @"icon_contact_us"
+                           },
+                       @{
+                           @"menu_title": NSLocalizedString(@"Settings", @"Settings"),
+                           @"menu_image": @"icon_settings"
+                           },
+                       @{
+                           @"menu_title": loginStatus,
+                           @"menu_image": @"icon_signout"
+                           }
+                       ];
+    
+    [self.tableViewOptionMenu reloadData];
+}
+
+
 #pragma mark - Common actions
 
 -(void) getSystemCodes {
@@ -709,7 +768,6 @@ NSString *const kStocksOptionsViewCellIdentifier = @"OptionsViewCell";
 - (void)callBackSuperviewFromCash {
     self.tabBarController.tabBar.hidden = NO;
 }
-
 /*
 #pragma mark - Navigation
 

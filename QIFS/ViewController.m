@@ -66,7 +66,7 @@
     }
     
     _textFieldUserName.text = userName;//@"1000000321";
-    _textFieldPassword.text = @"ssc@123";
+    //_textFieldPassword.text = @"ssc@123";
     
     // Do any additional setup after loading the view, typically from a nib.
     globalShare = [GlobalShare sharedInstance];
@@ -83,6 +83,8 @@
     [super viewWillAppear:YES];
     
     globalShare.strNewOrderFlow = @"";
+    _textFieldPassword.text = nil ;
+    
 //    [self.textFieldUserName setText:@"1000015535"];
 //    [self.textFieldPassword setText:@"123456"];
 //    [self.textFieldUserName setText:@"1000555647"];

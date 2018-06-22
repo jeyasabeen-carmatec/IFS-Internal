@@ -91,7 +91,7 @@ NSString *const kMDOrderAskCellIdentifier = @"MDOrderAskCell";
     self.tableViewOrderBid.scrollEnabled = NO;
     self.tableViewOrderAsk.scrollEnabled = NO;
     
-    overLayView = [[UIView alloc] initWithFrame:CGRectMake(0, self.navigationController.navigationBar.frame.origin.y, self.view.frame.size.width, self.view.frame.size.height)];
+    overLayView = [[UIView alloc] initWithFrame:CGRectMake(0, self.navigationController.navigationBar.frame.origin.y, self.view.frame.size.width, self.view.frame.size.height+100)];
     overLayView.backgroundColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.5];
     overLayView.clipsToBounds = YES;
     overLayView.hidden = YES;

@@ -31,6 +31,7 @@ NSString *const kNewOrderOptionsViewCellIdentifier = @"OptionsViewCell";
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
 @property (weak, nonatomic) IBOutlet UILabel *limitUPLabel;
 @property (weak, nonatomic) IBOutlet UILabel *limitDowmLabel;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *imageHeight;
 
 
 @property (nonatomic, weak) IBOutlet UIButton *buttonTransaction;
@@ -149,6 +150,20 @@ NSString *const kNewOrderOptionsViewCellIdentifier = @"OptionsViewCell";
     [self.view addSubview:overLayView];
     
     _scrollView.translatesAutoresizingMaskIntoConstraints = YES;
+    
+//    if([[UIDevice currentDevice]userInterfaceIdiom]==UIUserInterfaceIdiomPhone) {
+//        
+//        switch ((int)[[UIScreen mainScreen] nativeBounds].size.height) {
+//            case 2436:
+//                self.imageHeight.constant = 150;
+//                printf("iPhone X");
+//                break;
+//            default:
+//                
+//                printf("unknown");
+//        }
+//    }
+//    [self viewDidLayoutSubviews];
 
     // Do any additional setup after loading the view from its nib.
     globalShare = [GlobalShare sharedInstance];
@@ -157,72 +172,44 @@ NSString *const kNewOrderOptionsViewCellIdentifier = @"OptionsViewCell";
     [self.searchResults setPlaceholder:NSLocalizedString(@"Symbol/Company Name", @"Symbol/Company Name")];
     self.tableResults.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
     [self.tableResults setHidden:YES];
+    [self menuDataSetUp];
 
-    NSString *loginStatus;
-    if ([GlobalShare isUserLogedIn]) {
-       
-    loginStatus = NSLocalizedString(@"Sign In", @"Sign In");
-
-    }
-    else{
-        loginStatus = NSLocalizedString(@"Sign Out", @"Sign Out");
-    }
-    
-    self.arrayMenu = @[
-                       @{
-                           @"menu_title": NSLocalizedString(@"Cash Position", @"Cash Position"),
-                           @"menu_image": @"icon_cash_position"
-                           },
+//    NSString *loginStatus;
+//    if ([GlobalShare isUserLogedIn]) {
+//
+//    loginStatus = NSLocalizedString(@"Sign In", @"Sign In");
+//
+//    }
+//    else{
+//        loginStatus = NSLocalizedString(@"Sign Out", @"Sign Out");
+//    }
+//
+//    self.arrayMenu = @[
 //                       @{
-//                           @"menu_title": NSLocalizedString(@"My Orders History", @"My Orders History"),
-//                           @"menu_image": @"icon_my_order_history"
+//                           @"menu_title": NSLocalizedString(@"Cash Position", @"Cash Position"),
+//                           @"menu_image": @"icon_cash_position"
 //                           },
-                       @{
-                           @"menu_title": NSLocalizedString(@"Contact Us", @"Contact Us"),
-                           @"menu_image": @"icon_contact_us"
-                           },
-                       @{
-                           @"menu_title": NSLocalizedString(@"Settings", @"Settings"),
-                           @"menu_image": @"icon_settings"
-                           },
-                       @{
-                           @"menu_title": loginStatus,
-                           @"menu_image": @"icon_signout"
-                           }
-                       ];
+////                       @{
+////                           @"menu_title": NSLocalizedString(@"My Orders History", @"My Orders History"),
+////                           @"menu_image": @"icon_my_order_history"
+////                           },
+//                       @{
+//                           @"menu_title": NSLocalizedString(@"Contact Us", @"Contact Us"),
+//                           @"menu_image": @"icon_contact_us"
+//                           },
+//                       @{
+//                           @"menu_title": NSLocalizedString(@"Settings", @"Settings"),
+//                           @"menu_image": @"icon_settings"
+//                           },
+//                       @{
+//                           @"menu_title": loginStatus,
+//                           @"menu_image": @"icon_signout"
+//                           }
+//                       ];
 
-//    [self.tableViewOptionMenu setSeparatorInset:UIEdgeInsetsZero];
-//    [self.tableViewOptionMenu setLayoutMargins:UIEdgeInsetsZero];
     self.tableViewOptionMenu.scrollEnabled = NO;
 
-//    self.transactionId = self.orderTypeId = self.durationId = 0;
 
-//    self.allResults = @[
-//                        @{
-//                            @"Symbol": @"CMCSA",
-//                            @"Name": @"Comcast Corp",
-//                            @"Value": @"59.47"
-//                            },
-//                        @{
-//                            @"Symbol": @"GOOGL",
-//                            @"Name": @"Google Class A",
-//                            @"Value": @"566.24"
-//                            },
-//                        @{
-//                            @"Symbol": @"AAPL",
-//                            @"Name": @"Apple",
-//                            @"Value": @"93.59"
-//                            },
-//                        @{
-//                            @"Symbol": @"FB",
-//                            @"Name": @"Facebook",
-//                            @"Value": @"83.38"
-//                            }
-//                        ];
-
-//    _pickerData1 = @[@"Buy", @"Sell"];
-//    _pickerData2 = @[@"Limit", @"Market", @"Limit Up", @"Limit Down"];
-//    _pickerData3 = @[@"Same Day", @"Good Till Week", @"Good Till Month", @"GTD"];
 
     self.picker = [[UIPickerView alloc] initWithFrame:CGRectMake(0, 1000, [[UIScreen mainScreen] bounds].size.width, 162)];
     self.picker.delegate = self;
@@ -524,6 +511,44 @@ NSString *const kNewOrderOptionsViewCellIdentifier = @"OptionsViewCell";
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
+
+#pragma mark Menu Data SetUp...
+-(void)menuDataSetUp{
+    NSString *loginStatus;
+    if ([GlobalShare isUserLogedIn]) {
+        
+        loginStatus = NSLocalizedString(@"Sign In", @"Sign In");
+        
+    }
+    else{
+        loginStatus = NSLocalizedString(@"Sign Out", @"Sign Out");
+    }
+    
+    self.arrayMenu = @[
+                       @{
+                           @"menu_title": NSLocalizedString(@"Cash Position", @"Cash Position"),
+                           @"menu_image": @"icon_cash_position"
+                           },
+                       //                       @{
+                       //                           @"menu_title": NSLocalizedString(@"My Orders History", @"My Orders History"),
+                       //                           @"menu_image": @"icon_my_order_history"
+                       //                           },
+                       @{
+                           @"menu_title": NSLocalizedString(@"Contact Us", @"Contact Us"),
+                           @"menu_image": @"icon_contact_us"
+                           },
+                       @{
+                           @"menu_title": NSLocalizedString(@"Settings", @"Settings"),
+                           @"menu_image": @"icon_settings"
+                           },
+                       @{
+                           @"menu_title": loginStatus,
+                           @"menu_image": @"icon_signout"
+                           }
+                       ];
+}
+
 
 #pragma mark Loading Login PopUp when guest User
 /*
@@ -1433,8 +1458,8 @@ NSString *const kNewOrderOptionsViewCellIdentifier = @"OptionsViewCell";
 -(BOOL)verifyUserLogin:(NSString *)stringUserName andPassword:(NSString*)stringPassword{
     @try {
         
-        
         [loginVw removeFromSuperview];
+        loginVw.hidden = YES;
         overLayView.hidden = YES;
         
         NSURLSessionConfiguration *defaultConfigObject = [NSURLSessionConfiguration defaultSessionConfiguration];
@@ -1461,6 +1486,8 @@ NSString *const kNewOrderOptionsViewCellIdentifier = @"OptionsViewCell";
                                                                NSString *strToken = [returnedDict objectForKey:@"result"];
                                                                [[NSUserDefaults standardUserDefaults] setObject:strToken forKey:@"ssckey"];
                                                                [[NSUserDefaults standardUserDefaults] synchronize];
+                                                               [self menuDataSetUp];
+                                                               [self.tableViewOptionMenu reloadData];
                                                                [self viewWillAppear:YES];
                                                                
                                                                

@@ -23,7 +23,7 @@ NSString *const kStockNewsCellIdentifier = @"StockNewsCell";
 @property (nonatomic, weak) IBOutlet UITableView *tableViewNews;
 @property (nonatomic, weak) IBOutlet UIActivityIndicatorView *indicatorView;
 
-@property (nonatomic, strong) NSArray *arrayTimes;
+//@property (nonatomic, strong) NSArray *arrayTimes;
 @property (nonatomic, strong) NSArray *arrayNews;
 @property (nonatomic, strong) NSArray *arrayMarketIndex;
 
@@ -55,15 +55,15 @@ NSString *const kStockNewsCellIdentifier = @"StockNewsCell";
     globalShare = [GlobalShare sharedInstance];
     [self clearMarketIndex];
 
-    self.arrayTimes = @[
-                        @"09:30", @"09:30", @"10:00", @"10:30", @"11:00",
-                        @"11:30", @"12:00", @"12:30", @"13:00", @"13:15"
-                        ];
+//    self.arrayTimes = @[
+//                        @"09:30", @"09:30", @"10:00", @"10:30", @"11:00",
+//                        @"11:30", @"12:00", @"12:30", @"13:00", @"13:15"
+//                        ];
 
     _chartView.backgroundColor = [UIColor colorWithRed:252/255.f green:252/255.f blue:252/255.f alpha:0.7f];
     _chartView.delegate = self;
 //    _chartView.descriptionText = @"";
-    _chartView.chartDescription.enabled = NO;
+    //_chartView.chartDescription.enabled = NO;
     _chartView.noDataText = CHART_DATA_UNAVAILABLE;
 //    _chartView.noDataTextDescription = CHART_DATA_UNAVAILABLE;
     
@@ -342,6 +342,8 @@ NSString *const kStockNewsCellIdentifier = @"StockNewsCell";
     
     //    NSString *strToken = [[NSUserDefaults standardUserDefaults] stringForKey:@"ssckey"];
     NSString *strToken = [NSString stringWithFormat:@"%@", [[NSUserDefaults standardUserDefaults] stringForKey:@"ssckey"]];
+        strToken = [GlobalShare checkingNullValues:strToken];
+
     NSURLSessionConfiguration *defaultConfigObject = [NSURLSessionConfiguration defaultSessionConfiguration];
     defaultConfigObject.HTTPAdditionalHeaders = @{@"Authorization": strToken};
     NSURLSession *defaultSession = [NSURLSession sessionWithConfiguration:defaultConfigObject delegate:self delegateQueue:[NSOperationQueue mainQueue]];
@@ -397,6 +399,7 @@ NSString *const kStockNewsCellIdentifier = @"StockNewsCell";
         return;
     }
     
+    _chartView.chartDescription.text = @"";
     [_indicatorView setHidden:NO];
     NSMutableArray *xVals = [[NSMutableArray alloc] init];
     
@@ -434,7 +437,7 @@ NSString *const kStockNewsCellIdentifier = @"StockNewsCell";
 //    _chartView.xAxis.axisMaxValue = [self.arrayMarketIndex count]-1;
 //    _chartView.xAxis.axisMinValue = 0;
     
-    NSLog(@"\nX values = %@\nY Values = %@",xVals,yVals);
+   
     
     NSMutableArray *values = [[NSMutableArray alloc] init];
     for (int i = 0; i < self.arrayMarketIndex.count; i++) {
