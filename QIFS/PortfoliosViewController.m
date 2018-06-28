@@ -238,13 +238,18 @@ NSString *const kPortfoliosOptionsViewCellIdentifier = @"OptionsViewCell";
     if(globalShare.myLanguage == ARABIC_LANGUAGE) {
         // [[UIView appearance] setSemanticContentAttribute:UISemanticContentAttributeForceRightToLeft];
         [loginVw setSemanticContentAttribute:UISemanticContentAttributeForceRightToLeft];
+        loginVw.userNameTF.textAlignment = NSTextAlignmentRight;
+        loginVw.passwordTF.textAlignment = NSTextAlignmentRight;
         
     }
     else {
         //[[UIView appearance] setSemanticContentAttribute:UISemanticContentAttributeForceLeftToRight];
         [loginVw setSemanticContentAttribute:UISemanticContentAttributeForceLeftToRight];
+        loginVw.userNameTF.textAlignment = NSTextAlignmentLeft;
+        loginVw.passwordTF.textAlignment = NSTextAlignmentLeft;
         
     }
+    
     
 }
 
