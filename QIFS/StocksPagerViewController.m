@@ -280,7 +280,7 @@ NSString *const kStocksOptionsViewCellIdentifier = @"OptionsViewCell";
     
     
     
-    if([[UIDevice currentDevice]userInterfaceIdiom]==UIUserInterfaceIdiomPhone) {
+   // if([[UIDevice currentDevice]userInterfaceIdiom]==UIUserInterfaceIdiomPhone) {
         
         switch ((int)[[UIScreen mainScreen] nativeBounds].size.height) {
             case 2436:
@@ -292,7 +292,7 @@ NSString *const kStocksOptionsViewCellIdentifier = @"OptionsViewCell";
                 _pageMenu = [[CAPSPageMenu alloc] initWithViewControllers:controllerArray frame:CGRectMake(0.0, _labelTitle.frame.origin.y+_labelTitle.frame.size.height+20, self.view.frame.size.width, self.view.frame.size.height-(_labelTitle.frame.origin.y+_labelTitle.frame.size.height+20)-49) options:parameters index:passIndex];//labelTitle
                 printf("unknown");
         }
-    }
+ //   }
     
     //_pageMenu = [[CAPSPageMenu alloc] initWithViewControllers:controllerArray frame:CGRectMake(0.0, _labelTitle.frame.origin.y+_labelTitle.frame.size.height+20, self.view.frame.size.width, self.view.frame.size.height-(_labelTitle.frame.origin.y+_labelTitle.frame.size.height+20)-49) options:parameters index:passIndex];//labelTitle
     
@@ -571,6 +571,7 @@ NSString *const kStocksOptionsViewCellIdentifier = @"OptionsViewCell";
 -(void) getSystemCodes {
     @try {
         NSString *strToken = [NSString stringWithFormat:@"%@", [[NSUserDefaults standardUserDefaults] stringForKey:@"ssckey"]];
+        strToken = [GlobalShare checkingNullValues:strToken];
         NSURLSessionConfiguration *defaultConfigObject = [NSURLSessionConfiguration defaultSessionConfiguration];
         defaultConfigObject.HTTPAdditionalHeaders = @{@"Authorization": strToken};
         NSURLSession *defaultSession = [NSURLSession sessionWithConfiguration:defaultConfigObject delegate:self delegateQueue:[NSOperationQueue mainQueue]];
@@ -624,6 +625,7 @@ NSString *const kStocksOptionsViewCellIdentifier = @"OptionsViewCell";
 -(void) getSecurityBySector {
     @try {
         NSString *strToken = [[NSUserDefaults standardUserDefaults] stringForKey:@"ssckey"];
+        strToken = [GlobalShare checkingNullValues:strToken];
         NSURLSessionConfiguration *defaultConfigObject = [NSURLSessionConfiguration defaultSessionConfiguration];
         defaultConfigObject.HTTPAdditionalHeaders = @{@"Authorization": strToken};
         NSURLSession *defaultSession = [NSURLSession sessionWithConfiguration:defaultConfigObject delegate:self delegateQueue:[NSOperationQueue mainQueue]];

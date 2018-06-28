@@ -7,6 +7,7 @@
 //
 
 #import "LoginView.h"
+#import "GlobalShare.h"
 
 @implementation LoginView
 
@@ -26,6 +27,15 @@
     self.passwordTF.borderStyle = UITextBorderStyleLine;
     self.passwordTF.layer.borderWidth = 1;
     self.passwordTF.layer.borderColor = self.viewTitle.backgroundColor.CGColor;
+    /* if(globalShare.myLanguage == ARABIC_LANGUAGE)
+     [textField setTextAlignment:NSTextAlignmentRight];
+     else
+     [textField setTextAlignment:NSTextAlignmentLeft];
+     }*/
+    
+    
+    
+    
     //self.passwordTF.delegate = self;
     
    // self.viewTitle.text = NSLocalizedStringFromTable(@"qbQ-u3-Gmd.text", @"LoginView", @"");
