@@ -29,7 +29,8 @@ NSString *const kFavoriteOptionsViewCellIdentifier = @"OptionsViewCell";
 @property (nonatomic, weak) IBOutlet UIActivityIndicatorView *indicatorView;
 @property (nonatomic, strong) NSArray *arrayFavoriteStocks;
 
-@property (nonatomic, strong) NSArray *arrayMenu;
+@property (nonatomic, strong) NSMutableArray *arrayMenu;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *menuHeight;
 @property (nonatomic, weak) IBOutlet UIView *viewOptionMenu;
 @property (nonatomic, weak) IBOutlet UITableView *tableViewOptionMenu;
 @property (nonatomic, strong) UIButton *transparencyButton;
@@ -63,6 +64,8 @@ NSString *const kFavoriteOptionsViewCellIdentifier = @"OptionsViewCell";
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
+    
+    self.arrayMenu = [[NSMutableArray alloc]init];
     globalShare = [GlobalShare sharedInstance];
     [self.labelTitle setText:NSLocalizedString(@"My Favorites", @"My Favorites")];
     [self.searchResults setPlaceholder:NSLocalizedString(@"Symbol/Company Name", @"Symbol/Company Name")];
@@ -72,8 +75,16 @@ NSString *const kFavoriteOptionsViewCellIdentifier = @"OptionsViewCell";
     
     self.tableResults.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
     [self.tableResults setHidden:YES];
-    
+ 
+    [self menuDataSetUp];
+    [self setupFloatingButton];
+}
+
+#pragma mark- Menu Data SetUp...
+
+-(void)menuDataSetUp{
     NSString *loginStatus;
+    NSString *userId;
     if ([GlobalShare isUserLogedIn]) {
         
         loginStatus = NSLocalizedString(@"Sign In", @"Sign In");
@@ -81,192 +92,36 @@ NSString *const kFavoriteOptionsViewCellIdentifier = @"OptionsViewCell";
     }
     else{
         loginStatus = NSLocalizedString(@"Sign Out", @"Sign Out");
+        userId = [[NSUserDefaults standardUserDefaults]valueForKey:@"UserName"];
     }
-    self.arrayMenu = @[
-                         @{
-                             @"menu_title": NSLocalizedString(@"Cash Position", @"Cash Position"),
+    
+    [self.arrayMenu removeAllObjects];
+    [_arrayMenu addObject:@{ @"menu_title": NSLocalizedString(@"Cash Position", @"Cash Position"),
                              @"menu_image": @"icon_cash_position"
-                             },
-                         @{
-                             @"menu_title": NSLocalizedString(@"Contact Us", @"Contact Us"),
+                             }];
+    [_arrayMenu addObject:@{ @"menu_title": NSLocalizedString(@"Contact Us", @"Contact Us"),
                              @"menu_image": @"icon_contact_us"
-                             },
-                         @{
-                             @"menu_title": NSLocalizedString(@"Settings", @"Settings"),
+                             }];
+    [_arrayMenu addObject:@{ @"menu_title": NSLocalizedString(@"Settings", @"Settings"),
                              @"menu_image": @"icon_settings"
-                             },
-                         @{
-                             @"menu_title": loginStatus,
+                             }];
+    [_arrayMenu addObject:@{ @"menu_title": loginStatus,
                              @"menu_image": @"icon_signout"
-                             }
-                         ];
-
-//    [self.tableViewOptionMenu setSeparatorInset:UIEdgeInsetsZero];
-//    [self.tableViewOptionMenu setLayoutMargins:UIEdgeInsetsZero];
+                             }];
+    
+    if (![GlobalShare isUserLogedIn]) {
+        [self.arrayMenu insertObject:@{ @"menu_title": userId,
+                                        @"menu_image": @"icon_user"
+                                        } atIndex:0];
+        _menuHeight.constant = 200.0;
+    }
+    else{
+        _menuHeight.constant = 160.0;
+    }
     self.tableViewOptionMenu.scrollEnabled = NO;
-
-//    self.arrayFavoriteStocks = @[
-//                         @{
-//                             @"SectorVal": @"Telecom",
-//                             @"Symbol": @"CMCSA",
-//                             @"Name": @"Comcast Corp",
-//                             @"Price": @"59.47",
-//                             @"Change": @"-0.72",
-//                             @"Volume": @"1.2M",
-//                             @"IsChecked": @"0",
-//                             @"Sector": @"0"
-//                             },
-//                         @{
-//                             @"SectorVal": @"Telecom",
-//                             @"Symbol": @"GOOGL",
-//                             @"Name": @"Google Class A",
-//                             @"Price": @"566.24",
-//                             @"Change": @"+2.57",
-//                             @"Volume": @"1.2M",
-//                             @"IsChecked": @"0",
-//                             @"Sector": @"0"
-//                             },
-//                         @{
-//                             @"SectorVal": @"Financial Services",
-//                             @"Symbol": @"AAPL",
-//                             @"Name": @"Apple",
-//                             @"Price": @"93.59",
-//                             @"Change": @"+1.15",
-//                             @"Volume": @"1.2M",
-//                             @"IsChecked": @"0",
-//                             @"Sector": @"1"
-//                             },
-//                         @{
-//                             @"SectorVal": @"Industries",
-//                             @"Symbol": @"FB",
-//                             @"Name": @"Facebook",
-//                             @"Price": @"93.59",
-//                             @"Change": @"+1.15",
-//                             @"Volume": @"1.2M",
-//                             @"IsChecked": @"0",
-//                             @"Sector": @"2"
-//                             }
-//                         ];
-    
-//    NSMutableDictionary *dict1 = [[NSMutableDictionary alloc] init];
-//    NSMutableDictionary *dict2 = [[NSMutableDictionary alloc] init];
-//    NSMutableDictionary *dict3 = [[NSMutableDictionary alloc] init];
-//    NSMutableDictionary *dict4 = [[NSMutableDictionary alloc] init];
-//    NSMutableArray *arr1 = [[NSMutableArray alloc] init];
-//    NSMutableArray *arr2 = [[NSMutableArray alloc] init];
-//    NSMutableArray *arr3 = [[NSMutableArray alloc] init];
-//
-//    [dict1 setValue:@"Telecom" forKey:@"SectorVal"];
-//    [dict1 setValue:@"CMCSA" forKey:@"Symbol"];
-//    [dict1 setValue:@"Comcast Corp" forKey:@"Name"];
-//    [dict1 setValue:@"59.47" forKey:@"Price"];
-//    [dict1 setValue:@"-0.72" forKey:@"Change"];
-//    [dict1 setValue:@"1.2M" forKey:@"Volume"];
-//    [dict1 setValue:@"NO" forKey:@"IsChecked"];
-//    [dict1 setValue:@"0" forKey:@"Sector"];
-//    [arr1 addObject:dict1];
-//    
-//    [dict2 setValue:@"Telecom" forKey:@"SectorVal"];
-//    [dict2 setValue:@"GOOGL" forKey:@"Symbol"];
-//    [dict2 setValue:@"Google Class A" forKey:@"Name"];
-//    [dict2 setValue:@"566.24" forKey:@"Price"];
-//    [dict2 setValue:@"+2.57" forKey:@"Change"];
-//    [dict2 setValue:@"1.2M" forKey:@"Volume"];
-//    [dict2 setValue:@"NO" forKey:@"IsChecked"];
-//    [dict2 setValue:@"0" forKey:@"Sector"];
-//    [arr1 addObject:dict2];
-//    
-//    [dict3 setValue:@"Telecom" forKey:@"SectorVal"];
-//    [dict3 setValue:@"AAPL" forKey:@"Symbol"];
-//    [dict3 setValue:@"Apple" forKey:@"Name"];
-//    [dict3 setValue:@"93.59" forKey:@"Price"];
-//    [dict3 setValue:@"+1.15" forKey:@"Change"];
-//    [dict3 setValue:@"1.2M" forKey:@"Volume"];
-//    [dict3 setValue:@"NO" forKey:@"IsChecked"];
-//    [dict3 setValue:@"0" forKey:@"Sector"];
-//    [arr2 addObject:dict3];
-//    
-//    [dict4 setValue:@"Telecom" forKey:@"SectorVal"];
-//    [dict4 setValue:@"FB" forKey:@"Symbol"];
-//    [dict4 setValue:@"Facebook" forKey:@"Name"];
-//    [dict4 setValue:@"93.59" forKey:@"Price"];
-//    [dict4 setValue:@"+0.72" forKey:@"Change"];
-//    [dict4 setValue:@"1.2M" forKey:@"Volume"];
-//    [dict4 setValue:@"NO" forKey:@"IsChecked"];
-//    [dict4 setValue:@"0" forKey:@"Sector"];
-//    [arr3 addObject:dict4];
-//    
-//    globalShare.dictValues = [[NSMutableDictionary alloc]init];
-//    [globalShare.dictValues setValue:arr1 forKey:@"Telecom"];
-//    [globalShare.dictValues setValue:arr2 forKey:@"Financial Services"];
-//    [globalShare.dictValues setValue:arr3 forKey:@"Industries"];
-
-//    NSDictionary *dic = @{@"Telecom" : @[@{
-//                                       @"SectorVal": @"Telecom",
-//                                       @"Symbol": @"CMCSA",
-//                                       @"Name": @"Comcast Corp",
-//                                       @"Price": @"59.47",
-//                                       @"Change": @"-0.72",
-//                                       @"Volume": @"1.2M",
-//                                       @"IsChecked": @"NO",
-//                                       @"Sector": @"0"
-//                                       },
-//                                   @{
-//                                       @"SectorVal": @"Telecom",
-//                                       @"Symbol": @"GOOGL",
-//                                       @"Name": @"Google Class A",
-//                                       @"Price": @"566.24",
-//                                       @"Change": @"+2.57",
-//                                       @"Volume": @"1.2M",
-//                                       @"IsChecked": @"NO",
-//                                       @"Sector": @"0"
-//                                       }],
-//                          @"Financial Services" : @[@{
-//                                       @"SectorVal": @"Financial Services",
-//                                       @"Symbol": @"AAPL",
-//                                       @"Name": @"Apple",
-//                                       @"Price": @"93.59",
-//                                       @"Change": @"+1.15",
-//                                       @"Volume": @"1.2M",
-//                                       @"IsChecked": @"NO",
-//                                       @"Sector": @"1"
-//                                       }],
-//                          @"Industries" : @[@{
-//                                       @"SectorVal": @"Industries",
-//                                       @"Symbol": @"FB",
-//                                       @"Name": @"Facebook",
-//                                       @"Price": @"93.59",
-//                                       @"Change": @"+1.15",
-//                                       @"Volume": @"1.2M",
-//                                       @"IsChecked": @"NO",
-//                                       @"Sector": @"2"
-//                                       }
-//                                   ]};
-//    globalShare.dictValues = [[NSMutableDictionary alloc]initWithDictionary:dic];
-    
-    
-    
-//    NSMutableArray *arrayFilter = [[NSMutableArray alloc] init];
-    
-//    self.arrayFavoriteStocks = [[globalShare.dictValues allKeys] sortedArrayUsingSelector:@selector(localizedCaseInsensitiveCompare:)];
-//
-//    animalSectionTitles = [[animals allKeys] sortedArrayUsingSelector:@selector(localizedCaseInsensitiveCompare:)];
-//    [globalShare.sectorValues addObjectsFromArray:arrVal];
-
-//    NSMutableArray *arrayFilter = [[NSMutableArray alloc] init];
-////    NSMutableDictionary *dict = [[NSMutableDictionary alloc] init];
-//
-//    NSArray *techCount = [globalShare.sectorValues valueForKeyPath:@"@distinctUnionOfObjects.Sector"];
-//    for(int i=0;i<[techCount count];i++) {
-//        NSPredicate *applePred = [NSPredicate predicateWithFormat:@"self.Sector matches %@", techCount[i]];
-//        NSArray *arrFiltered = [globalShare.sectorValues filteredArrayUsingPredicate:applePred];
-//        [arrayFilter addObjectsFromArray:arrFiltered];
-//        
-//        
-//    }
-
-    [self setupFloatingButton];
+    [self.tableViewOptionMenu reloadData];
 }
+
 
 -(void)setupFloatingButton {
     CGRect floatFrame;

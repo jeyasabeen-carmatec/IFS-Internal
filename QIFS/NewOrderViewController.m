@@ -55,7 +55,8 @@ NSString *const kNewOrderOptionsViewCellIdentifier = @"OptionsViewCell";
 @property (nonatomic, weak) IBOutlet UIButton *buttonCreate;
 @property (nonatomic, weak) IBOutlet UIActivityIndicatorView *indicatorView;
 
-@property (nonatomic, strong) NSArray *arrayMenu;
+@property (nonatomic, strong) NSMutableArray *arrayMenu;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *menuHeight;
 @property (nonatomic, weak) IBOutlet UIView *viewOptionMenu;
 @property (nonatomic, weak) IBOutlet UITableView *tableViewOptionMenu;
 @property (nonatomic, strong) UIButton *transparencyButton;
@@ -172,6 +173,7 @@ NSString *const kNewOrderOptionsViewCellIdentifier = @"OptionsViewCell";
     [self.searchResults setPlaceholder:NSLocalizedString(@"Symbol/Company Name", @"Symbol/Company Name")];
     self.tableResults.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
     [self.tableResults setHidden:YES];
+    self.arrayMenu = [[NSMutableArray alloc]init];
     [self menuDataSetUp];
 
 //    NSString *loginStatus;
@@ -516,6 +518,7 @@ NSString *const kNewOrderOptionsViewCellIdentifier = @"OptionsViewCell";
 #pragma mark Menu Data SetUp...
 -(void)menuDataSetUp{
     NSString *loginStatus;
+    NSString *userId;
     if ([GlobalShare isUserLogedIn]) {
         
         loginStatus = NSLocalizedString(@"Sign In", @"Sign In");
@@ -523,31 +526,38 @@ NSString *const kNewOrderOptionsViewCellIdentifier = @"OptionsViewCell";
     }
     else{
         loginStatus = NSLocalizedString(@"Sign Out", @"Sign Out");
+        userId = [[NSUserDefaults standardUserDefaults]valueForKey:@"UserName"];
     }
     
-    self.arrayMenu = @[
-                       @{
-                           @"menu_title": NSLocalizedString(@"Cash Position", @"Cash Position"),
-                           @"menu_image": @"icon_cash_position"
-                           },
-                       //                       @{
-                       //                           @"menu_title": NSLocalizedString(@"My Orders History", @"My Orders History"),
-                       //                           @"menu_image": @"icon_my_order_history"
-                       //                           },
-                       @{
-                           @"menu_title": NSLocalizedString(@"Contact Us", @"Contact Us"),
-                           @"menu_image": @"icon_contact_us"
-                           },
-                       @{
-                           @"menu_title": NSLocalizedString(@"Settings", @"Settings"),
-                           @"menu_image": @"icon_settings"
-                           },
-                       @{
-                           @"menu_title": loginStatus,
-                           @"menu_image": @"icon_signout"
-                           }
-                       ];
+    [self.arrayMenu removeAllObjects];
+    [_arrayMenu addObject:@{ @"menu_title": NSLocalizedString(@"Cash Position", @"Cash Position"),
+                             @"menu_image": @"icon_cash_position"
+                             }];
+    [_arrayMenu addObject:@{ @"menu_title": NSLocalizedString(@"Contact Us", @"Contact Us"),
+                             @"menu_image": @"icon_contact_us"
+                             }];
+    [_arrayMenu addObject:@{ @"menu_title": NSLocalizedString(@"Settings", @"Settings"),
+                             @"menu_image": @"icon_settings"
+                             }];
+    [_arrayMenu addObject:@{ @"menu_title": loginStatus,
+                             @"menu_image": @"icon_signout"
+                             }];
+    
+    if (![GlobalShare isUserLogedIn]) {
+        [self.arrayMenu insertObject:@{ @"menu_title": userId,
+                                        @"menu_image": @"icon_user"
+                                        } atIndex:0];
+        _menuHeight.constant = 200.0;
+    }
+    else{
+        _menuHeight.constant = 160.0;
+    }
+    
+    
+   
+    [self.tableViewOptionMenu reloadData];
 }
+
 
 
 #pragma mark Loading Login PopUp when guest User
@@ -1489,6 +1499,8 @@ NSString *const kNewOrderOptionsViewCellIdentifier = @"OptionsViewCell";
                                                                }
                                                                NSString *strToken = [returnedDict objectForKey:@"result"];
                                                                [[NSUserDefaults standardUserDefaults] setObject:strToken forKey:@"ssckey"];
+                                                               // Storing UserName in Shared Preference values..
+                                                               [[NSUserDefaults standardUserDefaults] setValue:stringUserName forKey:@"UserName"];
                                                                [[NSUserDefaults standardUserDefaults] synchronize];
                                                                [self menuDataSetUp];
                                                                [self.tableViewOptionMenu reloadData];
@@ -2760,7 +2772,12 @@ NSString *const kNewOrderOptionsViewCellIdentifier = @"OptionsViewCell";
     self.transparencyButton = nil;
     
     if([tableView isEqual:self.tableViewOptionMenu]) {
-        if(indexPath.row == 0) {
+        
+        if ([[[self.arrayMenu objectAtIndex:indexPath.row]valueForKey:@"menu_image"] isEqualToString:@"icon_user"]) {
+            //NSLog(@"User Id selected....");
+        }
+        else if ([[[self.arrayMenu objectAtIndex:indexPath.row]valueForKey:@"menu_image"] isEqualToString:@"icon_cash_position"]){
+            
             self.cashContentView = [self.storyboard instantiateViewControllerWithIdentifier:@"CashPositionViewController"];
             self.cashContentView.view.frame = CGRectMake(0, -[[UIScreen mainScreen] bounds].size.height, [[UIScreen mainScreen] bounds].size.width, [[UIScreen mainScreen] bounds].size.height);
             self.cashContentView.delegate = self;
@@ -2773,15 +2790,13 @@ NSString *const kNewOrderOptionsViewCellIdentifier = @"OptionsViewCell";
                 self.tabBarController.tabBar.hidden = YES;
             }];
         }
-//        else if(indexPath.row == 1) {
-//            OrderHistoryViewController *orderHistoryViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"OrderHistoryViewController"];
-//            [[self navigationController] pushViewController:orderHistoryViewController animated:YES];
-//        }
-        else if(indexPath.row == 1) {
+       else if ([[[self.arrayMenu objectAtIndex:indexPath.row]valueForKey:@"menu_image"] isEqualToString:@"icon_contact_us"]){
+           
             ContactUsViewController *contactUsViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"ContactUsViewController"];
             [[self navigationController] pushViewController:contactUsViewController animated:YES];
         }
-        else if(indexPath.row == 2) {
+       else if ([[[self.arrayMenu objectAtIndex:indexPath.row]valueForKey:@"menu_image"] isEqualToString:@"icon_settings"]){
+           
             SettingsViewController *settingsViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"SettingsViewController"];
             [[self navigationController] pushViewController:settingsViewController animated:YES];
         }

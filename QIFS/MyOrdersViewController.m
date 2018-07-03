@@ -33,7 +33,8 @@ NSString *const kMyOrdersOptionsViewCellIdentifier = @"OptionsViewCell";
 @property (nonatomic, weak) IBOutlet UIView *viewOrders;
 @property (nonatomic, weak) IBOutlet UIActivityIndicatorView *indicatorView;
 
-@property (nonatomic, strong) NSArray *arrayMenu;
+@property (nonatomic, strong) NSMutableArray *arrayMenu;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *menuHeight;
 @property (nonatomic, weak) IBOutlet UIView *viewOptionMenu;
 @property (nonatomic, weak) IBOutlet UITableView *tableViewOptionMenu;
 @property (nonatomic, strong) UIButton *transparencyButton;
@@ -82,34 +83,34 @@ NSString *const kMyOrdersOptionsViewCellIdentifier = @"OptionsViewCell";
     self.tableResults.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
     self.tableViewOrders.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
     [self.tableResults setHidden:YES];
+    self.arrayMenu = [[NSMutableArray alloc]init];
 
-//    self.arrayMenu = [NSArray arrayWithObjects:@"Cash Position", @"My Orders History", @"Contact Us", @"Settings", @"Sign Out", nil];
-    self.arrayMenu = @[
-                       @{
-                           @"menu_title": NSLocalizedString(@"Cash Position", @"Cash Position"),
-                           @"menu_image": @"icon_cash_position"
-                           },
+////    self.arrayMenu = [NSArray arrayWithObjects:@"Cash Position", @"My Orders History", @"Contact Us", @"Settings", @"Sign Out", nil];
+//    self.arrayMenu = @[
 //                       @{
-//                           @"menu_title": NSLocalizedString(@"My Orders History", @"My Orders History"),
-//                           @"menu_image": @"icon_my_order_history"
+//                           @"menu_title": NSLocalizedString(@"Cash Position", @"Cash Position"),
+//                           @"menu_image": @"icon_cash_position"
 //                           },
-                       @{
-                           @"menu_title": NSLocalizedString(@"Contact Us", @"Contact Us"),
-                           @"menu_image": @"icon_contact_us"
-                           },
-                       @{
-                           @"menu_title": NSLocalizedString(@"Settings", @"Settings"),
-                           @"menu_image": @"icon_settings"
-                           },
-                       @{
-                           @"menu_title": NSLocalizedString(@"Sign Out", @"Sign Out"),
-                           @"menu_image": @"icon_signout"
-                           }
-                       ];
-
-//    [self.tableViewOptionMenu setSeparatorInset:UIEdgeInsetsZero];
-//    [self.tableViewOptionMenu setLayoutMargins:UIEdgeInsetsZero];
-    self.tableViewOptionMenu.scrollEnabled = NO;
+////                       @{
+////                           @"menu_title": NSLocalizedString(@"My Orders History", @"My Orders History"),
+////                           @"menu_image": @"icon_my_order_history"
+////                           },
+//                       @{
+//                           @"menu_title": NSLocalizedString(@"Contact Us", @"Contact Us"),
+//                           @"menu_image": @"icon_contact_us"
+//                           },
+//                       @{
+//                           @"menu_title": NSLocalizedString(@"Settings", @"Settings"),
+//                           @"menu_image": @"icon_settings"
+//                           },
+//                       @{
+//                           @"menu_title": NSLocalizedString(@"Sign Out", @"Sign Out"),
+//                           @"menu_image": @"icon_signout"
+//                           }
+//                       ];
+//
+//
+//    self.tableViewOptionMenu.scrollEnabled = NO;
 
 //    self.arrayMyOrders = @[
 //                         @{
@@ -188,6 +189,7 @@ NSString *const kMyOrdersOptionsViewCellIdentifier = @"OptionsViewCell";
 -(void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:YES];
     [globalShare setIsmodifyOrder:NO];
+    [self menuDataSetUp];
     
     if(globalShare.myLanguage == ARABIC_LANGUAGE) {
         [[UIView appearance] setSemanticContentAttribute:UISemanticContentAttributeForceRightToLeft];
@@ -244,6 +246,50 @@ NSString *const kMyOrdersOptionsViewCellIdentifier = @"OptionsViewCell";
     // Pass the selected object to the new view controller.
 }
  */
+
+#pragma mark - Menu setUp
+-(void)menuDataSetUp{
+    NSString *loginStatus;
+    NSString *userId;
+    if ([GlobalShare isUserLogedIn]) {
+        
+        loginStatus = NSLocalizedString(@"Sign In", @"Sign In");
+        
+    }
+    else{
+        loginStatus = NSLocalizedString(@"Sign Out", @"Sign Out");
+        userId = [[NSUserDefaults standardUserDefaults]valueForKey:@"UserName"];
+    }
+    
+    [self.arrayMenu removeAllObjects];
+    [_arrayMenu addObject:@{ @"menu_title": NSLocalizedString(@"Cash Position", @"Cash Position"),
+                             @"menu_image": @"icon_cash_position"
+                             }];
+    [_arrayMenu addObject:@{ @"menu_title": NSLocalizedString(@"Contact Us", @"Contact Us"),
+                             @"menu_image": @"icon_contact_us"
+                             }];
+    [_arrayMenu addObject:@{ @"menu_title": NSLocalizedString(@"Settings", @"Settings"),
+                             @"menu_image": @"icon_settings"
+                             }];
+    [_arrayMenu addObject:@{ @"menu_title": loginStatus,
+                             @"menu_image": @"icon_signout"
+                             }];
+    
+    if (![GlobalShare isUserLogedIn]) {
+        [self.arrayMenu insertObject:@{ @"menu_title": userId,
+                                        @"menu_image": @"icon_user"
+                                        } atIndex:0];
+        _menuHeight.constant = 200.0;
+    }
+    else{
+        _menuHeight.constant = 160.0;
+    }
+    
+    
+    [self.tableViewOptionMenu reloadData];
+}
+
+
 
 #pragma mark - Button actions
 
@@ -901,35 +947,56 @@ NSString *const kMyOrdersOptionsViewCellIdentifier = @"OptionsViewCell";
     self.transparencyButton = nil;
     
     if([tableView isEqual:self.tableViewOptionMenu]) {
-        if(indexPath.row == 0) {
+        if ([[[self.arrayMenu objectAtIndex:indexPath.row]valueForKey:@"menu_image"] isEqualToString:@"icon_user"]) {
+            //NSLog(@"User Id selected....");
+        }
+        else if ([[[self.arrayMenu objectAtIndex:indexPath.row]valueForKey:@"menu_image"] isEqualToString:@"icon_cash_position"]){
+            
+            //NSLog(@"CashPosition selected....");
+            
             self.cashContentView = [self.storyboard instantiateViewControllerWithIdentifier:@"CashPositionViewController"];
             self.cashContentView.view.frame = CGRectMake(0, -[[UIScreen mainScreen] bounds].size.height, [[UIScreen mainScreen] bounds].size.width, [[UIScreen mainScreen] bounds].size.height);
             self.cashContentView.delegate = self;
             
+            self.tabBarController.tabBar.hidden = YES;
             [self.view addSubview:self.cashContentView.view];
             [UIView animateWithDuration:.3 animations:^{
                 [[[[UIApplication sharedApplication] delegate] window] setWindowLevel:UIWindowLevelStatusBar+1];
                 [self.cashContentView.view setFrame:CGRectMake(0, 0, [[UIScreen mainScreen] bounds].size.width, [[UIScreen mainScreen] bounds].size.height)];
             } completion:^(BOOL finished) {
-                self.tabBarController.tabBar.hidden = YES;
+                
             }];
         }
-//        else if(indexPath.row == 1) {
-//            OrderHistoryViewController *orderHistoryViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"OrderHistoryViewController"];
-//            [[self navigationController] pushViewController:orderHistoryViewController animated:YES];
-//        }
-        else if(indexPath.row == 1) {
+        else if ([[[self.arrayMenu objectAtIndex:indexPath.row]valueForKey:@"menu_image"] isEqualToString:@"icon_contact_us"]){
+            
+            //NSLog(@"Contact Us selected....");
             ContactUsViewController *contactUsViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"ContactUsViewController"];
             [[self navigationController] pushViewController:contactUsViewController animated:YES];
+            
         }
-        else if(indexPath.row == 2) {
+        else if ([[[self.arrayMenu objectAtIndex:indexPath.row]valueForKey:@"menu_image"] isEqualToString:@"icon_settings"]){
+            
+            // NSLog(@"Settings selected....");
             SettingsViewController *settingsViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"SettingsViewController"];
             [[self navigationController] pushViewController:settingsViewController animated:YES];
+            
         }
-        else {
-//            [[self navigationController] popToRootViewControllerAnimated:YES];
-            [GlobalShare showSignOutAlertView:self :SIGNOUT_CONFIRMATION];
+        else{
+            
+            NSLog(@"Login status....");
+            if ([GlobalShare isUserLogedIn]) {
+                
+                [self.navigationController popToRootViewControllerAnimated:YES];
+                
+            }
+            else{
+                //loginStatus = NSLocalizedString(@"Sign Out", @"Sign Out");
+                [GlobalShare showSignOutAlertView:self :SIGNOUT_CONFIRMATION];
+            }
         }
+        
+        
+        
     }
     else if([tableView isEqual:self.tableResults]) {
         [self.searchResults resignFirstResponder];

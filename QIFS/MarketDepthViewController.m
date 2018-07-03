@@ -352,6 +352,8 @@ NSString *const kMDOrderAskCellIdentifier = @"MDOrderAskCell";
                                                                }
                                                                NSString *strToken = [returnedDict objectForKey:@"result"];
                                                                [[NSUserDefaults standardUserDefaults] setObject:strToken forKey:@"ssckey"];
+                                                               // Storing UserName in Shared Preference values..
+                                                               [[NSUserDefaults standardUserDefaults] setValue:stringUserName forKey:@"UserName"];
                                                                [[NSUserDefaults standardUserDefaults] synchronize];
                                                                [self viewWillAppear:YES];
                                                                

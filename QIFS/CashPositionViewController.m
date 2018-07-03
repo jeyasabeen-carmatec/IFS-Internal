@@ -182,7 +182,7 @@
 -(BOOL)verifyUserLogin:(NSString *)stringUserName andPassword:(NSString*)stringPassword{
     @try {
         
-        
+        loginVw.hidden = YES;
         [loginVw removeFromSuperview];
         overLayView.hidden = YES;
         
@@ -209,6 +209,8 @@
                                                                }
                                                                NSString *strToken = [returnedDict objectForKey:@"result"];
                                                                [[NSUserDefaults standardUserDefaults] setObject:strToken forKey:@"ssckey"];
+                                                               // Storing UserName in Shared Preference values..
+                                                               [[NSUserDefaults standardUserDefaults] setValue:stringUserName forKey:@"UserName"];
                                                                [[NSUserDefaults standardUserDefaults] synchronize];
                                                                [self getCashPosition];
                                                                
