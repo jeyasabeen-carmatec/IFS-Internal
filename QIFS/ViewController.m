@@ -65,14 +65,12 @@
         userName = @"";
     }
     
-    _textFieldUserName.text = userName;//@"1000000321";
-    //_textFieldPassword.text = @"ssc@123";
+    _textFieldUserName.text = userName;
+    
     
     // Do any additional setup after loading the view, typically from a nib.
     globalShare = [GlobalShare sharedInstance];
     [self.labelTitle setText:NSLocalizedString(@"Login", @"Login")];
-
-//    [txtUserName triggerShakeAnimation];
     
     globalShare.topNavController = self.navigationController;
 
@@ -85,10 +83,6 @@
     globalShare.strNewOrderFlow = @"";
     _textFieldPassword.text = nil ;
     
-//    [self.textFieldUserName setText:@"1000015535"];
-//    [self.textFieldPassword setText:@"123456"];
-//    [self.textFieldUserName setText:@"1000555647"];
-//    [self.textFieldPassword setText:@"ifsc123"];
     [[GlobalShare sharedInstance] setIsErrorPupup:NO];
     [[GlobalShare sharedInstance] setIsTimerStockListRun:NO];
     [[GlobalShare sharedInstance] setIsTimerPortfolioRun:NO];
