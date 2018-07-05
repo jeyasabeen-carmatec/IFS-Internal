@@ -490,6 +490,12 @@ NSString *const kFavoriteOptionsViewCellIdentifier = @"OptionsViewCell";
                                                                }
                                                                if([returnedDict[@"status"] isEqualToString:@"authenticated"]) {
                                                                    dispatch_async(dispatch_get_main_queue(), ^{
+                                                                       if (![[returnedDict valueForKey:@"result"] isKindOfClass:[NSArray class]]){
+                                                                           self.arrayFavoriteStocks = nil;
+                                                                           [self.tableViewStocks reloadData];
+                                                                            return ;
+                                                                       }
+                                                                       
                                                                        self.arrayFavoriteStocks = returnedDict[@"result"];
                                                                        [self.tableViewStocks reloadData];
                                                                    });
@@ -723,7 +729,12 @@ NSString *const kFavoriteOptionsViewCellIdentifier = @"OptionsViewCell";
     self.transparencyButton = nil;
     
     if([tableView isEqual:self.tableViewOptionMenu]) {
-        if(indexPath.row == 0) {
+        if ([[[self.arrayMenu objectAtIndex:indexPath.row]valueForKey:@"menu_image"] isEqualToString:@"icon_user"]) {
+            //NSLog(@"User Id selected....");
+        }
+        else if ([[[self.arrayMenu objectAtIndex:indexPath.row]valueForKey:@"menu_image"] isEqualToString:@"icon_cash_position"]){
+            
+            //NSLog(@"CashPosition selected....");
             self.cashContentView = [self.storyboard instantiateViewControllerWithIdentifier:@"CashPositionViewController"];
             self.cashContentView.view.frame = CGRectMake(0, -[[UIScreen mainScreen] bounds].size.height, [[UIScreen mainScreen] bounds].size.width, [[UIScreen mainScreen] bounds].size.height);
             self.cashContentView.delegate = self;
@@ -740,11 +751,15 @@ NSString *const kFavoriteOptionsViewCellIdentifier = @"OptionsViewCell";
 //            OrderHistoryViewController *orderHistoryViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"OrderHistoryViewController"];
 //            [[self navigationController] pushViewController:orderHistoryViewController animated:YES];
 //        }
-        else if(indexPath.row == 1) {
+        else if ([[[self.arrayMenu objectAtIndex:indexPath.row]valueForKey:@"menu_image"] isEqualToString:@"icon_contact_us"]){
+            
+            //NSLog(@"Contact Us selected....");
             ContactUsViewController *contactUsViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"ContactUsViewController"];
             [[self navigationController] pushViewController:contactUsViewController animated:YES];
         }
-        else if(indexPath.row == 2) {
+        else if ([[[self.arrayMenu objectAtIndex:indexPath.row]valueForKey:@"menu_image"] isEqualToString:@"icon_settings"]){
+            
+            // NSLog(@"Settings selected....");
             SettingsViewController *settingsViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"SettingsViewController"];
             [[self navigationController] pushViewController:settingsViewController animated:YES];
         }
@@ -813,7 +828,8 @@ NSString *const kFavoriteOptionsViewCellIdentifier = @"OptionsViewCell";
     if(index == 0) {
         NSString *strUpdateParams = [NSString stringWithFormat:@"update tbl_SecurityList set is_checked = '%@' where ticker = '%@'", @"NO", self.arrayFavoriteStocks[cell.tag][@"ticker"]];
         [globalShare.fmDBObject executeUpdate:strUpdateParams];
-
+        NSLog(@"%@",strUpdateParams);
+        
         [self getSecurityList];
     }
     else {
@@ -913,8 +929,14 @@ NSString *const kFavoriteOptionsViewCellIdentifier = @"OptionsViewCell";
 #pragma mark - Content Filtering
 
 - (void)updateFilteredContentForProductName:(NSString *)filterString {
+    if ([filterString isEqualToString:@""]) {
+        
+        self.visibleResults = self.allResults;
+    }
+    else{
     NSPredicate *filterPredicate = [NSPredicate predicateWithFormat:@"self.security_name_e contains [c] %@ OR self.ticker contains [c] %@", filterString, filterString];
     self.visibleResults = [self.allResults filteredArrayUsingPredicate:filterPredicate];
+    }
     
     [self.tableResults reloadData];
 }

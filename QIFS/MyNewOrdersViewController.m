@@ -1393,8 +1393,15 @@ NSString *const kMyNewOrdersOptionsViewCellIdentifier = @"OptionsViewCell";
 #pragma mark - Content Filtering
 
 - (void)updateFilteredContentForProductName:(NSString *)filterString {
+    
+    if ([filterString isEqualToString:@""]) {
+        
+        self.visibleResults = self.allResults;
+    }
+    else{
     NSPredicate *filterPredicate = [NSPredicate predicateWithFormat:@"self.security_name_e contains [c] %@ OR self.ticker contains [c] %@", filterString, filterString];
     self.visibleResults = [self.allResults filteredArrayUsingPredicate:filterPredicate];
+    }
     
     [self.tableResults reloadData];
 }

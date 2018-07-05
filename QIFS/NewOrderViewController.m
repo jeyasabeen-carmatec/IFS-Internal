@@ -395,10 +395,12 @@ NSString *const kNewOrderOptionsViewCellIdentifier = @"OptionsViewCell";
                 
 //                if([self.buttonTransaction.currentTitle isEqualToString:@"Buy"]) {
                 if(self.selectValTrans == 0) {
-                    [self.view setBackgroundColor:[UIColor colorWithRed:230/255.f green:240/255.f blue:255/255.f alpha:1.f]];
+                    [self.contentView setBackgroundColor:[UIColor colorWithRed:230/255.f green:240/255.f blue:255/255.f alpha:1.f]];
+                    self.scrollView.backgroundColor = self.contentView.backgroundColor;
                 }
                 else {
-                    [self.view setBackgroundColor:[UIColor colorWithRed:255/255.f green:245/255.f blue:245/255.f alpha:1.f]];
+                    [self.contentView setBackgroundColor:[UIColor colorWithRed:255/255.f green:245/255.f blue:245/255.f alpha:1.f]];
+                    self.scrollView.backgroundColor = self.contentView.backgroundColor;
                     
                     [self.textFieldQty setText:self.strValidPortOnSellQty];
                 }
@@ -780,10 +782,12 @@ NSString *const kNewOrderOptionsViewCellIdentifier = @"OptionsViewCell";
         
 //        if([self.buttonTransaction.currentTitle isEqualToString:@"Buy"]) {
         if(self.selectValTrans == 0) {
-           [self.view setBackgroundColor:[UIColor colorWithRed:230/255.f green:240/255.f blue:255/255.f alpha:1.f]];
+           [self.contentView setBackgroundColor:[UIColor colorWithRed:230/255.f green:240/255.f blue:255/255.f alpha:1.f]];
+            self.scrollView.backgroundColor = self.contentView.backgroundColor;
         }
         else {
-            [self.view setBackgroundColor:[UIColor colorWithRed:255/255.f green:245/255.f blue:245/255.f alpha:1.f]];
+            [self.contentView setBackgroundColor:[UIColor colorWithRed:255/255.f green:245/255.f blue:245/255.f alpha:1.f]];
+            self.scrollView.backgroundColor = self.contentView.backgroundColor;
         }
 //    }
     
@@ -1536,9 +1540,11 @@ NSString *const kNewOrderOptionsViewCellIdentifier = @"OptionsViewCell";
     @try {
         if([self.securityId length] == 0) return;
         
-        [self.indicatorView setHidden:NO];
+       // [self.indicatorView setHidden:NO];
+        self.indicatorView.hidden = NO;
         
         NSString *strToken = [NSString stringWithFormat:@"%@", [[NSUserDefaults standardUserDefaults] stringForKey:@"ssckey"]];
+        
         NSURLSessionConfiguration *defaultConfigObject = [NSURLSessionConfiguration defaultSessionConfiguration];
         defaultConfigObject.HTTPAdditionalHeaders = @{@"Authorization": strToken};
         NSURLSession *defaultSession = [NSURLSession sessionWithConfiguration:defaultConfigObject delegate:self delegateQueue:[NSOperationQueue mainQueue]];
@@ -1552,7 +1558,7 @@ NSString *const kNewOrderOptionsViewCellIdentifier = @"OptionsViewCell";
                                                            if(error == nil)
                                                            {
                                                                NSMutableDictionary *returnedDict = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:&error];
-                                                               NSLog(@"the live market_data_is:%@",returnedDict);
+                                                               //NSLog(@"the live market_data_is:%@",returnedDict);
                                                                if([returnedDict[@"status"] hasPrefix:@"error"]) {
                                                                    if([returnedDict[@"result"] hasPrefix:@"T5"])
                                                                        [GlobalShare showSessionExpiredAlertView:self :SESSION_EXPIRED];
@@ -1566,6 +1572,9 @@ NSString *const kNewOrderOptionsViewCellIdentifier = @"OptionsViewCell";
                                                                }
                                                                if([returnedDict[@"status"] isEqualToString:@"authenticated"]) {
                                                                    dispatch_async(dispatch_get_main_queue(), ^{
+                                                                       
+                                                                        if(![returnedDict[@"result"] isKindOfClass:[NSArray class]]) return;
+                                                                       
                                                                        NSArray *arrVal = returnedDict[@"result"];
                                                                        NSDictionary *dictVal = arrVal[0];
                                                                        self.labelSymbol.text = dictVal[@"ticker"];
@@ -2038,10 +2047,12 @@ NSString *const kNewOrderOptionsViewCellIdentifier = @"OptionsViewCell";
                                                                        
 //                                                                       if([self.buttonTransaction.currentTitle isEqualToString:@"Buy"]) {
                                                                        if(self.selectValTrans == 0) {
-                                                                           [self.view setBackgroundColor:[UIColor colorWithRed:230/255.f green:240/255.f blue:255/255.f alpha:1.f]];
+                                                                           [self.contentView setBackgroundColor:[UIColor colorWithRed:230/255.f green:240/255.f blue:255/255.f alpha:1.f]];
+                                                                           self.scrollView.backgroundColor = self.contentView.backgroundColor;
                                                                        }
                                                                        else {
-                                                                           [self.view setBackgroundColor:[UIColor colorWithRed:255/255.f green:245/255.f blue:245/255.f alpha:1.f]];
+                                                                           [self.contentView setBackgroundColor:[UIColor colorWithRed:255/255.f green:245/255.f blue:245/255.f alpha:1.f]];
+                                                                           self.scrollView.backgroundColor = self.contentView.backgroundColor;
                                                                        }
                                                                        
                                                                        self.textFieldQty.text = dictVal[@"qty"];
@@ -2407,7 +2418,7 @@ NSString *const kNewOrderOptionsViewCellIdentifier = @"OptionsViewCell";
         NSURLSession *defaultSession = [NSURLSession sessionWithConfiguration:defaultConfigObject delegate:self delegateQueue:[NSOperationQueue mainQueue]];
         
         NSString *strURL = [NSString stringWithFormat:@"%@GetSymbolLimitUpDown?ticker=%@", REQUEST_URL,self.securityId];
-        NSLog(@"URL .. %@",strURL);
+        //NSLog(@"URL .. %@",strURL);
         NSURL *url = [NSURL URLWithString:strURL];
         
         NSURLSessionDataTask *dataTask = [defaultSession dataTaskWithURL:url
@@ -2508,10 +2519,12 @@ NSString *const kNewOrderOptionsViewCellIdentifier = @"OptionsViewCell";
         
 //        if([self.buttonTransaction.currentTitle isEqualToString:@"Buy"]) {
         if(self.selectValTrans == 0) {
-            [self.view setBackgroundColor:[UIColor colorWithRed:230/255.f green:240/255.f blue:255/255.f alpha:1.f]];
+            [self.contentView setBackgroundColor:[UIColor colorWithRed:230/255.f green:240/255.f blue:255/255.f alpha:1.f]];
+            self.scrollView.backgroundColor = [UIColor colorWithRed:230/255.f green:240/255.f blue:255/255.f alpha:1.f];
         }
         else {
-            [self.view setBackgroundColor:[UIColor colorWithRed:255/255.f green:245/255.f blue:245/255.f alpha:1.f]];
+            [self.contentView setBackgroundColor:[UIColor colorWithRed:255/255.f green:245/255.f blue:245/255.f alpha:1.f]];
+            self.scrollView.backgroundColor = [UIColor colorWithRed:255/255.f green:245/255.f blue:245/255.f alpha:1.f];
         }
     }
     else if(_selectVal == 1) {
@@ -2924,9 +2937,15 @@ NSString *const kNewOrderOptionsViewCellIdentifier = @"OptionsViewCell";
 //        self.visibleResults = self.allResults;
 //    }
 //    else {
+    
+    if ([filterString isEqualToString:@""]) {
+        
+        self.visibleResults = self.allResults;
+    }
+    else{
         NSPredicate *filterPredicate = [NSPredicate predicateWithFormat:@"self.security_name_e contains [c] %@ OR self.security_name_a contains [c] %@ OR self.ticker contains [c] %@", filterString, filterString, filterString];
         self.visibleResults = [self.allResults filteredArrayUsingPredicate:filterPredicate];
-//    }
+   }
     
     [self.tableResults reloadData];
 }
