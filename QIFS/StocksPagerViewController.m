@@ -47,10 +47,11 @@ NSString *const kStocksOptionsViewCellIdentifier = @"OptionsViewCell";
 @property (nonatomic, weak) IBOutlet UIButton *buttonCall;
 @property (nonatomic, weak) IBOutlet UIButton *buttonSearch;
 @property (nonatomic, weak) IBOutlet UIButton *buttonAlert;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *menuHeight;
 @property (nonatomic, weak) IBOutlet UIButton *buttonOptionMenu;
 @property (nonatomic, weak) IBOutlet UILabel *labelTitle;
 
-@property (nonatomic, strong) NSArray *arrayMenu;
+@property (nonatomic, strong) NSMutableArray *arrayMenu;
 @property (nonatomic, weak) IBOutlet UIView *viewOptionMenu;
 @property (nonatomic, weak) IBOutlet UITableView *tableViewOptionMenu;
 @property (nonatomic, strong) UIButton *transparencyButton;
@@ -84,96 +85,9 @@ NSString *const kStocksOptionsViewCellIdentifier = @"OptionsViewCell";
     [self.searchResults setPlaceholder:NSLocalizedString(@"Symbol/Company Name", @"Symbol/Company Name")];
     self.tableResults.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
 
-//    NSString *loginStatus;
-//    if ([GlobalShare isUserLogedIn]) {
-//
-//        loginStatus = NSLocalizedString(@"Sign In", @"Sign In");
-//
-//    }
-//    else{
-//        loginStatus = NSLocalizedString(@"Sign Out", @"Sign Out");
-//    }
-//
-//    self.arrayMenu = @[
-//                       @{
-//                           @"menu_title": NSLocalizedString(@"Cash Position", @"Cash Position"),
-//                           @"menu_image": @"icon_cash_position"
-//                           },
-//                       //                       @{
-//                       //                           @"menu_title": NSLocalizedString(@"My Orders History", @"My Orders History"),
-//                       //                           @"menu_image": @"icon_my_order_history"
-//                       //                           },
-//                       @{
-//                           @"menu_title": NSLocalizedString(@"Contact Us", @"Contact Us"),
-//                           @"menu_image": @"icon_contact_us"
-//                           },
-//                       @{
-//                           @"menu_title": NSLocalizedString(@"Settings", @"Settings"),
-//                           @"menu_image": @"icon_settings"
-//                           },
-//                       @{
-//                           @"menu_title": loginStatus,
-//                           @"menu_image": @"icon_signout"
-//                           }
-//                       ];
-
-//    [self.tableViewOptionMenu setSeparatorInset:UIEdgeInsetsZero];
-//    [self.tableViewOptionMenu setLayoutMargins:UIEdgeInsetsZero];
+    self.arrayMenu = [[NSMutableArray alloc]init];
     self.tableViewOptionMenu.scrollEnabled = NO;
 
-//    self.allResults = @[@"Here's", @"to", @"the", @"crazy", @"ones.", @"The", @"misfits.", @"The", @"rebels.", @"The", @"troublemakers.", @"The", @"round", @"pegs", @"in", @"the", @"square", @"holes.", @"The", @"ones", @"who", @"see", @"things", @"differently.", @"They're", @"not", @"fond", @"of", @"rules.", @"And", @"they", @"have", @"no", @"respect", @"for", @"the", @"status", @"quo.", @"You", @"can", @"quote", @"them,", @"disagree", @"with", @"them,", @"glorify", @"or", @"vilify", @"them.", @"About", @"the", @"only", @"thing", @"you", @"can't", @"do", @"is", @"ignore", @"them.", @"Because", @"they", @"change", @"things.", @"They", @"push", @"the", @"human", @"race", @"forward.", @"And", @"while", @"some", @"may", @"see", @"them", @"as", @"the", @"crazy", @"ones,", @"we", @"see", @"genius.", @"Because", @"the", @"people", @"who", @"are", @"crazy", @"enough", @"to", @"think", @"they", @"can", @"change", @"the", @"world,", @"are", @"the", @"ones", @"who", @"do."];
-
-//    self.allResults = @[
-//                            @{
-//                                @"Symbol": @"CMCSA",
-//                                @"Name": @"Comcast Corp",
-//                                @"Value": @"59.47"
-//                                },
-//                            @{
-//                                @"Symbol": @"GOOGL",
-//                                @"Name": @"Google Class A",
-//                                @"Value": @"566.24"
-//                                },
-//                            @{
-//                                @"Symbol": @"AAPL",
-//                                @"Name": @"Apple",
-//                                @"Value": @"93.59"
-//                                },
-//                            @{
-//                                @"Symbol": @"FB",
-//                                @"Name": @"Facebook",
-//                                @"Value": @"83.38"
-//                                }
-//                            ];
-//    self.visibleResults = self.allResults;
-
-//    self.arrayCompany = [[NSMutableArray alloc] init];
-//    self.arrayFilterCompany = [[NSMutableArray alloc] init];
-//    
-//    NSMutableDictionary *dict1 = [[NSMutableDictionary alloc] init];
-//    NSMutableDictionary *dict2 = [[NSMutableDictionary alloc] init];
-//    NSMutableDictionary *dict3 = [[NSMutableDictionary alloc] init];
-//    NSMutableDictionary *dict4 = [[NSMutableDictionary alloc] init];
-//    
-//    [dict1 setValue:@"FB" forKey:@"Symbol"];
-//    [dict1 setValue:@"Facebook" forKey:@"Name"];
-//    [dict1 setValue:@"83.38" forKey:@"LastPrice"];
-//    [self.arrayCompany addObject:dict1];
-//    
-//    [dict2 setValue:@"GOOGL" forKey:@"Symbol"];
-//    [dict2 setValue:@"Google" forKey:@"Name"];
-//    [dict2 setValue:@"566.24" forKey:@"LastPrice"];
-//    [self.arrayCompany addObject:dict2];
-//    
-//    [dict3 setValue:@"AAPL" forKey:@"Symbol"];
-//    [dict3 setValue:@"Apple" forKey:@"Name"];
-//    [dict3 setValue:@"93.59" forKey:@"LastPrice"];
-//    [self.arrayCompany addObject:dict3];
-//    
-//    [dict4 setValue:@"CMCSA" forKey:@"Symbol"];
-//    [dict4 setValue:@"Comcast Corp" forKey:@"Name"];
-//    [dict4 setValue:@"59.47" forKey:@"LastPrice"];
-//    [self.arrayCompany addObject:dict4];
 
     [self.tableResults setHidden:YES];
 
@@ -530,6 +444,7 @@ NSString *const kStocksOptionsViewCellIdentifier = @"OptionsViewCell";
 #pragma mark- Menu Data SetUp...
 -(void)menuDataSetUp{
     NSString *loginStatus;
+    NSString *userId;
     if ([GlobalShare isUserLogedIn]) {
         
         loginStatus = NSLocalizedString(@"Sign In", @"Sign In");
@@ -537,31 +452,53 @@ NSString *const kStocksOptionsViewCellIdentifier = @"OptionsViewCell";
     }
     else{
         loginStatus = NSLocalizedString(@"Sign Out", @"Sign Out");
+        userId = [[NSUserDefaults standardUserDefaults]valueForKey:@"UserName"];
     }
     
-    self.arrayMenu = @[
-                       @{
-                           @"menu_title": NSLocalizedString(@"Cash Position", @"Cash Position"),
-                           @"menu_image": @"icon_cash_position"
-                           },
-                       //                       @{
-                       //                           @"menu_title": NSLocalizedString(@"My Orders History", @"My Orders History"),
-                       //                           @"menu_image": @"icon_my_order_history"
-                       //                           },
-                       @{
-                           @"menu_title": NSLocalizedString(@"Contact Us", @"Contact Us"),
-                           @"menu_image": @"icon_contact_us"
-                           },
-                       @{
-                           @"menu_title": NSLocalizedString(@"Settings", @"Settings"),
-                           @"menu_image": @"icon_settings"
-                           },
-                       @{
-                           @"menu_title": loginStatus,
-                           @"menu_image": @"icon_signout"
-                           }
-                       ];
+    [self.arrayMenu removeAllObjects];
+    [_arrayMenu addObject:@{ @"menu_title": NSLocalizedString(@"Cash Position", @"Cash Position"),
+                             @"menu_image": @"icon_cash_position"
+                             }];
+    [_arrayMenu addObject:@{ @"menu_title": NSLocalizedString(@"Contact Us", @"Contact Us"),
+                               @"menu_image": @"icon_contact_us"
+                             }];
+    [_arrayMenu addObject:@{ @"menu_title": NSLocalizedString(@"Settings", @"Settings"),
+                             @"menu_image": @"icon_settings"
+                             }];
+    [_arrayMenu addObject:@{ @"menu_title": loginStatus,
+                             @"menu_image": @"icon_signout"
+                             }];
     
+    if (![GlobalShare isUserLogedIn]) {
+        [self.arrayMenu insertObject:@{ @"menu_title": userId,
+                                        @"menu_image": @"icon_user"
+                                        } atIndex:0];
+         _menuHeight.constant = 200.0;
+    }
+    else{
+        _menuHeight.constant = 160.0;
+    }
+    
+    
+//    self.arrayMenu = @[
+//                       @{
+//                           @"menu_title": NSLocalizedString(@"Cash Position", @"Cash Position"),
+//                           @"menu_image": @"icon_cash_position"
+//                           },
+//                       @{
+//                           @"menu_title": NSLocalizedString(@"Contact Us", @"Contact Us"),
+//                           @"menu_image": @"icon_contact_us"
+//                           },
+//                       @{
+//                           @"menu_title": NSLocalizedString(@"Settings", @"Settings"),
+//                           @"menu_image": @"icon_settings"
+//                           },
+//                       @{
+//                           @"menu_title": loginStatus,
+//                           @"menu_image": @"icon_signout"
+//                           }
+//                       ];
+//
     [self.tableViewOptionMenu reloadData];
 }
 
@@ -1053,45 +990,56 @@ NSString *const kStocksOptionsViewCellIdentifier = @"OptionsViewCell";
         self.transparencyButton = nil;
         
         if([tableView isEqual:self.tableViewOptionMenu]) {
-            if(indexPath.row == 0) {
-                self.cashContentView = [self.storyboard instantiateViewControllerWithIdentifier:@"CashPositionViewController"];
-                self.cashContentView.view.frame = CGRectMake(0, -[[UIScreen mainScreen] bounds].size.height, [[UIScreen mainScreen] bounds].size.width, [[UIScreen mainScreen] bounds].size.height);
-                self.cashContentView.delegate = self;
+            if ([[[self.arrayMenu objectAtIndex:indexPath.row]valueForKey:@"menu_image"] isEqualToString:@"icon_user"]) {
+                 //NSLog(@"User Id selected....");
+            }
+            else if ([[[self.arrayMenu objectAtIndex:indexPath.row]valueForKey:@"menu_image"] isEqualToString:@"icon_cash_position"]){
 
-                self.tabBarController.tabBar.hidden = YES;
-                [self.view addSubview:self.cashContentView.view];
-                [UIView animateWithDuration:.3 animations:^{
-                    [[[[UIApplication sharedApplication] delegate] window] setWindowLevel:UIWindowLevelStatusBar+1];
-                    [self.cashContentView.view setFrame:CGRectMake(0, 0, [[UIScreen mainScreen] bounds].size.width, [[UIScreen mainScreen] bounds].size.height)];
-                } completion:^(BOOL finished) {
+                //NSLog(@"CashPosition selected....");
+
+                    self.cashContentView = [self.storyboard instantiateViewControllerWithIdentifier:@"CashPositionViewController"];
+                    self.cashContentView.view.frame = CGRectMake(0, -[[UIScreen mainScreen] bounds].size.height, [[UIScreen mainScreen] bounds].size.width, [[UIScreen mainScreen] bounds].size.height);
+                    self.cashContentView.delegate = self;
+                
+                    self.tabBarController.tabBar.hidden = YES;
+                    [self.view addSubview:self.cashContentView.view];
+                    [UIView animateWithDuration:.3 animations:^{
+                            [[[[UIApplication sharedApplication] delegate] window] setWindowLevel:UIWindowLevelStatusBar+1];
+                            [self.cashContentView.view setFrame:CGRectMake(0, 0, [[UIScreen mainScreen] bounds].size.width, [[UIScreen mainScreen] bounds].size.height)];
+                    } completion:^(BOOL finished) {
                     
                 }];
             }
-//            else if(indexPath.row == 1) {
-//                OrderHistoryViewController *orderHistoryViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"OrderHistoryViewController"];
-//                [[self navigationController] pushViewController:orderHistoryViewController animated:YES];
-//            }
-            else if(indexPath.row == 1) {
+            else if ([[[self.arrayMenu objectAtIndex:indexPath.row]valueForKey:@"menu_image"] isEqualToString:@"icon_contact_us"]){
+                
+                //NSLog(@"Contact Us selected....");
                 ContactUsViewController *contactUsViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"ContactUsViewController"];
                 [[self navigationController] pushViewController:contactUsViewController animated:YES];
+                
             }
-            else if(indexPath.row == 2) {
+            else if ([[[self.arrayMenu objectAtIndex:indexPath.row]valueForKey:@"menu_image"] isEqualToString:@"icon_settings"]){
+                
+               // NSLog(@"Settings selected....");
                 SettingsViewController *settingsViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"SettingsViewController"];
                 [[self navigationController] pushViewController:settingsViewController animated:YES];
-            }
-            else {
                 
+            }
+            else{
+                
+                 NSLog(@"Login status....");
                 if ([GlobalShare isUserLogedIn]) {
                     
-                 [self.navigationController popToRootViewControllerAnimated:YES];
+                    [self.navigationController popToRootViewControllerAnimated:YES];
                     
                 }
                 else{
                     //loginStatus = NSLocalizedString(@"Sign Out", @"Sign Out");
-                     [GlobalShare showSignOutAlertView:self :SIGNOUT_CONFIRMATION];
+                    [GlobalShare showSignOutAlertView:self :SIGNOUT_CONFIRMATION];
                 }
-               
             }
+            
+            
+        
         }
         else {
             [self.searchResults resignFirstResponder];
@@ -1112,18 +1060,12 @@ NSString *const kStocksOptionsViewCellIdentifier = @"OptionsViewCell";
             companyStocksViewController.securityId = self.visibleResults[indexPath.row][@"ticker"];
             companyStocksViewController.securityName = self.visibleResults[indexPath.row][(globalShare.myLanguage != ARABIC_LANGUAGE) ? @"security_name_e" : @"security_name_a"];
             [[self navigationController] pushViewController:companyStocksViewController animated:YES];
-//            [self.searchController setActive:NO];
             
             self.searchResults.text = @"";
             NSString *searchString = self.searchResults.text;
             [self updateFilteredContentForProductName:searchString];
         }
-//    }
-//    else {
-//        CompanyStocksViewController *companyStocksViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"CompanyStocksViewController"];
-//        [[self navigationController] pushViewController:companyStocksViewController animated:YES];
-//        [self.searchController setActive:NO];
-//    }
+
 }
 
 #pragma mark - UISearchBarDelegate
@@ -1185,8 +1127,15 @@ NSString *const kStocksOptionsViewCellIdentifier = @"OptionsViewCell";
 #pragma mark - Content Filtering
 
 - (void)updateFilteredContentForProductName:(NSString *)filterString {
+    
+    if ([filterString isEqualToString:@""]) {
+        
+        self.visibleResults = self.allResults;
+    }
+    else{
     NSPredicate *filterPredicate = [NSPredicate predicateWithFormat:@"self.security_name_e contains [c] %@ OR self.ticker contains [c] %@", filterString, filterString];
     self.visibleResults = [self.allResults filteredArrayUsingPredicate:filterPredicate];
+    }
     
     [self.tableResults reloadData];
 }

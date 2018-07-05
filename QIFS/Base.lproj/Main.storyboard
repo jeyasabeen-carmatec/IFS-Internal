@@ -627,6 +627,7 @@
                         <outlet property="labelGainLossCaption" destination="Ncf-Qg-gzB" id="tbN-tt-4ak"/>
                         <outlet property="labelPortfolioValue" destination="eth-DJ-moi" id="TUi-kP-sHZ"/>
                         <outlet property="labelTitle" destination="wAK-8w-eqY" id="SD4-N1-fjI"/>
+                        <outlet property="menuHeight" destination="rOy-qj-JcZ" id="Ohe-f8-fiZ"/>
                         <outlet property="searchResults" destination="o30-vx-dCt" id="TV2-r6-ICd"/>
                         <outlet property="tableResults" destination="WYm-Km-Xdx" id="moq-rV-rvB"/>
                         <outlet property="tableViewOptionMenu" destination="Vyn-dV-loi" id="Ogc-W3-K9h"/>
@@ -1471,7 +1472,7 @@
                                 </connections>
                             </button>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="81x-Mt-nkw">
-                                <rect key="frame" x="0.0" y="150" width="834" height="913"/>
+                                <rect key="frame" x="0.0" y="140" width="834" height="923"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="25J-1I-rmR">
                                         <rect key="frame" x="0.0" y="0.0" width="834" height="525"/>
@@ -2129,7 +2130,7 @@
                             <constraint firstItem="gbE-um-2JM" firstAttribute="top" secondItem="s51-8b-iAb" secondAttribute="top" id="ohR-5K-agS"/>
                             <constraint firstItem="XjL-RF-5PM" firstAttribute="trailing" secondItem="81x-Mt-nkw" secondAttribute="trailing" id="pC8-Oe-4l5"/>
                             <constraint firstItem="XjL-RF-5PM" firstAttribute="trailing" secondItem="Anb-3m-ypv" secondAttribute="trailing" id="pgZ-Po-ZUA"/>
-                            <constraint firstItem="81x-Mt-nkw" firstAttribute="top" secondItem="53R-Xz-LVB" secondAttribute="bottom" constant="8" symbolic="YES" id="qjL-SZ-h0t"/>
+                            <constraint firstItem="81x-Mt-nkw" firstAttribute="top" secondItem="53R-Xz-LVB" secondAttribute="bottom" constant="-2" id="qjL-SZ-h0t"/>
                             <constraint firstItem="Evy-5v-B72" firstAttribute="top" secondItem="xiF-3D-Nkj" secondAttribute="bottom" id="rg1-5D-Gp7"/>
                             <constraint firstItem="0yk-dc-wKW" firstAttribute="width" secondItem="GSO-Bn-BSy" secondAttribute="width" id="sar-KB-WFL"/>
                             <constraint firstItem="gbE-um-2JM" firstAttribute="bottom" secondItem="s51-8b-iAb" secondAttribute="bottom" id="tmw-6W-onp"/>
@@ -2193,6 +2194,7 @@
                         <outlet property="labelTransactionCaption" destination="N2n-dM-8Vl" id="aVR-sR-XHv"/>
                         <outlet property="limitDowmLabel" destination="ZRq-Bk-QnN" id="vFg-ce-Ry0"/>
                         <outlet property="limitUPLabel" destination="ssq-H8-cts" id="1Cu-3M-92o"/>
+                        <outlet property="menuHeight" destination="5kM-fn-oEc" id="717-rf-xgh"/>
                         <outlet property="scrollView" destination="81x-Mt-nkw" id="BfD-rQ-jf0"/>
                         <outlet property="searchResults" destination="pZN-it-jJ2" id="Qiw-Hs-T8P"/>
                         <outlet property="tableResults" destination="Anb-3m-ypv" id="Bdv-as-y8V"/>
@@ -2607,6 +2609,7 @@
                         <outlet property="labelChangeCaption" destination="Hvc-oI-CmQ" id="tcC-qI-XNf"/>
                         <outlet property="labelDayHLCaption" destination="GRg-CC-6He" id="qdw-vX-ocW"/>
                         <outlet property="labelTitle" destination="bYj-YK-rgc" id="hT7-fL-Dd7"/>
+                        <outlet property="menuHeight" destination="89W-Ru-Q5k" id="jre-HC-ILX"/>
                         <outlet property="searchResults" destination="jTC-Mq-aIH" id="HDi-pv-tck"/>
                         <outlet property="tableResults" destination="mAp-fH-e8y" id="0ek-DH-ZFb"/>
                         <outlet property="tableViewOptionMenu" destination="toE-IC-28x" id="zt6-VV-J4U"/>
@@ -3287,6 +3290,7 @@
                         <outlet property="labelTitle" destination="rOt-o3-EQ3" id="pTS-W5-qVd"/>
                         <outlet property="labelTitleAvgPrice" destination="t6q-BH-yMc" id="B7a-7Z-xB0"/>
                         <outlet property="labelTitleOrgQty" destination="r9H-FK-sAe" id="Axb-8S-keG"/>
+                        <outlet property="menuHeight" destination="NwD-pX-tYF" id="GQc-QF-ysj"/>
                         <outlet property="searchResults" destination="zSm-6J-T03" id="YgZ-ji-FMw"/>
                         <outlet property="segmentOrders" destination="an0-ca-BjY" id="pmZ-Bn-8ql"/>
                         <outlet property="tableResults" destination="Pdy-3I-8Oi" id="rbA-yx-aGy"/>
@@ -8405,6 +8409,7 @@ E-mail: info@islamicbroker.com.qa</string>
                         <outlet property="labelSymbol" destination="Ulc-9g-cC4" id="lla-Gb-NaB"/>
                         <outlet property="labelTitle" destination="MNO-pW-Is9" id="wdX-sc-brP"/>
                         <outlet property="lineChartViewQE" destination="F5H-4K-B3H" id="nLr-Ob-e01"/>
+                        <outlet property="menuHeight" destination="oJI-Ws-ytm" id="bRl-Sy-UDb"/>
                         <outlet property="searchResults" destination="w76-GU-3Hh" id="25D-zP-pmT"/>
                         <outlet property="tableResults" destination="rGP-ep-uqc" id="p7h-45-aca"/>
                         <outlet property="tableViewOptionMenu" destination="iWq-65-66p" id="82E-6y-Av6"/>
@@ -10677,7 +10682,7 @@ E-mail: info@islamicbroker.com.qa</string>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <searchBar hidden="YES" contentMode="redraw" placeholder="Symbol/Company Name" showsCancelButton="YES" translatesAutoresizingMaskIntoConstraints="NO" id="aCb-6v-vme">
-                                <rect key="frame" x="0.0" y="40" width="834" height="56"/>
+                                <rect key="frame" x="0.0" y="20" width="834" height="56"/>
                                 <color key="barTintColor" red="1" green="0.5" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <textInputTraits key="textInputTraits"/>
                                 <connections>
@@ -11025,7 +11030,7 @@ E-mail: info@islamicbroker.com.qa</string>
                                 <rect key="frame" x="407" y="531.5" width="20" height="20"/>
                             </activityIndicatorView>
                             <tableView hidden="YES" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="SZf-MY-et0">
-                                <rect key="frame" x="0.0" y="96" width="834" height="967"/>
+                                <rect key="frame" x="0.0" y="76" width="834" height="987"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 <connections>
@@ -11221,7 +11226,7 @@ E-mail: info@islamicbroker.com.qa</string>
                             <constraint firstItem="fd7-hI-6eQ" firstAttribute="top" secondItem="uWf-In-bbj" secondAttribute="top" id="YTC-LU-i2d"/>
                             <constraint firstItem="Spq-aA-Wbr" firstAttribute="top" secondItem="uLc-Mz-xCC" secondAttribute="bottom" id="aCL-bY-wga"/>
                             <constraint firstItem="OKE-PL-USK" firstAttribute="leading" secondItem="nGU-5u-duX" secondAttribute="trailing" id="ahp-zW-iDU"/>
-                            <constraint firstItem="aCb-6v-vme" firstAttribute="top" secondItem="QvO-tr-6nU" secondAttribute="topMargin" constant="20" id="bUg-e8-vbD"/>
+                            <constraint firstItem="aCb-6v-vme" firstAttribute="top" secondItem="Jg3-wV-8yT" secondAttribute="top" id="bUg-e8-vbD"/>
                             <constraint firstItem="QjS-LJ-umI" firstAttribute="top" secondItem="toa-Vr-Heo" secondAttribute="top" id="bgq-dg-IOv"/>
                             <constraint firstItem="QjS-LJ-umI" firstAttribute="leading" secondItem="toa-Vr-Heo" secondAttribute="trailing" id="cF1-b1-dX0"/>
                             <constraint firstItem="Jg3-wV-8yT" firstAttribute="trailing" secondItem="Spq-aA-Wbr" secondAttribute="trailing" id="d4X-5O-Ru1"/>
@@ -11284,6 +11289,7 @@ E-mail: info@islamicbroker.com.qa</string>
                         <outlet property="labelTitleAvgPrice" destination="vf1-Rk-Mjg" id="a2f-jZ-bcc"/>
                         <outlet property="labelTitleOrgQty" destination="QjS-LJ-umI" id="hKo-6A-k60"/>
                         <outlet property="labelTitleValidity" destination="cMj-39-o1e" id="nib-Ad-NiA"/>
+                        <outlet property="menuHeight" destination="g5A-Dw-SxL" id="gij-sH-Xyd"/>
                         <outlet property="searchResults" destination="aCb-6v-vme" id="RoT-As-w54"/>
                         <outlet property="tableResults" destination="SZf-MY-et0" id="ZS0-Np-l0B"/>
                         <outlet property="tableViewOptionMenu" destination="alg-Jv-Loj" id="MAq-4q-eSX"/>

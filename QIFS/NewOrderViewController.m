@@ -55,7 +55,8 @@ NSString *const kNewOrderOptionsViewCellIdentifier = @"OptionsViewCell";
 @property (nonatomic, weak) IBOutlet UIButton *buttonCreate;
 @property (nonatomic, weak) IBOutlet UIActivityIndicatorView *indicatorView;
 
-@property (nonatomic, strong) NSArray *arrayMenu;
+@property (nonatomic, strong) NSMutableArray *arrayMenu;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *menuHeight;
 @property (nonatomic, weak) IBOutlet UIView *viewOptionMenu;
 @property (nonatomic, weak) IBOutlet UITableView *tableViewOptionMenu;
 @property (nonatomic, strong) UIButton *transparencyButton;
@@ -172,6 +173,7 @@ NSString *const kNewOrderOptionsViewCellIdentifier = @"OptionsViewCell";
     [self.searchResults setPlaceholder:NSLocalizedString(@"Symbol/Company Name", @"Symbol/Company Name")];
     self.tableResults.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
     [self.tableResults setHidden:YES];
+    self.arrayMenu = [[NSMutableArray alloc]init];
     [self menuDataSetUp];
 
 //    NSString *loginStatus;
@@ -393,10 +395,12 @@ NSString *const kNewOrderOptionsViewCellIdentifier = @"OptionsViewCell";
                 
 //                if([self.buttonTransaction.currentTitle isEqualToString:@"Buy"]) {
                 if(self.selectValTrans == 0) {
-                    [self.view setBackgroundColor:[UIColor colorWithRed:230/255.f green:240/255.f blue:255/255.f alpha:1.f]];
+                    [self.contentView setBackgroundColor:[UIColor colorWithRed:230/255.f green:240/255.f blue:255/255.f alpha:1.f]];
+                    self.scrollView.backgroundColor = self.contentView.backgroundColor;
                 }
                 else {
-                    [self.view setBackgroundColor:[UIColor colorWithRed:255/255.f green:245/255.f blue:245/255.f alpha:1.f]];
+                    [self.contentView setBackgroundColor:[UIColor colorWithRed:255/255.f green:245/255.f blue:245/255.f alpha:1.f]];
+                    self.scrollView.backgroundColor = self.contentView.backgroundColor;
                     
                     [self.textFieldQty setText:self.strValidPortOnSellQty];
                 }
@@ -516,6 +520,7 @@ NSString *const kNewOrderOptionsViewCellIdentifier = @"OptionsViewCell";
 #pragma mark Menu Data SetUp...
 -(void)menuDataSetUp{
     NSString *loginStatus;
+    NSString *userId;
     if ([GlobalShare isUserLogedIn]) {
         
         loginStatus = NSLocalizedString(@"Sign In", @"Sign In");
@@ -523,31 +528,38 @@ NSString *const kNewOrderOptionsViewCellIdentifier = @"OptionsViewCell";
     }
     else{
         loginStatus = NSLocalizedString(@"Sign Out", @"Sign Out");
+        userId = [[NSUserDefaults standardUserDefaults]valueForKey:@"UserName"];
     }
     
-    self.arrayMenu = @[
-                       @{
-                           @"menu_title": NSLocalizedString(@"Cash Position", @"Cash Position"),
-                           @"menu_image": @"icon_cash_position"
-                           },
-                       //                       @{
-                       //                           @"menu_title": NSLocalizedString(@"My Orders History", @"My Orders History"),
-                       //                           @"menu_image": @"icon_my_order_history"
-                       //                           },
-                       @{
-                           @"menu_title": NSLocalizedString(@"Contact Us", @"Contact Us"),
-                           @"menu_image": @"icon_contact_us"
-                           },
-                       @{
-                           @"menu_title": NSLocalizedString(@"Settings", @"Settings"),
-                           @"menu_image": @"icon_settings"
-                           },
-                       @{
-                           @"menu_title": loginStatus,
-                           @"menu_image": @"icon_signout"
-                           }
-                       ];
+    [self.arrayMenu removeAllObjects];
+    [_arrayMenu addObject:@{ @"menu_title": NSLocalizedString(@"Cash Position", @"Cash Position"),
+                             @"menu_image": @"icon_cash_position"
+                             }];
+    [_arrayMenu addObject:@{ @"menu_title": NSLocalizedString(@"Contact Us", @"Contact Us"),
+                             @"menu_image": @"icon_contact_us"
+                             }];
+    [_arrayMenu addObject:@{ @"menu_title": NSLocalizedString(@"Settings", @"Settings"),
+                             @"menu_image": @"icon_settings"
+                             }];
+    [_arrayMenu addObject:@{ @"menu_title": loginStatus,
+                             @"menu_image": @"icon_signout"
+                             }];
+    
+    if (![GlobalShare isUserLogedIn]) {
+        [self.arrayMenu insertObject:@{ @"menu_title": userId,
+                                        @"menu_image": @"icon_user"
+                                        } atIndex:0];
+        _menuHeight.constant = 200.0;
+    }
+    else{
+        _menuHeight.constant = 160.0;
+    }
+    
+    
+   
+    [self.tableViewOptionMenu reloadData];
 }
+
 
 
 #pragma mark Loading Login PopUp when guest User
@@ -770,10 +782,12 @@ NSString *const kNewOrderOptionsViewCellIdentifier = @"OptionsViewCell";
         
 //        if([self.buttonTransaction.currentTitle isEqualToString:@"Buy"]) {
         if(self.selectValTrans == 0) {
-           [self.view setBackgroundColor:[UIColor colorWithRed:230/255.f green:240/255.f blue:255/255.f alpha:1.f]];
+           [self.contentView setBackgroundColor:[UIColor colorWithRed:230/255.f green:240/255.f blue:255/255.f alpha:1.f]];
+            self.scrollView.backgroundColor = self.contentView.backgroundColor;
         }
         else {
-            [self.view setBackgroundColor:[UIColor colorWithRed:255/255.f green:245/255.f blue:245/255.f alpha:1.f]];
+            [self.contentView setBackgroundColor:[UIColor colorWithRed:255/255.f green:245/255.f blue:245/255.f alpha:1.f]];
+            self.scrollView.backgroundColor = self.contentView.backgroundColor;
         }
 //    }
     
@@ -1489,6 +1503,8 @@ NSString *const kNewOrderOptionsViewCellIdentifier = @"OptionsViewCell";
                                                                }
                                                                NSString *strToken = [returnedDict objectForKey:@"result"];
                                                                [[NSUserDefaults standardUserDefaults] setObject:strToken forKey:@"ssckey"];
+                                                               // Storing UserName in Shared Preference values..
+                                                               [[NSUserDefaults standardUserDefaults] setValue:stringUserName forKey:@"UserName"];
                                                                [[NSUserDefaults standardUserDefaults] synchronize];
                                                                [self menuDataSetUp];
                                                                [self.tableViewOptionMenu reloadData];
@@ -1524,9 +1540,11 @@ NSString *const kNewOrderOptionsViewCellIdentifier = @"OptionsViewCell";
     @try {
         if([self.securityId length] == 0) return;
         
-        [self.indicatorView setHidden:NO];
+       // [self.indicatorView setHidden:NO];
+        self.indicatorView.hidden = NO;
         
         NSString *strToken = [NSString stringWithFormat:@"%@", [[NSUserDefaults standardUserDefaults] stringForKey:@"ssckey"]];
+        
         NSURLSessionConfiguration *defaultConfigObject = [NSURLSessionConfiguration defaultSessionConfiguration];
         defaultConfigObject.HTTPAdditionalHeaders = @{@"Authorization": strToken};
         NSURLSession *defaultSession = [NSURLSession sessionWithConfiguration:defaultConfigObject delegate:self delegateQueue:[NSOperationQueue mainQueue]];
@@ -1540,7 +1558,7 @@ NSString *const kNewOrderOptionsViewCellIdentifier = @"OptionsViewCell";
                                                            if(error == nil)
                                                            {
                                                                NSMutableDictionary *returnedDict = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:&error];
-                                                               NSLog(@"the live market_data_is:%@",returnedDict);
+                                                               //NSLog(@"the live market_data_is:%@",returnedDict);
                                                                if([returnedDict[@"status"] hasPrefix:@"error"]) {
                                                                    if([returnedDict[@"result"] hasPrefix:@"T5"])
                                                                        [GlobalShare showSessionExpiredAlertView:self :SESSION_EXPIRED];
@@ -1554,6 +1572,9 @@ NSString *const kNewOrderOptionsViewCellIdentifier = @"OptionsViewCell";
                                                                }
                                                                if([returnedDict[@"status"] isEqualToString:@"authenticated"]) {
                                                                    dispatch_async(dispatch_get_main_queue(), ^{
+                                                                       
+                                                                        if(![returnedDict[@"result"] isKindOfClass:[NSArray class]]) return;
+                                                                       
                                                                        NSArray *arrVal = returnedDict[@"result"];
                                                                        NSDictionary *dictVal = arrVal[0];
                                                                        self.labelSymbol.text = dictVal[@"ticker"];
@@ -2026,10 +2047,12 @@ NSString *const kNewOrderOptionsViewCellIdentifier = @"OptionsViewCell";
                                                                        
 //                                                                       if([self.buttonTransaction.currentTitle isEqualToString:@"Buy"]) {
                                                                        if(self.selectValTrans == 0) {
-                                                                           [self.view setBackgroundColor:[UIColor colorWithRed:230/255.f green:240/255.f blue:255/255.f alpha:1.f]];
+                                                                           [self.contentView setBackgroundColor:[UIColor colorWithRed:230/255.f green:240/255.f blue:255/255.f alpha:1.f]];
+                                                                           self.scrollView.backgroundColor = self.contentView.backgroundColor;
                                                                        }
                                                                        else {
-                                                                           [self.view setBackgroundColor:[UIColor colorWithRed:255/255.f green:245/255.f blue:245/255.f alpha:1.f]];
+                                                                           [self.contentView setBackgroundColor:[UIColor colorWithRed:255/255.f green:245/255.f blue:245/255.f alpha:1.f]];
+                                                                           self.scrollView.backgroundColor = self.contentView.backgroundColor;
                                                                        }
                                                                        
                                                                        self.textFieldQty.text = dictVal[@"qty"];
@@ -2395,7 +2418,7 @@ NSString *const kNewOrderOptionsViewCellIdentifier = @"OptionsViewCell";
         NSURLSession *defaultSession = [NSURLSession sessionWithConfiguration:defaultConfigObject delegate:self delegateQueue:[NSOperationQueue mainQueue]];
         
         NSString *strURL = [NSString stringWithFormat:@"%@GetSymbolLimitUpDown?ticker=%@", REQUEST_URL,self.securityId];
-        NSLog(@"URL .. %@",strURL);
+        //NSLog(@"URL .. %@",strURL);
         NSURL *url = [NSURL URLWithString:strURL];
         
         NSURLSessionDataTask *dataTask = [defaultSession dataTaskWithURL:url
@@ -2496,10 +2519,12 @@ NSString *const kNewOrderOptionsViewCellIdentifier = @"OptionsViewCell";
         
 //        if([self.buttonTransaction.currentTitle isEqualToString:@"Buy"]) {
         if(self.selectValTrans == 0) {
-            [self.view setBackgroundColor:[UIColor colorWithRed:230/255.f green:240/255.f blue:255/255.f alpha:1.f]];
+            [self.contentView setBackgroundColor:[UIColor colorWithRed:230/255.f green:240/255.f blue:255/255.f alpha:1.f]];
+            self.scrollView.backgroundColor = [UIColor colorWithRed:230/255.f green:240/255.f blue:255/255.f alpha:1.f];
         }
         else {
-            [self.view setBackgroundColor:[UIColor colorWithRed:255/255.f green:245/255.f blue:245/255.f alpha:1.f]];
+            [self.contentView setBackgroundColor:[UIColor colorWithRed:255/255.f green:245/255.f blue:245/255.f alpha:1.f]];
+            self.scrollView.backgroundColor = [UIColor colorWithRed:255/255.f green:245/255.f blue:245/255.f alpha:1.f];
         }
     }
     else if(_selectVal == 1) {
@@ -2760,7 +2785,12 @@ NSString *const kNewOrderOptionsViewCellIdentifier = @"OptionsViewCell";
     self.transparencyButton = nil;
     
     if([tableView isEqual:self.tableViewOptionMenu]) {
-        if(indexPath.row == 0) {
+        
+        if ([[[self.arrayMenu objectAtIndex:indexPath.row]valueForKey:@"menu_image"] isEqualToString:@"icon_user"]) {
+            //NSLog(@"User Id selected....");
+        }
+        else if ([[[self.arrayMenu objectAtIndex:indexPath.row]valueForKey:@"menu_image"] isEqualToString:@"icon_cash_position"]){
+            
             self.cashContentView = [self.storyboard instantiateViewControllerWithIdentifier:@"CashPositionViewController"];
             self.cashContentView.view.frame = CGRectMake(0, -[[UIScreen mainScreen] bounds].size.height, [[UIScreen mainScreen] bounds].size.width, [[UIScreen mainScreen] bounds].size.height);
             self.cashContentView.delegate = self;
@@ -2773,15 +2803,13 @@ NSString *const kNewOrderOptionsViewCellIdentifier = @"OptionsViewCell";
                 self.tabBarController.tabBar.hidden = YES;
             }];
         }
-//        else if(indexPath.row == 1) {
-//            OrderHistoryViewController *orderHistoryViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"OrderHistoryViewController"];
-//            [[self navigationController] pushViewController:orderHistoryViewController animated:YES];
-//        }
-        else if(indexPath.row == 1) {
+       else if ([[[self.arrayMenu objectAtIndex:indexPath.row]valueForKey:@"menu_image"] isEqualToString:@"icon_contact_us"]){
+           
             ContactUsViewController *contactUsViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"ContactUsViewController"];
             [[self navigationController] pushViewController:contactUsViewController animated:YES];
         }
-        else if(indexPath.row == 2) {
+       else if ([[[self.arrayMenu objectAtIndex:indexPath.row]valueForKey:@"menu_image"] isEqualToString:@"icon_settings"]){
+           
             SettingsViewController *settingsViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"SettingsViewController"];
             [[self navigationController] pushViewController:settingsViewController animated:YES];
         }
@@ -2909,9 +2937,15 @@ NSString *const kNewOrderOptionsViewCellIdentifier = @"OptionsViewCell";
 //        self.visibleResults = self.allResults;
 //    }
 //    else {
+    
+    if ([filterString isEqualToString:@""]) {
+        
+        self.visibleResults = self.allResults;
+    }
+    else{
         NSPredicate *filterPredicate = [NSPredicate predicateWithFormat:@"self.security_name_e contains [c] %@ OR self.security_name_a contains [c] %@ OR self.ticker contains [c] %@", filterString, filterString, filterString];
         self.visibleResults = [self.allResults filteredArrayUsingPredicate:filterPredicate];
-//    }
+   }
     
     [self.tableResults reloadData];
 }
