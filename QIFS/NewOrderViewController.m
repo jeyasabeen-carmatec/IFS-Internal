@@ -150,6 +150,7 @@ NSString *const kNewOrderOptionsViewCellIdentifier = @"OptionsViewCell";
     overLayView.hidden = YES;
     [self.view addSubview:overLayView];
     
+    
     _scrollView.translatesAutoresizingMaskIntoConstraints = YES;
     
 //    if([[UIDevice currentDevice]userInterfaceIdiom]==UIUserInterfaceIdiomPhone) {
@@ -210,8 +211,6 @@ NSString *const kNewOrderOptionsViewCellIdentifier = @"OptionsViewCell";
 //                       ];
 
     self.tableViewOptionMenu.scrollEnabled = NO;
-
-
 
     self.picker = [[UIPickerView alloc] initWithFrame:CGRectMake(0, 1000, [[UIScreen mainScreen] bounds].size.width, 162)];
     self.picker.delegate = self;
@@ -283,14 +282,44 @@ NSString *const kNewOrderOptionsViewCellIdentifier = @"OptionsViewCell";
     _strQty = _textFieldQty.text;
 }
 -(void)viewDidLayoutSubviews{
-    _scrollView.contentSize = CGSizeMake(self.view.frame.size.width, self.contentView.frame.size.height+self.contentView.frame.origin.y+400);
-    NSLog(@"%f",self.contentView.frame.size.height+self.contentView.frame.origin.y+400);
+    _scrollView.contentSize = CGSizeMake(self.scrollView.frame.size.width, self.contentView.frame.size.height+self.contentView.frame.origin.y);
+    NSLog(@"%f",self.contentView.frame.size.height+self.contentView.frame.origin.y);
 }
 -(void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:YES];
     
-    _limitDowmLabel.hidden =YES;
-    _limitUPLabel.hidden = YES;
+    CGRect frameset = _contentView.frame;
+    frameset.size.width = self.view.frame.size.width;
+     frameset.size.height = self.view.frame.size.height;
+   _contentView.frame = frameset;
+    
+     frameset =_scrollView.frame;
+    //frameset.origin.y = self.tableResults.frame.origin.y;
+    frameset.size.width = self.view.frame.size.width;
+    CGSize result = [[UIScreen mainScreen] bounds].size;
+    if(result.height <= 480)
+    {
+    }
+    else if(result.height <= 568)
+    {
+    }
+    else
+    {
+        frameset.size.height = self.view.frame.size.height;
+
+     }
+    _scrollView.frame  = frameset;
+
+    
+    if([self.buttonCreate.currentTitle isEqualToString:NSLocalizedString(@"Modify", @"Modify")])
+    {
+        _limitDowmLabel.hidden =NO;
+        _limitUPLabel.hidden = NO;
+    }
+    else{
+        _limitDowmLabel.hidden =YES;
+        _limitUPLabel.hidden = YES;
+    }
     
     if(self.tabBarController.selectedIndex == 1)
     {
@@ -373,7 +402,7 @@ NSString *const kNewOrderOptionsViewCellIdentifier = @"OptionsViewCell";
         self.selectValTrans = 0;
         self.selectValOrder = 0;
         self.selectValDuration = 0;
-        [self clearSecurityOrderValue];
+      //  [self clearSecurityOrderValue];
         
         [self.textFieldLimit setAlpha:1.0];
         [self.textFieldLimit setEnabled:YES];
@@ -722,7 +751,8 @@ NSString *const kNewOrderOptionsViewCellIdentifier = @"OptionsViewCell";
     [[self navigationController] pushViewController:alertsViewController animated:YES];
 }
 
-- (IBAction)actionOptionMenu:(id)sender {
+- (IBAction)actionOptionMenu:(id)sender
+{
     if ([self.viewOptionMenu isHidden]) {
         [self.viewOptionMenu setHidden:NO];
         [self.view bringSubviewToFront:self.viewOptionMenu];
@@ -1439,7 +1469,7 @@ NSString *const kNewOrderOptionsViewCellIdentifier = @"OptionsViewCell";
         return;
     }
     
-//    [self confirmOrderValue:dictVals];
+    [self confirmOrderValue:dictVals];
 //    return;
     
     if(self.selectValTrans == 0) {
@@ -1558,7 +1588,7 @@ NSString *const kNewOrderOptionsViewCellIdentifier = @"OptionsViewCell";
                                                            if(error == nil)
                                                            {
                                                                NSMutableDictionary *returnedDict = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:&error];
-                                                               //NSLog(@"the live market_data_is:%@",returnedDict);
+                                                               NSLog(@"the live market_data_is:%@",returnedDict);
                                                                if([returnedDict[@"status"] hasPrefix:@"error"]) {
                                                                    if([returnedDict[@"result"] hasPrefix:@"T5"])
                                                                        [GlobalShare showSessionExpiredAlertView:self :SESSION_EXPIRED];
@@ -2000,7 +2030,10 @@ NSString *const kNewOrderOptionsViewCellIdentifier = @"OptionsViewCell";
                                                                    dispatch_async(dispatch_get_main_queue(), ^{
                                                                        
                                                                        NSDictionary *dictVal = returnedDict[@"result"];
-                                                                       
+                                                                       if([self.buttonCreate.currentTitle isEqualToString:NSLocalizedString(@"Modify", @"Modify")])
+                                                                       {
+                                                                       self.labelOrderValue.text = [NSString stringWithFormat:@"%@",dictVal[@"OrderValue"]];
+                                                                       }
                                                                        
                                                                       // [self getLimitUpLimitDown];
                                                                        
@@ -2156,35 +2189,60 @@ NSString *const kNewOrderOptionsViewCellIdentifier = @"OptionsViewCell";
 }
 
 - (void)updateOrderValue {
-    NSString *strQty = [self.textFieldQty.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
-    NSString *strPrice = [self.textFieldLimit.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
     
-//    if(![self.buttonOrderType.currentTitle isEqualToString:@"Limit Price"])
-    if(self.selectValOrder == 0)
-        strPrice = self.labelPrice.text;
-
+    NSString *strPrice = [self.textFieldLimit.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
+    NSString *strQty = [self.textFieldQty.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
+    
+    double qtyVal = 0, priceVal = 0, commission = 0, commissionVal = 0, OrderVal = 0, orderCommissionVal = 0;
     if([strQty integerValue] > 0) {
-        double qtyVal = 0, priceVal = 0, commission = 0, commissionVal = 0, OrderVal = 0, orderCommissionVal = 0;
         priceVal = [strPrice doubleValue];
         qtyVal = [strQty doubleValue];
         commission = [[[NSUserDefaults standardUserDefaults] objectForKey:@"IFS_Commission"] doubleValue];
         OrderVal = qtyVal * priceVal;
         commissionVal = qtyVal * priceVal * commission;
         if(commissionVal < 30) commissionVal = 30.0;
-        orderCommissionVal = OrderVal + commissionVal;
-        
-        self.labelOrderValue.text = [GlobalShare createCommaSeparatedTwoDigitString:[NSString stringWithFormat:@"%.2f", orderCommissionVal]];
+        if(self.selectValTrans == 0)
+            orderCommissionVal = OrderVal + commissionVal;
+        else
+            orderCommissionVal = OrderVal - commissionVal;
     }
+    
+    self.labelOrderValue.text = [GlobalShare createCommaSeparatedTwoDigitString:[NSString stringWithFormat:@"%.2f", orderCommissionVal]];
+    if([self.buttonCreate.currentTitle isEqualToString:NSLocalizedString(@"Modify", @"Modify")])
+    {
+    [self order_VAL_cahnged];
+    }
+    
+    
+//    NSString *strQty = [self.textFieldQty.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
+//    NSString *strPrice = [self.textFieldLimit.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
+//
+////    if(![self.buttonOrderType.currentTitle isEqualToString:@"Limit Price"])
+//    if(self.selectValOrder == 0)
+//        strPrice = self.labelPrice.text;
+//
+//    if([strQty integerValue] > 0) {
+//        double qtyVal = 0, priceVal = 0, commission = 0, commissionVal = 0, OrderVal = 0, orderCommissionVal = 0;
+//        priceVal = [strPrice doubleValue];
+//        qtyVal = [strQty doubleValue];
+//        commission = [[[NSUserDefaults standardUserDefaults] objectForKey:@"IFS_Commission"] doubleValue];
+//        OrderVal = qtyVal * priceVal;
+//        commissionVal = qtyVal * priceVal * commission;
+//        if(commissionVal < 30) commissionVal = 30.0;
+//        orderCommissionVal = OrderVal + commissionVal;
+//
+//        self.labelOrderValue.text = [GlobalShare createCommaSeparatedTwoDigitString:[NSString stringWithFormat:@"%.2f", orderCommissionVal]];
+//    }
 }
 
 - (void)callBackFromConfirmOrderStocks {
-    [self clearSecurityOrderValue];
+   // [self clearSecurityOrderValue];
     [self performSelector:@selector(getCashPosition) withObject:nil afterDelay:0.01f];
 }
 
 - (void)callBackFromConfirmOrder {
     self.securityId = @"";
-    [self clearSecurityOrderValue];
+   // [self clearSecurityOrderValue];
     [self performSelector:@selector(getCashPosition) withObject:nil afterDelay:0.01f];
 }
 
@@ -2641,6 +2699,7 @@ NSString *const kNewOrderOptionsViewCellIdentifier = @"OptionsViewCell";
     
     if ([textField isEqual:_textFieldLimit])
     {
+        
         [self updateOrderValue];
       //  self.view.frame = [GlobalShare setViewMovedUp:NO :self.view :75];
     }
@@ -2831,7 +2890,7 @@ NSString *const kNewOrderOptionsViewCellIdentifier = @"OptionsViewCell";
     else {
         if(![self.securityId isEqualToString:self.visibleResults[indexPath.row][@"ticker"]]) {
             self.securityId = self.visibleResults[indexPath.row][@"ticker"];
-            [self clearSecurityOrderValue];
+           // [self clearSecurityOrderValue];
             
             [self.buttonOrderType setEnabled:YES];
             
@@ -2940,11 +2999,11 @@ NSString *const kNewOrderOptionsViewCellIdentifier = @"OptionsViewCell";
     
     if ([filterString isEqualToString:@""]) {
         
-        self.visibleResults = self.allResults;
+        self.visibleResults = globalShare.search_results;
     }
     else{
         NSPredicate *filterPredicate = [NSPredicate predicateWithFormat:@"self.security_name_e contains [c] %@ OR self.security_name_a contains [c] %@ OR self.ticker contains [c] %@", filterString, filterString, filterString];
-        self.visibleResults = [self.allResults filteredArrayUsingPredicate:filterPredicate];
+        self.visibleResults = [globalShare.search_results filteredArrayUsingPredicate:filterPredicate];
    }
     
     [self.tableResults reloadData];
@@ -3020,7 +3079,7 @@ NSString *const kNewOrderOptionsViewCellIdentifier = @"OptionsViewCell";
                                                                    style:UIAlertActionStyleDefault
                                                                  handler:^(UIAlertAction *action)
                                            {
-                                               _textFieldQty.text = _strQty;
+                                           //    _textFieldQty.text = _strQty;
                                                [self dismissViewControllerAnimated:NO completion:nil];
                                            }];
             
@@ -3115,22 +3174,205 @@ NSString *const kNewOrderOptionsViewCellIdentifier = @"OptionsViewCell";
 }
 #pragma Text field editing chaneged
 
+
+-(void)order_VAL_cahnged
+{
+    NSString *strPrice = [self.textFieldLimit.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
+    NSString *strQty = [self.textFieldQty.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
+    
+    double qtyVal = 0, priceVal = 0, commission = 0, commissionVal = 0, OrderVal = 0, orderCommissionVal = 0;
+    if([strQty integerValue] > 0) {
+        priceVal = [strPrice doubleValue];
+        qtyVal = [strQty doubleValue];
+        commission = [[[NSUserDefaults standardUserDefaults] objectForKey:@"IFS_Commission"] doubleValue];
+        OrderVal = qtyVal * priceVal;
+        commissionVal = qtyVal * priceVal * commission;
+        if(commissionVal < 30) commissionVal = 30.0;
+        if(self.selectValTrans == 0)
+            orderCommissionVal = OrderVal + commissionVal;
+        else
+            orderCommissionVal = OrderVal - commissionVal;
+    }
+    
+    self.labelOrderValue.text = [GlobalShare createCommaSeparatedTwoDigitString:[NSString stringWithFormat:@"%.2f", orderCommissionVal]];
+}
+
 -(void)QTY_changed
 {
     
 //    NSString *strQty = [self.textFieldQty.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
-    NSString *strLimitPrice = [self.textFieldLimit.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
-    NSArray *temp_arr = [strLimitPrice componentsSeparatedByString:@"."];
-    NSString *strTemp = [temp_arr objectAtIndex:0];
-    if(strTemp.length >=2)
+    double buyCash1 = 0,buyCash2 = 0, buySharePrice1 = 0, commission = 0, commissionVal = 0;
+    int buyNoOfShares1 = 0;
+    buyCash1 = [[self.labelBuyPower.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]] doubleValue];
+    buyCash2 = [[self.labelOrderValue.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]] doubleValue];
+    if([self.buttonCreate.currentTitle isEqualToString:NSLocalizedString(@"Modify", @"Modify")])
     {
-    
-    NSString  *strPrice = self.labelBuyPower.text;
-    int VAL = [strPrice intValue]/[strLimitPrice intValue];
-    
-    _textFieldQty.text =[NSString stringWithFormat:@"%d",VAL];
-    
-    NSLog(@"The Quantity is:%d",VAL);
+    buyCash1 = buyCash1 + buyCash2;
     }
+    
+    buySharePrice1 = [[self.textFieldLimit.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]] doubleValue];
+   
+    
+    if(self.selectValOrder == 0)
+   // buySharePrice1 = [self.labelPrice.text doubleValue];
+    
+    commission = [[[NSUserDefaults standardUserDefaults] objectForKey:@"IFS_Commission"] doubleValue];
+    commissionVal = buyCash1 * commission;
+    if(commissionVal < 30) commissionVal = 30.0;
+    buyCash1 = buyCash1 - commissionVal;
+    buyNoOfShares1 = buyCash1 / buySharePrice1;
+    
+ 
+//    if(_textFieldLimit.text.length < 2)
+//    {
+//        _textFieldQty.text =[NSString stringWithFormat:@"0"];
+//    }
+//    else
+//    {
+        if(buyNoOfShares1 < 0)
+        {
+            _textFieldQty.text =[NSString stringWithFormat:@"0"];
+        }
+        else{
+            _textFieldQty.text =[NSString stringWithFormat:@"%d",buyNoOfShares1];
+
+        }
+
+ //   }
+   
+  
+ //   }
 }
+-(void)callintthe_ORDER_confirm_API
+{
+    @try {
+        
+        
+        [self.textFieldCurrent resignFirstResponder];
+        [self.backgroundTapButton removeFromSuperview];
+        self.backgroundTapButton = nil;
+        
+        if([self.strBuyPower doubleValue] < 0) {
+            [GlobalShare showBasicAlertView:self :NEWORDER_BUYINGCASH];
+            return;
+        }
+        
+        NSString *strOrderSide = globalShare.pickerData1[self.selectValTrans][@"minor_code"];
+        NSString *strTransactionType = globalShare.pickerData1[self.selectValTrans][(globalShare.myLanguage != ARABIC_LANGUAGE) ? @"description_e" : @"description_a"];
+        NSString *strSymbol = self.labelSymbol.text;
+        NSString *strPrice = [self.textFieldLimit.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
+        NSString *strQty = [self.textFieldQty.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
+        NSString *strDisclose = [self.textFieldDisclose.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
+        //    NSString *strIsMarketPriceOrder = globalShare.pickerData2[self.selectValOrder][@"minor_code"];
+        NSString *strValidity = globalShare.pickerData3[self.selectValDuration][@"minor_code"];
+        NSString *strValidityDate = @"", *strValidityTime = @"";
+        if([strValidity integerValue] == 9)
+            strValidityDate = self.labelDuration.text;
+        else if([strValidity integerValue] == 10)
+            strValidityTime = self.labelDuration.text;
+        if([strValidityDate length] > 0)
+            strValidityDate = [GlobalShare returnUSDate:self.datePicker.date];
+        
+        if([self.labelSymbol.text length] == 0) {
+            [GlobalShare showBasicAlertView:self :NEWORDER_SECURITY];
+            return;
+        } else if([self.buttonTransaction.currentTitle length] == 0) {
+            [GlobalShare showBasicAlertView:self :NEWORDER_TRANSACTION];
+            return;
+        } else if([self.buttonOrderType.currentTitle length] == 0) {
+            [GlobalShare showBasicAlertView:self :NEWORDER_ORDERTYPE];
+            return;
+            //    } else if([self.buttonOrderType.currentTitle isEqualToString:@"Limit Price"] && [strPrice integerValue] == 0) {
+        }
+        //    else if([self.buttonOrderType.currentTitle isEqualToString:@"Limit Price"]) {
+        else if(self.selectValOrder == 0) {
+            if([strPrice length] == 0) {
+                [GlobalShare showBasicAlertView:self :NEWORDER_PRICE];
+                return;
+            } else if(([strPrice hasPrefix:@"."] && [strPrice hasSuffix:@"."]) || ([strPrice hasPrefix:@"."] || [strPrice hasSuffix:@"."])) {
+                [GlobalShare showBasicAlertView:self :NEWORDER_VALIDPRICE];
+                return;
+            } else if(([strPrice doubleValue] > [self.strLimitUpPrice doubleValue]) || ([strPrice doubleValue] < [self.strLimitDownPrice doubleValue])) {
+                  NSString *strMsg;
+                  //            if(globalShare.myLanguage != ARABIC_LANGUAGE)
+                  strMsg = [NSString stringWithFormat:@"%@ %@ %@ %@", NEWORDER_LIMITLESSVALID, self.strLimitUpPrice, NEWORDER_LIMITGREATERVALID, self.strLimitDownPrice];
+                
+                  
+                  [GlobalShare showBasicAlertView:self :strMsg];
+                  return;
+              }
+        }
+        if([strQty length] == 0) {
+            [GlobalShare showBasicAlertView:self :NEWORDER_QTY];
+            return;
+        } else if([strQty integerValue] == 0) {
+            [GlobalShare showBasicAlertView:self :NEWORDER_ORG_QTY];
+            return;
+        } else if([self.buttonDuration.currentTitle length] == 0) {
+            [GlobalShare showBasicAlertView:self :NEWORDER_DURATION];
+            return;
+        } else if([[GlobalShare sharedInstance] isPortfolioOrder] && self.selectValTrans == 1 && ([strQty integerValue] > [self.strValidPortOnSellQty integerValue])) {
+            [GlobalShare showBasicAlertView:self :NEWORDER_NOTENOUGHAVAILQTY];
+            return;
+        } else if([self.buttonDisclose.currentImage isEqual:[UIImage imageNamed:@"icon_tickmark"]] && [strDisclose integerValue] == 0) {
+            [GlobalShare showBasicAlertView:self :NEWORDER_DISCLOSEDQTY];
+            return;
+        } else if([strDisclose integerValue] > [strQty integerValue]) {
+            [GlobalShare showBasicAlertView:self :NEWORDER_DISCLOSEDQTYVAL];
+            return;
+        }
+        
+        //    if(![self.buttonOrderType.currentTitle isEqualToString:@"Limit Price"])
+        //        strPrice = self.labelPrice.text;
+        
+        if([strPrice length] > 0)
+            strPrice = [GlobalShare formatStringToTwoDigits:strPrice];
+        
+    
+        NSString *isMarketPrice = @"0";
+        if(self.selectValOrder == 1)
+            isMarketPrice = @"1";
+        else if(self.selectValOrder == 4)
+            isMarketPrice = @"2";
+     _str_confirm_order = [NSString stringWithFormat:@"?order_type=%@&order_side=%@&symbol=%@&qty=%@&price=%@&is_market_price_order=%@&order_id=%@", @"2", strOrderSide, strSymbol, strQty, (self.selectValOrder == 1) ? @"" : strPrice, isMarketPrice, self.strOrderId];
+        
+        if([self.strOrderId length] == 0) return;
+        
+        [self.indicatorView setHidden:NO];
+        
+        NSString *strToken = [NSString stringWithFormat:@"%@", [[NSUserDefaults standardUserDefaults] stringForKey:@"ssckey"]];
+        NSURLSessionConfiguration *defaultConfigObject = [NSURLSessionConfiguration defaultSessionConfiguration];
+        defaultConfigObject.HTTPAdditionalHeaders = @{@"Authorization": strToken};
+        NSURLSession *defaultSession = [NSURLSession sessionWithConfiguration:defaultConfigObject delegate:self delegateQueue:[NSOperationQueue mainQueue]];
+        
+        NSString *strURL = [NSString stringWithFormat:@"%@%@%@", REQUEST_URL,@"ConfirmOrder",_str_confirm_order];
+        
+        //            NSString *strURL =[NSString stringWithFormat:@"%@ConfirmOrder?order_side=1&order_type=2&symbol=%@&qty=%@&price=%@&is_market_price_order=0&order_id=20171214-749037, tag=null'];
+        NSLog(@"The URL for getOrderdetails:%@",strURL);
+        NSURL *url = [NSURL URLWithString:strURL];
+        
+        NSURLSessionDataTask *dataTask = [defaultSession dataTaskWithURL:url
+                                                       completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
+                                                           [self.indicatorView setHidden:YES];
+                                                           if(error == nil)
+                                                           {
+                                                               NSMutableDictionary *returnedDict = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:&error];
+                                                               NSLog(@"the response from update order:%@",returnedDict);
+                                                               
+                                                               if([returnedDict[@"status"] isEqualToString:@"authenticated"])
+                                                               {
+                                                               }
+                                                           }
+                                                            [dataTask resume];
+                                                       }];
+                                                   }
+                                                               @catch (NSException * e) {
+                                                                   NSLog(@"%@", [e description]);
+                                                               }
+                                                               @finally {
+                                                                   
+                                                               }
+    
+                                                           }
+
 @end

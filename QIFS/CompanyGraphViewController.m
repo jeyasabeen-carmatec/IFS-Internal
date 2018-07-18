@@ -58,8 +58,9 @@
     self.selectedIndexOption = 1;
     self.buttonRecent = self.buttonOneMonth;
     
-    ChartXAxis *xAxis = _lineChartViewQE.xAxis;
-    xAxis.valueFormatter = [[DateValueFormatter alloc] init];
+    
+    
+   
 //    xAxis.granularity = 3600.0;
     
     _lineChartViewQE.backgroundColor = [UIColor colorWithRed:252/255.f green:252/255.f blue:252/255.f alpha:0.7f];
@@ -116,6 +117,15 @@
 //        [self presentViewController:c animated:NO completion:nil];
 //        [self dismissViewControllerAnimated:NO completion:nil];
 //    }
+    
+    
+    GlobalShare *globalShare=[GlobalShare sharedInstance];
+    [globalShare setIsDayChart:NO];
+    
+    ChartXAxis *xAxis = _lineChartViewQE.xAxis;
+    xAxis.valueFormatter = [[DateValueFormatter alloc] init];
+    
+    
     [[UIDevice currentDevice] beginGeneratingDeviceOrientationNotifications];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didRotate:) name:@"UIDeviceOrientationDidChangeNotification"  object:nil];
     _orientation = [[UIDevice currentDevice] orientation];

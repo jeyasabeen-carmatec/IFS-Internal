@@ -16,6 +16,7 @@ static GlobalShare *_shareInstane;
 @end
 
 @implementation GlobalShare
+@synthesize isDayChart;
 
 @synthesize ismodifyOrder;
 @synthesize stockSectors;
@@ -51,6 +52,7 @@ static GlobalShare *_shareInstane;
 @synthesize isTimerMarketDepthRun;
 
 @synthesize strCommission;
+//@synthesize chartType;
 
 @synthesize pickerData1;
 @synthesize pickerData2;

@@ -11,6 +11,7 @@
 #import "MarketDepthViewController.h"
 #import "NewOrderViewController.h"
 #import "CompanyGraphViewController.h"
+#import "DateValueFormatter.h"
 
 #define RAND_FROM_TO(min, max) (min + arc4random_uniform(max - min + 1))
 
@@ -93,7 +94,9 @@
 //    _chartView._defaultValueFormatter.maximumFractionDigits = 2;
 //    _chartView._defaultValueFormatter.maximumSignificantDigits = 4;
 //    _chartView._defaultValueFormatter.minimumSignificantDigits = 4;
-
+    
+    
+  
     _chartView.legend.enabled = NO;
 //    _chartView.rightAxis.axisMaxValue = 10500.0;
 //    _chartView.rightAxis.axisMinValue = 9500.0;
@@ -103,6 +106,13 @@
 
 -(void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:YES];
+    
+    [globalShare setIsDayChart:YES];
+    // Finding chart is which type..
+    ChartXAxis *xAxis = _chartView.xAxis;
+    xAxis.valueFormatter = [[DateValueFormatter alloc] init];
+
+    
     
     [self.viewChart setSemanticContentAttribute:UISemanticContentAttributeForceLeftToRight];
     if(globalShare.myLanguage == ARABIC_LANGUAGE) {
@@ -398,27 +408,49 @@
     
     [_indicatorView setHidden:NO];
     NSMutableArray *xVals = [[NSMutableArray alloc] init];
-
-//    for (int i = 0; i < self.arrayTimes.count; i++)
+    
+//    NSString *strVal;
+//    for (int i = 0; i < self.arrayMarketWatch.count; i++)
 //    {
-//        [xVals addObject:self.arrayTimes[i]];
+//        strVal = [self.arrayMarketWatch[i][@"update_date"] componentsSeparatedByString:@" "][1];
+//        strVal = [NSString stringWithFormat:@"%@:%@", [strVal componentsSeparatedByString:@":"][0], [strVal componentsSeparatedByString:@":"][1]];
+//        [xVals addObject:strVal];
 //    }
+
     
     NSString *strVal;
     for (int i = 0; i < self.arrayMarketWatch.count; i++)
     {
-        strVal = [self.arrayMarketWatch[i][@"update_date"] componentsSeparatedByString:@" "][1];
-        strVal = [NSString stringWithFormat:@"%@:%@", [strVal componentsSeparatedByString:@":"][0], [strVal componentsSeparatedByString:@":"][1]];
-        [xVals addObject:strVal];
+       
+        //        strVal = [self.arrayMarketIndex[i][@"update_date"] componentsSeparatedByString:@" "][1];
+        //        strVal = [NSString stringWithFormat:@"%@:%@", [strVal componentsSeparatedByString:@":"][0], [strVal componentsSeparatedByString:@":"][1]];
+        //        [xVals addObject:strVal];
+        
+        
+        strVal = self.arrayMarketWatch[i][@"update_date"];
+        
+        NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
+        // set the date format related to what the string already you have
+        [dateFormat setDateFormat:@"dd-mm-yyyy HH:mm:ss"];
+        
+        //        NSDate *to = [NSDate date];
+        NSDate *from = [dateFormat dateFromString:strVal];
+        
+        
+        // NSTimeInterval point = [to timeIntervalSinceDate:from];
+        NSTimeInterval point = [from timeIntervalSince1970] ;
+        
+        // NSTimeInterval x = point;
+        NSNumber *num = [NSNumber numberWithDouble:point];
+        
+        // NSNumber *num = [NSNumber numberWithDouble:point];
+        [xVals addObject:num];
+        
     }
-
+    
     NSMutableArray *yVals = [[NSMutableArray alloc] init];
     
-//    for (int i = 0; i < 7; i++)
-//    {
-//        double val = (double) RAND_FROM_TO(0, 100);
-//        [yVals addObject:[[ChartDataEntry alloc] initWithValue:val xIndex:i]];
-//    }
+
     
     for (int i = 0; i < self.arrayMarketWatch.count; i++)
     {

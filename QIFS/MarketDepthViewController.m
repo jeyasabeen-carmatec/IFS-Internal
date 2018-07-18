@@ -747,16 +747,16 @@ NSString *const kMDOrderAskCellIdentifier = @"MDOrderAskCell";
         
         MDBarView *barViewBidShares = [[MDBarView alloc] initWithValues:[NSString stringWithFormat:@"%f", percentVal]];
 //        barViewBidShares.frame = CGRectMake(cell.labelBidQty.frame.origin.x+1, cell.labelBidQty.frame.origin.y, cell.labelBidQty.frame.size.width-2, cell.labelBidQty.frame.size.height);
-        
+//        
         CGRect myFrame;
 //        if(globalShare.myLanguage == ARABIC_LANGUAGE) {
-//            myFrame = CGRectMake(cell.labelBidQty.frame.origin.x+cell.labelBidQty.frame.size.width-1, cell.labelBidQty.frame.origin.y, cell.labelBidQty.frame.size.width-2, cell.labelBidQty.frame.size.height);
-//            [cell.labelBidQty setTextAlignment:NSTextAlignmentLeft];
-//        }
-//        else {
+//            myFrame = CGRectMake(cell.labelBidQty.frame.origin.x+cell.labelBidQty.frame.size.width-5, cell.labelBidQty.frame.origin.y, cell.labelBidQty.frame.size.width-2, cell.labelBidQty.frame.size.height);
+//         //  [cell.labelBidQty setTextAlignment:NSTextAlignmentRight];
+//       }
+//       else {
             myFrame = CGRectMake(cell.labelBidQty.frame.origin.x+1, cell.labelBidQty.frame.origin.y, cell.labelBidQty.frame.size.width-2, cell.labelBidQty.frame.size.height);
-            [cell.labelBidQty setTextAlignment:NSTextAlignmentRight];
-//        }
+            [cell.labelBidQty setTextAlignment:NSTextAlignmentLeft];
+       // }
         
         barViewBidShares.frame = myFrame;
         barViewBidShares.tag = 101;
@@ -798,12 +798,12 @@ NSString *const kMDOrderAskCellIdentifier = @"MDOrderAskCell";
         CGRect myFrame;
 //        if(globalShare.myLanguage == ARABIC_LANGUAGE) {
 //            myFrame = CGRectMake(cell.labelAskQty.frame.origin.x+cell.labelAskQty.frame.size.width-1, cell.labelAskQty.frame.origin.y, cell.labelAskQty.frame.size.width-2, cell.labelAskQty.frame.size.height);
-//            [cell.labelAskQty setTextAlignment:NSTextAlignmentLeft];
-//        }
+//
+//       }
 //        else {
-            myFrame = CGRectMake(cell.labelAskQty.frame.origin.x+1, cell.labelAskQty.frame.origin.y, cell.labelAskQty.frame.size.width-2, cell.labelAskQty.frame.size.height);
-            [cell.labelAskQty setTextAlignment:NSTextAlignmentRight];
-//        }
+            myFrame = CGRectMake(cell.labelAskQty.frame.origin.x+2, cell.labelAskQty.frame.origin.y, cell.labelAskQty.frame.size.width-2, cell.labelAskQty.frame.size.height);
+            [cell.labelAskQty setTextAlignment:NSTextAlignmentLeft];
+     // }
         
         barViewSellShares.frame = myFrame;
         barViewSellShares.tag = 102;

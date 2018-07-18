@@ -890,7 +890,7 @@ NSString *const kMyNewOrdersOptionsViewCellIdentifier = @"OptionsViewCell";
     
     NSString *filterString = searchController.searchBar.text;
     NSPredicate *filterPredicate = [NSPredicate predicateWithFormat:@"self.security_name_e contains [c] %@ OR self.security_name_a contains [c] %@ OR self.ticker contains [c] %@", filterString, filterString, filterString];
-    self.visibleResults = [self.allResults filteredArrayUsingPredicate:filterPredicate];
+    self.visibleResults = [globalShare.search_results filteredArrayUsingPredicate:filterPredicate];
     
     [self.tableResults reloadData];
 }
@@ -1396,11 +1396,11 @@ NSString *const kMyNewOrdersOptionsViewCellIdentifier = @"OptionsViewCell";
     
     if ([filterString isEqualToString:@""]) {
         
-        self.visibleResults = self.allResults;
+        self.visibleResults = globalShare.search_results;
     }
     else{
     NSPredicate *filterPredicate = [NSPredicate predicateWithFormat:@"self.security_name_e contains [c] %@ OR self.ticker contains [c] %@", filterString, filterString];
-    self.visibleResults = [self.allResults filteredArrayUsingPredicate:filterPredicate];
+    self.visibleResults = [globalShare.search_results filteredArrayUsingPredicate:filterPredicate];
     }
     
     [self.tableResults reloadData];

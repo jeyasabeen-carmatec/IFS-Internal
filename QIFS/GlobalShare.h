@@ -16,6 +16,9 @@
 @property (nonatomic, assign) BOOL ismodifyOrder;
 @property (nonatomic, assign) BOOL isBuytheorder;
 
+@property (nonatomic, assign) BOOL isDayChart;
+@property (nonatomic, strong) NSArray *search_results;
+
 @property (nonatomic, strong) NSArray *stockSectors;
 @property (nonatomic, strong) id topNavController;
 @property (nonatomic, strong) id topViewController;
@@ -50,6 +53,8 @@
 
 @property (nonatomic, strong) NSString *strCommission;
 @property (nonatomic, strong) NSString *strNewOrderFlow;
+//@property (nonatomic, strong) NSString *chartType;
+
 
 
 @property (nonatomic, strong) NSArray *pickerData1;

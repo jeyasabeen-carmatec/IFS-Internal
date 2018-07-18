@@ -9,6 +9,7 @@
 #import "StocksOverviewViewController.h"
 #import "QEGraphViewController.h"
 #import <Charts/Charts.h>
+#import "DateValueFormatter.h"
 #import "StockNewsCell.h"
 
 #define RAND_FROM_TO(min, max) (min + arc4random_uniform(max - min + 1))
@@ -93,6 +94,9 @@ NSString *const kStockNewsCellIdentifier = @"StockNewsCell";
 
 -(void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:YES];
+    [globalShare setIsDayChart:YES];
+    ChartXAxis *xAxis = _chartView.xAxis;
+    xAxis.valueFormatter = [[DateValueFormatter alloc] init];
     
     if(globalShare.myLanguage == ARABIC_LANGUAGE) {
         [self.view setSemanticContentAttribute:UISemanticContentAttributeForceRightToLeft];
@@ -137,6 +141,9 @@ NSString *const kStockNewsCellIdentifier = @"StockNewsCell";
 
 //    [self performSelector:@selector(authenticateUser) withObject:nil afterDelay:0.01f];
     [self performSelector:@selector(getMarketIndex) withObject:nil afterDelay:0.01f];
+    [self performSelector:@selector(getMarketWatch) withObject:nil afterDelay:0.01f];
+
+    //getMarketWatch
 }
 
 -(void)viewDidAppear:(BOOL)animated {
@@ -403,20 +410,40 @@ NSString *const kStockNewsCellIdentifier = @"StockNewsCell";
     [_indicatorView setHidden:NO];
     NSMutableArray *xVals = [[NSMutableArray alloc] init];
     
-//    for (int i = 0; i < self.arrayTimes.count; i++)
-//    {
-//        [xVals addObject:self.arrayTimes[i]];
-//    }
-
+    //    for (int i = 0; i < self.arrayTimes.count; i++)
+    //    {
+    //        [xVals addObject:self.arrayTimes[i]];
+    //    }
+    
     NSString *strVal;
     for (int i = 0; i < self.arrayMarketIndex.count; i++)
     {
-//        [xVals addObject:[self.arrayMarketIndex[i][@"update_date"] componentsSeparatedByString:@" "][1]];
-        strVal = [self.arrayMarketIndex[i][@"update_date"] componentsSeparatedByString:@" "][1];
-        strVal = [NSString stringWithFormat:@"%@:%@", [strVal componentsSeparatedByString:@":"][0], [strVal componentsSeparatedByString:@":"][1]];
-        [xVals addObject:strVal];
+        //        [xVals addObject:[self.arrayMarketIndex[i][@"update_date"] componentsSeparatedByString:@" "][1]];
+        //        strVal = [self.arrayMarketIndex[i][@"update_date"] componentsSeparatedByString:@" "][1];
+        //        strVal = [NSString stringWithFormat:@"%@:%@", [strVal componentsSeparatedByString:@":"][0], [strVal componentsSeparatedByString:@":"][1]];
+        //        [xVals addObject:strVal];
+        
+        
+        strVal = self.arrayMarketIndex[i][@"update_date"];
+        
+        NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
+        // set the date format related to what the string already you have
+        [dateFormat setDateFormat:@"dd-mm-yyyy HH:mm:ss"];
+        
+        //        NSDate *to = [NSDate date];
+        NSDate *from = [dateFormat dateFromString:strVal];
+        
+        
+        // NSTimeInterval point = [to timeIntervalSinceDate:from];
+        NSTimeInterval point = [from timeIntervalSince1970] ;
+        
+        // NSTimeInterval x = point;
+        NSNumber *num = [NSNumber numberWithDouble:point];
+        
+        // NSNumber *num = [NSNumber numberWithDouble:point];
+        [xVals addObject:num];
+        
     }
-
     NSMutableArray *yVals = [[NSMutableArray alloc] init];
     
 //    for (int i = 0; i < 7; i++)
@@ -583,6 +610,84 @@ NSString *const kStockNewsCellIdentifier = @"StockNewsCell";
 -(UIColor *)colorForPagerTabStripViewController:(XLPagerTabStripViewController *)pagerTabStripViewController
 {
     return [UIColor blackColor];
+}
+-(void) getMarketWatch {
+    @try {
+        [self.indicatorView setHidden:NO];
+        //    [self dismissPopup];
+        
+        NSString *strToken = [[NSUserDefaults standardUserDefaults] stringForKey:@"ssckey"];
+        strToken = [GlobalShare checkingNullValues:strToken];
+        
+        NSURLSessionConfiguration *defaultConfigObject = [NSURLSessionConfiguration defaultSessionConfiguration];
+        defaultConfigObject.HTTPAdditionalHeaders = @{@"Authorization": strToken};
+        NSURLSession *defaultSession = [NSURLSession sessionWithConfiguration:defaultConfigObject delegate:self delegateQueue:[NSOperationQueue mainQueue]];
+        
+        NSString *strURL = [NSString stringWithFormat:@"%@%@", REQUEST_URL, @"GetMarketWatch"];
+        NSURL *url = [NSURL URLWithString:strURL];
+        
+        NSURLSessionDataTask *dataTask = [defaultSession dataTaskWithURL:url
+                                                       completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
+                                                           [self.indicatorView setHidden:YES];
+                                                           if(error == nil)
+                                                           {
+                                                               //                                                            NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *)response;
+                                                               //
+                                                               ////                                                            NSString *text = [[NSString alloc] initWithData: data encoding: NSUTF8StringEncoding];
+                                                               ////                                                            NSLog(@"Data = %@",text);
+                                                               ////
+                                                               ////                                                            NSLog(@"%@", [[NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:&error] class]);
+                                                               //                                                            if (((httpResponse.statusCode/100) == 2) && [response.MIMEType isEqual:@"application/json"]) {
+                                                               //                                                                NSString *text = [[NSString alloc] initWithData: data encoding: NSUTF8StringEncoding];
+                                                               //                                                                NSLog(@"Data = %@",text);
+                                                               //                                                            }
+                                                               NSMutableDictionary *returnedDict = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:&error];
+                                                               if([returnedDict[@"status"] hasPrefix:@"error"]) {
+                                                                   if([returnedDict[@"result"] hasPrefix:@"T5"])
+                                                                       [GlobalShare showSessionExpiredAlertView:self :SESSION_EXPIRED];
+                                                                   else if([returnedDict[@"result"] hasPrefix:@"T4"])
+                                                                       [GlobalShare showBasicAlertView:self :INVALID_HEADER];
+                                                                   else if([returnedDict[@"result"] hasPrefix:@"T3"] || [returnedDict[@"result"] hasPrefix:@"T2"])
+                                                                       [GlobalShare showBasicAlertView:self :INVALID_TOKEN];
+                                                                   else
+                                                                       [GlobalShare showBasicAlertView:self :returnedDict[@"result"]];
+                                                                   return;
+                                                               }
+                                                               if([returnedDict[@"status"] isEqualToString:@"authenticated"]) {
+                                                                   dispatch_async(dispatch_get_main_queue(), ^{
+                                                                     
+                                                                       globalShare.search_results = returnedDict[@"result"];
+                                                                       NSLog(@"The search array data :%@",globalShare.search_results);
+                                                                       
+                                                                       
+                                                                       
+                                                                       // update model objects on main thread
+                                                                       
+                                                                       //                                                                    NSArray *arrValues = jsonResponse[@"result"];
+                                                                       //                                                                    for(NSDictionary *dict in arrValues) {
+                                                                       //                                                                        StockList *stockList = [[StockList alloc] init];
+                                                                       //                                                                        stockList.security_id = @"";
+                                                                       //                                                                    }
+                                                                                // also update UI on main thread
+                                                                   });
+                                                               }
+                                                           }
+                                                           else {
+                                                               if(![[GlobalShare sharedInstance] isErrorPupup]) {
+                                                                   [[GlobalShare sharedInstance] setIsErrorPupup:YES];
+                                                                   [GlobalShare showBasicAlertView:self :[error localizedDescription]];
+                                                               }
+                                                           }
+                                                       }];
+        
+        [dataTask resume];
+    }
+    @catch (NSException * e) {
+        NSLog(@"%@", [e description]);
+    }
+    @finally {
+        
+    }
 }
 
 @end
