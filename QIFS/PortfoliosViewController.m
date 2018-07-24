@@ -203,6 +203,8 @@ NSString *const kPortfoliosOptionsViewCellIdentifier = @"OptionsViewCell";
         globalShare.dictValues = [DataManager select_SecurityListAsSectors];
         self.allResults = [DataManager select_SecurityList];
     }
+    [self performSelector:@selector(getPortfolio) withObject:nil afterDelay:0.01f];
+
 }
 
 -(void)viewWillDisappear:(BOOL)animated {
@@ -575,6 +577,7 @@ NSString *const kPortfoliosOptionsViewCellIdentifier = @"OptionsViewCell";
                                                                            self.labelGainLoss.textColor = [UIColor darkGrayColor];
                                                                        }
                                                                    }
+                                                                   self.arrayPortfolios  = nil;
 
                                                                    self.arrayPortfolios = dictVal[@"portfolio"];  // update model objects on main thread
                                                                    [self.tableViewStocks reloadData];              // also update UI on main thread

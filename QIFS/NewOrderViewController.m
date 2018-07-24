@@ -402,7 +402,8 @@ NSString *const kNewOrderOptionsViewCellIdentifier = @"OptionsViewCell";
         self.selectValTrans = 0;
         self.selectValOrder = 0;
         self.selectValDuration = 0;
-      //  [self clearSecurityOrderValue];
+        
+        [self clearSecurityOrderValue];
         
         [self.textFieldLimit setAlpha:1.0];
         [self.textFieldLimit setEnabled:YES];
@@ -859,7 +860,8 @@ NSString *const kNewOrderOptionsViewCellIdentifier = @"OptionsViewCell";
     }];
 }
 
-- (IBAction)actionOrderType:(id)sender {
+- (IBAction)actionOrderType:(id)sender
+{
     [self.buttonOrderType setEnabled:NO];
     [self.textFieldCurrent resignFirstResponder];
     CGRect screenRect = [[UIScreen mainScreen] bounds];
@@ -1053,7 +1055,8 @@ NSString *const kNewOrderOptionsViewCellIdentifier = @"OptionsViewCell";
 //    [[self navigationController] pushViewController:orderConfirmViewController animated:YES];
 //}
 
-- (IBAction)actionCreateOrder:(id)sender {
+- (IBAction)actionCreateOrder:(id)sender
+{
     [self.textFieldCurrent resignFirstResponder];
     [self.backgroundTapButton removeFromSuperview];
     self.backgroundTapButton = nil;
@@ -1588,7 +1591,7 @@ NSString *const kNewOrderOptionsViewCellIdentifier = @"OptionsViewCell";
                                                            if(error == nil)
                                                            {
                                                                NSMutableDictionary *returnedDict = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:&error];
-                                                               NSLog(@"the live market_data_is:%@",returnedDict);
+                                                              // NSLog(@"the live market_data_is:%@",returnedDict);
                                                                if([returnedDict[@"status"] hasPrefix:@"error"]) {
                                                                    if([returnedDict[@"result"] hasPrefix:@"T5"])
                                                                        [GlobalShare showSessionExpiredAlertView:self :SESSION_EXPIRED];
@@ -1612,8 +1615,8 @@ NSString *const kNewOrderOptionsViewCellIdentifier = @"OptionsViewCell";
                                                                        self.labelPrice.text = [GlobalShare formatStringToTwoDigits:dictVal[@"comp_current_price"]];
                                                                        self.labelChange.text = [GlobalShare formatStringToTwoDigits:dictVal[@"change"]];
                                                                        self.labelPercentChange.text = [NSString stringWithFormat:@"%@%%", [GlobalShare formatStringToTwoDigits:dictVal[@"change_perc"]]];
-                                                                       self.strLimitUpPrice = [GlobalShare formatStringToTwoDigits:dictVal[@"max_price"]];
-                                                                       self.strLimitDownPrice = [GlobalShare formatStringToTwoDigits:dictVal[@"min_price"]];
+//                                                                       self.strLimitUpPrice = [GlobalShare formatStringToTwoDigits:dictVal[@"max_price"]];
+//                                                                       self.strLimitDownPrice = [GlobalShare formatStringToTwoDigits:dictVal[@"min_price"]];
                                                                        
                                                                        [self getLimitUpLimitDown];
 //                                                                       self.limitUPLabel.hidden = NO;
@@ -2511,7 +2514,8 @@ NSString *const kNewOrderOptionsViewCellIdentifier = @"OptionsViewCell";
                                                                        str = [NSString stringWithFormat:@"%@: %@",
                                                                               NSLocalizedString(@"Limit Down", @"Limit Down"),[limitUpDownDict valueForKey:@"LimitDown"]];
                                                                        self.limitDowmLabel.text = str;
-                                                                       
+                                                                       self.strLimitUpPrice = [GlobalShare formatStringToTwoDigits:limitUpDownDict[@"LimitUp"]];
+                                                                       self.strLimitDownPrice = [GlobalShare formatStringToTwoDigits:limitUpDownDict[@"LimitDown"]];
                                                                        
 //                                                                       [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"is_securities_avail"];
 //                                                                       [[NSUserDefaults standardUserDefaults] synchronize];
@@ -3199,8 +3203,13 @@ NSString *const kNewOrderOptionsViewCellIdentifier = @"OptionsViewCell";
 
 -(void)QTY_changed
 {
+    if([self.buttonTransaction.currentTitle isEqualToString:NSLocalizedString(@"Sell", @"Sell")])
+    {
+        
+    }
+    else{
+        
     
-//    NSString *strQty = [self.textFieldQty.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
     double buyCash1 = 0,buyCash2 = 0, buySharePrice1 = 0, commission = 0, commissionVal = 0;
     int buyNoOfShares1 = 0;
     buyCash1 = [[self.labelBuyPower.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]] doubleValue];
@@ -3221,14 +3230,7 @@ NSString *const kNewOrderOptionsViewCellIdentifier = @"OptionsViewCell";
     if(commissionVal < 30) commissionVal = 30.0;
     buyCash1 = buyCash1 - commissionVal;
     buyNoOfShares1 = buyCash1 / buySharePrice1;
-    
- 
-//    if(_textFieldLimit.text.length < 2)
-//    {
-//        _textFieldQty.text =[NSString stringWithFormat:@"0"];
-//    }
-//    else
-//    {
+   
         if(buyNoOfShares1 < 0)
         {
             _textFieldQty.text =[NSString stringWithFormat:@"0"];
@@ -3237,142 +3239,8 @@ NSString *const kNewOrderOptionsViewCellIdentifier = @"OptionsViewCell";
             _textFieldQty.text =[NSString stringWithFormat:@"%d",buyNoOfShares1];
 
         }
-
- //   }
-   
-  
- //   }
+    }
 }
--(void)callintthe_ORDER_confirm_API
-{
-    @try {
-        
-        
-        [self.textFieldCurrent resignFirstResponder];
-        [self.backgroundTapButton removeFromSuperview];
-        self.backgroundTapButton = nil;
-        
-        if([self.strBuyPower doubleValue] < 0) {
-            [GlobalShare showBasicAlertView:self :NEWORDER_BUYINGCASH];
-            return;
-        }
-        
-        NSString *strOrderSide = globalShare.pickerData1[self.selectValTrans][@"minor_code"];
-        NSString *strTransactionType = globalShare.pickerData1[self.selectValTrans][(globalShare.myLanguage != ARABIC_LANGUAGE) ? @"description_e" : @"description_a"];
-        NSString *strSymbol = self.labelSymbol.text;
-        NSString *strPrice = [self.textFieldLimit.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
-        NSString *strQty = [self.textFieldQty.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
-        NSString *strDisclose = [self.textFieldDisclose.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
-        //    NSString *strIsMarketPriceOrder = globalShare.pickerData2[self.selectValOrder][@"minor_code"];
-        NSString *strValidity = globalShare.pickerData3[self.selectValDuration][@"minor_code"];
-        NSString *strValidityDate = @"", *strValidityTime = @"";
-        if([strValidity integerValue] == 9)
-            strValidityDate = self.labelDuration.text;
-        else if([strValidity integerValue] == 10)
-            strValidityTime = self.labelDuration.text;
-        if([strValidityDate length] > 0)
-            strValidityDate = [GlobalShare returnUSDate:self.datePicker.date];
-        
-        if([self.labelSymbol.text length] == 0) {
-            [GlobalShare showBasicAlertView:self :NEWORDER_SECURITY];
-            return;
-        } else if([self.buttonTransaction.currentTitle length] == 0) {
-            [GlobalShare showBasicAlertView:self :NEWORDER_TRANSACTION];
-            return;
-        } else if([self.buttonOrderType.currentTitle length] == 0) {
-            [GlobalShare showBasicAlertView:self :NEWORDER_ORDERTYPE];
-            return;
-            //    } else if([self.buttonOrderType.currentTitle isEqualToString:@"Limit Price"] && [strPrice integerValue] == 0) {
-        }
-        //    else if([self.buttonOrderType.currentTitle isEqualToString:@"Limit Price"]) {
-        else if(self.selectValOrder == 0) {
-            if([strPrice length] == 0) {
-                [GlobalShare showBasicAlertView:self :NEWORDER_PRICE];
-                return;
-            } else if(([strPrice hasPrefix:@"."] && [strPrice hasSuffix:@"."]) || ([strPrice hasPrefix:@"."] || [strPrice hasSuffix:@"."])) {
-                [GlobalShare showBasicAlertView:self :NEWORDER_VALIDPRICE];
-                return;
-            } else if(([strPrice doubleValue] > [self.strLimitUpPrice doubleValue]) || ([strPrice doubleValue] < [self.strLimitDownPrice doubleValue])) {
-                  NSString *strMsg;
-                  //            if(globalShare.myLanguage != ARABIC_LANGUAGE)
-                  strMsg = [NSString stringWithFormat:@"%@ %@ %@ %@", NEWORDER_LIMITLESSVALID, self.strLimitUpPrice, NEWORDER_LIMITGREATERVALID, self.strLimitDownPrice];
-                
-                  
-                  [GlobalShare showBasicAlertView:self :strMsg];
-                  return;
-              }
-        }
-        if([strQty length] == 0) {
-            [GlobalShare showBasicAlertView:self :NEWORDER_QTY];
-            return;
-        } else if([strQty integerValue] == 0) {
-            [GlobalShare showBasicAlertView:self :NEWORDER_ORG_QTY];
-            return;
-        } else if([self.buttonDuration.currentTitle length] == 0) {
-            [GlobalShare showBasicAlertView:self :NEWORDER_DURATION];
-            return;
-        } else if([[GlobalShare sharedInstance] isPortfolioOrder] && self.selectValTrans == 1 && ([strQty integerValue] > [self.strValidPortOnSellQty integerValue])) {
-            [GlobalShare showBasicAlertView:self :NEWORDER_NOTENOUGHAVAILQTY];
-            return;
-        } else if([self.buttonDisclose.currentImage isEqual:[UIImage imageNamed:@"icon_tickmark"]] && [strDisclose integerValue] == 0) {
-            [GlobalShare showBasicAlertView:self :NEWORDER_DISCLOSEDQTY];
-            return;
-        } else if([strDisclose integerValue] > [strQty integerValue]) {
-            [GlobalShare showBasicAlertView:self :NEWORDER_DISCLOSEDQTYVAL];
-            return;
-        }
-        
-        //    if(![self.buttonOrderType.currentTitle isEqualToString:@"Limit Price"])
-        //        strPrice = self.labelPrice.text;
-        
-        if([strPrice length] > 0)
-            strPrice = [GlobalShare formatStringToTwoDigits:strPrice];
-        
-    
-        NSString *isMarketPrice = @"0";
-        if(self.selectValOrder == 1)
-            isMarketPrice = @"1";
-        else if(self.selectValOrder == 4)
-            isMarketPrice = @"2";
-     _str_confirm_order = [NSString stringWithFormat:@"?order_type=%@&order_side=%@&symbol=%@&qty=%@&price=%@&is_market_price_order=%@&order_id=%@", @"2", strOrderSide, strSymbol, strQty, (self.selectValOrder == 1) ? @"" : strPrice, isMarketPrice, self.strOrderId];
-        
-        if([self.strOrderId length] == 0) return;
-        
-        [self.indicatorView setHidden:NO];
-        
-        NSString *strToken = [NSString stringWithFormat:@"%@", [[NSUserDefaults standardUserDefaults] stringForKey:@"ssckey"]];
-        NSURLSessionConfiguration *defaultConfigObject = [NSURLSessionConfiguration defaultSessionConfiguration];
-        defaultConfigObject.HTTPAdditionalHeaders = @{@"Authorization": strToken};
-        NSURLSession *defaultSession = [NSURLSession sessionWithConfiguration:defaultConfigObject delegate:self delegateQueue:[NSOperationQueue mainQueue]];
-        
-        NSString *strURL = [NSString stringWithFormat:@"%@%@%@", REQUEST_URL,@"ConfirmOrder",_str_confirm_order];
-        
-        //            NSString *strURL =[NSString stringWithFormat:@"%@ConfirmOrder?order_side=1&order_type=2&symbol=%@&qty=%@&price=%@&is_market_price_order=0&order_id=20171214-749037, tag=null'];
-        NSLog(@"The URL for getOrderdetails:%@",strURL);
-        NSURL *url = [NSURL URLWithString:strURL];
-        
-        NSURLSessionDataTask *dataTask = [defaultSession dataTaskWithURL:url
-                                                       completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
-                                                           [self.indicatorView setHidden:YES];
-                                                           if(error == nil)
-                                                           {
-                                                               NSMutableDictionary *returnedDict = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:&error];
-                                                               NSLog(@"the response from update order:%@",returnedDict);
-                                                               
-                                                               if([returnedDict[@"status"] isEqualToString:@"authenticated"])
-                                                               {
-                                                               }
-                                                           }
-                                                            [dataTask resume];
-                                                       }];
-                                                   }
-                                                               @catch (NSException * e) {
-                                                                   NSLog(@"%@", [e description]);
-                                                               }
-                                                               @finally {
-                                                                   
-                                                               }
-    
-                                                           }
+
 
 @end

@@ -657,7 +657,7 @@ NSString *const kStockNewsCellIdentifier = @"StockNewsCell";
                                                                    dispatch_async(dispatch_get_main_queue(), ^{
                                                                      
                                                                        globalShare.search_results = returnedDict[@"result"];
-                                                                       NSLog(@"The search array data :%@",globalShare.search_results);
+                                                                      
                                                                        
                                                                        
                                                                        
