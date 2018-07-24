@@ -302,7 +302,12 @@ NSString *const kStockListCellIdentifier = @"StockListCell";
                                                             }
                                                             if([returnedDict[@"status"] isEqualToString:@"authenticated"]) {
                                                                 dispatch_async(dispatch_get_main_queue(), ^{
-                                                                    self.arrayStockList = returnedDict[@"result"];  // update model objects on main thread
+                                                                    self.arrayStockList = returnedDict[@"result"];
+                                                                    globalShare.search_results = returnedDict[@"result"];
+                                                                    
+                                                                    
+
+                                                                    // update model objects on main thread
                                                                     
 //                                                                    NSArray *arrValues = jsonResponse[@"result"];
 //                                                                    for(NSDictionary *dict in arrValues) {

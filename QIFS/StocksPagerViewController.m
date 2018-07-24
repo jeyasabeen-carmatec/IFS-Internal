@@ -271,6 +271,9 @@ NSString *const kStocksOptionsViewCellIdentifier = @"OptionsViewCell";
         [self.tableViewOptionMenu setSemanticContentAttribute:UISemanticContentAttributeForceLeftToRight];
         [self.view setSemanticContentAttribute:UISemanticContentAttributeForceLeftToRight];
     }
+  //  self.allResults = [[NSMutableArray alloc]init];
+  //  [self.allResults addObjectsFromArray:globalShare.search_results];
+  //  NSLog(@"the array of search results:%@",self.allResults);
 }
 
 -(void)viewWillDisappear:(BOOL)animated {
@@ -754,7 +757,8 @@ NSString *const kStocksOptionsViewCellIdentifier = @"OptionsViewCell";
 //    else {
 //        NSPredicate *filterPredicate = [NSPredicate predicateWithFormat:@"self contains[c] %@", self.filterString];
         NSPredicate *filterPredicate = [NSPredicate predicateWithFormat:@"self.security_name_e contains [c] %@ OR self.security_name_a contains [c] %@ OR self.ticker contains [c] %@", filterString, filterString, filterString];
-        self.visibleResults = [self.allResults filteredArrayUsingPredicate:filterPredicate];
+     self.visibleResults = [globalShare.search_results filteredArrayUsingPredicate:filterPredicate];
+    //[self.allResults filteredArrayUsingPredicate:filterPredicate];
 //    }
     
     [self.tableResults reloadData];
@@ -1130,11 +1134,11 @@ NSString *const kStocksOptionsViewCellIdentifier = @"OptionsViewCell";
     
     if ([filterString isEqualToString:@""]) {
         
-        self.visibleResults = self.allResults;
+        self.visibleResults = globalShare.search_results;
     }
     else{
     NSPredicate *filterPredicate = [NSPredicate predicateWithFormat:@"self.security_name_e contains [c] %@ OR self.ticker contains [c] %@", filterString, filterString];
-    self.visibleResults = [self.allResults filteredArrayUsingPredicate:filterPredicate];
+    self.visibleResults = [globalShare.search_results filteredArrayUsingPredicate:filterPredicate];
     }
     
     [self.tableResults reloadData];

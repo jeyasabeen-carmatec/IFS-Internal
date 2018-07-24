@@ -32,6 +32,12 @@
      else
      [textField setTextAlignment:NSTextAlignmentLeft];
      }*/
+    NSString *userName = [[NSUserDefaults standardUserDefaults] valueForKey:@"UserName"];
+    if (userName == nil ||[userName isEqualToString:@"(null)"]) {
+        userName = @"";
+    }
+    
+    _userNameTF.text = userName;
     
     
     

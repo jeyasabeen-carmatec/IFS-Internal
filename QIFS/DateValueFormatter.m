@@ -11,6 +11,7 @@
 
 
 #import "DateValueFormatter.h"
+#import "GlobalShare.h"
 
 @interface DateValueFormatter ()
 {
@@ -25,8 +26,18 @@
     self = [super init];
     if (self)
     {
+       
         _dateFormatter = [[NSDateFormatter alloc] init];
-        _dateFormatter.dateFormat = @"dd/MM/YYYY"; //dd MMM HH:mm
+       
+       
+        
+        if ([[GlobalShare sharedInstance] isDayChart]) {
+       
+            _dateFormatter.dateFormat = @"HH:mm";
+        }
+        else{
+            _dateFormatter.dateFormat = @"dd/MM/YYYY";
+        }
     }
     return self;
 }

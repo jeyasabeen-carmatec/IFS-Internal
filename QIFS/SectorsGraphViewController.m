@@ -116,6 +116,26 @@ NSString *const kSectorsGraphCellIdentifier = @"SectorsGraphCell";
     
     @try{
         
+        NSSortDescriptor *sortByName = [[NSSortDescriptor alloc] initWithKey:@"value_all"
+                                                                   ascending:NO selector:@selector(localizedStandardCompare:)] ;
+        
+        NSArray *sortDescriptors = [NSArray arrayWithObject:sortByName];
+        NSArray *sortedArray = [self.arrayCompanyList sortedArrayUsingDescriptors:sortDescriptors];
+        
+       
+        
+        NSMutableArray *topFiveCompanies = [[NSMutableArray alloc]init];
+        if (sortedArray.count >5 ) {
+            for (int i= 0; i<5; i++) {
+                [topFiveCompanies addObject:[sortedArray objectAtIndex:i]];
+            }
+                self.arrayCompanyList = topFiveCompanies;
+             NSLog(@".......... %@",_arrayCompanyList);
+        }
+        
+    
+        
+        
         for (int i = 0; i < count; i++)
         {
             //NSDictionary *def = self.arraySectorList[i];
