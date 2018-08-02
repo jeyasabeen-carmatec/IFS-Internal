@@ -1591,7 +1591,7 @@ NSString *const kNewOrderOptionsViewCellIdentifier = @"OptionsViewCell";
                                                            if(error == nil)
                                                            {
                                                                NSMutableDictionary *returnedDict = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:&error];
-                                                              // NSLog(@"the live market_data_is:%@",returnedDict);
+                                                               NSLog(@"the live market_data_is:%@",returnedDict);
                                                                if([returnedDict[@"status"] hasPrefix:@"error"]) {
                                                                    if([returnedDict[@"result"] hasPrefix:@"T5"])
                                                                        [GlobalShare showSessionExpiredAlertView:self :SESSION_EXPIRED];
@@ -3208,8 +3208,7 @@ NSString *const kNewOrderOptionsViewCellIdentifier = @"OptionsViewCell";
         
     }
     else{
-        
-    
+       
     double buyCash1 = 0,buyCash2 = 0, buySharePrice1 = 0, commission = 0, commissionVal = 0;
     int buyNoOfShares1 = 0;
     buyCash1 = [[self.labelBuyPower.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]] doubleValue];
