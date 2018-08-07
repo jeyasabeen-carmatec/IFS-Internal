@@ -472,7 +472,7 @@
                                                                     {
                                                                         NSString *str_order_val = [[NSUserDefaults standardUserDefaults] valueForKey:@"modified_order_VAL"];
                                                                         
-                                                    float VAL = [str_order_val floatValue]+([dictVal[@"Current_Balance"]floatValue] -[dictVal[@"Block_cash"]floatValue]);
+                                                    float VAL = [str_order_val floatValue]+([dictVal[@"Current_Balance"]floatValue]);
                                                                         
                                                                         self.textFieldBuyCash1.text = [NSString stringWithFormat:@"%.2f", VAL];
                                                                         

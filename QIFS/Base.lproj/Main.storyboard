@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14101" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="aCH-52-G1f">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="aCH-52-G1f">
     <device id="ipad10_5" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment version="2320" identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14086"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
         <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
@@ -4581,7 +4581,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PNd-IS-AXA">
-                                <rect key="frame" x="278" y="20" width="138.5" height="28"/>
+                                <rect key="frame" x="277.5" y="20" width="138.5" height="28"/>
                                 <color key="backgroundColor" red="0.33333333333333331" green="0.33333333333333331" blue="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                 <state key="normal" title="3 M">
@@ -4592,7 +4592,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Qxt-Vn-Mhr">
-                                <rect key="frame" x="417.5" y="20" width="138" height="28"/>
+                                <rect key="frame" x="417" y="20" width="138" height="28"/>
                                 <color key="backgroundColor" red="0.33333333333333331" green="0.33333333333333331" blue="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                 <state key="normal" title="6 M">
@@ -4603,7 +4603,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" tag="4" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="F6c-vi-9Hd">
-                                <rect key="frame" x="556.5" y="20" width="138.5" height="28"/>
+                                <rect key="frame" x="556" y="20" width="139" height="28"/>
                                 <color key="backgroundColor" red="0.33333333333333331" green="0.33333333333333331" blue="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                 <state key="normal" title="1 Y">
@@ -4659,7 +4659,7 @@
                                 <rect key="frame" x="407" y="556" width="20" height="20"/>
                             </activityIndicatorView>
                             <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AdD-bz-3zi">
-                                <rect key="frame" x="138" y="20" width="139" height="28"/>
+                                <rect key="frame" x="138" y="20" width="138.5" height="28"/>
                                 <color key="backgroundColor" red="0.33333333333333331" green="0.33333333333333331" blue="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                 <state key="normal" title="1 M">
@@ -9250,7 +9250,7 @@ E-mail: info@islamicbroker.com.qa</string>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="va5-PZ-6wF">
-                                                    <rect key="frame" x="8" y="8" width="108" height="17"/>
+                                                    <rect key="frame" x="15" y="8" width="108" height="17"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="17" id="KrT-MB-8DB"/>
                                                     </constraints>
@@ -9259,7 +9259,7 @@ E-mail: info@islamicbroker.com.qa</string>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cpi-vD-5PF">
-                                                    <rect key="frame" x="120" y="8" width="138" height="17"/>
+                                                    <rect key="frame" x="127" y="8" width="138" height="17"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                                     <color key="textColor" red="0.33333333333333331" green="0.33333333333333331" blue="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
@@ -9277,7 +9277,7 @@ E-mail: info@islamicbroker.com.qa</string>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="k6v-Lw-wgX">
-                                                    <rect key="frame" x="8" y="27" width="250" height="17"/>
+                                                    <rect key="frame" x="15" y="27" width="250" height="17"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="17" id="Vgk-Xe-qn1"/>
                                                     </constraints>
@@ -9892,8 +9892,17 @@ E-mail: info@islamicbroker.com.qa</string>
                                             <rect key="frame" x="0.0" y="0.0" width="417" height="23.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jkg-K4-Qsr">
+                                                    <rect key="frame" x="0.0" y="0.0" width="417" height="23.5"/>
+                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                </view>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2lN-D5-hU6">
+                                                    <rect key="frame" x="0.0" y="2" width="69.5" height="20"/>
+                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                </view>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Eft-kG-PAG">
-                                                    <rect key="frame" x="-4.5" y="2" width="66.5" height="20"/>
+                                                    <rect key="frame" x="0.0" y="2" width="66.5" height="20"/>
+                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="20" id="k21-yf-1UL"/>
                                                     </constraints>
@@ -9902,7 +9911,7 @@ E-mail: info@islamicbroker.com.qa</string>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" alpha="0.10000000149011612" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6vS-CN-mwZ">
-                                                    <rect key="frame" x="62" y="3" width="1" height="24"/>
+                                                    <rect key="frame" x="66.5" y="3" width="1" height="24"/>
                                                     <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="1" id="UkL-F3-Ew5"/>
@@ -9912,47 +9921,72 @@ E-mail: info@islamicbroker.com.qa</string>
                                                     <color key="textColor" red="0.33333333333333331" green="0.33333333333333331" blue="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HZm-t7-iBL">
+                                                    <rect key="frame" x="67.5" y="2" width="192" height="20"/>
+                                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                </view>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Buy" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="b7s-tK-Od5">
-                                                    <rect key="frame" x="63" y="2" width="192" height="20"/>
+                                                    <rect key="frame" x="67.5" y="2" width="192" height="20"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                     <color key="textColor" red="0.33333333333333331" green="0.33333333333333331" blue="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" alpha="0.10000000149011612" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kG2-cv-Sys">
-                                                    <rect key="frame" x="255" y="3" width="1" height="24"/>
+                                                    <rect key="frame" x="259.5" y="3" width="1" height="24"/>
                                                     <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                     <color key="textColor" red="0.33333333333333331" green="0.33333333333333331" blue="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="h1w-vK-845">
+                                                    <rect key="frame" x="259.5" y="2" width="150.5" height="20"/>
+                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                </view>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7y1-eq-v88">
-                                                    <rect key="frame" x="258" y="2" width="150" height="20"/>
+                                                    <rect key="frame" x="260.5" y="2" width="151.5" height="20"/>
+                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                     <color key="textColor" red="0.33333333333333331" green="0.33333333333333331" blue="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
                                             <constraints>
+                                                <constraint firstAttribute="bottom" secondItem="jkg-K4-Qsr" secondAttribute="bottom" id="5Ou-Qe-4b3"/>
+                                                <constraint firstItem="HZm-t7-iBL" firstAttribute="top" secondItem="b7s-tK-Od5" secondAttribute="top" id="8bH-kj-LOr"/>
                                                 <constraint firstItem="7y1-eq-v88" firstAttribute="leading" secondItem="b7s-tK-Od5" secondAttribute="trailing" constant="4" id="Anp-ql-ro5"/>
                                                 <constraint firstItem="b7s-tK-Od5" firstAttribute="width" secondItem="tOq-0y-15f" secondAttribute="width" multiplier="0.46" id="C95-98-BGF"/>
                                                 <constraint firstItem="kG2-cv-Sys" firstAttribute="leading" secondItem="b7s-tK-Od5" secondAttribute="trailing" id="ECl-U8-vGE"/>
+                                                <constraint firstItem="HZm-t7-iBL" firstAttribute="trailing" secondItem="b7s-tK-Od5" secondAttribute="trailing" id="FN8-Hm-t3T"/>
+                                                <constraint firstItem="h1w-vK-845" firstAttribute="trailing" secondItem="7y1-eq-v88" secondAttribute="trailing" constant="-2" id="H5A-3l-TIq"/>
                                                 <constraint firstItem="kG2-cv-Sys" firstAttribute="top" secondItem="6vS-CN-mwZ" secondAttribute="top" id="LAi-8I-ypo"/>
                                                 <constraint firstItem="b7s-tK-Od5" firstAttribute="bottom" secondItem="Eft-kG-PAG" secondAttribute="bottom" id="NU9-t0-AvT"/>
                                                 <constraint firstItem="kG2-cv-Sys" firstAttribute="bottom" secondItem="6vS-CN-mwZ" secondAttribute="bottom" id="OyA-8r-xuH"/>
+                                                <constraint firstItem="HZm-t7-iBL" firstAttribute="bottom" secondItem="b7s-tK-Od5" secondAttribute="bottom" id="P3F-hI-eaV"/>
                                                 <constraint firstItem="kG2-cv-Sys" firstAttribute="width" secondItem="6vS-CN-mwZ" secondAttribute="width" id="S04-Z1-lEy"/>
                                                 <constraint firstItem="b7s-tK-Od5" firstAttribute="leading" secondItem="Eft-kG-PAG" secondAttribute="trailing" id="U8C-Ry-JIZ"/>
+                                                <constraint firstItem="jkg-K4-Qsr" firstAttribute="top" secondItem="tOq-0y-15f" secondAttribute="top" id="V3L-1H-4wn"/>
+                                                <constraint firstItem="Eft-kG-PAG" firstAttribute="top" secondItem="2lN-D5-hU6" secondAttribute="top" id="WHb-hA-dKe"/>
                                                 <constraint firstItem="7y1-eq-v88" firstAttribute="top" secondItem="b7s-tK-Od5" secondAttribute="top" id="Xg5-Ym-gYV"/>
-                                                <constraint firstItem="7y1-eq-v88" firstAttribute="width" secondItem="tOq-0y-15f" secondAttribute="width" multiplier="0.36" id="XjS-pr-l4P"/>
-                                                <constraint firstItem="7y1-eq-v88" firstAttribute="leading" secondItem="kG2-cv-Sys" secondAttribute="trailing" constant="2" id="aBl-Oe-lbg"/>
+                                                <constraint firstItem="h1w-vK-845" firstAttribute="bottom" secondItem="7y1-eq-v88" secondAttribute="bottom" id="aAF-Ri-NAn"/>
+                                                <constraint firstItem="7y1-eq-v88" firstAttribute="leading" secondItem="kG2-cv-Sys" secondAttribute="trailing" id="aBl-Oe-lbg"/>
                                                 <constraint firstItem="Eft-kG-PAG" firstAttribute="width" secondItem="tOq-0y-15f" secondAttribute="width" multiplier="0.16" id="bJd-Yh-7wm"/>
+                                                <constraint firstItem="Eft-kG-PAG" firstAttribute="bottom" secondItem="2lN-D5-hU6" secondAttribute="bottom" id="cbk-27-ldF"/>
+                                                <constraint firstItem="jkg-K4-Qsr" firstAttribute="leading" secondItem="tOq-0y-15f" secondAttribute="leading" id="d91-SR-gld"/>
+                                                <constraint firstItem="Eft-kG-PAG" firstAttribute="leading" secondItem="2lN-D5-hU6" secondAttribute="leading" id="fQk-33-C6k"/>
                                                 <constraint firstItem="b7s-tK-Od5" firstAttribute="leading" secondItem="6vS-CN-mwZ" secondAttribute="trailing" id="njN-9c-4Gr"/>
                                                 <constraint firstItem="Eft-kG-PAG" firstAttribute="leading" secondItem="tOq-0y-15f" secondAttribute="leading" id="npa-HT-nfr"/>
                                                 <constraint firstItem="6vS-CN-mwZ" firstAttribute="leading" secondItem="Eft-kG-PAG" secondAttribute="trailing" id="oJn-eM-rLR"/>
+                                                <constraint firstItem="Eft-kG-PAG" firstAttribute="leading" secondItem="tOq-0y-15f" secondAttribute="leading" id="ojo-At-0r5"/>
+                                                <constraint firstItem="h1w-vK-845" firstAttribute="top" secondItem="7y1-eq-v88" secondAttribute="top" id="pi3-mb-mv2"/>
                                                 <constraint firstItem="b7s-tK-Od5" firstAttribute="top" secondItem="Eft-kG-PAG" secondAttribute="top" id="t0d-2U-WE1"/>
+                                                <constraint firstItem="2lN-D5-hU6" firstAttribute="trailing" secondItem="6vS-CN-mwZ" secondAttribute="trailing" constant="1.5" id="tKW-91-UEO"/>
+                                                <constraint firstAttribute="trailing" secondItem="jkg-K4-Qsr" secondAttribute="trailing" id="tLq-nZ-eQc"/>
                                                 <constraint firstItem="6vS-CN-mwZ" firstAttribute="top" secondItem="tOq-0y-15f" secondAttribute="topMargin" constant="-8" id="ucE-K7-Wav"/>
+                                                <constraint firstItem="h1w-vK-845" firstAttribute="leading" secondItem="kG2-cv-Sys" secondAttribute="leading" id="xSV-Ln-EYz"/>
+                                                <constraint firstItem="HZm-t7-iBL" firstAttribute="leading" secondItem="b7s-tK-Od5" secondAttribute="leading" id="xVP-yD-Pgs"/>
                                                 <constraint firstItem="Eft-kG-PAG" firstAttribute="top" secondItem="tOq-0y-15f" secondAttribute="top" constant="2" id="zJW-WS-06b"/>
                                                 <constraint firstItem="7y1-eq-v88" firstAttribute="bottom" secondItem="b7s-tK-Od5" secondAttribute="bottom" id="zkE-de-SaB"/>
-                                                <constraint firstAttribute="trailingMargin" secondItem="7y1-eq-v88" secondAttribute="trailing" constant="-6" id="zng-hJ-xTl"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="7y1-eq-v88" secondAttribute="trailing" constant="-10" id="zng-hJ-xTl"/>
                                             </constraints>
                                             <variation key="default">
                                                 <mask key="constraints">
@@ -9963,9 +9997,15 @@ E-mail: info@islamicbroker.com.qa</string>
                                             </variation>
                                         </tableViewCellContentView>
                                         <connections>
+                                            <outlet property="baview" destination="HZm-t7-iBL" id="AjQ-0P-0hy"/>
+                                            <outlet property="bidnoofshareview" destination="2lN-D5-hU6" id="BSf-ul-c8c"/>
                                             <outlet property="labelBidNoofShares" destination="Eft-kG-PAG" id="qcj-pZ-IA2"/>
                                             <outlet property="labelBidPrice" destination="7y1-eq-v88" id="9XD-2D-Cm6"/>
                                             <outlet property="labelBidQty" destination="b7s-tK-Od5" id="NNN-u1-z21"/>
+                                            <outlet property="labelLine1" destination="6vS-CN-mwZ" id="Xi7-Q7-zlH"/>
+                                            <outlet property="labelLine2" destination="kG2-cv-Sys" id="hBf-b8-YXf"/>
+                                            <outlet property="outerView" destination="jkg-K4-Qsr" id="RNK-jK-6aV"/>
+                                            <outlet property="testWidth" destination="h1w-vK-845" id="0j8-tQ-vaS"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -9985,8 +10025,12 @@ E-mail: info@islamicbroker.com.qa</string>
                                             <rect key="frame" x="0.0" y="0.0" width="417" height="23.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8Ue-s8-4cS">
+                                                    <rect key="frame" x="2" y="2" width="31" height="20"/>
+                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                </view>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HtG-Eh-jYH">
-                                                    <rect key="frame" x="2" y="2" width="150" height="20"/>
+                                                    <rect key="frame" x="2" y="2" width="31" height="20"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="20" id="eZK-dZ-JLs"/>
                                                     </constraints>
@@ -9995,7 +10039,7 @@ E-mail: info@islamicbroker.com.qa</string>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" alpha="0.10000000149011612" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6oS-vd-MDQ">
-                                                    <rect key="frame" x="154" y="3" width="1" height="24"/>
+                                                    <rect key="frame" x="35" y="3" width="1" height="24"/>
                                                     <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="24" id="5zA-ww-ShL"/>
@@ -10005,21 +10049,29 @@ E-mail: info@islamicbroker.com.qa</string>
                                                     <color key="textColor" red="0.33333333333333331" green="0.33333333333333331" blue="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7An-CC-zWa">
+                                                    <rect key="frame" x="36" y="2" width="39.5" height="20"/>
+                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                </view>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sell" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fbE-Z0-w9X">
-                                                    <rect key="frame" x="155" y="2" width="192" height="20"/>
+                                                    <rect key="frame" x="36" y="2" width="39.5" height="20"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                     <color key="textColor" red="0.33333333333333331" green="0.33333333333333331" blue="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" alpha="0.10000000149011612" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="euZ-YN-IMX">
-                                                    <rect key="frame" x="347" y="3" width="1" height="24"/>
+                                                    <rect key="frame" x="75.5" y="3" width="1" height="24"/>
                                                     <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                     <color key="textColor" red="0.33333333333333331" green="0.33333333333333331" blue="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="H3D-xL-RaQ">
+                                                    <rect key="frame" x="76.5" y="2" width="14" height="20"/>
+                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                </view>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8Dp-kV-OMI">
-                                                    <rect key="frame" x="348" y="2" width="66.5" height="20"/>
+                                                    <rect key="frame" x="76.5" y="2" width="14" height="20"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                     <color key="textColor" red="0.33333333333333331" green="0.33333333333333331" blue="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
@@ -10028,23 +10080,36 @@ E-mail: info@islamicbroker.com.qa</string>
                                             <constraints>
                                                 <constraint firstItem="fbE-Z0-w9X" firstAttribute="width" secondItem="1PV-cF-vRv" secondAttribute="width" multiplier="0.46" id="4gc-3B-Fge"/>
                                                 <constraint firstItem="8Dp-kV-OMI" firstAttribute="bottom" secondItem="fbE-Z0-w9X" secondAttribute="bottom" id="8JG-R3-TT5"/>
+                                                <constraint firstItem="8Dp-kV-OMI" firstAttribute="bottom" secondItem="H3D-xL-RaQ" secondAttribute="bottom" id="90P-4K-f0O"/>
                                                 <constraint firstItem="fbE-Z0-w9X" firstAttribute="top" secondItem="HtG-Eh-jYH" secondAttribute="top" id="CM1-BG-TcW"/>
                                                 <constraint firstItem="fbE-Z0-w9X" firstAttribute="leading" secondItem="HtG-Eh-jYH" secondAttribute="trailing" constant="2" id="FBO-aZ-j0q"/>
                                                 <constraint firstItem="HtG-Eh-jYH" firstAttribute="top" secondItem="1PV-cF-vRv" secondAttribute="top" constant="2" id="FUK-i8-Ohw"/>
                                                 <constraint firstItem="6oS-vd-MDQ" firstAttribute="leading" secondItem="HtG-Eh-jYH" secondAttribute="trailing" constant="2" id="I2A-hE-cwi"/>
                                                 <constraint firstItem="HtG-Eh-jYH" firstAttribute="width" secondItem="1PV-cF-vRv" secondAttribute="width" multiplier="0.36" id="NGg-CZ-9fg"/>
+                                                <constraint firstItem="8Ue-s8-4cS" firstAttribute="top" secondItem="HtG-Eh-jYH" secondAttribute="top" id="NJF-Vv-5Bg"/>
                                                 <constraint firstItem="8Dp-kV-OMI" firstAttribute="leading" secondItem="euZ-YN-IMX" secondAttribute="trailing" id="Nmu-Kv-poS"/>
                                                 <constraint firstItem="fbE-Z0-w9X" firstAttribute="bottom" secondItem="HtG-Eh-jYH" secondAttribute="bottom" id="P4p-xO-ExW"/>
                                                 <constraint firstItem="HtG-Eh-jYH" firstAttribute="leading" secondItem="1PV-cF-vRv" secondAttribute="leading" constant="2" id="Q0j-xW-UHy"/>
+                                                <constraint firstItem="8Ue-s8-4cS" firstAttribute="bottom" secondItem="HtG-Eh-jYH" secondAttribute="bottom" id="QBS-Rd-4j2"/>
+                                                <constraint firstItem="fbE-Z0-w9X" firstAttribute="top" secondItem="7An-CC-zWa" secondAttribute="top" id="X1z-DF-ny6"/>
                                                 <constraint firstItem="8Dp-kV-OMI" firstAttribute="leading" secondItem="fbE-Z0-w9X" secondAttribute="trailing" id="aB3-Wc-bD2"/>
+                                                <constraint firstItem="fbE-Z0-w9X" firstAttribute="leading" secondItem="7An-CC-zWa" secondAttribute="leading" id="abT-us-uUu"/>
+                                                <constraint firstItem="8Ue-s8-4cS" firstAttribute="leading" secondItem="HtG-Eh-jYH" secondAttribute="leading" id="cs6-qb-VyC"/>
                                                 <constraint firstItem="fbE-Z0-w9X" firstAttribute="leading" secondItem="6oS-vd-MDQ" secondAttribute="trailing" id="kGd-qk-zhm"/>
                                                 <constraint firstItem="euZ-YN-IMX" firstAttribute="width" secondItem="6oS-vd-MDQ" secondAttribute="width" id="mHF-Dj-mBo"/>
                                                 <constraint firstItem="euZ-YN-IMX" firstAttribute="bottom" secondItem="6oS-vd-MDQ" secondAttribute="bottom" id="n3a-sj-Gcs"/>
+                                                <constraint firstItem="8Dp-kV-OMI" firstAttribute="leading" secondItem="H3D-xL-RaQ" secondAttribute="leading" id="nFl-cY-nk6"/>
+                                                <constraint firstItem="fbE-Z0-w9X" firstAttribute="bottom" secondItem="7An-CC-zWa" secondAttribute="bottom" id="ngU-Ph-C67"/>
                                                 <constraint firstItem="8Dp-kV-OMI" firstAttribute="width" secondItem="1PV-cF-vRv" secondAttribute="width" multiplier="0.16" id="pyv-36-aJ5"/>
+                                                <constraint firstItem="8Ue-s8-4cS" firstAttribute="trailing" secondItem="HtG-Eh-jYH" secondAttribute="trailing" id="qVA-De-KJX"/>
+                                                <constraint firstItem="8Dp-kV-OMI" firstAttribute="trailing" secondItem="H3D-xL-RaQ" secondAttribute="trailing" id="rzy-BF-FeA"/>
                                                 <constraint firstItem="6oS-vd-MDQ" firstAttribute="top" secondItem="1PV-cF-vRv" secondAttribute="topMargin" constant="-8" id="sHo-ab-iHH"/>
                                                 <constraint firstItem="euZ-YN-IMX" firstAttribute="leading" secondItem="fbE-Z0-w9X" secondAttribute="trailing" id="u2U-vo-ytX"/>
+                                                <constraint firstItem="fbE-Z0-w9X" firstAttribute="trailing" secondItem="7An-CC-zWa" secondAttribute="trailing" id="uHU-9f-VCL"/>
                                                 <constraint firstItem="8Dp-kV-OMI" firstAttribute="top" secondItem="fbE-Z0-w9X" secondAttribute="top" id="wDq-L8-i2w"/>
                                                 <constraint firstItem="euZ-YN-IMX" firstAttribute="top" secondItem="6oS-vd-MDQ" secondAttribute="top" id="xWu-9h-91b"/>
+                                                <constraint firstItem="8Dp-kV-OMI" firstAttribute="top" secondItem="H3D-xL-RaQ" secondAttribute="top" id="yft-j9-mfD"/>
+                                                <constraint firstAttribute="trailing" secondItem="8Dp-kV-OMI" secondAttribute="trailing" id="z7E-fJ-4Mm"/>
                                             </constraints>
                                             <variation key="default">
                                                 <mask key="constraints">
@@ -10054,9 +10119,14 @@ E-mail: info@islamicbroker.com.qa</string>
                                             </variation>
                                         </tableViewCellContentView>
                                         <connections>
+                                            <outlet property="AskQtyview" destination="7An-CC-zWa" id="gw3-hh-oaS"/>
+                                            <outlet property="Asknoofshares" destination="H3D-xL-RaQ" id="2kC-Kh-GcF"/>
                                             <outlet property="labelAskNoofShares" destination="8Dp-kV-OMI" id="MR6-QA-OhK"/>
                                             <outlet property="labelAskPrice" destination="HtG-Eh-jYH" id="oCo-mj-oLJ"/>
                                             <outlet property="labelAskQty" destination="fbE-Z0-w9X" id="YNr-pZ-9wG"/>
+                                            <outlet property="labelLine1" destination="6oS-vd-MDQ" id="wKp-cy-ymp"/>
+                                            <outlet property="labelLine2" destination="euZ-YN-IMX" id="pMC-GZ-5Cc"/>
+                                            <outlet property="view1" destination="8Ue-s8-4cS" id="4l0-Sd-TI2"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -10617,7 +10687,7 @@ E-mail: info@islamicbroker.com.qa</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KZ0-L8-yYK" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4386" y="34"/>
+            <point key="canvasLocation" x="4409" y="50"/>
         </scene>
         <!--MyNewOrdersViewController-->
         <scene sceneID="50S-kd-pPF">
