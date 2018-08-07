@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "MDBarView.h"
 
 @interface MDPriceBidCell : UITableViewCell
 
@@ -14,5 +15,13 @@
 @property (nonatomic, weak) IBOutlet UIView *viewBidQty;
 @property (nonatomic, weak) IBOutlet UILabel *labelBidQty;
 @property (nonatomic, weak) IBOutlet UILabel *labelBidPrice;
+@property (weak, nonatomic) IBOutlet UIView *baview;
+@property (weak, nonatomic) IBOutlet UILabel *labelLine1;
+@property (weak, nonatomic) IBOutlet UILabel *labelLine2;
+@property (weak, nonatomic) IBOutlet UIView *testWidth;
+@property (weak, nonatomic) IBOutlet UIView *bidnoofshareview;
+@property (weak, nonatomic) IBOutlet UIView *outerView;
+
+
 
 @end

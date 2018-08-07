@@ -110,6 +110,7 @@ NSString *const kNewOrderOptionsViewCellIdentifier = @"OptionsViewCell";
 //@property (nonatomic, assign) NSInteger durationId;
 @property (strong, nonatomic) NSString *str_limit;
 @property (strong, nonatomic) NSString *str_shares_QTY;
+@property (strong, nonatomic) NSString *strOrderValue;
 
 @property (strong, nonatomic) NSString *strQty;
 @property (strong, nonatomic) NSString *strBuyPower;
@@ -309,13 +310,18 @@ NSString *const kNewOrderOptionsViewCellIdentifier = @"OptionsViewCell";
 
      }
     _scrollView.frame  = frameset;
-
     
     if([self.buttonCreate.currentTitle isEqualToString:NSLocalizedString(@"Modify", @"Modify")])
     {
+        
         _limitDowmLabel.hidden =NO;
         _limitUPLabel.hidden = NO;
     }
+//    else if(_labelSymbol.text.length > 0)
+//    {
+//        _limitDowmLabel.hidden =NO;
+//        _limitUPLabel.hidden = NO;
+//    }
     else{
         _limitDowmLabel.hidden =YES;
         _limitUPLabel.hidden = YES;
@@ -435,7 +441,8 @@ NSString *const kNewOrderOptionsViewCellIdentifier = @"OptionsViewCell";
                     [self.textFieldQty setText:self.strValidPortOnSellQty];
                 }
             }
-            if([[GlobalShare sharedInstance] isBuyOrder]) {
+            if([[GlobalShare sharedInstance] isBuyOrder])
+            {
                 [self.buttonOrderType setTitle:@"" forState:UIControlStateNormal];
                 [self.buttonDuration setTitle:@"" forState:UIControlStateNormal];
 
@@ -447,8 +454,7 @@ NSString *const kNewOrderOptionsViewCellIdentifier = @"OptionsViewCell";
             }
             else {
                
-                self.limitUPLabel.hidden = YES;
-                self.limitDowmLabel.hidden = YES;
+             
                 
                 [self.buttonSearch setHidden:NO];
                 [self.labelTitle setText:NSLocalizedString(@"New Order", @"New Order")];
@@ -516,8 +522,9 @@ NSString *const kNewOrderOptionsViewCellIdentifier = @"OptionsViewCell";
         //    [[GlobalShare sharedInstance] setIsConfirmOrder:NO];
         
     }
-    
-    
+
+  //  [self performSelector:@selector(getLimitUpLimitDown) withObject:nil afterDelay:0.01f];
+  
 }
 
 -(void)viewWillDisappear:(BOOL)animated {
@@ -1570,11 +1577,21 @@ NSString *const kNewOrderOptionsViewCellIdentifier = @"OptionsViewCell";
 }
 
 -(void) getMarketWatchNew {
+    
     @try {
+        
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self.indicatorView setHidden:NO];
+        });
+        
+            
+            
+       
         if([self.securityId length] == 0) return;
         
        // [self.indicatorView setHidden:NO];
-        self.indicatorView.hidden = NO;
+       
+            
         
         NSString *strToken = [NSString stringWithFormat:@"%@", [[NSUserDefaults standardUserDefaults] stringForKey:@"ssckey"]];
         
@@ -1610,15 +1627,19 @@ NSString *const kNewOrderOptionsViewCellIdentifier = @"OptionsViewCell";
                                                                        
                                                                        NSArray *arrVal = returnedDict[@"result"];
                                                                        NSDictionary *dictVal = arrVal[0];
-                                                                       self.labelSymbol.text = dictVal[@"ticker"];
+                                                                       
+                                                                            self.labelSymbol.text = dictVal[@"ticker"];
+                                                                       
                                                                        self.labelSecurityName.text = (globalShare.myLanguage != ARABIC_LANGUAGE) ? dictVal[@"security_name_e"] : dictVal[@"security_name_a"];
                                                                        self.labelPrice.text = [GlobalShare formatStringToTwoDigits:dictVal[@"comp_current_price"]];
                                                                        self.labelChange.text = [GlobalShare formatStringToTwoDigits:dictVal[@"change"]];
                                                                        self.labelPercentChange.text = [NSString stringWithFormat:@"%@%%", [GlobalShare formatStringToTwoDigits:dictVal[@"change_perc"]]];
+                                                                       [self getLimitUpLimitDown];
+
 //                                                                       self.strLimitUpPrice = [GlobalShare formatStringToTwoDigits:dictVal[@"max_price"]];
 //                                                                       self.strLimitDownPrice = [GlobalShare formatStringToTwoDigits:dictVal[@"min_price"]];
                                                                        
-                                                                       [self getLimitUpLimitDown];
+                                                                       
 //                                                                       self.limitUPLabel.hidden = NO;
 //                                                                       self.limitDowmLabel.hidden = NO;
                                                                        
@@ -2036,6 +2057,7 @@ NSString *const kNewOrderOptionsViewCellIdentifier = @"OptionsViewCell";
                                                                        if([self.buttonCreate.currentTitle isEqualToString:NSLocalizedString(@"Modify", @"Modify")])
                                                                        {
                                                                        self.labelOrderValue.text = [NSString stringWithFormat:@"%@",dictVal[@"OrderValue"]];
+                                                                           _strOrderValue = self.labelOrderValue.text;
                                                                        }
                                                                        
                                                                       // [self getLimitUpLimitDown];
@@ -2211,10 +2233,10 @@ NSString *const kNewOrderOptionsViewCellIdentifier = @"OptionsViewCell";
     }
     
     self.labelOrderValue.text = [GlobalShare createCommaSeparatedTwoDigitString:[NSString stringWithFormat:@"%.2f", orderCommissionVal]];
-    if([self.buttonCreate.currentTitle isEqualToString:NSLocalizedString(@"Modify", @"Modify")])
-    {
-    [self order_VAL_cahnged];
-    }
+//    if([self.buttonCreate.currentTitle isEqualToString:NSLocalizedString(@"Modify", @"Modify")])
+//    {
+//    [self order_VAL_cahnged];
+//    }
     
     
 //    NSString *strQty = [self.textFieldQty.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
@@ -2244,7 +2266,7 @@ NSString *const kNewOrderOptionsViewCellIdentifier = @"OptionsViewCell";
 }
 
 - (void)callBackFromConfirmOrder {
-    self.securityId = @"";
+   // self.securityId = @"";
    // [self clearSecurityOrderValue];
     [self performSelector:@selector(getCashPosition) withObject:nil afterDelay:0.01f];
 }
@@ -2469,10 +2491,13 @@ NSString *const kNewOrderOptionsViewCellIdentifier = @"OptionsViewCell";
 }
 -(void) getLimitUpLimitDown {
     @try {
-          if([self.securityId length] == 0) return;
+        NSLog(@"%@",self.securityId);
         
+        if([self.securityId length] == 0) return;
+        
+        dispatch_async(dispatch_get_main_queue(), ^{
         [self.indicatorView setHidden:NO];
-        
+        });
         NSString *strToken = [[NSUserDefaults standardUserDefaults] stringForKey:@"ssckey"];
         NSURLSessionConfiguration *defaultConfigObject = [NSURLSessionConfiguration defaultSessionConfiguration];
         defaultConfigObject.HTTPAdditionalHeaders = @{@"Authorization": strToken};
@@ -2526,7 +2551,7 @@ NSString *const kNewOrderOptionsViewCellIdentifier = @"OptionsViewCell";
                                                                }
                                                            }
                                                            else {
-                                                               [GlobalShare showBasicAlertView:self :[error localizedDescription]];
+                                                            //   [GlobalShare showBasicAlertView:self :[error localizedDescription]];
                                                            }
                                                        }];
         
@@ -3212,7 +3237,7 @@ NSString *const kNewOrderOptionsViewCellIdentifier = @"OptionsViewCell";
     double buyCash1 = 0,buyCash2 = 0, buySharePrice1 = 0, commission = 0, commissionVal = 0;
     int buyNoOfShares1 = 0;
     buyCash1 = [[self.labelBuyPower.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]] doubleValue];
-    buyCash2 = [[self.labelOrderValue.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]] doubleValue];
+    buyCash2 = [[_strOrderValue stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]] doubleValue];
     if([self.buttonCreate.currentTitle isEqualToString:NSLocalizedString(@"Modify", @"Modify")])
     {
     buyCash1 = buyCash1 + buyCash2;

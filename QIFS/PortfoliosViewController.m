@@ -199,11 +199,14 @@ NSString *const kPortfoliosOptionsViewCellIdentifier = @"OptionsViewCell";
     else{
         
         [self performSelector:@selector(getPortfolio) withObject:nil afterDelay:0.01f];
+        _visibleResults = [[NSArray alloc]init];
+        self.arrayPortfolios = [[NSArray alloc]init];
+        [_tableResults reloadData];
         
         globalShare.dictValues = [DataManager select_SecurityListAsSectors];
         self.allResults = [DataManager select_SecurityList];
     }
-    [self performSelector:@selector(getPortfolio) withObject:nil afterDelay:0.01f];
+  //  [self performSelector:@selector(getPortfolio) withObject:nil afterDelay:0.01f];
 
 }
 
@@ -524,6 +527,7 @@ NSString *const kPortfoliosOptionsViewCellIdentifier = @"OptionsViewCell";
                                                        [self.indicatorView setHidden:YES];
                                                        if(error == nil)
                                                        {
+                                                           _tableResults.hidden = NO;
                                                            NSMutableDictionary *returnedDict = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:&error];
                                                            if([returnedDict[@"status"] hasPrefix:@"error"]) {
                                                                if([returnedDict[@"result"] hasPrefix:@"T5"])
@@ -584,6 +588,7 @@ NSString *const kPortfoliosOptionsViewCellIdentifier = @"OptionsViewCell";
 
                                                                });
                                                            }
+                                                           _tableResults.hidden = YES;
                                                        }
                                                        else {
                                                            [GlobalShare showBasicAlertView:self :[error localizedDescription]];
@@ -642,7 +647,10 @@ NSString *const kPortfoliosOptionsViewCellIdentifier = @"OptionsViewCell";
     if([tableView isEqual:self.tableViewOptionMenu])
         return [self.arrayMenu count];
     else if([tableView isEqual:self.tableResults])
+    {
+        NSLog(@"%@",self.visibleResults);
         return [self.visibleResults count];
+    }
     else
         return [self.arrayPortfolios count];
 }

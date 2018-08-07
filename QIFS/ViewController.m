@@ -81,7 +81,7 @@
     [super viewWillAppear:YES];
     
     globalShare.strNewOrderFlow = @"";
-    _textFieldPassword.text =  nil;
+    _textFieldPassword.text = nil;
 
     [[GlobalShare sharedInstance] setIsErrorPupup:NO];
     [[GlobalShare sharedInstance] setIsTimerStockListRun:NO];
