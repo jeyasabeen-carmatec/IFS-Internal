@@ -67,8 +67,7 @@
     
     _textFieldUserName.text = userName;
     
-    
-    // Do any additional setup after loading the view, typically from a nib.
+
     globalShare = [GlobalShare sharedInstance];
     [self.labelTitle setText:NSLocalizedString(@"Login", @"Login")];
     
