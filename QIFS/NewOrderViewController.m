@@ -3097,10 +3097,10 @@ NSString *const kNewOrderOptionsViewCellIdentifier = @"OptionsViewCell";
 //                NSString *str_string = [NSString stringWithFormat:@"%@\n%@ : %@\n%@ : %@\n%@ : %@ ",str_txt,str_commission_VAL,strCommisionvalue,str_newbal_VAL,strnewbalancevalue,str_total_order_VAL,strtotalbalancevalue];
            NSString *alertTitle = NSLocalizedString(@"Islamic Financial Securities", @"Basic Alert Style");
                 
-                NSString *str_TXT = [NSString stringWithFormat:@"%@ %@",str_txt,_textFieldQty.text];
-                if(globalShare.myLanguage == ARABIC_LANGUAGE) {
-          str_TXT = [NSString stringWithFormat:@"%@ %@",_textFieldQty.text,str_txt];
-            }
+                NSString *str_TXT = [NSString stringWithFormat:@"%@ %@ ?",str_txt,_textFieldQty.text];
+//                if(globalShare.myLanguage == ARABIC_LANGUAGE) {
+//                  str_TXT = [NSString stringWithFormat:@"? %@ %@",_textFieldQty.text,str_txt];
+//                }
             NSString *alertMessage = NSLocalizedString(str_TXT, @"BasicAlertMessage");
             
             UIAlertController *alertController = [UIAlertController alertControllerWithTitle:alertTitle
