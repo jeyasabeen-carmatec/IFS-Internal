@@ -133,10 +133,10 @@
 		777C67D120D39E650085961A /* TIMERUIApplication.m in Sources */ = {isa = PBXBuildFile; fileRef = 777C67D020D39E650085961A /* TIMERUIApplication.m */; };
 		77C46A1E20C9128E002C6538 /* Charts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7351BC4120C50CB800F49E27 /* Charts.framework */; };
 		77C46A1F20C9128E002C6538 /* Charts.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 7351BC4120C50CB800F49E27 /* Charts.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		77DBA239211C4A5E00552BC6 /* NewOrderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 77DBA238211C4A5D00552BC6 /* NewOrderViewController.m */; };
 		77E07E6020D1311D00706616 /* UIAlertController+Orientation.m in Sources */ = {isa = PBXBuildFile; fileRef = 77E07E5D20D1311D00706616 /* UIAlertController+Orientation.m */; };
 		77E07E6620D131B300706616 /* StocksOverviewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 77E07E6520D131B300706616 /* StocksOverviewViewController.m */; };
 		A091F7D42119BBAB0055198B /* CalculatorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A091F7D12119BBAA0055198B /* CalculatorViewController.m */; };
-		A091F7D82119BBF50055198B /* NewOrderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A091F7D72119BBF40055198B /* NewOrderViewController.m */; };
 		A091F7DA2119BC050055198B /* PortfoliosViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A091F7D92119BC050055198B /* PortfoliosViewController.m */; };
 		D03CC6B020FCBD8A00166251 /* SectorsGraphViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D03CC6AF20FCBD8A00166251 /* SectorsGraphViewController.m */; };
 		D03CC6B220FF25A300166251 /* CompanyGraphViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D03CC6B120FF25A200166251 /* CompanyGraphViewController.m */; };
@@ -435,11 +435,11 @@
 		770BA38C20C959FB001B7ACA /* MarketDepthViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MarketDepthViewController.m; sourceTree = "<group>"; };
 		777C67CF20D39E650085961A /* TIMERUIApplication.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TIMERUIApplication.h; sourceTree = "<group>"; };
 		777C67D020D39E650085961A /* TIMERUIApplication.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TIMERUIApplication.m; sourceTree = "<group>"; };
+		77DBA238211C4A5D00552BC6 /* NewOrderViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewOrderViewController.m; sourceTree = "<group>"; };
 		77E07E5D20D1311D00706616 /* UIAlertController+Orientation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIAlertController+Orientation.m"; sourceTree = "<group>"; };
 		77E07E5F20D1311D00706616 /* UIAlertController+Orientation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIAlertController+Orientation.h"; sourceTree = "<group>"; };
 		77E07E6520D131B300706616 /* StocksOverviewViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StocksOverviewViewController.m; sourceTree = "<group>"; };
 		A091F7D12119BBAA0055198B /* CalculatorViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CalculatorViewController.m; sourceTree = "<group>"; };
-		A091F7D72119BBF40055198B /* NewOrderViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewOrderViewController.m; sourceTree = "<group>"; };
 		A091F7D92119BC050055198B /* PortfoliosViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PortfoliosViewController.m; sourceTree = "<group>"; };
 		D03CC6AF20FCBD8A00166251 /* SectorsGraphViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SectorsGraphViewController.m; sourceTree = "<group>"; };
 		D03CC6B120FF25A200166251 /* CompanyGraphViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CompanyGraphViewController.m; sourceTree = "<group>"; };
@@ -864,7 +864,7 @@
 				7351BC5A20C53D3B00F49E27 /* MarketDepthViewController.h */,
 				770BA38C20C959FB001B7ACA /* MarketDepthViewController.m */,
 				7351BC5F20C53D3C00F49E27 /* NewOrderViewController.h */,
-				A091F7D72119BBF40055198B /* NewOrderViewController.m */,
+				77DBA238211C4A5D00552BC6 /* NewOrderViewController.m */,
 				7351BC5B20C53D3B00F49E27 /* OrderConfirmViewController.h */,
 				7351BC6020C53D3C00F49E27 /* OrderConfirmViewController.m */,
 				5102EDCA1D4947F7005B04F8 /* Views */,
@@ -1221,8 +1221,8 @@
 				7319814720BD873D00719955 /* BalloonMarker.swift in Sources */,
 				514382AF1D1D82D500E1B739 /* AppDelegate.m in Sources */,
 				51332C401DE8AB97001536CD /* FMResultSet.m in Sources */,
-				A091F7D82119BBF50055198B /* NewOrderViewController.m in Sources */,
 				D03CC6B220FF25A300166251 /* CompanyGraphViewController.m in Sources */,
+				77DBA239211C4A5E00552BC6 /* NewOrderViewController.m in Sources */,
 				515AF6291D2E508100FF837E /* PageLoadViewController.m in Sources */,
 				D03CC6B620FF25D400166251 /* DateValueFormatter.m in Sources */,
 				515AF6421D2E50B100FF837E /* BarView.m in Sources */,
