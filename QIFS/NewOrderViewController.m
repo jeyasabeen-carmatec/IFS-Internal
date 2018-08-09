@@ -1608,7 +1608,7 @@ NSString *const kNewOrderOptionsViewCellIdentifier = @"OptionsViewCell";
                                                            if(error == nil)
                                                            {
                                                                NSMutableDictionary *returnedDict = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:&error];
-                                                               NSLog(@"the live market_data_is:%@",returnedDict);
+                                                              // NSLog(@"the live market_data_is:%@",returnedDict);
                                                                if([returnedDict[@"status"] hasPrefix:@"error"]) {
                                                                    if([returnedDict[@"result"] hasPrefix:@"T5"])
                                                                        [GlobalShare showSessionExpiredAlertView:self :SESSION_EXPIRED];
@@ -3098,6 +3098,9 @@ NSString *const kNewOrderOptionsViewCellIdentifier = @"OptionsViewCell";
            NSString *alertTitle = NSLocalizedString(@"Islamic Financial Securities", @"Basic Alert Style");
                 
                 NSString *str_TXT = [NSString stringWithFormat:@"%@ %@",str_txt,_textFieldQty.text];
+                if(globalShare.myLanguage == ARABIC_LANGUAGE) {
+          str_TXT = [NSString stringWithFormat:@"%@ %@",_textFieldQty.text,str_txt];
+            }
             NSString *alertMessage = NSLocalizedString(str_TXT, @"BasicAlertMessage");
             
             UIAlertController *alertController = [UIAlertController alertControllerWithTitle:alertTitle
