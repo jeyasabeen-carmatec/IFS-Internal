@@ -485,6 +485,7 @@
         set1.lineWidth = 1.0;
         set1.circleRadius = 3.0;
         set1.drawCircleHoleEnabled = NO;
+        set1.mode = LineChartModeCubicBezier;
         set1.valueFont = [UIFont systemFontOfSize:9.f];
         
         NSArray *gradientColors = @[

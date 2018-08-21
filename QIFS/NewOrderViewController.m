@@ -284,7 +284,7 @@ NSString *const kNewOrderOptionsViewCellIdentifier = @"OptionsViewCell";
 }
 -(void)viewDidLayoutSubviews{
     _scrollView.contentSize = CGSizeMake(self.scrollView.frame.size.width, self.contentView.frame.size.height+self.contentView.frame.origin.y);
-   // NSLog(@"%f",self.contentView.frame.size.height+self.contentView.frame.origin.y);
+    NSLog(@"%f",self.contentView.frame.size.height+self.contentView.frame.origin.y);
 }
 -(void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:YES];
@@ -3165,7 +3165,7 @@ NSString *const kNewOrderOptionsViewCellIdentifier = @"OptionsViewCell";
         NSString *strURL = [NSString stringWithFormat:@"%@%@%@", REQUEST_URL,@"ConfirmOrder",_str_confirm_order];
         
         //            NSString *strURL =[NSString stringWithFormat:@"%@ConfirmOrder?order_side=1&order_type=2&symbol=%@&qty=%@&price=%@&is_market_price_order=0&order_id=20171214-749037, tag=null'];
-       // NSLog(@"The URL for getOrderdetails:%@",strURL);
+        NSLog(@"The URL for getOrderdetails:%@",strURL);
         NSURL *url = [NSURL URLWithString:strURL];
         
         NSURLSessionDataTask *dataTask = [defaultSession dataTaskWithURL:url
@@ -3174,7 +3174,7 @@ NSString *const kNewOrderOptionsViewCellIdentifier = @"OptionsViewCell";
                                                            if(error == nil)
                                                            {
                                                                NSMutableDictionary *returnedDict = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:&error];
-                                                               //NSLog(@"the response from update order:%@",returnedDict);
+                                                               NSLog(@"the response from update order:%@",returnedDict);
                                                                
                                                                
                                                                
@@ -3235,15 +3235,14 @@ NSString *const kNewOrderOptionsViewCellIdentifier = @"OptionsViewCell";
     {
         
     }
-  
-        
-    if([self.textFieldLimit.text isEqualToString:@""])
-    {
-        self.textFieldQty.text =  @"";
-    }
+   
     else
     {
        
+    if([self.textFieldLimit.text isEqualToString:@""])
+    {
+    self.textFieldQty.text =  @"";
+    }
     double buyCash1 = 0,buyCash2 = 0, buySharePrice1 = 0, commission = 0, commissionVal = 0;
     int buyNoOfShares1 = 0;
     buyCash1 = [[self.labelBuyPower.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]] doubleValue];
@@ -3267,7 +3266,7 @@ NSString *const kNewOrderOptionsViewCellIdentifier = @"OptionsViewCell";
    
         if(buyNoOfShares1 < 1)
         {
-            _textFieldQty.text =[NSString stringWithFormat:@"0"];
+            _textFieldQty.text =[NSString stringWithFormat:@""];
         }
         else{
             _textFieldQty.text =[NSString stringWithFormat:@"%d",buyNoOfShares1];
