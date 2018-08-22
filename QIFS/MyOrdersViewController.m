@@ -983,7 +983,7 @@ NSString *const kMyOrdersOptionsViewCellIdentifier = @"OptionsViewCell";
         }
         else{
             
-            NSLog(@"Login status....");
+          //  NSLog(@"Login status....");
             if ([GlobalShare isUserLogedIn]) {
                 
                 [self.navigationController popToRootViewControllerAnimated:YES];

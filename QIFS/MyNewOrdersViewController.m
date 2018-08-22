@@ -100,42 +100,7 @@ NSString *const kMyNewOrdersOptionsViewCellIdentifier = @"OptionsViewCell";
     self.arrayMenu = [[NSMutableArray alloc]init];
     [self menuDataSetUp];
 
-//    NSString *loginStatus;
-//    if ([GlobalShare isUserLogedIn]) {
-//
-//        loginStatus = NSLocalizedString(@"Sign In", @"Sign In");
-//
-//    }
-//    else{
-//        loginStatus = NSLocalizedString(@"Sign Out", @"Sign Out");
-//    }
-//    self.arrayMenu = @[
-//                       @{
-//                           @"menu_title": NSLocalizedString(@"Cash Position", @"Cash Position"),
-//                           @"menu_image": @"icon_cash_position"
-//                           },
-////                       @{
-////                           @"menu_title": NSLocalizedString(@"My Orders History", @"My Orders History"),
-////                           @"menu_image": @"icon_my_order_history"
-////                           },
-//                       @{
-//                           @"menu_title": NSLocalizedString(@"Contact Us", @"Contact Us"),
-//                           @"menu_image": @"icon_contact_us"
-//                           },
-//                       @{
-//                           @"menu_title": NSLocalizedString(@"Settings", @"Settings"),
-//                           @"menu_image": @"icon_settings"
-//                           },
-//                       @{
-//                           @"menu_title": loginStatus,
-//                           @"menu_image": @"icon_signout"
-//                           }
-//                       ];
-    
-    
 
-//    [self.tableViewOptionMenu setSeparatorInset:UIEdgeInsetsZero];
-//    [self.tableViewOptionMenu setLayoutMargins:UIEdgeInsetsZero];
     self.tableViewOptionMenu.scrollEnabled = NO;
 
 
@@ -209,7 +174,7 @@ NSString *const kMyNewOrdersOptionsViewCellIdentifier = @"OptionsViewCell";
     // Pass the selected object to the new view controller.
 }
  */
-#pragma mark Loading Login PopUp when guest User
+#pragma mark DisplayCustomLogin
 -(void)showsLoginPopUp{
     
     overLayView.hidden = NO;
@@ -241,7 +206,7 @@ NSString *const kMyNewOrdersOptionsViewCellIdentifier = @"OptionsViewCell";
     
 }
 
-#pragma mark Menu Data SetUp...
+#pragma mark - Menu Data SetUp...
 
 -(void)menuDataSetUp{
     NSString *loginStatus;

@@ -210,11 +210,7 @@ NSString *const kStocksOptionsViewCellIdentifier = @"OptionsViewCell";
     
     //_pageMenu = [[CAPSPageMenu alloc] initWithViewControllers:controllerArray frame:CGRectMake(0.0, _labelTitle.frame.origin.y+_labelTitle.frame.size.height+20, self.view.frame.size.width, self.view.frame.size.height-(_labelTitle.frame.origin.y+_labelTitle.frame.size.height+20)-49) options:parameters index:passIndex];//labelTitle
     
-//    NSLog(@"..... %f",_labelTitle.frame.origin.y+_labelTitle.frame.size.height+10);
-//    NSLog(@"Height %f",self.view.frame.size.height-(_labelTitle.frame.origin.y+_labelTitle.frame.size.height+30)-49);
 
-    
-    
     _pageMenu.delegate = self;
     [_pageMenu moveToPage:passIndex withAnimated:YES];
     [self.view addSubview:_pageMenu.view];
@@ -271,9 +267,7 @@ NSString *const kStocksOptionsViewCellIdentifier = @"OptionsViewCell";
         [self.tableViewOptionMenu setSemanticContentAttribute:UISemanticContentAttributeForceLeftToRight];
         [self.view setSemanticContentAttribute:UISemanticContentAttributeForceLeftToRight];
     }
-  //  self.allResults = [[NSMutableArray alloc]init];
-  //  [self.allResults addObjectsFromArray:globalShare.search_results];
-  //  NSLog(@"the array of search results:%@",self.allResults);
+ 
 }
 
 -(void)viewWillDisappear:(BOOL)animated {
@@ -1030,7 +1024,7 @@ NSString *const kStocksOptionsViewCellIdentifier = @"OptionsViewCell";
             }
             else{
                 
-                 NSLog(@"Login status....");
+                
                 if ([GlobalShare isUserLogedIn]) {
                     
                     [self.navigationController popToRootViewControllerAnimated:YES];
