@@ -290,7 +290,7 @@ NSString *const kMDOrderAskCellIdentifier = @"MDOrderAskCell";
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-#pragma mark Loading Login PopUp when guest User
+#pragma mark DisplayCustomLogin
 -(void)showsLoginPopUp{
     overLayView.hidden = NO;
     loginVw  = [[[NSBundle mainBundle] loadNibNamed:@"LoginView" owner:self options:nil] objectAtIndex:0];

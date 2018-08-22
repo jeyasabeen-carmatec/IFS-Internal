@@ -284,7 +284,7 @@ NSString *const kNewOrderOptionsViewCellIdentifier = @"OptionsViewCell";
 }
 -(void)viewDidLayoutSubviews{
     _scrollView.contentSize = CGSizeMake(self.scrollView.frame.size.width, self.contentView.frame.size.height+self.contentView.frame.origin.y);
-    NSLog(@"%f",self.contentView.frame.size.height+self.contentView.frame.origin.y);
+    
 }
 -(void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:YES];
@@ -599,7 +599,7 @@ NSString *const kNewOrderOptionsViewCellIdentifier = @"OptionsViewCell";
 
 
 
-#pragma mark Loading Login PopUp when guest User
+#pragma mark DisplayCustomLogin
 /*
  Demo User Login(Custom View)
  */
@@ -2024,7 +2024,6 @@ NSString *const kNewOrderOptionsViewCellIdentifier = @"OptionsViewCell";
         NSURLSession *defaultSession = [NSURLSession sessionWithConfiguration:defaultConfigObject delegate:self delegateQueue:[NSOperationQueue mainQueue]];
         
         NSString *strURL = [NSString stringWithFormat:@"%@%@%@", REQUEST_URL, @"GetOrderDetails?order_id=", self.strOrderId];
-        NSLog(@"The URL for getOrderdetails:%@",strURL);
         NSURL *url = [NSURL URLWithString:strURL];
         
         NSURLSessionDataTask *dataTask = [defaultSession dataTaskWithURL:url
@@ -2121,7 +2120,7 @@ NSString *const kNewOrderOptionsViewCellIdentifier = @"OptionsViewCell";
 //                                                                       if([self.buttonDuration.currentTitle isEqualToString:@"GTD"]) {
                                                                        if(self.selectValDuration == 8) {
                                                                            [self.labelDuration setText:[NSString stringWithFormat:@"%@", [dictVal[@"expiry_date"] componentsSeparatedByString:@" "][0]]];
-                                                                           NSLog(@"The label duration text is:%@",self.labelDuration.text);
+                                                                         
                                                                         NSDate   *date = [GlobalShare returnDateAsDateanother_form:self.labelDuration.text];
                                                                            self.datePicker.date = date; /*[GlobalShare returnDateAsDate:self.labelDuration.text];*/
                                                                        }
@@ -3038,7 +3037,7 @@ NSString *const kNewOrderOptionsViewCellIdentifier = @"OptionsViewCell";
     [self.tableResults reloadData];
 }
 
-#pragma mark modify order
+#pragma mark ModifyOrder
 -(void)update_ORder_API : (NSDictionary *)dictVals
 {
    
@@ -3055,7 +3054,7 @@ NSString *const kNewOrderOptionsViewCellIdentifier = @"OptionsViewCell";
             NSString *strURL = [NSString stringWithFormat:@"%@%@%@", REQUEST_URL,@"ConfirmOrder",_str_confirm_order];
             
 //            NSString *strURL =[NSString stringWithFormat:@"%@ConfirmOrder?order_side=1&order_type=2&symbol=%@&qty=%@&price=%@&is_market_price_order=0&order_id=20171214-749037, tag=null'];
-            NSLog(@"The URL for getOrderdetails:%@",strURL);
+           // NSLog(@"The URL for getOrderdetails:%@",strURL);
             NSURL *url = [NSURL URLWithString:strURL];
             
             NSURLSessionDataTask *dataTask = [defaultSession dataTaskWithURL:url
@@ -3064,7 +3063,7 @@ NSString *const kNewOrderOptionsViewCellIdentifier = @"OptionsViewCell";
     if(error == nil)
         {
        NSMutableDictionary *returnedDict = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:&error];
-            NSLog(@"the response from update order:%@",returnedDict);
+           // NSLog(@"the response from update order:%@",returnedDict);
             
             
             
@@ -3165,7 +3164,6 @@ NSString *const kNewOrderOptionsViewCellIdentifier = @"OptionsViewCell";
         NSString *strURL = [NSString stringWithFormat:@"%@%@%@", REQUEST_URL,@"ConfirmOrder",_str_confirm_order];
         
         //            NSString *strURL =[NSString stringWithFormat:@"%@ConfirmOrder?order_side=1&order_type=2&symbol=%@&qty=%@&price=%@&is_market_price_order=0&order_id=20171214-749037, tag=null'];
-        NSLog(@"The URL for getOrderdetails:%@",strURL);
         NSURL *url = [NSURL URLWithString:strURL];
         
         NSURLSessionDataTask *dataTask = [defaultSession dataTaskWithURL:url
@@ -3174,7 +3172,7 @@ NSString *const kNewOrderOptionsViewCellIdentifier = @"OptionsViewCell";
                                                            if(error == nil)
                                                            {
                                                                NSMutableDictionary *returnedDict = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:&error];
-                                                               NSLog(@"the response from update order:%@",returnedDict);
+                                                             
                                                                
                                                                
                                                                
