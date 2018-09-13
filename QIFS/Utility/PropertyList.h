@@ -26,8 +26,11 @@
 //PRODUCTION
 //#define REQUEST_URL @"http://212.77.209.102/OrderManagerWebAPI/WebAPI/"
 
+//PRODUCTION
+#define REQUEST_URL @"http://212.77.209.101/OrderManagerWebAPI/WebAPI/"
+
 //PRODUCTION NEW
-#define REQUEST_URL @"https://apps.islamicbroker.com.qa/OrderManagerWebAPI/WebAPI/"
+//#define REQUEST_URL @"https://apps.islamicbroker.com.qa/OrderManagerWebAPI/WebAPI/"
 
 //#define INTERNET_CONNECTION @"No internet connection. Please try again later."
 //#define USERNAME @"Please enter the User Name."
