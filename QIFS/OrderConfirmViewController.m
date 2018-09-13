@@ -9,6 +9,9 @@
 #import "OrderConfirmViewController.h"
 
 @interface OrderConfirmViewController () <NSURLSessionDelegate>
+{
+   UIView *VW_overlay;
+}
 
 @property (nonatomic, weak) IBOutlet UILabel *labelTitle;
 @property (nonatomic, weak) IBOutlet UIView *viewBg;
@@ -33,6 +36,12 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
+    
+    VW_overlay = [[UIView alloc] initWithFrame:[UIScreen mainScreen].bounds];
+    VW_overlay.backgroundColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.5];
+    [self.view addSubview:VW_overlay];
+    VW_overlay.hidden = YES;
+    
     globalShare = [GlobalShare sharedInstance];
     [self.labelTitle setText:NSLocalizedString(@"Order Confirmation", @"Order Confirmation")];
    
@@ -134,6 +143,7 @@
 -(void) submitNewOrder:(NSString *)strParams {
     @try {
         [self.indicatorView setHidden:NO];
+        VW_overlay.hidden = NO;
         
         NSString *strToken = [[NSUserDefaults standardUserDefaults] stringForKey:@"ssckey"];
         NSURLSessionConfiguration *defaultConfigObject = [NSURLSessionConfiguration defaultSessionConfiguration];
@@ -146,6 +156,7 @@
         NSURLSessionDataTask *dataTask = [defaultSession dataTaskWithURL:url
                                                        completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
                                                            [self.indicatorView setHidden:YES];
+                                                           VW_overlay.hidden = YES;
                                                            if(error == nil)
                                                            {
                                                                NSMutableDictionary *returnedDict = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:&error];

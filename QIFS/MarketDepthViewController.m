@@ -245,17 +245,17 @@ NSString *const kMDOrderAskCellIdentifier = @"MDOrderAskCell";
     
     if(globalShare.myLanguage == ARABIC_LANGUAGE) {
         [self.view setSemanticContentAttribute:UISemanticContentAttributeForceRightToLeft];
-        [self.labelOrderBidQtyCaption setTextAlignment:NSTextAlignmentLeft];
+        [self.labelOrderBidQtyCaption setTextAlignment:NSTextAlignmentCenter];
         
-        [self.labelBidTotalOrderQty setTextAlignment:NSTextAlignmentLeft];
-        [self.labelAskTotalOrderQty setTextAlignment:NSTextAlignmentRight];
+        [self.labelBidTotalOrderQty setTextAlignment:NSTextAlignmentCenter];
+        [self.labelAskTotalOrderQty setTextAlignment:NSTextAlignmentCenter];
     }
     else {
         [self.view setSemanticContentAttribute:UISemanticContentAttributeForceLeftToRight];
-        [self.labelOrderBidQtyCaption setTextAlignment:NSTextAlignmentRight];
+        [self.labelOrderBidQtyCaption setTextAlignment:NSTextAlignmentCenter];
         
-        [self.labelBidTotalOrderQty setTextAlignment:NSTextAlignmentRight];
-        [self.labelAskTotalOrderQty setTextAlignment:NSTextAlignmentLeft];
+        [self.labelBidTotalOrderQty setTextAlignment:NSTextAlignmentCenter];
+        [self.labelAskTotalOrderQty setTextAlignment:NSTextAlignmentCenter];
     }
     
     if(![[GlobalShare sharedInstance] isTimerMarketDepthRun])
@@ -290,7 +290,7 @@ NSString *const kMDOrderAskCellIdentifier = @"MDOrderAskCell";
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-#pragma mark DisplayCustomLogin
+#pragma mark Loading Login PopUp when guest User
 -(void)showsLoginPopUp{
     overLayView.hidden = NO;
     loginVw  = [[[NSBundle mainBundle] loadNibNamed:@"LoginView" owner:self options:nil] objectAtIndex:0];
@@ -755,7 +755,7 @@ NSString *const kMDOrderAskCellIdentifier = @"MDOrderAskCell";
 //       }
 //       else {
             myFrame = CGRectMake(cell.labelBidQty.frame.origin.x, cell.labelBidQty.frame.origin.y, cell.labelBidQty.frame.size.width, cell.labelBidQty.frame.size.height);
-            [cell.labelBidQty setTextAlignment:NSTextAlignmentLeft];
+            [cell.labelBidQty setTextAlignment:NSTextAlignmentCenter];
  //       }
      
        // cell.baview.accessibilityValue = [NSString stringWithFormat:@"%f", percentVal];
@@ -855,7 +855,7 @@ NSString *const kMDOrderAskCellIdentifier = @"MDOrderAskCell";
             [cell.labelBidQty setTextAlignment:NSTextAlignmentLeft];
         }
         else {
-            [cell.labelBidQty setTextAlignment:NSTextAlignmentRight];
+            [cell.labelBidQty setTextAlignment:NSTextAlignmentCenter];
         }
 
         cell.accessoryType = UITableViewCellAccessoryNone;
