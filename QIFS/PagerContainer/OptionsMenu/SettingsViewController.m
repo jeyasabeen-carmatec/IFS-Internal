@@ -110,7 +110,7 @@
 }
 
 - (IBAction)actionRate:(id)sender {
-    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:[NSString stringWithFormat:@"https://itunes.apple.com/in/app/islamic-financial-securities/id1424958206?mt=8"]]];
+//    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:[NSString stringWithFormat:@"itms-apps://itunes.apple.com/app/id\(573753324)"]]];
 }
 
 #pragma mark - Common actions
