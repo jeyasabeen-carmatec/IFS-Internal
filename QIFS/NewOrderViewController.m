@@ -1608,7 +1608,7 @@ NSString *const kNewOrderOptionsViewCellIdentifier = @"OptionsViewCell";
                                                            if(error == nil)
                                                            {
                                                                NSMutableDictionary *returnedDict = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:&error];
-                                                              // NSLog(@"the live market_data_is:%@",returnedDict);
+                                                               NSLog(@"the live market_data_is:%@",returnedDict);
                                                                if([returnedDict[@"status"] hasPrefix:@"error"]) {
                                                                    if([returnedDict[@"result"] hasPrefix:@"T5"])
                                                                        [GlobalShare showSessionExpiredAlertView:self :SESSION_EXPIRED];
@@ -3097,10 +3097,7 @@ NSString *const kNewOrderOptionsViewCellIdentifier = @"OptionsViewCell";
 //                NSString *str_string = [NSString stringWithFormat:@"%@\n%@ : %@\n%@ : %@\n%@ : %@ ",str_txt,str_commission_VAL,strCommisionvalue,str_newbal_VAL,strnewbalancevalue,str_total_order_VAL,strtotalbalancevalue];
            NSString *alertTitle = NSLocalizedString(@"Islamic Financial Securities", @"Basic Alert Style");
                 
-                NSString *str_TXT = [NSString stringWithFormat:@"%@ %@ ?",str_txt,_textFieldQty.text];
-//                if(globalShare.myLanguage == ARABIC_LANGUAGE) {
-//                  str_TXT = [NSString stringWithFormat:@"? %@ %@",_textFieldQty.text,str_txt];
-//                }
+                NSString *str_TXT = [NSString stringWithFormat:@"%@ %@",str_txt,_textFieldQty.text];
             NSString *alertMessage = NSLocalizedString(str_TXT, @"BasicAlertMessage");
             
             UIAlertController *alertController = [UIAlertController alertControllerWithTitle:alertTitle
@@ -3235,19 +3232,11 @@ NSString *const kNewOrderOptionsViewCellIdentifier = @"OptionsViewCell";
     {
         
     }
-   
-    else
-    {
+    else{
        
-    if([self.textFieldLimit.text isEqualToString:@""])
-    {
-    self.textFieldQty.text =  @"";
-    }
     double buyCash1 = 0,buyCash2 = 0, buySharePrice1 = 0, commission = 0, commissionVal = 0;
     int buyNoOfShares1 = 0;
-    NSString *str = [self.labelBuyPower.text stringByReplacingOccurrencesOfString:@"," withString:@""];
-    
-    buyCash1 = [[str stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]] doubleValue];
+    buyCash1 = [[self.labelBuyPower.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]] doubleValue];
     buyCash2 = [[_strOrderValue stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]] doubleValue];
     if([self.buttonCreate.currentTitle isEqualToString:NSLocalizedString(@"Modify", @"Modify")])
     {
@@ -3266,16 +3255,15 @@ NSString *const kNewOrderOptionsViewCellIdentifier = @"OptionsViewCell";
     buyCash1 = buyCash1 - commissionVal;
     buyNoOfShares1 = buyCash1 / buySharePrice1;
    
-        if(buyNoOfShares1 < 1)
+        if(buyNoOfShares1 < 0)
         {
-            _textFieldQty.text =[NSString stringWithFormat:@""];
+            _textFieldQty.text =[NSString stringWithFormat:@"0"];
         }
         else{
             _textFieldQty.text =[NSString stringWithFormat:@"%d",buyNoOfShares1];
 
         }
     }
-    [self order_VAL_cahnged];
 }
 
 

@@ -29,7 +29,7 @@
        
         _dateFormatter = [[NSDateFormatter alloc] init];
        
-       
+        NSLog(@"%d",[[GlobalShare sharedInstance] isDayChart]);
         
         if ([[GlobalShare sharedInstance] isDayChart]) {
        

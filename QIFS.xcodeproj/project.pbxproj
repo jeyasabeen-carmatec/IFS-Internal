@@ -120,6 +120,8 @@
 		7351BC5320C53CFE00F49E27 /* OrderTicketViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7351BC4C20C53CFE00F49E27 /* OrderTicketViewController.m */; };
 		7351BC5420C53CFE00F49E27 /* MyOrdersViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7351BC5020C53CFE00F49E27 /* MyOrdersViewController.m */; };
 		7351BC5520C53CFE00F49E27 /* ActiveOrdersViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7351BC5120C53CFE00F49E27 /* ActiveOrdersViewController.m */; };
+		7351BC5820C53D2000F49E27 /* PortfoliosViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7351BC5720C53D2000F49E27 /* PortfoliosViewController.m */; };
+		7351BC6120C53D3C00F49E27 /* NewOrderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7351BC5920C53D3B00F49E27 /* NewOrderViewController.m */; };
 		7351BC6420C53D3C00F49E27 /* OrderConfirmViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7351BC6020C53D3C00F49E27 /* OrderConfirmViewController.m */; };
 		7351BC6C20C5416F00F49E27 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7351BC6E20C5416F00F49E27 /* Main.storyboard */; };
 		7351BC7720C5421700F49E27 /* LoginView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7351BC7520C5421700F49E27 /* LoginView.m */; };
@@ -128,21 +130,20 @@
 		7351BC8B20C6374600F49E27 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7351BC8820C6374600F49E27 /* Foundation.framework */; };
 		73CC724420C6447000E0F35C /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 73CC724320C6447000E0F35C /* ViewController.m */; };
 		73CCC06320BD3978009A662F /* ActiveStocksViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 73CCC06220BD3978009A662F /* ActiveStocksViewController.m */; };
+		770BA38B20C94197001B7ACA /* Charts.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 7351BC4120C50CB800F49E27 /* Charts.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		770BA38D20C959FC001B7ACA /* MarketDepthViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 770BA38C20C959FB001B7ACA /* MarketDepthViewController.m */; };
 		777C67D120D39E650085961A /* TIMERUIApplication.m in Sources */ = {isa = PBXBuildFile; fileRef = 777C67D020D39E650085961A /* TIMERUIApplication.m */; };
+		77C46A1E20C9128E002C6538 /* Charts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7351BC4120C50CB800F49E27 /* Charts.framework */; };
+		77C46A1F20C9128E002C6538 /* Charts.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 7351BC4120C50CB800F49E27 /* Charts.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		77E07E6020D1311D00706616 /* UIAlertController+Orientation.m in Sources */ = {isa = PBXBuildFile; fileRef = 77E07E5D20D1311D00706616 /* UIAlertController+Orientation.m */; };
 		77E07E6620D131B300706616 /* StocksOverviewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 77E07E6520D131B300706616 /* StocksOverviewViewController.m */; };
-		A091F7D42119BBAB0055198B /* CalculatorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A091F7D12119BBAA0055198B /* CalculatorViewController.m */; };
-		A091F7D82119BBF50055198B /* NewOrderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A091F7D72119BBF40055198B /* NewOrderViewController.m */; };
-		A091F7DA2119BC050055198B /* PortfoliosViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A091F7D92119BC050055198B /* PortfoliosViewController.m */; };
+		D02BD3E520DCB2130075874E /* CalculatorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D02BD3E420DCB2120075874E /* CalculatorViewController.m */; };
 		D03CC6B020FCBD8A00166251 /* SectorsGraphViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D03CC6AF20FCBD8A00166251 /* SectorsGraphViewController.m */; };
 		D03CC6B220FF25A300166251 /* CompanyGraphViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D03CC6B120FF25A200166251 /* CompanyGraphViewController.m */; };
 		D03CC6B420FF25B200166251 /* CompanyStocksViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D03CC6B320FF25B200166251 /* CompanyStocksViewController.m */; };
 		D03CC6B620FF25D400166251 /* DateValueFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = D03CC6B520FF25D300166251 /* DateValueFormatter.m */; };
 		D03CC6B920FF261900166251 /* GlobalShare.m in Sources */ = {isa = PBXBuildFile; fileRef = D03CC6B820FF261800166251 /* GlobalShare.m */; };
 		D03CC6BB20FF265000166251 /* QEGraphViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D03CC6BA20FF265000166251 /* QEGraphViewController.m */; };
-		D079DAA7211DBC5B000BCE13 /* Charts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7351BC4120C50CB800F49E27 /* Charts.framework */; };
-		D079DAA8211DBC5B000BCE13 /* Charts.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 7351BC4120C50CB800F49E27 /* Charts.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -160,7 +161,7 @@
 			remoteGlobalIDString = 1CBBC58C6CE1EBEE9852CE41;
 			remoteInfo = ChartsTests;
 		};
-		D079DAA9211DBC5B000BCE13 /* PBXContainerItemProxy */ = {
+		77C46A2020C9128E002C6538 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 7351BC3B20C50CB800F49E27 /* Charts.xcodeproj */;
 			proxyType = 1;
@@ -180,15 +181,25 @@
 			name = "Embed App Extensions";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		D079DAAB211DBC5B000BCE13 /* Embed Frameworks */ = {
+		510C49D81D1FAB4D005FDB70 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 8;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				77C46A1F20C9128E002C6538 /* Charts.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 1;
+		};
+		770BA38920C94187001B7ACA /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				D079DAA8211DBC5B000BCE13 /* Charts.framework in Embed Frameworks */,
+				770BA38B20C94197001B7ACA /* Charts.framework in CopyFiles */,
 			);
-			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXCopyFilesBuildPhase section */
@@ -404,6 +415,8 @@
 		7351BC5020C53CFE00F49E27 /* MyOrdersViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyOrdersViewController.m; sourceTree = "<group>"; };
 		7351BC5120C53CFE00F49E27 /* ActiveOrdersViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActiveOrdersViewController.m; sourceTree = "<group>"; };
 		7351BC5620C53D2000F49E27 /* PortfoliosViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PortfoliosViewController.h; sourceTree = "<group>"; };
+		7351BC5720C53D2000F49E27 /* PortfoliosViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PortfoliosViewController.m; sourceTree = "<group>"; };
+		7351BC5920C53D3B00F49E27 /* NewOrderViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewOrderViewController.m; sourceTree = "<group>"; };
 		7351BC5A20C53D3B00F49E27 /* MarketDepthViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MarketDepthViewController.h; sourceTree = "<group>"; };
 		7351BC5B20C53D3B00F49E27 /* OrderConfirmViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrderConfirmViewController.h; sourceTree = "<group>"; };
 		7351BC5C20C53D3B00F49E27 /* CalculatorViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CalculatorViewController.h; sourceTree = "<group>"; };
@@ -427,9 +440,7 @@
 		77E07E5D20D1311D00706616 /* UIAlertController+Orientation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIAlertController+Orientation.m"; sourceTree = "<group>"; };
 		77E07E5F20D1311D00706616 /* UIAlertController+Orientation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIAlertController+Orientation.h"; sourceTree = "<group>"; };
 		77E07E6520D131B300706616 /* StocksOverviewViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StocksOverviewViewController.m; sourceTree = "<group>"; };
-		A091F7D12119BBAA0055198B /* CalculatorViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CalculatorViewController.m; sourceTree = "<group>"; };
-		A091F7D72119BBF40055198B /* NewOrderViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewOrderViewController.m; sourceTree = "<group>"; };
-		A091F7D92119BC050055198B /* PortfoliosViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PortfoliosViewController.m; sourceTree = "<group>"; };
+		D02BD3E420DCB2120075874E /* CalculatorViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CalculatorViewController.m; sourceTree = "<group>"; };
 		D03CC6AF20FCBD8A00166251 /* SectorsGraphViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SectorsGraphViewController.m; sourceTree = "<group>"; };
 		D03CC6B120FF25A200166251 /* CompanyGraphViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CompanyGraphViewController.m; sourceTree = "<group>"; };
 		D03CC6B320FF25B200166251 /* CompanyStocksViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CompanyStocksViewController.m; sourceTree = "<group>"; };
@@ -453,7 +464,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7351BC8B20C6374600F49E27 /* Foundation.framework in Frameworks */,
-				D079DAA7211DBC5B000BCE13 /* Charts.framework in Frameworks */,
+				77C46A1E20C9128E002C6538 /* Charts.framework in Frameworks */,
 				514EF68A1DE763AC0071F747 /* libsqlite3.0.tbd in Frameworks */,
 				514382CE1D1DBCBD00E1B739 /* SystemConfiguration.framework in Frameworks */,
 			);
@@ -619,7 +630,7 @@
 			isa = PBXGroup;
 			children = (
 				7351BC5620C53D2000F49E27 /* PortfoliosViewController.h */,
-				A091F7D92119BC050055198B /* PortfoliosViewController.m */,
+				7351BC5720C53D2000F49E27 /* PortfoliosViewController.m */,
 				5102EDC31D4947AC005B04F8 /* Views */,
 			);
 			name = Portfolios;
@@ -849,11 +860,11 @@
 			isa = PBXGroup;
 			children = (
 				7351BC5C20C53D3B00F49E27 /* CalculatorViewController.h */,
-				A091F7D12119BBAA0055198B /* CalculatorViewController.m */,
+				D02BD3E420DCB2120075874E /* CalculatorViewController.m */,
 				7351BC5A20C53D3B00F49E27 /* MarketDepthViewController.h */,
 				770BA38C20C959FB001B7ACA /* MarketDepthViewController.m */,
 				7351BC5F20C53D3C00F49E27 /* NewOrderViewController.h */,
-				A091F7D72119BBF40055198B /* NewOrderViewController.m */,
+				7351BC5920C53D3B00F49E27 /* NewOrderViewController.m */,
 				7351BC5B20C53D3B00F49E27 /* OrderConfirmViewController.h */,
 				7351BC6020C53D3C00F49E27 /* OrderConfirmViewController.m */,
 				5102EDCA1D4947F7005B04F8 /* Views */,
@@ -1026,14 +1037,14 @@
 				514382A31D1D82D400E1B739 /* Sources */,
 				514382A41D1D82D400E1B739 /* Frameworks */,
 				514382A51D1D82D400E1B739 /* Resources */,
+				510C49D81D1FAB4D005FDB70 /* Embed Frameworks */,
 				5108D3401D6EDEB300D23F6E /* Embed App Extensions */,
-				D079DAAB211DBC5B000BCE13 /* Embed Frameworks */,
-				D079DAAC211DC192000BCE13 /* ShellScript */,
+				770BA38920C94187001B7ACA /* CopyFiles */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				D079DAAA211DBC5B000BCE13 /* PBXTargetDependency */,
+				77C46A2120C9128E002C6538 /* PBXTargetDependency */,
 			);
 			name = QIFS;
 			productName = QIFS;
@@ -1052,7 +1063,7 @@
 					5108D32D1D6EDEB100D23F6E = {
 						CreatedOnToolsVersion = 7.3.1;
 						DevelopmentTeam = 4MCGAH3G26;
-						ProvisioningStyle = Manual;
+						ProvisioningStyle = Automatic;
 					};
 					514382A61D1D82D400E1B739 = {
 						CreatedOnToolsVersion = 7.3.1;
@@ -1156,22 +1167,6 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
-/* Begin PBXShellScriptBuildPhase section */
-		D079DAAC211DC192000BCE13 /* ShellScript */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "";
-		};
-/* End PBXShellScriptBuildPhase section */
-
 /* Begin PBXSourcesBuildPhase section */
 		5108D32A1D6EDEB100D23F6E /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -1208,6 +1203,7 @@
 				51D340321E9569DA00455815 /* EnterOTPViewController.m in Sources */,
 				511DBAE81EE4823B00A416FE /* LanguageManager.m in Sources */,
 				51DA15911F8173E5001EAF83 /* MyNewOrdersCell.m in Sources */,
+				7351BC5820C53D2000F49E27 /* PortfoliosViewController.m in Sources */,
 				77E07E6020D1311D00706616 /* UIAlertController+Orientation.m in Sources */,
 				511247DF1D239BDD00364145 /* XLButtonBarView.m in Sources */,
 				51332C431DE8ABB7001536CD /* DataManager.m in Sources */,
@@ -1226,7 +1222,6 @@
 				7319814720BD873D00719955 /* BalloonMarker.swift in Sources */,
 				514382AF1D1D82D500E1B739 /* AppDelegate.m in Sources */,
 				51332C401DE8AB97001536CD /* FMResultSet.m in Sources */,
-				A091F7D82119BBF50055198B /* NewOrderViewController.m in Sources */,
 				D03CC6B220FF25A300166251 /* CompanyGraphViewController.m in Sources */,
 				515AF6291D2E508100FF837E /* PageLoadViewController.m in Sources */,
 				D03CC6B620FF25D400166251 /* DateValueFormatter.m in Sources */,
@@ -1247,7 +1242,7 @@
 				5102EDD81D494816005B04F8 /* FavoriteStocksViewController.m in Sources */,
 				7319815320BD87E200719955 /* IntAxisValueFormatter.m in Sources */,
 				7319815620BD87EE00719955 /* DayAxisValueFormatter.m in Sources */,
-				A091F7DA2119BC050055198B /* PortfoliosViewController.m in Sources */,
+				7351BC6120C53D3C00F49E27 /* NewOrderViewController.m in Sources */,
 				512379371D5667ED0096C0E2 /* PendingAlertsCell.m in Sources */,
 				51434D4F1DE19473003F303B /* MDOrderAskCell.m in Sources */,
 				5121930C1D6063F900CE95C2 /* BondStocksViewController.m in Sources */,
@@ -1278,17 +1273,17 @@
 				7351BC5520C53CFE00F49E27 /* ActiveOrdersViewController.m in Sources */,
 				51829C151D269F2900DF1C73 /* XLButtonBarPagerTabStripViewController.m in Sources */,
 				512379191D5614110096C0E2 /* StockNewsCell.m in Sources */,
-				A091F7D42119BBAB0055198B /* CalculatorViewController.m in Sources */,
+				D02BD3E520DCB2130075874E /* CalculatorViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		D079DAAA211DBC5B000BCE13 /* PBXTargetDependency */ = {
+		77C46A2120C9128E002C6538 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = Charts;
-			targetProxy = D079DAA9211DBC5B000BCE13 /* PBXContainerItemProxy */;
+			targetProxy = 77C46A2020C9128E002C6538 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -1350,15 +1345,15 @@
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
-				CODE_SIGN_STYLE = Manual;
+				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 4MCGAH3G26;
 				INFOPLIST_FILE = QIFSToday/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.carmatec.ifs;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "32870f70-e90c-410b-a1b3-6d6e21e00b94";
-				PROVISIONING_PROFILE_SPECIFIER = "IFS ADHOC";
+				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SKIP_INSTALL = YES;
 			};
 			name = Debug;
@@ -1368,15 +1363,15 @@
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
-				CODE_SIGN_STYLE = Manual;
+				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 4MCGAH3G26;
 				INFOPLIST_FILE = QIFSToday/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.carmatec.ifs;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "32870f70-e90c-410b-a1b3-6d6e21e00b94";
-				PROVISIONING_PROFILE_SPECIFIER = "IFS ADHOC";
+				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SKIP_INSTALL = YES;
 			};
 			name = Release;
@@ -1428,7 +1423,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = com.ifs.mobiletrading;
@@ -1477,7 +1472,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				PRODUCT_BUNDLE_IDENTIFIER = com.ifs.mobiletrading;
 				PROVISIONING_PROFILE = "736dc37d-1ff9-4646-a12c-425809aab758";
@@ -1493,20 +1488,20 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = 4MCGAH3G26;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/$(PROJECT_NAME)/QIFS-Prefix.pch";
 				INFOPLIST_FILE = QIFS/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.carmatec.ifs;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "e3d9cf58-71b0-4a36-95af-73bc58f01d6c";
-				PROVISIONING_PROFILE_SPECIFIER = IFSDev;
+				PROVISIONING_PROFILE = "c35b4e65-2e02-4558-b373-79de4071c1f8";
+				PROVISIONING_PROFILE_SPECIFIER = "IFS ADHOC";
 				SWIFT_OBJC_BRIDGING_HEADER = "QIFS/Utility/QIFS-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.0;
@@ -1520,8 +1515,8 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = 4MCGAH3G26;
@@ -1529,12 +1524,12 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/$(PROJECT_NAME)/QIFS-Prefix.pch";
 				INFOPLIST_FILE = QIFS/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.carmatec.ifs;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "e3d9cf58-71b0-4a36-95af-73bc58f01d6c";
-				PROVISIONING_PROFILE_SPECIFIER = IFSDev;
+				PROVISIONING_PROFILE = "c35b4e65-2e02-4558-b373-79de4071c1f8";
+				PROVISIONING_PROFILE_SPECIFIER = "IFS ADHOC";
 				SWIFT_OBJC_BRIDGING_HEADER = "QIFS/Utility/QIFS-Bridging-Header.h";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
