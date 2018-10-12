@@ -149,6 +149,7 @@
                                                            if(error == nil)
                                                            {
                                                                NSMutableDictionary *returnedDict = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:&error];
+                                                            //   NSLog(@"The order confirm data :%@",returnedDict);
                                                                if([returnedDict[@"status"] hasPrefix:@"error"]) {
                                                                    if([returnedDict[@"result"] hasPrefix:@"T5"])
                                                                        [GlobalShare showSessionExpiredAlertView:self :SESSION_EXPIRED];

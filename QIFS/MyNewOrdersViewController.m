@@ -498,6 +498,7 @@ NSString *const kMyNewOrdersOptionsViewCellIdentifier = @"OptionsViewCell";
                                                            {
                                                                
                                                                NSMutableDictionary *returnedDict = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:&error];
+                                                             //  NSLog(@"My new orders data is:%@",returnedDict);
                                                                if([[returnedDict objectForKey:@"status"] hasPrefix:@"error"]) {
                                                                    if([[returnedDict objectForKey:@"result"] hasPrefix:@"T4"])
                                                                        [GlobalShare showBasicAlertView:self :INVALID_HEADER];

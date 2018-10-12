@@ -469,6 +469,7 @@ NSString *const kPortfoliosOptionsViewCellIdentifier = @"OptionsViewCell";
                                                            {
                                                                
                                                                NSMutableDictionary *returnedDict = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:&error];
+                                                              // NSLog(@"The portfolios data is:%@",returnedDict);
                                                                if([[returnedDict objectForKey:@"status"] hasPrefix:@"error"]) {
                                                                    if([[returnedDict objectForKey:@"result"] hasPrefix:@"T4"])
                                                                        [GlobalShare showBasicAlertView:self :INVALID_HEADER];
@@ -529,6 +530,7 @@ NSString *const kPortfoliosOptionsViewCellIdentifier = @"OptionsViewCell";
                                                        {
                                                            _tableResults.hidden = NO;
                                                            NSMutableDictionary *returnedDict = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:&error];
+                                                          // NSLog(@"The portfolio dta :%@",returnedDict);
                                                            if([returnedDict[@"status"] hasPrefix:@"error"]) {
                                                                if([returnedDict[@"result"] hasPrefix:@"T5"])
                                                                    [GlobalShare showSessionExpiredAlertView:self :SESSION_EXPIRED];

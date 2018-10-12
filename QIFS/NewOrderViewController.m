@@ -1608,7 +1608,7 @@ NSString *const kNewOrderOptionsViewCellIdentifier = @"OptionsViewCell";
                                                            if(error == nil)
                                                            {
                                                                NSMutableDictionary *returnedDict = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:&error];
-                                                               NSLog(@"the live market_data_is:%@",returnedDict);
+                                                             //  NSLog(@"the live market_data_is:%@",returnedDict);
                                                                if([returnedDict[@"status"] hasPrefix:@"error"]) {
                                                                    if([returnedDict[@"result"] hasPrefix:@"T5"])
                                                                        [GlobalShare showSessionExpiredAlertView:self :SESSION_EXPIRED];
@@ -2024,7 +2024,7 @@ NSString *const kNewOrderOptionsViewCellIdentifier = @"OptionsViewCell";
         NSURLSession *defaultSession = [NSURLSession sessionWithConfiguration:defaultConfigObject delegate:self delegateQueue:[NSOperationQueue mainQueue]];
         
         NSString *strURL = [NSString stringWithFormat:@"%@%@%@", REQUEST_URL, @"GetOrderDetails?order_id=", self.strOrderId];
-        NSLog(@"The URL for getOrderdetails:%@",strURL);
+        //NSLog(@"The URL for getOrderdetails:%@",strURL);
         NSURL *url = [NSURL URLWithString:strURL];
         
         NSURLSessionDataTask *dataTask = [defaultSession dataTaskWithURL:url
@@ -2033,6 +2033,7 @@ NSString *const kNewOrderOptionsViewCellIdentifier = @"OptionsViewCell";
                                                            if(error == nil)
                                                            {
                                                                NSMutableDictionary *returnedDict = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:&error];
+                                                               NSLog(@"The order details are:%@",returnedDict);
                                                                if([returnedDict[@"status"] hasPrefix:@"error"]) {
                                                                    if([returnedDict[@"order_type_desc_e"] isEqualToString:@"SELL"])
                                                                    {
@@ -2121,7 +2122,7 @@ NSString *const kNewOrderOptionsViewCellIdentifier = @"OptionsViewCell";
 //                                                                       if([self.buttonDuration.currentTitle isEqualToString:@"GTD"]) {
                                                                        if(self.selectValDuration == 8) {
                                                                            [self.labelDuration setText:[NSString stringWithFormat:@"%@", [dictVal[@"expiry_date"] componentsSeparatedByString:@" "][0]]];
-                                                                           NSLog(@"The label duration text is:%@",self.labelDuration.text);
+                                                                          // NSLog(@"The label duration text is:%@",self.labelDuration.text);
                                                                         NSDate   *date = [GlobalShare returnDateAsDateanother_form:self.labelDuration.text];
                                                                            self.datePicker.date = date; /*[GlobalShare returnDateAsDate:self.labelDuration.text];*/
                                                                        }
@@ -3055,7 +3056,7 @@ NSString *const kNewOrderOptionsViewCellIdentifier = @"OptionsViewCell";
             NSString *strURL = [NSString stringWithFormat:@"%@%@%@", REQUEST_URL,@"ConfirmOrder",_str_confirm_order];
             
 //            NSString *strURL =[NSString stringWithFormat:@"%@ConfirmOrder?order_side=1&order_type=2&symbol=%@&qty=%@&price=%@&is_market_price_order=0&order_id=20171214-749037, tag=null'];
-            NSLog(@"The URL for getOrderdetails:%@",strURL);
+           // NSLog(@"The URL for getOrderdetails:%@",strURL);
             NSURL *url = [NSURL URLWithString:strURL];
             
             NSURLSessionDataTask *dataTask = [defaultSession dataTaskWithURL:url
@@ -3064,7 +3065,7 @@ NSString *const kNewOrderOptionsViewCellIdentifier = @"OptionsViewCell";
     if(error == nil)
         {
        NSMutableDictionary *returnedDict = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:&error];
-            NSLog(@"the response from update order:%@",returnedDict);
+           // NSLog(@"the response from update order:%@",returnedDict);
             
             
             
@@ -3162,7 +3163,7 @@ NSString *const kNewOrderOptionsViewCellIdentifier = @"OptionsViewCell";
         NSString *strURL = [NSString stringWithFormat:@"%@%@%@", REQUEST_URL,@"ConfirmOrder",_str_confirm_order];
         
         //            NSString *strURL =[NSString stringWithFormat:@"%@ConfirmOrder?order_side=1&order_type=2&symbol=%@&qty=%@&price=%@&is_market_price_order=0&order_id=20171214-749037, tag=null'];
-        NSLog(@"The URL for getOrderdetails:%@",strURL);
+      //  NSLog(@"The URL for getOrderdetails:%@",strURL);
         NSURL *url = [NSURL URLWithString:strURL];
         
         NSURLSessionDataTask *dataTask = [defaultSession dataTaskWithURL:url
@@ -3171,7 +3172,7 @@ NSString *const kNewOrderOptionsViewCellIdentifier = @"OptionsViewCell";
                                                            if(error == nil)
                                                            {
                                                                NSMutableDictionary *returnedDict = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:&error];
-                                                               NSLog(@"the response from update order:%@",returnedDict);
+                                                              // NSLog(@"the response from update order:%@",returnedDict);
                                                                
                                                                
                                                                

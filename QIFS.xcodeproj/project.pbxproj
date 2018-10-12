@@ -1063,7 +1063,7 @@
 					5108D32D1D6EDEB100D23F6E = {
 						CreatedOnToolsVersion = 7.3.1;
 						DevelopmentTeam = 4MCGAH3G26;
-						ProvisioningStyle = Automatic;
+						ProvisioningStyle = Manual;
 					};
 					514382A61D1D82D400E1B739 = {
 						CreatedOnToolsVersion = 7.3.1;
@@ -1345,15 +1345,15 @@
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = 4MCGAH3G26;
 				INFOPLIST_FILE = QIFSToday/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.carmatec.ifs;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
-				PROVISIONING_PROFILE_SPECIFIER = "";
+				PROVISIONING_PROFILE = "6152ed1d-4224-4275-80b8-63351b14ee76";
+				PROVISIONING_PROFILE_SPECIFIER = IFSDev;
 				SKIP_INSTALL = YES;
 			};
 			name = Debug;
@@ -1363,8 +1363,8 @@
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 4MCGAH3G26;
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = QIFSToday/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";

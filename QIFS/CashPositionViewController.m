@@ -78,7 +78,7 @@
     overLayView.hidden = YES;
     [self.view addSubview:overLayView];
 }
-#pragma mark DisplayCustomLogin
+#pragma mark Loading Login PopUp when guest User
 -(void)showsLoginPopUp{
     overLayView.hidden = NO;
     loginVw  = [[[NSBundle mainBundle] loadNibNamed:@"LoginView" owner:self options:nil] objectAtIndex:0];
