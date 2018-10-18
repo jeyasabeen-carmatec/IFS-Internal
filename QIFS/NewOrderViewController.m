@@ -1608,7 +1608,7 @@ NSString *const kNewOrderOptionsViewCellIdentifier = @"OptionsViewCell";
                                                            if(error == nil)
                                                            {
                                                                NSMutableDictionary *returnedDict = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:&error];
-                                                             //  NSLog(@"the live market_data_is:%@",returnedDict);
+                                                              // NSLog(@"the live market_data_is:%@",returnedDict);
                                                                if([returnedDict[@"status"] hasPrefix:@"error"]) {
                                                                    if([returnedDict[@"result"] hasPrefix:@"T5"])
                                                                        [GlobalShare showSessionExpiredAlertView:self :SESSION_EXPIRED];
@@ -2024,7 +2024,7 @@ NSString *const kNewOrderOptionsViewCellIdentifier = @"OptionsViewCell";
         NSURLSession *defaultSession = [NSURLSession sessionWithConfiguration:defaultConfigObject delegate:self delegateQueue:[NSOperationQueue mainQueue]];
         
         NSString *strURL = [NSString stringWithFormat:@"%@%@%@", REQUEST_URL, @"GetOrderDetails?order_id=", self.strOrderId];
-        //NSLog(@"The URL for getOrderdetails:%@",strURL);
+        NSLog(@"The URL for getOrderdetails:%@",strURL);
         NSURL *url = [NSURL URLWithString:strURL];
         
         NSURLSessionDataTask *dataTask = [defaultSession dataTaskWithURL:url
@@ -2033,7 +2033,6 @@ NSString *const kNewOrderOptionsViewCellIdentifier = @"OptionsViewCell";
                                                            if(error == nil)
                                                            {
                                                                NSMutableDictionary *returnedDict = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:&error];
-                                                               NSLog(@"The order details are:%@",returnedDict);
                                                                if([returnedDict[@"status"] hasPrefix:@"error"]) {
                                                                    if([returnedDict[@"order_type_desc_e"] isEqualToString:@"SELL"])
                                                                    {
@@ -2122,7 +2121,7 @@ NSString *const kNewOrderOptionsViewCellIdentifier = @"OptionsViewCell";
 //                                                                       if([self.buttonDuration.currentTitle isEqualToString:@"GTD"]) {
                                                                        if(self.selectValDuration == 8) {
                                                                            [self.labelDuration setText:[NSString stringWithFormat:@"%@", [dictVal[@"expiry_date"] componentsSeparatedByString:@" "][0]]];
-                                                                          // NSLog(@"The label duration text is:%@",self.labelDuration.text);
+                                                                           NSLog(@"The label duration text is:%@",self.labelDuration.text);
                                                                         NSDate   *date = [GlobalShare returnDateAsDateanother_form:self.labelDuration.text];
                                                                            self.datePicker.date = date; /*[GlobalShare returnDateAsDate:self.labelDuration.text];*/
                                                                        }
@@ -2727,7 +2726,7 @@ NSString *const kNewOrderOptionsViewCellIdentifier = @"OptionsViewCell";
 - (void)textFieldDidEndEditing:(UITextField *)textField {
     [UIView setAnimationDuration:0.5];
     
-    if ([textField isEqual:_textFieldLimit])
+    if ([textField isEqual:_textFieldLimit] || [textField isEqual:_textFieldQty])
     {
         
         [self updateOrderValue];
@@ -2926,8 +2925,6 @@ NSString *const kNewOrderOptionsViewCellIdentifier = @"OptionsViewCell";
             
             [self performSelector:@selector(getMarketWatchNew) withObject:nil afterDelay:0.01f];
            // [self performSelector:@selector(getLimitUpLimitDown) withObject:nil afterDelay:0.01f];
-            
-            
         }
         
 ////        self.selectVal = 0;
@@ -3056,7 +3053,7 @@ NSString *const kNewOrderOptionsViewCellIdentifier = @"OptionsViewCell";
             NSString *strURL = [NSString stringWithFormat:@"%@%@%@", REQUEST_URL,@"ConfirmOrder",_str_confirm_order];
             
 //            NSString *strURL =[NSString stringWithFormat:@"%@ConfirmOrder?order_side=1&order_type=2&symbol=%@&qty=%@&price=%@&is_market_price_order=0&order_id=20171214-749037, tag=null'];
-           // NSLog(@"The URL for getOrderdetails:%@",strURL);
+            NSLog(@"The URL for getOrderdetails:%@",strURL);
             NSURL *url = [NSURL URLWithString:strURL];
             
             NSURLSessionDataTask *dataTask = [defaultSession dataTaskWithURL:url
@@ -3065,7 +3062,7 @@ NSString *const kNewOrderOptionsViewCellIdentifier = @"OptionsViewCell";
     if(error == nil)
         {
        NSMutableDictionary *returnedDict = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:&error];
-           // NSLog(@"the response from update order:%@",returnedDict);
+            NSLog(@"the response from update order:%@",returnedDict);
             
             
             
@@ -3084,7 +3081,10 @@ NSString *const kNewOrderOptionsViewCellIdentifier = @"OptionsViewCell";
             else
             {
                 
-                
+                if([self.buttonTransaction.currentTitle isEqualToString:NSLocalizedString(@"Buy", @"Buy")])
+                {
+                    
+               
             NSString *str_txt =NSLocalizedString(@"CHANGE QUANTITY", @"Basic Alert Style");
 //            NSString *str_commission_VAL = NSLocalizedString(@"COMMISSION VALUE", @"Basic Alert Style");
 //            NSString *str_newbal_VAL =NSLocalizedString(@"NEW BALANCE", @"Basic Alert Style");
@@ -3098,7 +3098,10 @@ NSString *const kNewOrderOptionsViewCellIdentifier = @"OptionsViewCell";
 //                NSString *str_string = [NSString stringWithFormat:@"%@\n%@ : %@\n%@ : %@\n%@ : %@ ",str_txt,str_commission_VAL,strCommisionvalue,str_newbal_VAL,strnewbalancevalue,str_total_order_VAL,strtotalbalancevalue];
            NSString *alertTitle = NSLocalizedString(@"Islamic Financial Securities", @"Basic Alert Style");
                 
-                NSString *str_TXT = [NSString stringWithFormat:@"%@ %@",str_txt,_textFieldQty.text];
+                NSString *str_TXT = [NSString stringWithFormat:@"%@ %@ ?",str_txt,_textFieldQty.text];
+//                if(globalShare.myLanguage == ARABIC_LANGUAGE) {
+//                  str_TXT = [NSString stringWithFormat:@"? %@ %@",_textFieldQty.text,str_txt];
+//                }
             NSString *alertMessage = NSLocalizedString(str_TXT, @"BasicAlertMessage");
             
             UIAlertController *alertController = [UIAlertController alertControllerWithTitle:alertTitle
@@ -3122,6 +3125,7 @@ NSString *const kNewOrderOptionsViewCellIdentifier = @"OptionsViewCell";
                                            orderConfirmViewController.passOrderValues = dictVals;
                                            [[self navigationController] pushViewController:orderConfirmViewController animated:YES];
                                        }];
+                
             
             if(globalShare.myLanguage == ARABIC_LANGUAGE) {
                 [alertController addAction:cancelAction];
@@ -3133,8 +3137,19 @@ NSString *const kNewOrderOptionsViewCellIdentifier = @"OptionsViewCell";
             }
             
             [self presentViewController:alertController animated:YES completion:nil];
+            }
+           else
+           {
+               OrderConfirmViewController *orderConfirmViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"OrderConfirmViewController"];
+               orderConfirmViewController.delegate = self;
+               orderConfirmViewController.passOrderValues = dictVals;
+               [[self navigationController] pushViewController:orderConfirmViewController animated:YES];
+           }
+               
          }
+                
         }
+            
         }
         }];
         
@@ -3163,7 +3178,7 @@ NSString *const kNewOrderOptionsViewCellIdentifier = @"OptionsViewCell";
         NSString *strURL = [NSString stringWithFormat:@"%@%@%@", REQUEST_URL,@"ConfirmOrder",_str_confirm_order];
         
         //            NSString *strURL =[NSString stringWithFormat:@"%@ConfirmOrder?order_side=1&order_type=2&symbol=%@&qty=%@&price=%@&is_market_price_order=0&order_id=20171214-749037, tag=null'];
-      //  NSLog(@"The URL for getOrderdetails:%@",strURL);
+        NSLog(@"The URL for getOrderdetails:%@",strURL);
         NSURL *url = [NSURL URLWithString:strURL];
         
         NSURLSessionDataTask *dataTask = [defaultSession dataTaskWithURL:url
@@ -3172,7 +3187,7 @@ NSString *const kNewOrderOptionsViewCellIdentifier = @"OptionsViewCell";
                                                            if(error == nil)
                                                            {
                                                                NSMutableDictionary *returnedDict = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:&error];
-                                                              // NSLog(@"the response from update order:%@",returnedDict);
+                                                               NSLog(@"the response from update order:%@",returnedDict);
                                                                
                                                                
                                                                
@@ -3233,20 +3248,19 @@ NSString *const kNewOrderOptionsViewCellIdentifier = @"OptionsViewCell";
     {
         
     }
-    else{
-       
+    else
+    {
+   
     double buyCash1 = 0,buyCash2 = 0, buySharePrice1 = 0, commission = 0, commissionVal = 0;
     int buyNoOfShares1 = 0;
-    buyCash1 = [[self.labelBuyPower.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]] doubleValue];
+    NSString *str = [self.labelBuyPower.text stringByReplacingOccurrencesOfString:@"," withString:@""];
+    buyCash1 = [[str stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]] doubleValue];
     buyCash2 = [[_strOrderValue stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]] doubleValue];
     if([self.buttonCreate.currentTitle isEqualToString:NSLocalizedString(@"Modify", @"Modify")])
     {
     buyCash1 = buyCash1 + buyCash2;
     }
-    
     buySharePrice1 = [[self.textFieldLimit.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]] doubleValue];
-   
-    
     if(self.selectValOrder == 0)
    // buySharePrice1 = [self.labelPrice.text doubleValue];
     
@@ -3256,15 +3270,20 @@ NSString *const kNewOrderOptionsViewCellIdentifier = @"OptionsViewCell";
     buyCash1 = buyCash1 - commissionVal;
     buyNoOfShares1 = buyCash1 / buySharePrice1;
    
-        if(buyNoOfShares1 < 0)
+        if(buyNoOfShares1 < 1)
         {
-            _textFieldQty.text =[NSString stringWithFormat:@"0"];
+            _textFieldQty.text =[NSString stringWithFormat:@""];
         }
         else{
             _textFieldQty.text =[NSString stringWithFormat:@"%d",buyNoOfShares1];
 
         }
+        if([self.textFieldLimit.text isEqualToString:@""])
+        {
+            self.textFieldQty.text =  @"";
+        }
     }
+    [self order_VAL_cahnged];
 }
 
 

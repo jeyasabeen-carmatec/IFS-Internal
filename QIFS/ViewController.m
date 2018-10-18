@@ -59,8 +59,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    //username = @"1000991420";
-    //Passowrd = @"ifsc44085";
+    
     NSString *userName = [[NSUserDefaults standardUserDefaults] valueForKey:@"UserName"];
     if (userName == nil ||[userName isEqualToString:@"(null)"]) {
         userName = @"";
@@ -68,21 +67,20 @@
     
     _textFieldUserName.text = userName;
     
-    
-    // Do any additional setup after loading the view, typically from a nib.
+
     globalShare = [GlobalShare sharedInstance];
     [self.labelTitle setText:NSLocalizedString(@"Login", @"Login")];
     
     globalShare.topNavController = self.navigationController;
 
-    
+   // [self version_API]; 
 }
 
 -(void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:YES];
     
     globalShare.strNewOrderFlow = @"";
-    _textFieldPassword.text =  nil;
+    _textFieldPassword.text = nil;
 
     [[GlobalShare sharedInstance] setIsErrorPupup:NO];
     [[GlobalShare sharedInstance] setIsTimerStockListRun:NO];
@@ -164,6 +162,48 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+-(void)version_API
+{
+    NSURL *url = [[NSURL alloc] initWithString:[NSString stringWithFormat:@"http://itunes.apple.com/lookup?id=424958206"]];
+    NSURLRequest *request = [NSURLRequest requestWithURL:url];
+    
+    [NSURLConnection sendAsynchronousRequest:request
+                                       queue:[NSOperationQueue mainQueue]
+                           completionHandler:^(NSURLResponse *response, NSData *data, NSError *error) {
+                               if (!error) {
+                                   NSError* parseError;
+                                   NSDictionary *appMetadataDictionary = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:&parseError];
+                                   NSArray *resultsArray = (appMetadataDictionary)?[appMetadataDictionary objectForKey:@"results"]:nil;
+                                   NSDictionary *resultsDic = [resultsArray firstObject];
+                                   if (resultsDic) {
+                                       // compare version with your apps local version
+                                       NSString *iTunesVersion = [resultsDic objectForKey:@"version"];
+                                       
+                                       NSString *appVersion = @"1.0.0";
+                                       
+                                       NSLog(@"itunes version = %@\nAppversion = %@",iTunesVersion,appVersion);
+                                    
+                                       
+                                       if (iTunesVersion && [appVersion compare:iTunesVersion] != NSOrderedSame) {
+                                           
+                                         
+                                           
+                                           
+                                           UIAlertView *alert = [[UIAlertView alloc] initWithTitle:[NSString stringWithFormat:@"Version Updated %@",iTunesVersion] message:[resultsDic valueForKey:@"releaseNotes"] delegate:self cancelButtonTitle:nil otherButtonTitles:@"Update",@"Cancel", nil];
+                                           alert.tag = 123456;
+                                           [alert show];
+                                           //                                           }];
+                                           //                                           [alert show];
+                                       }
+                                   }
+                               } else {
+                                   // error occurred with http(s) request
+                                   NSLog(@"error occurred communicating with iTunes");
+                               }
+                           }];
+    
+}
+
 
 #pragma mark - Button actions
 

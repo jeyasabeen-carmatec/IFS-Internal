@@ -130,7 +130,7 @@ NSString *const kSectorsGraphCellIdentifier = @"SectorsGraphCell";
                 [topFiveCompanies addObject:[sortedArray objectAtIndex:i]];
             }
                 self.arrayCompanyList = topFiveCompanies;
-            // NSLog(@".......... %@",_arrayCompanyList);
+             NSLog(@".......... %@",_arrayCompanyList);
         }
         
     
@@ -345,7 +345,6 @@ NSString *const kSectorsGraphCellIdentifier = @"SectorsGraphCell";
                                                        if(error == nil)
                                                        {
                                                            NSMutableDictionary *returnedDict = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:&error];
-                                                         //  NSLog(@"The sectors graph data is:%@",returnedDict);
                                                            if([returnedDict[@"status"] hasPrefix:@"error"]) {
                                                                if([returnedDict[@"result"] hasPrefix:@"T5"])
                                                                    [GlobalShare showSessionExpiredAlertView:self :SESSION_EXPIRED];

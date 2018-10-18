@@ -247,8 +247,6 @@ NSString *const kStockNewsCellIdentifier = @"StockNewsCell";
                                                         if(error == nil)
                                                         {
                                                             NSMutableDictionary *returnedDict = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:&error];
-                                                            
-                                                          //  NSLog(@"The Price screen Data is:%@",returnedDict);
                                                             if([returnedDict[@"status"] hasPrefix:@"error"]) {
                                                                 if([returnedDict[@"result"] hasPrefix:@"T5"])
                                                                     [GlobalShare showSessionExpiredAlertView:self :SESSION_EXPIRED];
@@ -378,7 +376,7 @@ NSString *const kStockNewsCellIdentifier = @"StockNewsCell";
                                                        if(error == nil)
                                                        {
                                                            NSMutableDictionary *returnedDict = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:&error];
-                                                          // NSLog(@"%@", returnedDict);
+                                                           NSLog(@"%@", returnedDict);
                                                        }
                                                        else {
                                                            [GlobalShare showBasicAlertView:self :[error localizedDescription]];
@@ -659,7 +657,7 @@ NSString *const kStockNewsCellIdentifier = @"StockNewsCell";
                                                                    dispatch_async(dispatch_get_main_queue(), ^{
                                                                      
                                                                        globalShare.search_results = returnedDict[@"result"];
-                                                                      // NSLog(@"The search array data :%@",globalShare.search_results);
+                                                                      
                                                                        
                                                                        
                                                                        

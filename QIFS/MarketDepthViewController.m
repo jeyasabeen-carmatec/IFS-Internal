@@ -245,17 +245,17 @@ NSString *const kMDOrderAskCellIdentifier = @"MDOrderAskCell";
     
     if(globalShare.myLanguage == ARABIC_LANGUAGE) {
         [self.view setSemanticContentAttribute:UISemanticContentAttributeForceRightToLeft];
-        [self.labelOrderBidQtyCaption setTextAlignment:NSTextAlignmentLeft];
+        [self.labelOrderBidQtyCaption setTextAlignment:NSTextAlignmentCenter];
         
-        [self.labelBidTotalOrderQty setTextAlignment:NSTextAlignmentLeft];
-        [self.labelAskTotalOrderQty setTextAlignment:NSTextAlignmentRight];
+        [self.labelBidTotalOrderQty setTextAlignment:NSTextAlignmentCenter];
+        [self.labelAskTotalOrderQty setTextAlignment:NSTextAlignmentCenter];
     }
     else {
         [self.view setSemanticContentAttribute:UISemanticContentAttributeForceLeftToRight];
-        [self.labelOrderBidQtyCaption setTextAlignment:NSTextAlignmentRight];
+        [self.labelOrderBidQtyCaption setTextAlignment:NSTextAlignmentCenter];
         
-        [self.labelBidTotalOrderQty setTextAlignment:NSTextAlignmentRight];
-        [self.labelAskTotalOrderQty setTextAlignment:NSTextAlignmentLeft];
+        [self.labelBidTotalOrderQty setTextAlignment:NSTextAlignmentCenter];
+        [self.labelAskTotalOrderQty setTextAlignment:NSTextAlignmentCenter];
     }
     
     if(![[GlobalShare sharedInstance] isTimerMarketDepthRun])
@@ -754,21 +754,32 @@ NSString *const kMDOrderAskCellIdentifier = @"MDOrderAskCell";
 //         //  [cell.labelBidQty setTextAlignment:NSTextAlignmentRight];
 //       }
 //       else {
-            myFrame = CGRectMake(cell.labelBidQty.frame.origin.x+1, cell.labelBidQty.frame.origin.y, cell.labelBidQty.frame.size.width-2, cell.labelBidQty.frame.size.height);
-            [cell.labelBidQty setTextAlignment:NSTextAlignmentLeft];
-       // }
-        
+            myFrame = CGRectMake(cell.labelBidQty.frame.origin.x, cell.labelBidQty.frame.origin.y, cell.labelBidQty.frame.size.width, cell.labelBidQty.frame.size.height);
+            [cell.labelBidQty setTextAlignment:NSTextAlignmentCenter];
+ //       }
+     
+       // cell.baview.accessibilityValue = [NSString stringWithFormat:@"%f", percentVal];
         barViewBidShares.frame = myFrame;
         barViewBidShares.tag = 101;
         [cell.contentView addSubview:barViewBidShares];
         [cell.contentView bringSubviewToFront:cell.labelBidQty];
+        [cell.contentView bringSubviewToFront:cell.bidnoofshareview];
+        [cell.contentView bringSubviewToFront:cell.testWidth];
+        [cell.contentView bringSubviewToFront:cell.labelBidPrice];
+        [cell.contentView bringSubviewToFront:cell.labelBidNoofShares];
+        [cell.contentView bringSubviewToFront:cell.labelLine1];
+        [cell.contentView bringSubviewToFront:cell.labelLine2];
         
-//        if(globalShare.myLanguage == ARABIC_LANGUAGE) {
-//            [cell.labelBidQty setTextAlignment:NSTextAlignmentLeft];
-//        }
-//        else {
-//            [cell.labelBidQty setTextAlignment:NSTextAlignmentRight];
-//        }
+        //        if(globalShare.myLanguage == ARABIC_LANGUAGE)
+        //        {
+        //            // [cell.labelBidQty setTextAlignment:NSTextAlignmentLeft];
+        //        }
+        //        else
+        //        {
+        //            // [cell.labelBidQty setTextAlignment:NSTextAlignmentRight];
+        //        }
+        
+
 
         cell.accessoryType = UITableViewCellAccessoryNone;
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
@@ -801,14 +812,21 @@ NSString *const kMDOrderAskCellIdentifier = @"MDOrderAskCell";
 //
 //       }
 //        else {
-            myFrame = CGRectMake(cell.labelAskQty.frame.origin.x+2, cell.labelAskQty.frame.origin.y, cell.labelAskQty.frame.size.width-2, cell.labelAskQty.frame.size.height);
+            myFrame = CGRectMake(cell.labelAskQty.frame.origin.x, cell.labelAskQty.frame.origin.y, cell.labelAskQty.frame.size.width-2, cell.labelAskQty.frame.size.height);
             [cell.labelAskQty setTextAlignment:NSTextAlignmentLeft];
-     // }
         
+   //   }
         barViewSellShares.frame = myFrame;
         barViewSellShares.tag = 102;
         [cell.contentView addSubview:barViewSellShares];
+      //  [cell.contentView bringSubviewToFront:cell.labelAskQty];
+        [cell.contentView bringSubviewToFront:cell.Asknoofshares];
+        [cell.contentView bringSubviewToFront:cell.view1];
         [cell.contentView bringSubviewToFront:cell.labelAskQty];
+        [cell.contentView bringSubviewToFront:cell.labelAskPrice];
+        [cell.contentView bringSubviewToFront:cell.labelAskNoofShares];
+        [cell.contentView bringSubviewToFront:cell.labelLine1];
+        [cell.contentView bringSubviewToFront:cell.labelLine2];
         
 //        if(globalShare.myLanguage == ARABIC_LANGUAGE) {
 //            [cell.labelAskQty setTextAlignment:NSTextAlignmentLeft];
@@ -837,7 +855,7 @@ NSString *const kMDOrderAskCellIdentifier = @"MDOrderAskCell";
             [cell.labelBidQty setTextAlignment:NSTextAlignmentLeft];
         }
         else {
-            [cell.labelBidQty setTextAlignment:NSTextAlignmentRight];
+            [cell.labelBidQty setTextAlignment:NSTextAlignmentCenter];
         }
 
         cell.accessoryType = UITableViewCellAccessoryNone;

@@ -471,7 +471,6 @@ NSString *const kMyOrdersOptionsViewCellIdentifier = @"OptionsViewCell";
                                                        if(error == nil)
                                                        {
                                                            NSMutableDictionary *returnedDict = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:&error];
-                                                          // NSLog(@"My orders data is:%@",returnedDict);
                                                            if([returnedDict[@"status"] hasPrefix:@"error"]) {
                                                                if([returnedDict[@"result"] hasPrefix:@"T5"])
                                                                    [GlobalShare showSessionExpiredAlertView:self :SESSION_EXPIRED];
@@ -984,7 +983,7 @@ NSString *const kMyOrdersOptionsViewCellIdentifier = @"OptionsViewCell";
         }
         else{
             
-          //  NSLog(@"Login status....");
+            NSLog(@"Login status....");
             if ([GlobalShare isUserLogedIn]) {
                 
                 [self.navigationController popToRootViewControllerAnimated:YES];
