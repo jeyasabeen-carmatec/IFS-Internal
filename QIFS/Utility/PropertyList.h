@@ -26,11 +26,12 @@
 //PRODUCTION
 //#define REQUEST_URL @"http://212.77.209.102/OrderManagerWebAPI/WebAPI/"
 
-//Developement
-#define REQUEST_URL @"http://212.77.209.101/OrderManagerWebAPI/WebAPI/"
+//Testing
+//#define REQUEST_URL @"http://212.77.209.101/OrderManagerWebAPI/WebAPI/"
 
 //PRODUCTION NEW
-//#define REQUEST_URL @"https://apps.islamicbroker.com.qa/OrderManagerWebAPI/WebAPI/"
+
+#define REQUEST_URL @"https://apps.islamicbroker.com.qa/OrderManagerWebAPI/WebAPI/"
 
 //#define INTERNET_CONNECTION @"No internet connection. Please try again later."
 //#define USERNAME @"Please enter the User Name."
@@ -161,5 +162,7 @@
 #define CHANGE_ARABIC                   NSLocalizedString(@"CHANGE_ARABIC", @"CHANGE_ARABIC")
 #define CHANGE_ENGLISH                  NSLocalizedString(@"CHANGE_ENGLISH", @"CHANGE_ENGLISH")
 #define CHECK_AMOUNT                  NSLocalizedString(@"NOT ENOUGH CASH", @"NOT ENOUGH CASH")
+#define CHECK_ITEMS             NSLocalizedString(@"SelectItems", @"SelectItems")
+
 
 #endif /* PropertyList_h */

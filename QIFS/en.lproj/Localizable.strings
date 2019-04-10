@@ -9,6 +9,8 @@
 "Calculator" = "Calculator";
 
 "CASH POSITION" = "CASH POSITION";
+"FULL NAME" = "FULL NAME";
+"Name" = "Name";
 
 "Change Password" = "Change Password";
 "Islamic Financial Securities" = "Islamic Financial Securities";
@@ -174,9 +176,10 @@
 "NEW BALANCE" = "New balance";
 "TOTAL ORDER VALUE" = "Total order value";
 
-"NOT ENOUGH CASH" = "Not enough cash in the customer market account to cover this order";
+"NOT ENOUGH CASH" = "No enough cash,please use calculator.";
 "CHANGE QUANTITY" = "Are you sure you want to change Qty to";
 
 "Limit Up" = "Limit Up";
 "Limit Down" = "Limit Down";
 "EXpired Session" = "Your is Session Expired. Please Login again.";
+"SelectItems" = "Please select some items to add.";

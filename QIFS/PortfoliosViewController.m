@@ -293,7 +293,9 @@ NSString *const kPortfoliosOptionsViewCellIdentifier = @"OptionsViewCell";
         [self.arrayMenu insertObject:@{ @"menu_title": userId,
                                         @"menu_image": @"icon_user"
                                         } atIndex:0];
-        _menuHeight.constant = 200.0;
+       [self.arrayMenu insertObject:@{ @"menu_title": NSLocalizedString(@"Name", @"Name"),  @"menu_image": @"name" } atIndex:1];
+        
+        _menuHeight.constant = 240.0;
     }
     else{
         _menuHeight.constant = 160.0;
@@ -853,9 +855,25 @@ NSString *const kPortfoliosOptionsViewCellIdentifier = @"OptionsViewCell";
         if ([[[self.arrayMenu objectAtIndex:indexPath.row]valueForKey:@"menu_image"] isEqualToString:@"icon_user"]) {
             //NSLog(@"User Id selected....");
         }
+        else if ([[[self.arrayMenu objectAtIndex:indexPath.row]valueForKey:@"menu_title"] isEqualToString:@"Name"]) {
+            globalShare.iscashpostionStatus = YES;
+            self.cashContentView = [self.storyboard instantiateViewControllerWithIdentifier:@"CashPositionViewController"];
+            self.cashContentView.view.frame = CGRectMake(0, -[[UIScreen mainScreen] bounds].size.height, [[UIScreen mainScreen] bounds].size.width, [[UIScreen mainScreen] bounds].size.height);
+            self.cashContentView.delegate = self;
+            
+            self.tabBarController.tabBar.hidden = YES;
+            [self.view addSubview:self.cashContentView.view];
+            [UIView animateWithDuration:.3 animations:^{
+                [[[[UIApplication sharedApplication] delegate] window] setWindowLevel:UIWindowLevelStatusBar+1];
+                [self.cashContentView.view setFrame:CGRectMake(0, 0, [[UIScreen mainScreen] bounds].size.width, [[UIScreen mainScreen] bounds].size.height)];
+            } completion:^(BOOL finished) {
+                
+            }];
+        }
         else if ([[[self.arrayMenu objectAtIndex:indexPath.row]valueForKey:@"menu_image"] isEqualToString:@"icon_cash_position"]){
             
             //NSLog(@"CashPosition selected....");
+            globalShare.iscashpostionStatus = NO;
             self.cashContentView = [self.storyboard instantiateViewControllerWithIdentifier:@"CashPositionViewController"];
             self.cashContentView.view.frame = CGRectMake(0, -[[UIScreen mainScreen] bounds].size.height, [[UIScreen mainScreen] bounds].size.width, [[UIScreen mainScreen] bounds].size.height);
             self.cashContentView.delegate = self;

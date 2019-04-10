@@ -63,6 +63,13 @@
 @property (nonatomic, strong) NSMutableArray *arraySectors;
 
 @property(nonatomic, strong)UIAlertAction *submit_action;
+#pragma CashpositionStatus
+@property (nonatomic, strong) NSString *strcashpositionName;
+@property (nonatomic, assign) BOOL iscashpostionStatus;
+
+#pragma favourites array
+@property (nonatomic, strong) NSArray *favouritesArray;
+
 
 
 @property (nonatomic, strong) FMDatabase *fmDBObject;

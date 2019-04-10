@@ -270,7 +270,9 @@ NSString *const kMDOrderAskCellIdentifier = @"MDOrderAskCell";
 
     NSString *strToken = [NSString stringWithFormat:@"%@", [[NSUserDefaults standardUserDefaults] stringForKey:@"ssckey"]];
     if (strToken == nil || [strToken isEqualToString:@"(null)"]) {
-        [self showsLoginPopUp];
+      //  [self showsLoginPopUp];
+        [self performSelector:@selector(getMarketDepthValues) withObject:nil afterDelay:0.01f];
+
     }
     else{
     [self performSelector:@selector(getMarketDepthValues) withObject:nil afterDelay:0.01f];
@@ -439,9 +441,9 @@ NSString *const kMDOrderAskCellIdentifier = @"MDOrderAskCell";
         [self.indicatorView setHidden:NO];
         [self.view bringSubviewToFront:self.indicatorView];
         
-        NSString *strToken = [[NSUserDefaults standardUserDefaults] stringForKey:@"ssckey"];
+      //  NSString *strToken = [[NSUserDefaults standardUserDefaults] stringForKey:@"ssckey"];
         NSURLSessionConfiguration *defaultConfigObject = [NSURLSessionConfiguration defaultSessionConfiguration];
-        defaultConfigObject.HTTPAdditionalHeaders = @{@"Authorization": strToken};
+        //defaultConfigObject.HTTPAdditionalHeaders = @{@"Authorization": strToken};
         NSURLSession *defaultSession = [NSURLSession sessionWithConfiguration:defaultConfigObject delegate:self delegateQueue:[NSOperationQueue mainQueue]];
         
         NSString *strURL = [NSString stringWithFormat:@"%@%@%@", REQUEST_URL, @"MarketByPrice?ticker=", self.securityId];
@@ -459,7 +461,8 @@ NSString *const kMDOrderAskCellIdentifier = @"MDOrderAskCell";
                                                                    else if([returnedDict[@"result"] hasPrefix:@"T4"])
                                                                        [GlobalShare showBasicAlertView:self :INVALID_HEADER];
                                                                    else if([returnedDict[@"result"] hasPrefix:@"T3"] || [returnedDict[@"result"] hasPrefix:@"T2"])
-                                                                       [GlobalShare showBasicAlertView:self :INVALID_TOKEN];
+                                                                        return;
+                                                                    //   [GlobalShare showBasicAlertView:self :INVALID_TOKEN];
                                                                    else
                                                                        [GlobalShare showBasicAlertView:self :returnedDict[@"result"]];
                                                                    return;
@@ -528,7 +531,8 @@ NSString *const kMDOrderAskCellIdentifier = @"MDOrderAskCell";
                                                                    else if([returnedDict[@"result"] hasPrefix:@"T4"])
                                                                        [GlobalShare showBasicAlertView:self :INVALID_HEADER];
                                                                    else if([returnedDict[@"result"] hasPrefix:@"T3"] || [returnedDict[@"result"] hasPrefix:@"T2"])
-                                                                       [GlobalShare showBasicAlertView:self :INVALID_TOKEN];
+                                                                        return;
+                                                                    //   [GlobalShare showBasicAlertView:self :INVALID_TOKEN];
                                                                    else
                                                                        [GlobalShare showBasicAlertView:self :returnedDict[@"result"]];
                                                                    return;
@@ -813,7 +817,7 @@ NSString *const kMDOrderAskCellIdentifier = @"MDOrderAskCell";
 //       }
 //        else {
             myFrame = CGRectMake(cell.labelAskQty.frame.origin.x, cell.labelAskQty.frame.origin.y, cell.labelAskQty.frame.size.width-2, cell.labelAskQty.frame.size.height);
-            [cell.labelAskQty setTextAlignment:NSTextAlignmentLeft];
+            [cell.labelAskQty setTextAlignment:NSTextAlignmentCenter];
         
    //   }
         barViewSellShares.frame = myFrame;
@@ -852,7 +856,7 @@ NSString *const kMDOrderAskCellIdentifier = @"MDOrderAskCell";
             cell.labelBidPrice.text = [GlobalShare createCommaSeparatedTwoDigitString:def[@"price"]];
         
         if(globalShare.myLanguage == ARABIC_LANGUAGE) {
-            [cell.labelBidQty setTextAlignment:NSTextAlignmentLeft];
+            [cell.labelBidQty setTextAlignment:NSTextAlignmentCenter];
         }
         else {
             [cell.labelBidQty setTextAlignment:NSTextAlignmentCenter];
@@ -873,7 +877,7 @@ NSString *const kMDOrderAskCellIdentifier = @"MDOrderAskCell";
         else
             cell.labelAskPrice.text = [GlobalShare createCommaSeparatedTwoDigitString:def[@"price"]];
         cell.labelAskQty.text = [GlobalShare createCommaSeparatedString:def[@"qty"]];
-        
+           [cell.labelAskQty setTextAlignment:NSTextAlignmentCenter];
         cell.accessoryType = UITableViewCellAccessoryNone;
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
         

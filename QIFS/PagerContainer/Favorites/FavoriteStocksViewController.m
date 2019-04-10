@@ -29,6 +29,7 @@ NSString *const kFavoriteOptionsViewCellIdentifier = @"OptionsViewCell";
 @property (nonatomic, weak) IBOutlet UIActivityIndicatorView *indicatorView;
 @property (nonatomic, strong) NSArray *arrayFavoriteStocks;
 
+
 @property (nonatomic, strong) NSMutableArray *arrayMenu;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *menuHeight;
 @property (nonatomic, weak) IBOutlet UIView *viewOptionMenu;
@@ -69,6 +70,7 @@ NSString *const kFavoriteOptionsViewCellIdentifier = @"OptionsViewCell";
     globalShare = [GlobalShare sharedInstance];
     [self.labelTitle setText:NSLocalizedString(@"My Favorites", @"My Favorites")];
     [self.searchResults setPlaceholder:NSLocalizedString(@"Symbol/Company Name", @"Symbol/Company Name")];
+    self.tableViewStocks.hidden = NO;
     self.tableViewStocks.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
     globalShare.sectorValues = [[NSMutableArray alloc] init];
 //    self.arrayFavoriteStocks = [[NSMutableArray alloc] init];
@@ -78,6 +80,9 @@ NSString *const kFavoriteOptionsViewCellIdentifier = @"OptionsViewCell";
  
     [self menuDataSetUp];
     [self setupFloatingButton];
+    
+   
+   
 }
 
 #pragma mark- Menu Data SetUp...
@@ -113,7 +118,9 @@ NSString *const kFavoriteOptionsViewCellIdentifier = @"OptionsViewCell";
         [self.arrayMenu insertObject:@{ @"menu_title": userId,
                                         @"menu_image": @"icon_user"
                                         } atIndex:0];
-        _menuHeight.constant = 200.0;
+       [self.arrayMenu insertObject:@{ @"menu_title": NSLocalizedString(@"Name", @"Name"),  @"menu_image": @"name" } atIndex:1];
+        
+        _menuHeight.constant = 240.0;
     }
     else{
         _menuHeight.constant = 160.0;
@@ -175,6 +182,7 @@ NSString *const kFavoriteOptionsViewCellIdentifier = @"OptionsViewCell";
 }
 
 -(void)viewWillAppear:(BOOL)animated {
+    
 //    NSMutableDictionary *dict1 = [[NSMutableDictionary alloc] init];
 //    NSMutableDictionary *dict2 = [[NSMutableDictionary alloc] init];
 //    NSMutableDictionary *dict3 = [[NSMutableDictionary alloc] init];
@@ -290,10 +298,21 @@ NSString *const kFavoriteOptionsViewCellIdentifier = @"OptionsViewCell";
         return;
     }
 
-    [self getSecurityList];
+
     
     globalShare.dictValues = [DataManager select_SecurityListAsSectors];
+    NSLog(@"The values are:%@",globalShare.dictValues);
     self.allResults = [DataManager select_SecurityList];
+  
+NSString *strToken = [NSString stringWithFormat:@"%@", [[NSUserDefaults standardUserDefaults] stringForKey:@"ssckey"]];
+  if (strToken == nil || [strToken isEqualToString:@"(null)"])
+  {
+  }
+  else
+  {
+    [self performSelector:@selector(favouritesCode) withObject:nil afterDelay:0.01f];
+  }
+
 }
 
 -(void)viewWillDisappear:(BOOL)animated {
@@ -432,12 +451,18 @@ NSString *const kFavoriteOptionsViewCellIdentifier = @"OptionsViewCell";
 
 -(void)getSecurityList {
     NSMutableArray *arrayParams = [[NSMutableArray alloc] init];
-    NSString *strQuery = [NSString stringWithFormat:@"select ticker from tbl_SecurityList where is_checked = '%@'", @"YES"];
-    globalShare.fmRSObject = [globalShare.fmDBObject executeQuery:strQuery];
-    while ([globalShare.fmRSObject next]) {
-        [arrayParams addObject:[globalShare.fmRSObject stringForColumn:@"ticker"]];
+//    NSString *strQuery = [NSString stringWithFormat:@"select ticker from tbl_SecurityList where is_checked = '%@'", @"YES"];
+//    globalShare.fmRSObject = [globalShare.fmDBObject executeQuery:strQuery];
+//    while ([globalShare.fmRSObject next]) {
+//        [arrayParams addObject:[globalShare.fmRSObject stringForColumn:@"ticker"]];
+//    }
+//    [globalShare.fmRSObject close];
+    
+    for(int i = 0;i<globalShare.favouritesArray.count;i++)
+    {
+        [arrayParams addObject:[[globalShare.favouritesArray objectAtIndex:i]valueForKey:@"Ticker"]];
     }
-    [globalShare.fmRSObject close];
+    
     
     if(arrayParams.count > 0) {
         NSString *strTickerParams;
@@ -491,11 +516,12 @@ NSString *const kFavoriteOptionsViewCellIdentifier = @"OptionsViewCell";
                                                                if([returnedDict[@"status"] isEqualToString:@"authenticated"]) {
                                                                    dispatch_async(dispatch_get_main_queue(), ^{
                                                                        if (![[returnedDict valueForKey:@"result"] isKindOfClass:[NSArray class]]){
+                                                              
+                                                                           
                                                                            self.arrayFavoriteStocks = nil;
                                                                            [self.tableViewStocks reloadData];
                                                                             return ;
                                                                        }
-                                                                       
                                                                        self.arrayFavoriteStocks = returnedDict[@"result"];
                                                                        [self.tableViewStocks reloadData];
                                                                    });
@@ -732,9 +758,25 @@ NSString *const kFavoriteOptionsViewCellIdentifier = @"OptionsViewCell";
         if ([[[self.arrayMenu objectAtIndex:indexPath.row]valueForKey:@"menu_image"] isEqualToString:@"icon_user"]) {
             //NSLog(@"User Id selected....");
         }
-        else if ([[[self.arrayMenu objectAtIndex:indexPath.row]valueForKey:@"menu_image"] isEqualToString:@"icon_cash_position"]){
-            
-            //NSLog(@"CashPosition selected....");
+            else if ([[[self.arrayMenu objectAtIndex:indexPath.row]valueForKey:@"menu_title"] isEqualToString:@"Name"]) {
+                globalShare.iscashpostionStatus = YES;
+                self.cashContentView = [self.storyboard instantiateViewControllerWithIdentifier:@"CashPositionViewController"];
+                self.cashContentView.view.frame = CGRectMake(0, -[[UIScreen mainScreen] bounds].size.height, [[UIScreen mainScreen] bounds].size.width, [[UIScreen mainScreen] bounds].size.height);
+                self.cashContentView.delegate = self;
+                
+                self.tabBarController.tabBar.hidden = YES;
+                [self.view addSubview:self.cashContentView.view];
+                [UIView animateWithDuration:.3 animations:^{
+                    [[[[UIApplication sharedApplication] delegate] window] setWindowLevel:UIWindowLevelStatusBar+1];
+                    [self.cashContentView.view setFrame:CGRectMake(0, 0, [[UIScreen mainScreen] bounds].size.width, [[UIScreen mainScreen] bounds].size.height)];
+                } completion:^(BOOL finished) {
+                    
+                }];
+            }
+            else if ([[[self.arrayMenu objectAtIndex:indexPath.row]valueForKey:@"menu_image"] isEqualToString:@"icon_cash_position"]){
+                
+                //NSLog(@"CashPosition selected....");
+                globalShare.iscashpostionStatus = NO;
             self.cashContentView = [self.storyboard instantiateViewControllerWithIdentifier:@"CashPositionViewController"];
             self.cashContentView.view.frame = CGRectMake(0, -[[UIScreen mainScreen] bounds].size.height, [[UIScreen mainScreen] bounds].size.width, [[UIScreen mainScreen] bounds].size.height);
             self.cashContentView.delegate = self;
@@ -826,11 +868,13 @@ NSString *const kFavoriteOptionsViewCellIdentifier = @"OptionsViewCell";
 //          direction == MGSwipeDirectionLeftToRight ? @"left" : @"right", (int)index, fromExpansion ? @"YES" : @"NO");
     
     if(index == 0) {
-        NSString *strUpdateParams = [NSString stringWithFormat:@"update tbl_SecurityList set is_checked = '%@' where ticker = '%@'", @"NO", self.arrayFavoriteStocks[cell.tag][@"ticker"]];
-        [globalShare.fmDBObject executeUpdate:strUpdateParams];
-        NSLog(@"%@",strUpdateParams);
         
-        [self getSecurityList];
+        [self favouritesRemove: self.arrayFavoriteStocks[cell.tag][@"ticker"]];
+//        NSString *strUpdateParams = [NSString stringWithFormat:@"update tbl_SecurityList set is_checked = '%@' where ticker = '%@'", @"NO", self.arrayFavoriteStocks[cell.tag][@"ticker"]];
+//        [globalShare.fmDBObject executeUpdate:strUpdateParams];
+//        NSLog(@"%@",strUpdateParams);
+        globalShare.dictValues = [DataManager select_SecurityListAsSectors];
+
     }
     else {
         CompanyStocksViewController *companyStocksViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"CompanyStocksViewController"];
@@ -940,5 +984,145 @@ NSString *const kFavoriteOptionsViewCellIdentifier = @"OptionsViewCell";
     
     [self.tableResults reloadData];
 }
+#pragma Favourites Functionality
 
+-(void)favouritesCode
+{
+    @try {
+            [self.indicatorView setHidden:NO];
+            NSString *strToken = [NSString stringWithFormat:@"%@", [[NSUserDefaults standardUserDefaults] stringForKey:@"ssckey"]];
+            NSURLSessionConfiguration *defaultConfigObject = [NSURLSessionConfiguration defaultSessionConfiguration];
+            defaultConfigObject.HTTPAdditionalHeaders = @{@"Authorization": strToken};
+            NSURLSession *defaultSession = [NSURLSession sessionWithConfiguration:defaultConfigObject delegate:self delegateQueue:[NSOperationQueue mainQueue]];
+            NSString *strURL = [NSString stringWithFormat:@"%@%@", REQUEST_URL, @"GetFavorites"];
+            NSURL *url = [NSURL URLWithString:strURL];
+            NSURLSessionDataTask *dataTask = [defaultSession dataTaskWithURL:url
+                                                           completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
+                                                               [self.indicatorView setHidden:YES];
+                                                            if(error == nil)
+                                                               {
+                                                            NSMutableDictionary *returnedDict = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:&error];
+                                                              NSLog(@"The favourites :%@",returnedDict);
+                                                                   if([returnedDict[@"status"] hasPrefix:@"error"]) {
+                                                                       if([returnedDict[@"result"] hasPrefix:@"T5"])
+                                                                           [GlobalShare showSessionExpiredAlertView:self :SESSION_EXPIRED];
+                                                                       else if([returnedDict[@"result"] hasPrefix:@"T4"])
+                                                                           [GlobalShare showBasicAlertView:self :INVALID_HEADER];
+                                                                       else if([returnedDict[@"result"] hasPrefix:@"T3"] || [returnedDict[@"result"] hasPrefix:@"T2"])
+                                                                           [GlobalShare showBasicAlertView:self :INVALID_TOKEN];
+                                                                       else
+                                                                           [GlobalShare showBasicAlertView:self :returnedDict[@"result"]];
+                                                                       return;
+                                                                   }
+                                                            if([[returnedDict valueForKey:@"status"] isEqualToString:@"authenticated"])
+                                                                {
+                                                                if([[returnedDict valueForKey:@"result"] isKindOfClass:[NSArray class]])
+                                                                {
+                                                                 _tableResults.hidden = YES;
+                                                                 globalShare.favouritesArray= [returnedDict valueForKey:@"result"];
+                                                                    [self getSecurityList];
+                                                           // [self  filteringTheData: self.arrayForFullStocks];
+                                                                }
+                                                                else
+                                                                {
+                                                                    globalShare.favouritesArray =  nil;
+                                                                _tableResults.hidden = YES;
+                                                                }
+
+                                                                }
+                                                               }
+                                                            else {
+                                                                [GlobalShare showBasicAlertView:self :[error localizedDescription]];
+                                                            }
+                                                                   
+                                                           }];
+            
+            [dataTask resume];
+        }
+        @catch (NSException * e) {
+            NSLog(@"%@", [e description]);
+        }
+        @finally {
+            
+        }
+    
+    }
+-(void)favouritesRemove:(NSString *)strTicker
+{
+    @try {
+        [self.indicatorView setHidden:NO];
+        NSString *strToken = [NSString stringWithFormat:@"%@", [[NSUserDefaults standardUserDefaults] stringForKey:@"ssckey"]];
+        NSURLSessionConfiguration *defaultConfigObject = [NSURLSessionConfiguration defaultSessionConfiguration];
+        defaultConfigObject.HTTPAdditionalHeaders = @{@"Authorization": strToken};
+        NSURLSession *defaultSession = [NSURLSession sessionWithConfiguration:defaultConfigObject delegate:self delegateQueue:[NSOperationQueue mainQueue]];
+        NSString *strURL = [NSString stringWithFormat:@"%@deleteFavorite?Ticker=%@", REQUEST_URL, strTicker];
+        NSURL *url = [NSURL URLWithString:strURL];
+        NSURLSessionDataTask *dataTask = [defaultSession dataTaskWithURL:url
+                                                       completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
+                                                           [self.indicatorView setHidden:YES];
+                                                           if(error == nil)
+                                                           {
+                                                               NSMutableDictionary *returnedDict = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:&error];
+                                                               NSLog(@"The favourites :%@",returnedDict);
+                                                               if([returnedDict[@"status"] hasPrefix:@"error"]) {
+                                                                   if([returnedDict[@"result"] hasPrefix:@"T5"])
+                                                                       [GlobalShare showSessionExpiredAlertView:self :SESSION_EXPIRED];
+                                                                   else if([returnedDict[@"result"] hasPrefix:@"T4"])
+                                                                       [GlobalShare showBasicAlertView:self :INVALID_HEADER];
+                                                                   else if([returnedDict[@"result"] hasPrefix:@"T3"] || [returnedDict[@"result"] hasPrefix:@"T2"])
+                                                                       [GlobalShare showBasicAlertView:self :INVALID_TOKEN];
+                                                                   else
+                                                                       [GlobalShare showBasicAlertView:self :returnedDict[@"result"]];
+                                                                   return;
+                                                               }
+                                                               if([[returnedDict valueForKey:@"status"] isEqualToString:@"authenticated"])
+                                                               {
+                                                                   [self getSecurityList];
+                                                                   [self favouritesCode];
+
+                                                                   
+                                                               }
+                                                           }
+                                                           else {
+                                                               [GlobalShare showBasicAlertView:self :[error localizedDescription]];
+                                                           }
+                                                           
+                                                       }];
+        
+        [dataTask resume];
+    }
+    @catch (NSException * e) {
+        NSLog(@"%@", [e description]);
+    }
+    @finally {
+        
+    }
+    
+}
+/*#pragma Filteering the Data
+-(void)filteringTheData:(NSArray *)StocksArray
+{
+    @try
+    {
+    NSLog(@"The total data is :%@",StocksArray);
+    NSMutableArray *tempArray = [[NSMutableArray alloc]init];
+    for(int i=0;i<StocksArray.count;i++)
+    {
+        for(int j=0;j<globalShare.favouritesArray.count;j++)
+        {
+            if([[[globalShare.favouritesArray objectAtIndex:j]valueForKey:@"Ticker"] isEqualToString:[[StocksArray objectAtIndex:i]valueForKey:@"Ticker"]])
+                {
+                    [tempArray addObject:[StocksArray objectAtIndex:i]];
+                }
+         }
+        
+     }
+        self.arrayFavoriteStocks =  tempArray;
+        [self.tableResults reloadData];
+    }
+    @catch(NSException *exception)
+    {
+        NSLog(@"Exception in filtering the data:%@",exception);
+    }
+}*/
 @end

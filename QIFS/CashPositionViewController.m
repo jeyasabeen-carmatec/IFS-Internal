@@ -9,13 +9,17 @@
 #import "CashPositionViewController.h"
 #import "LoginView.h"
 
-@interface CashPositionViewController () <NSURLSessionDelegate,UITextFieldDelegate>{
+@interface CashPositionViewController () <NSURLSessionDelegate,UITextFieldDelegate,UIGestureRecognizerDelegate>{
     LoginView *loginVw;
     UIView *overLayView;
 }
 
 @property (nonatomic, weak) IBOutlet UILabel *labelTitle;
 @property (nonatomic, weak) IBOutlet UIActivityIndicatorView *indicatorView;
+@property (nonatomic, weak) IBOutlet UILabel *labelFullname;
+@property (nonatomic, weak) IBOutlet UILabel *labelFullnameText;
+@property (nonatomic, weak) IBOutlet UIView *viewCashposition;
+@property (nonatomic, weak) IBOutlet UIView *viewfullname;
 
 @property (nonatomic, weak) IBOutlet UILabel *labelLastDeposit;
 @property (nonatomic, weak) IBOutlet UILabel *labelLastDepositDate;
@@ -39,7 +43,8 @@
     // Do any additional setup after loading the view from its nib.
     globalShare = [GlobalShare sharedInstance];
     [self.labelTitle setText:NSLocalizedString(@"CASH POSITION", @"CASH POSITION")];
-   
+    [self.labelFullname setText:NSLocalizedString(@"FULL NAME", @"FULL NAME")];
+
     if (![GlobalShare isConnectedInternet]) {
         [GlobalShare showBasicAlertView:self :INTERNET_CONNECTION];
         return;
@@ -51,8 +56,22 @@
         [self showsLoginPopUp];
     }
     else{
+        
+        overLayView.hidden = NO;
+      if(globalShare.iscashpostionStatus == YES)
+      {
+          self.labelFullnameText.text = globalShare.strcashpositionName;
+          self.viewfullname.hidden = NO;
+          self.viewCashposition.backgroundColor = [UIColor redColor];
+          self.viewCashposition.hidden = YES;
+    
+      }
+      else{
+          self.viewfullname.hidden = YES;
+          self.viewCashposition.hidden = NO;
     [self performSelector:@selector(getCashPosition) withObject:nil afterDelay:0.01f];
     [self clearCashPosition];
+      }
     }
     
     if(globalShare.myLanguage == ARABIC_LANGUAGE) {
@@ -72,11 +91,25 @@
 }
 
 -(void)overLayCreation{
-    overLayView = [[UIView alloc] initWithFrame:CGRectMake(0, self.navigationController.navigationBar.frame.origin.y, self.view.frame.size.width, self.view.frame.size.height)];
+    overLayView = [[UIView alloc] initWithFrame:CGRectMake(0, self.navigationController.navigationBar.frame.origin.y+20, self.view.frame.size.width, self.view.frame.size.height)];
     overLayView.backgroundColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.5];
     overLayView.clipsToBounds = YES;
     overLayView.hidden = YES;
+    
     [self.view addSubview:overLayView];
+    [overLayView addSubview:_viewCashposition];
+    [overLayView addSubview:_viewfullname];
+    
+    UITapGestureRecognizer *tapGesture1 = [[UITapGestureRecognizer alloc] initWithTarget:self  action:@selector(removeCashPositionController)];
+    
+    tapGesture1.numberOfTapsRequired = 1;
+    
+    [tapGesture1 setDelegate:self];
+    
+    [overLayView addGestureRecognizer:tapGesture1];
+    
+
+    
 }
 #pragma mark Loading Login PopUp when guest User
 -(void)showsLoginPopUp{
@@ -163,9 +196,7 @@
 }
  */
 
-- (IBAction)backgroundTapped:(id)sender {
-    [self removeCashPositionController];
-}
+
 -(void)removeCashPositionController{
     [[[[UIApplication sharedApplication] delegate] window] setWindowLevel:UIWindowLevelNormal];
     [UIView animateWithDuration:.3 animations:^{
@@ -209,6 +240,13 @@
                                                                }
                                                                NSString *strToken = [returnedDict objectForKey:@"result"];
                                                                [[NSUserDefaults standardUserDefaults] setObject:strToken forKey:@"ssckey"];
+                                                               
+                                                               if(globalShare.myLanguage == ARABIC_LANGUAGE) {
+                                                                   globalShare.strcashpositionName= [GlobalShare checkingNullValues:[[returnedDict objectForKey:@"Customer"]valueForKey:@"cust_name_a"]];
+                                                               }
+                                                               else{
+                                                                   globalShare.strcashpositionName= [GlobalShare checkingNullValues:[[returnedDict objectForKey:@"Customer"]valueForKey:@"cust_name_e"]];
+                                                               }
                                                                // Storing UserName in Shared Preference values..
                                                                [[NSUserDefaults standardUserDefaults] setValue:stringUserName forKey:@"UserName"];
                                                                [[NSUserDefaults standardUserDefaults] synchronize];

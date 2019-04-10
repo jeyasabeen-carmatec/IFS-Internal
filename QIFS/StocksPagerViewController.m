@@ -254,6 +254,7 @@ NSString *const kStocksOptionsViewCellIdentifier = @"OptionsViewCell";
         [self performSelector:@selector(getSecurityBySector) withObject:nil afterDelay:0.01f];
     else {
         globalShare.dictValues = [DataManager select_SecurityListAsSectors];
+        NSLog(@"The mainpage value are :%@",globalShare.dictValues);
         self.allResults = [DataManager select_SecurityList];
     }
 
@@ -476,7 +477,9 @@ NSString *const kStocksOptionsViewCellIdentifier = @"OptionsViewCell";
         [self.arrayMenu insertObject:@{ @"menu_title": userId,
                                         @"menu_image": @"icon_user"
                                         } atIndex:0];
-         _menuHeight.constant = 200.0;
+        [self.arrayMenu insertObject:@{ @"menu_title": NSLocalizedString(@"Name", @"Name"),  @"menu_image": @"name" } atIndex:1];
+        
+         _menuHeight.constant = 240.0;
     }
     else{
         _menuHeight.constant = 160.0;
@@ -513,7 +516,7 @@ NSString *const kStocksOptionsViewCellIdentifier = @"OptionsViewCell";
         NSString *strToken = [NSString stringWithFormat:@"%@", [[NSUserDefaults standardUserDefaults] stringForKey:@"ssckey"]];
         strToken = [GlobalShare checkingNullValues:strToken];
         NSURLSessionConfiguration *defaultConfigObject = [NSURLSessionConfiguration defaultSessionConfiguration];
-        defaultConfigObject.HTTPAdditionalHeaders = @{@"Authorization": strToken};
+      //  defaultConfigObject.HTTPAdditionalHeaders = @{@"Authorization": strToken};
         NSURLSession *defaultSession = [NSURLSession sessionWithConfiguration:defaultConfigObject delegate:self delegateQueue:[NSOperationQueue mainQueue]];
         
         NSString *strURL = [NSString stringWithFormat:@"%@%@", REQUEST_URL, @"GetSystemCodes"];
@@ -530,7 +533,8 @@ NSString *const kStocksOptionsViewCellIdentifier = @"OptionsViewCell";
                                                                    else if([returnedDict[@"result"] hasPrefix:@"T4"])
                                                                        [GlobalShare showBasicAlertView:self :INVALID_HEADER];
                                                                    else if([returnedDict[@"result"] hasPrefix:@"T3"] || [returnedDict[@"result"] hasPrefix:@"T2"])
-                                                                       [GlobalShare showBasicAlertView:self :INVALID_TOKEN];
+                                                                    return;
+                                                                 //      [GlobalShare showBasicAlertView:self :INVALID_TOKEN];
                                                                    else
                                                                        [GlobalShare showBasicAlertView:self :returnedDict[@"result"]];
                                                                    return;
@@ -567,7 +571,7 @@ NSString *const kStocksOptionsViewCellIdentifier = @"OptionsViewCell";
         NSString *strToken = [[NSUserDefaults standardUserDefaults] stringForKey:@"ssckey"];
         strToken = [GlobalShare checkingNullValues:strToken];
         NSURLSessionConfiguration *defaultConfigObject = [NSURLSessionConfiguration defaultSessionConfiguration];
-        defaultConfigObject.HTTPAdditionalHeaders = @{@"Authorization": strToken};
+       // defaultConfigObject.HTTPAdditionalHeaders = @{@"Authorization": strToken};
         NSURLSession *defaultSession = [NSURLSession sessionWithConfiguration:defaultConfigObject delegate:self delegateQueue:[NSOperationQueue mainQueue]];
         
         NSString *strURL = [NSString stringWithFormat:@"%@%@", REQUEST_URL, @"GetSecurityBySector"];
@@ -577,14 +581,15 @@ NSString *const kStocksOptionsViewCellIdentifier = @"OptionsViewCell";
                                                        completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
                                                            if(error == nil)
                                                            {
-                                                               NSMutableDictionary *returnedDict = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:&error];
+                                                               NSMutableDictionary *returnedDict = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingAllowFragments error:&error];
                                                                if([returnedDict[@"status"] hasPrefix:@"error"]) {
                                                                    if([returnedDict[@"result"] hasPrefix:@"T5"])
                                                                        [GlobalShare showSessionExpiredAlertView:self :SESSION_EXPIRED];
                                                                    else if([returnedDict[@"result"] hasPrefix:@"T4"])
                                                                        [GlobalShare showBasicAlertView:self :INVALID_HEADER];
                                                                    else if([returnedDict[@"result"] hasPrefix:@"T3"] || [returnedDict[@"result"] hasPrefix:@"T2"])
-                                                                       [GlobalShare showBasicAlertView:self :INVALID_TOKEN];
+                                                                         return;
+                                                                    //   [GlobalShare showBasicAlertView:self :INVALID_TOKEN];
                                                                    else
                                                                        [GlobalShare showBasicAlertView:self :returnedDict[@"result"]];
                                                                    return;
@@ -996,10 +1001,27 @@ NSString *const kStocksOptionsViewCellIdentifier = @"OptionsViewCell";
         if([tableView isEqual:self.tableViewOptionMenu]) {
             if ([[[self.arrayMenu objectAtIndex:indexPath.row]valueForKey:@"menu_image"] isEqualToString:@"icon_user"]) {
                  //NSLog(@"User Id selected....");
+
+            }
+           else if ([[[self.arrayMenu objectAtIndex:indexPath.row]valueForKey:@"menu_image"] isEqualToString:@"name"]) {
+                globalShare.iscashpostionStatus = YES;
+                self.cashContentView = [self.storyboard instantiateViewControllerWithIdentifier:@"CashPositionViewController"];
+                self.cashContentView.view.frame = CGRectMake(0, -[[UIScreen mainScreen] bounds].size.height, [[UIScreen mainScreen] bounds].size.width, [[UIScreen mainScreen] bounds].size.height);
+                self.cashContentView.delegate = self;
+                
+                self.tabBarController.tabBar.hidden = YES;
+                [self.view addSubview:self.cashContentView.view];
+                [UIView animateWithDuration:.3 animations:^{
+                    [[[[UIApplication sharedApplication] delegate] window] setWindowLevel:UIWindowLevelStatusBar+1];
+                    [self.cashContentView.view setFrame:CGRectMake(0, 0, [[UIScreen mainScreen] bounds].size.width, [[UIScreen mainScreen] bounds].size.height)];
+                } completion:^(BOOL finished) {
+                    
+                }];
             }
             else if ([[[self.arrayMenu objectAtIndex:indexPath.row]valueForKey:@"menu_image"] isEqualToString:@"icon_cash_position"]){
 
                 //NSLog(@"CashPosition selected....");
+                globalShare.iscashpostionStatus = NO;
 
                     self.cashContentView = [self.storyboard instantiateViewControllerWithIdentifier:@"CashPositionViewController"];
                     self.cashContentView.view.frame = CGRectMake(0, -[[UIScreen mainScreen] bounds].size.height, [[UIScreen mainScreen] bounds].size.width, [[UIScreen mainScreen] bounds].size.height);

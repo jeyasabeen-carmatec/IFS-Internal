@@ -9,7 +9,8 @@
 "Calculator" = "الحاسبة";
 
 "CASH POSITION" = "الرصيد النقدي";
-
+"FULL NAME" =  "الاسم الكامل";
+"Name" = "اسم";
 "Change Password" = "تغيير كلمة المرور";
 "Islamic Financial Securities" = "الاسلامية للأوراق المالية";
 "OK" = "موافق";
@@ -176,9 +177,10 @@
 "COMMISSION VALUE" = "قيمة العمولة";
 "NEW BALANCE" = "الرصيد الجديد";
 "TOTAL ORDER VALUE" = "إجمالي قيمة الطلب";
-"NOT ENOUGH CASH" = "لا توجد مبالغ نقدية كافية في حساب سوق العملاء لتغطية هذا الطلب";
+"NOT ENOUGH CASH" = "لا يوجد رصيد كافى. برجاء إستخدام الحاسبه";
 "CHANGE QUANTITY" =   "هل تريد تغيير الكمية إلى";
 
 "Limit Up" = "الحد الأعلى";
 "Limit Down" = "الحد الأدنى";
 "EXpired Session" = "انتهت جلستك. الرجاد الدخول على الحساب من جديد";
+"SelectItems" = "يرجى اختيار بعض العناصر لإضافتها.";

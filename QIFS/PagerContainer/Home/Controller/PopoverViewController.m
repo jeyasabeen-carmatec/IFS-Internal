@@ -13,10 +13,11 @@
 #import "NewOrderViewController.h"
 #import "AddAlertViewController.h"
 
-@interface PopoverViewController ()
+@interface PopoverViewController ()<NSURLSessionDelegate>
 
 @property (nonatomic, weak) IBOutlet UIButton *buttonFavTitle;
 @property (nonatomic, weak) IBOutlet UIImageView *imgFavorites;
+@property (nonatomic, weak) IBOutlet UIActivityIndicatorView *indicatorView;
 
 @end
 
@@ -55,10 +56,21 @@
     }
 }
 
--(void)viewWillAppear:(BOOL)animated {
+-(void)viewWillAppear:(BOOL)animated
+{
     [super viewWillAppear:YES];
+    NSString *strToken = [NSString stringWithFormat:@"%@", [[NSUserDefaults standardUserDefaults] stringForKey:@"ssckey"]];
+    if (strToken == nil || [strToken isEqualToString:@"(null)"]) {
+    }
+    else
+    {
+    [self favouritesList];
+    }
+    NSLog(@"%@",globalShare.favouritesArray);
     
-    NSString *strIsFavorite;
+    
+    
+   /* NSString *strIsFavorite;
     NSString *strQuery = [NSString stringWithFormat:@"select is_checked from tbl_SecurityList where ticker = '%@'", self.securityId];
     globalShare.fmRSObject = [globalShare.fmDBObject executeQuery:strQuery];
     if ([globalShare.fmRSObject next]) {
@@ -73,7 +85,7 @@
     else {
         [self.buttonFavTitle setTitle:NSLocalizedString(@"Favorite", @"Favorite") forState:UIControlStateNormal];
         [self.imgFavorites setImage:[UIImage imageNamed:@"icon_pop_favorite"]];
-    }
+    }*/
 }
 
 - (void)didReceiveMemoryWarning {
@@ -124,24 +136,210 @@
     [globalShare.topNavController pushViewController:newOrderViewController animated:YES];
 }
 
-- (IBAction)actionFavorites:(id)sender {
+- (IBAction)actionFavorites:(id)sender
+{
+    NSString *strToken = [NSString stringWithFormat:@"%@", [[NSUserDefaults standardUserDefaults] stringForKey:@"ssckey"]];
+    if (strToken == nil || [strToken isEqualToString:@"(null)"])
+    {
+        
+    }
+    else
+    {
     NSString *strIsFavorite;
     if([self.buttonFavTitle.currentTitle isEqualToString:NSLocalizedString(@"Favorite", @"Favorite")]) {
         strIsFavorite = @"YES";
-        [self.buttonFavTitle setTitle:NSLocalizedString(@"Unfavorite", @"Unfavorite") forState:UIControlStateNormal];
-        [self.imgFavorites setImage:[UIImage imageNamed:@"icon_pop_unfavorite"]];
-        [GlobalShare showBasicAlertViewTitle:self :self.securityId :FAVORITES_ADD];
+        [self favouritesAdd];
+
     }
     else {
         strIsFavorite = @"NO";
-        [self.buttonFavTitle setTitle:NSLocalizedString(@"Favorite", @"Favorite") forState:UIControlStateNormal];
-        [self.imgFavorites setImage:[UIImage imageNamed:@"icon_pop_favorite"]];
-        [GlobalShare showBasicAlertViewTitle:self :self.securityId :FAVORITES_REMOVE];
+        [self favouritesRemove];
+    }
     }
     
-    NSString *strUpdateParams = [NSString stringWithFormat:@"update tbl_SecurityList set is_checked = '%@' where ticker = '%@'", strIsFavorite, self.securityId];
-    [globalShare.fmDBObject executeUpdate:strUpdateParams];
-    [self.delegate dismissPopup];
+   // NSString *strUpdateParams = [NSString stringWithFormat:@"update tbl_SecurityList set is_checked = '%@' where ticker = '%@'", strIsFavorite, self.securityId];
+   // [globalShare.fmDBObject executeUpdate:strUpdateParams];
 }
+#pragma Favourites Functionality
+-(void)favouritesAdd
+{
+    @try {
+        [self.indicatorView setHidden:NO];
+        NSString *strToken = [NSString stringWithFormat:@"%@", [[NSUserDefaults standardUserDefaults] stringForKey:@"ssckey"]];
+        NSURLSessionConfiguration *defaultConfigObject = [NSURLSessionConfiguration defaultSessionConfiguration];
+        defaultConfigObject.HTTPAdditionalHeaders = @{@"Authorization": strToken};
+        NSURLSession *defaultSession = [NSURLSession sessionWithConfiguration:defaultConfigObject delegate:self delegateQueue:[NSOperationQueue mainQueue]];
+        NSString *strURL = [NSString stringWithFormat:@"%@SaveFavorites?Tickers=%@", REQUEST_URL, self.securityId];
+        NSURL *url = [NSURL URLWithString:strURL];
+        NSURLSessionDataTask *dataTask = [defaultSession dataTaskWithURL:url
+                                                       completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
+                                                           [self.indicatorView setHidden:YES];
+                                                           if(error == nil)
+                                                           {
+                                                               NSMutableDictionary *returnedDict = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:&error];
+                                                               NSLog(@"The favourites :%@",returnedDict);
+                                                               if([returnedDict[@"status"] hasPrefix:@"error"]) {
+                                                                   if([returnedDict[@"result"] hasPrefix:@"T5"])
+                                                                       [GlobalShare showSessionExpiredAlertView:self :SESSION_EXPIRED];
+                                                                   else if([returnedDict[@"result"] hasPrefix:@"T4"])
+                                                                       [GlobalShare showBasicAlertView:self :INVALID_HEADER];
+                                                                   else if([returnedDict[@"result"] hasPrefix:@"T3"] || [returnedDict[@"result"] hasPrefix:@"T2"])
+                                                                       [GlobalShare showBasicAlertView:self :INVALID_TOKEN];
+                                                                   else
+                                                                       [GlobalShare showBasicAlertView:self :returnedDict[@"result"]];
+                                                                   return;
+                                                               }
+                                                               if([[returnedDict valueForKey:@"status"] isEqualToString:@"authenticated"])
+                                                               {
+                                                                   [self.buttonFavTitle setTitle:NSLocalizedString(@"Unfavorite", @"Unfavorite") forState:UIControlStateNormal];
+                                                                   [self.imgFavorites setImage:[UIImage imageNamed:@"icon_pop_unfavorite"]];
+                                                                   [GlobalShare showBasicAlertViewTitle:self :self.securityId :FAVORITES_ADD];
+                                                                   [self favouritesList];
 
+                                                                   [self.delegate dismissPopup];
+
+                                                               }
+                                                           }
+                                                           else {
+                                                               [GlobalShare showBasicAlertView:self :[error localizedDescription]];
+                                                           }
+                                                           
+                                                       }];
+        
+        [dataTask resume];
+    }
+    @catch (NSException * e) {
+        NSLog(@"%@", [e description]);
+    }
+    @finally {
+        
+    }
+    
+}
+-(void)favouritesRemove
+{
+    @try {
+        [self.indicatorView setHidden:NO];
+        NSString *strToken = [NSString stringWithFormat:@"%@", [[NSUserDefaults standardUserDefaults] stringForKey:@"ssckey"]];
+        NSURLSessionConfiguration *defaultConfigObject = [NSURLSessionConfiguration defaultSessionConfiguration];
+        defaultConfigObject.HTTPAdditionalHeaders = @{@"Authorization": strToken};
+        NSURLSession *defaultSession = [NSURLSession sessionWithConfiguration:defaultConfigObject delegate:self delegateQueue:[NSOperationQueue mainQueue]];
+        NSString *strURL = [NSString stringWithFormat:@"%@deleteFavorite?Ticker=%@", REQUEST_URL, self.securityId];
+        NSURL *url = [NSURL URLWithString:strURL];
+        NSURLSessionDataTask *dataTask = [defaultSession dataTaskWithURL:url
+                                                       completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
+                                                           [self.indicatorView setHidden:YES];
+                                                           if(error == nil)
+                                                           {
+                                                               NSMutableDictionary *returnedDict = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:&error];
+                                                               NSLog(@"The favourites :%@",returnedDict);
+                                                               if([returnedDict[@"status"] hasPrefix:@"error"]) {
+                                                                   if([returnedDict[@"result"] hasPrefix:@"T5"])
+                                                                       [GlobalShare showSessionExpiredAlertView:self :SESSION_EXPIRED];
+                                                                   else if([returnedDict[@"result"] hasPrefix:@"T4"])
+                                                                       [GlobalShare showBasicAlertView:self :INVALID_HEADER];
+                                                                   else if([returnedDict[@"result"] hasPrefix:@"T3"] || [returnedDict[@"result"] hasPrefix:@"T2"])
+                                                                       [GlobalShare showBasicAlertView:self :INVALID_TOKEN];
+                                                                   else
+                                                                       [GlobalShare showBasicAlertView:self :returnedDict[@"result"]];
+                                                                   return;
+                                                               }
+                                                               if([[returnedDict valueForKey:@"status"] isEqualToString:@"authenticated"])
+                                                               {
+                                                                   [self.buttonFavTitle setTitle:NSLocalizedString(@"Favorite", @"Favorite") forState:UIControlStateNormal];
+                                                                   [self.imgFavorites setImage:[UIImage imageNamed:@"icon_pop_favorite"]];
+                                                                   [GlobalShare showBasicAlertViewTitle:self :self.securityId :FAVORITES_REMOVE];
+                                                                   
+                                                                   [self favouritesList];
+                                                                   [self.delegate dismissPopup];
+                                                                   
+                                                                   
+                                                                 
+                                                                   
+                                                               }
+                                                           }
+                                                           else {
+                                                               [GlobalShare showBasicAlertView:self :[error localizedDescription]];
+                                                           }
+                                                           
+                                                       }];
+        
+        [dataTask resume];
+    }
+    @catch (NSException * e) {
+        NSLog(@"%@", [e description]);
+    }
+    @finally {
+        
+    }
+    
+}
+-(void)favouritesList
+{
+    @try {
+        [self.indicatorView setHidden:NO];
+        NSString *strToken = [NSString stringWithFormat:@"%@", [[NSUserDefaults standardUserDefaults] stringForKey:@"ssckey"]];
+        NSURLSessionConfiguration *defaultConfigObject = [NSURLSessionConfiguration defaultSessionConfiguration];
+        defaultConfigObject.HTTPAdditionalHeaders = @{@"Authorization": strToken};
+        NSURLSession *defaultSession = [NSURLSession sessionWithConfiguration:defaultConfigObject delegate:self delegateQueue:[NSOperationQueue mainQueue]];
+        NSString *strURL = [NSString stringWithFormat:@"%@%@", REQUEST_URL, @"GetFavorites"];
+        NSURL *url = [NSURL URLWithString:strURL];
+        NSURLSessionDataTask *dataTask = [defaultSession dataTaskWithURL:url
+                                                       completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
+                                                           [self.indicatorView setHidden:YES];
+                                                           if(error == nil)
+                                                           {
+                                                               NSMutableDictionary *returnedDict = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:&error];
+                                                               NSLog(@"The favourites :%@",returnedDict);
+                                                               if([returnedDict[@"status"] hasPrefix:@"error"]) {
+                                                                   if([returnedDict[@"result"] hasPrefix:@"T5"])
+                                                                       [GlobalShare showSessionExpiredAlertView:self :SESSION_EXPIRED];
+                                                                   else if([returnedDict[@"result"] hasPrefix:@"T4"])
+                                                                       [GlobalShare showBasicAlertView:self :INVALID_HEADER];
+                                                                   else if([returnedDict[@"result"] hasPrefix:@"T3"] || [returnedDict[@"result"] hasPrefix:@"T2"])
+                                                                       [GlobalShare showBasicAlertView:self :INVALID_TOKEN];
+                                                                   else
+                                                                       [GlobalShare showBasicAlertView:self :returnedDict[@"result"]];
+                                                                   return;
+                                                               }
+                                                               if([[returnedDict valueForKey:@"status"] isEqualToString:@"authenticated"])
+                                                               {
+                                                                if([[returnedDict valueForKey:@"result"] isKindOfClass:[NSArray class]])
+                                                                {
+                                                                    globalShare.favouritesArray= [returnedDict valueForKey:@"result"];
+                                                                   for(int k = 0; k< globalShare.favouritesArray.count;k++)
+                                                                   {
+                                                                    NSDictionary *dictVal = [globalShare.favouritesArray objectAtIndex:k];
+                                                                    if([[dictVal valueForKey:@"Ticker"] isEqualToString:self.securityId])
+                                                                       {
+                                                                [self.buttonFavTitle setTitle:NSLocalizedString(@"Unfavorite", @"Unfavorite") forState:UIControlStateNormal];
+                                                                           [self.imgFavorites setImage:[UIImage imageNamed:@"icon_pop_unfavorite"]];
+                                                                       }
+                                                                else
+                                                                    {
+                                                                   [self.buttonFavTitle setTitle:NSLocalizedString(@"Favorite", @"Favorite") forState:UIControlStateNormal];
+                                                                           [self.imgFavorites setImage:[UIImage imageNamed:@"icon_pop_favorite"]];
+                                                                    }
+                                                                   }
+                                                                   
+                                                                 
+                                                               }
+                                                               }
+                                                           }
+                                                           else {
+                                                               [GlobalShare showBasicAlertView:self :[error localizedDescription]];
+                                                           }
+                                                           
+                                                       }];
+        
+        [dataTask resume];
+    }
+    @catch (NSException * e) {
+        NSLog(@"%@", [e description]);
+    }
+    @finally {
+        
+    }
+    
+}
 @end

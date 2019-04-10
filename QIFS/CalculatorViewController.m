@@ -53,6 +53,18 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
+    self.textFieldBuyCash1.keyboardType = UIKeyboardTypeNumbersAndPunctuation;
+    self.textFieldBuySharePrice1.keyboardType = UIKeyboardTypeNumbersAndPunctuation;
+    self.textFieldBuyNoOfShares1.keyboardType = UIKeyboardTypeNumbersAndPunctuation;
+    self.textFieldBuyNoOfShares2.keyboardType = UIKeyboardTypeNumbersAndPunctuation;
+    self.textFieldBuySharePrice2.keyboardType = UIKeyboardTypeNumbersAndPunctuation;
+    self.textFieldBuyCash2.keyboardType = UIKeyboardTypeNumbersAndPunctuation;
+    self.textFieldSellCash1.keyboardType = UIKeyboardTypeNumbersAndPunctuation;
+    self.textFieldSellSharePrice1.keyboardType = UIKeyboardTypeNumbersAndPunctuation;
+    self.textFieldSellNoOfShares1.keyboardType = UIKeyboardTypeNumbersAndPunctuation;
+    self.textFieldSellNoOfShares2.keyboardType = UIKeyboardTypeNumbersAndPunctuation;
+    self.textFieldSellSharePrice2.keyboardType = UIKeyboardTypeNumbersAndPunctuation;
+    
     globalShare = [GlobalShare sharedInstance];
     [[GlobalShare sharedInstance] setIsConfirmOrder:YES];
     [[GlobalShare sharedInstance] setIsDirectViewOrder:NO];
@@ -340,6 +352,20 @@
 }
 
 - (BOOL)textFieldShouldBeginEditing:(UITextField *)textField {
+    if(textField == self.textFieldBuyCash1 || self.textFieldBuySharePrice1 || self.textFieldBuyNoOfShares1 || self.textFieldBuyNoOfShares2 || self.textFieldBuySharePrice2 || self.textFieldBuyCash2 || self.textFieldSellCash1 || self.textFieldSellSharePrice1 || self.textFieldSellNoOfShares1 || self.textFieldSellNoOfShares2 || self.textFieldSellSharePrice2 )
+    {
+    self.textFieldBuyCash1.keyboardType = UIKeyboardTypeNumbersAndPunctuation;
+    self.textFieldBuySharePrice1.keyboardType = UIKeyboardTypeNumbersAndPunctuation;
+    self.textFieldBuyNoOfShares1.keyboardType = UIKeyboardTypeNumbersAndPunctuation;
+    self.textFieldBuyNoOfShares2.keyboardType = UIKeyboardTypeNumbersAndPunctuation;
+    self.textFieldBuySharePrice2.keyboardType = UIKeyboardTypeNumbersAndPunctuation;
+    self.textFieldBuyCash2.keyboardType = UIKeyboardTypeNumbersAndPunctuation;
+    self.textFieldSellCash1.keyboardType = UIKeyboardTypeNumbersAndPunctuation;
+    self.textFieldSellSharePrice1.keyboardType = UIKeyboardTypeNumbersAndPunctuation;
+    self.textFieldSellNoOfShares1.keyboardType = UIKeyboardTypeNumbersAndPunctuation;
+    self.textFieldSellNoOfShares2.keyboardType = UIKeyboardTypeNumbersAndPunctuation;
+    self.textFieldSellSharePrice2.keyboardType = UIKeyboardTypeNumbersAndPunctuation;
+    }
     self.textFieldCurrent = textField;
 //    if ([textField isEqual:_textFieldBuyNoOfShares2] || [textField isEqual:_textFieldBuySharePrice2] || [textField isEqual:_textFieldBuyCash2] || [textField isEqual:_textFieldSellCash2] || [textField isEqual:_textFieldSellSharePrice2] || [textField isEqual:_textFieldSellNoOfShares2]) {
 //        [UIView beginAnimations:nil context:NULL];

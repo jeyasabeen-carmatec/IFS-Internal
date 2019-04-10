@@ -144,6 +144,9 @@ NSString *const kNewOrderOptionsViewCellIdentifier = @"OptionsViewCell";
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    self.textFieldLimit.keyboardType = UIKeyboardTypeNumbersAndPunctuation;
+    self.textFieldQty.keyboardType = UIKeyboardTypeNumbersAndPunctuation;
+
     
     overLayView = [[UIView alloc] initWithFrame:CGRectMake(0, self.navigationController.navigationBar.frame.origin.y, self.view.frame.size.width, self.view.frame.size.height)];
     overLayView.backgroundColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.5];
@@ -274,10 +277,6 @@ NSString *const kNewOrderOptionsViewCellIdentifier = @"OptionsViewCell";
     _limitDowmLabel.layer.borderWidth= 1.0f;
     
     
-    [self.textFieldLimit setTextAlignment:NSTextAlignmentNatural];
-    [self.textFieldQty setTextAlignment:NSTextAlignmentNatural];
-    [self.textFieldDisclose setTextAlignment:NSTextAlignmentNatural];
-    
     [self.textFieldLimit addTarget:self action:@selector(QTY_changed) forControlEvents:UIControlEventEditingChanged];
     
     _strQty = _textFieldQty.text;
@@ -371,6 +370,11 @@ NSString *const kNewOrderOptionsViewCellIdentifier = @"OptionsViewCell";
         [self.buttonTransaction setBackgroundImage:[UIImage imageNamed:@"btn_dropdown_ar"] forState:UIControlStateNormal];
         [self.buttonOrderType setBackgroundImage:[UIImage imageNamed:@"btn_dropdown_ar"] forState:UIControlStateNormal];
         [self.buttonDuration setBackgroundImage:[UIImage imageNamed:@"btn_dropdown_ar"] forState:UIControlStateNormal];
+        
+        [self.textFieldLimit setTextAlignment:NSTextAlignmentRight];
+        [self.textFieldQty setTextAlignment:NSTextAlignmentRight];
+        [self.textFieldDisclose setTextAlignment:NSTextAlignmentRight];
+        
     }
     else
     {
@@ -393,6 +397,10 @@ NSString *const kNewOrderOptionsViewCellIdentifier = @"OptionsViewCell";
         [self.buttonTransaction setBackgroundImage:[UIImage imageNamed:@"btn_dropdown_en"] forState:UIControlStateNormal];
         [self.buttonOrderType setBackgroundImage:[UIImage imageNamed:@"btn_dropdown_en"] forState:UIControlStateNormal];
         [self.buttonDuration setBackgroundImage:[UIImage imageNamed:@"btn_dropdown_en"] forState:UIControlStateNormal];
+        [self.textFieldLimit setTextAlignment:NSTextAlignmentNatural];
+        [self.textFieldQty setTextAlignment:NSTextAlignmentNatural];
+        [self.textFieldDisclose setTextAlignment:NSTextAlignmentNatural];
+        
     }
     
     self.selectVal = 0;
@@ -586,7 +594,9 @@ NSString *const kNewOrderOptionsViewCellIdentifier = @"OptionsViewCell";
         [self.arrayMenu insertObject:@{ @"menu_title": userId,
                                         @"menu_image": @"icon_user"
                                         } atIndex:0];
-        _menuHeight.constant = 200.0;
+       [self.arrayMenu insertObject:@{ @"menu_title": NSLocalizedString(@"Name", @"Name"),  @"menu_image": @"name" } atIndex:1];
+        
+        _menuHeight.constant = 240.0;
     }
     else{
         _menuHeight.constant = 160.0;
@@ -2605,13 +2615,16 @@ NSString *const kNewOrderOptionsViewCellIdentifier = @"OptionsViewCell";
         [self.buttonTransaction setTitle:globalShare.pickerData1[row][(globalShare.myLanguage != ARABIC_LANGUAGE) ? @"description_e" : @"description_a"] forState:UIControlStateNormal];
         
 //        if([self.buttonTransaction.currentTitle isEqualToString:@"Buy"]) {
-        if(self.selectValTrans == 0) {
-            [self.contentView setBackgroundColor:[UIColor colorWithRed:230/255.f green:240/255.f blue:255/255.f alpha:1.f]];
-            self.scrollView.backgroundColor = [UIColor colorWithRed:230/255.f green:240/255.f blue:255/255.f alpha:1.f];
+        if(self.selectValTrans == 0)
+        {
+            
+            [self.contentView setBackgroundColor:[UIColor colorWithRed:220/255.f green:230/255.f blue:245/255.f alpha:1.f]];
+            
+            self.scrollView.backgroundColor = [UIColor colorWithRed:220/255.f green:230/255.f blue:245/255.f alpha:1.f];
         }
         else {
-            [self.contentView setBackgroundColor:[UIColor colorWithRed:255/255.f green:245/255.f blue:245/255.f alpha:1.f]];
-            self.scrollView.backgroundColor = [UIColor colorWithRed:255/255.f green:245/255.f blue:245/255.f alpha:1.f];
+            [self.contentView setBackgroundColor:[UIColor colorWithRed:245/255.f green:235/255.f blue:235/255.f alpha:1.f]];
+            self.scrollView.backgroundColor = [UIColor colorWithRed:245/255.f green:235/255.f blue:235/255.f alpha:1.f];
         }
     }
     else if(_selectVal == 1) {
@@ -2705,6 +2718,13 @@ NSString *const kNewOrderOptionsViewCellIdentifier = @"OptionsViewCell";
 }
 
 - (BOOL)textFieldShouldBeginEditing:(UITextField *)textField {
+    
+    if ([textField isEqual:_textFieldLimit] || [textField isEqual:_textFieldQty])
+    {
+        self.textFieldLimit.keyboardType = UIKeyboardTypeNumbersAndPunctuation;
+        self.textFieldQty.keyboardType = UIKeyboardTypeNumbersAndPunctuation;
+
+    }
     self.backgroundTapButton = [UIButton buttonWithType:UIButtonTypeCustom];
     _backgroundTapButton.frame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height-162);
     [_backgroundTapButton addTarget:self action:@selector(backgroundTapped:) forControlEvents:UIControlEventTouchUpInside];
@@ -2877,7 +2897,25 @@ NSString *const kNewOrderOptionsViewCellIdentifier = @"OptionsViewCell";
         if ([[[self.arrayMenu objectAtIndex:indexPath.row]valueForKey:@"menu_image"] isEqualToString:@"icon_user"]) {
             //NSLog(@"User Id selected....");
         }
-        else if ([[[self.arrayMenu objectAtIndex:indexPath.row]valueForKey:@"menu_image"] isEqualToString:@"icon_cash_position"]){
+            else if ([[[self.arrayMenu objectAtIndex:indexPath.row]valueForKey:@"menu_title"] isEqualToString:@"Name"]) {
+                globalShare.iscashpostionStatus = YES;
+                self.cashContentView = [self.storyboard instantiateViewControllerWithIdentifier:@"CashPositionViewController"];
+                self.cashContentView.view.frame = CGRectMake(0, -[[UIScreen mainScreen] bounds].size.height, [[UIScreen mainScreen] bounds].size.width, [[UIScreen mainScreen] bounds].size.height);
+                self.cashContentView.delegate = self;
+                
+                self.tabBarController.tabBar.hidden = YES;
+                [self.view addSubview:self.cashContentView.view];
+                [UIView animateWithDuration:.3 animations:^{
+                    [[[[UIApplication sharedApplication] delegate] window] setWindowLevel:UIWindowLevelStatusBar+1];
+                    [self.cashContentView.view setFrame:CGRectMake(0, 0, [[UIScreen mainScreen] bounds].size.width, [[UIScreen mainScreen] bounds].size.height)];
+                } completion:^(BOOL finished) {
+                    
+                }];
+            }
+            else if ([[[self.arrayMenu objectAtIndex:indexPath.row]valueForKey:@"menu_image"] isEqualToString:@"icon_cash_position"]){
+                
+                //NSLog(@"CashPosition selected....");
+                globalShare.iscashpostionStatus = NO;
             
             self.cashContentView = [self.storyboard instantiateViewControllerWithIdentifier:@"CashPositionViewController"];
             self.cashContentView.view.frame = CGRectMake(0, -[[UIScreen mainScreen] bounds].size.height, [[UIScreen mainScreen] bounds].size.width, [[UIScreen mainScreen] bounds].size.height);
@@ -3096,6 +3134,9 @@ NSString *const kNewOrderOptionsViewCellIdentifier = @"OptionsViewCell";
                 
            
 //                NSString *str_string = [NSString stringWithFormat:@"%@\n%@ : %@\n%@ : %@\n%@ : %@ ",str_txt,str_commission_VAL,strCommisionvalue,str_newbal_VAL,strnewbalancevalue,str_total_order_VAL,strtotalbalancevalue];
+                    
+            if( [_textFieldQty.text intValue] > [_str_shares_QTY intValue])
+            {
            NSString *alertTitle = NSLocalizedString(@"Islamic Financial Securities", @"Basic Alert Style");
                 
                 NSString *str_TXT = [NSString stringWithFormat:@"%@ %@ ?",str_txt,_textFieldQty.text];
@@ -3112,7 +3153,7 @@ NSString *const kNewOrderOptionsViewCellIdentifier = @"OptionsViewCell";
                                                                    style:UIAlertActionStyleDefault
                                                                  handler:^(UIAlertAction *action)
                                            {
-                                           //    _textFieldQty.text = _strQty;
+                                               _textFieldQty.text = _str_shares_QTY;
                                                [self dismissViewControllerAnimated:NO completion:nil];
                                            }];
             
@@ -3137,6 +3178,13 @@ NSString *const kNewOrderOptionsViewCellIdentifier = @"OptionsViewCell";
             }
             
             [self presentViewController:alertController animated:YES completion:nil];
+            }
+            else{
+                OrderConfirmViewController *orderConfirmViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"OrderConfirmViewController"];
+                orderConfirmViewController.delegate = self;
+                orderConfirmViewController.passOrderValues = dictVals;
+                [[self navigationController] pushViewController:orderConfirmViewController animated:YES];
+            }
             }
            else
            {
@@ -3244,23 +3292,28 @@ NSString *const kNewOrderOptionsViewCellIdentifier = @"OptionsViewCell";
 
 -(void)QTY_changed
 {
-    if([self.buttonTransaction.currentTitle isEqualToString:NSLocalizedString(@"Sell", @"Sell")])
+    if([self.buttonTransaction.currentTitle isEqualToString:NSLocalizedString(@"Sell", @"Sell")]||[self.buttonCreate.currentTitle isEqualToString:NSLocalizedString(@"Create Order", @"Create Order")]||[self.buttonCreate.currentTitle isEqualToString:NSLocalizedString(@"Modify", @"Modify")])
     {
         
     }
+   
     else
     {
-   
+        
     double buyCash1 = 0,buyCash2 = 0, buySharePrice1 = 0, commission = 0, commissionVal = 0;
     int buyNoOfShares1 = 0;
     NSString *str = [self.labelBuyPower.text stringByReplacingOccurrencesOfString:@"," withString:@""];
+    
     buyCash1 = [[str stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]] doubleValue];
     buyCash2 = [[_strOrderValue stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]] doubleValue];
     if([self.buttonCreate.currentTitle isEqualToString:NSLocalizedString(@"Modify", @"Modify")])
     {
     buyCash1 = buyCash1 + buyCash2;
     }
+    
     buySharePrice1 = [[self.textFieldLimit.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]] doubleValue];
+   
+    
     if(self.selectValOrder == 0)
    // buySharePrice1 = [self.labelPrice.text doubleValue];
     
@@ -3287,4 +3340,6 @@ NSString *const kNewOrderOptionsViewCellIdentifier = @"OptionsViewCell";
 }
 
 
+
 @end
+

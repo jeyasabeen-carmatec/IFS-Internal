@@ -253,7 +253,8 @@ NSString *const kStockNewsCellIdentifier = @"StockNewsCell";
                                                                 else if([returnedDict[@"result"] hasPrefix:@"T4"])
                                                                     [GlobalShare showBasicAlertView:self :INVALID_HEADER];
                                                                 else if([returnedDict[@"result"] hasPrefix:@"T3"] || [returnedDict[@"result"] hasPrefix:@"T2"])
-                                                                    [GlobalShare showBasicAlertView:self :INVALID_TOKEN];
+                                                                      return;
+//[GlobalShare showBasicAlertView:self :INVALID_TOKEN];
                                                                 else
                                                                     [GlobalShare showBasicAlertView:self :returnedDict[@"result"]];
                                                                 return;

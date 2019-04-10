@@ -132,9 +132,10 @@
 		777C67D120D39E650085961A /* TIMERUIApplication.m in Sources */ = {isa = PBXBuildFile; fileRef = 777C67D020D39E650085961A /* TIMERUIApplication.m */; };
 		77E07E6020D1311D00706616 /* UIAlertController+Orientation.m in Sources */ = {isa = PBXBuildFile; fileRef = 77E07E5D20D1311D00706616 /* UIAlertController+Orientation.m */; };
 		77E07E6620D131B300706616 /* StocksOverviewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 77E07E6520D131B300706616 /* StocksOverviewViewController.m */; };
-		A091F7D42119BBAB0055198B /* CalculatorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A091F7D12119BBAA0055198B /* CalculatorViewController.m */; };
 		A091F7D82119BBF50055198B /* NewOrderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A091F7D72119BBF40055198B /* NewOrderViewController.m */; };
 		A091F7DA2119BC050055198B /* PortfoliosViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A091F7D92119BC050055198B /* PortfoliosViewController.m */; };
+		D01726D221EC5E5000A44531 /* CalculatorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D01726D121EC5E5000A44531 /* CalculatorViewController.m */; };
+		D01726D321EC5E5000A44531 /* CalculatorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D01726D121EC5E5000A44531 /* CalculatorViewController.m */; };
 		D03CC6B020FCBD8A00166251 /* SectorsGraphViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D03CC6AF20FCBD8A00166251 /* SectorsGraphViewController.m */; };
 		D03CC6B220FF25A300166251 /* CompanyGraphViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D03CC6B120FF25A200166251 /* CompanyGraphViewController.m */; };
 		D03CC6B420FF25B200166251 /* CompanyStocksViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D03CC6B320FF25B200166251 /* CompanyStocksViewController.m */; };
@@ -427,9 +428,9 @@
 		77E07E5D20D1311D00706616 /* UIAlertController+Orientation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIAlertController+Orientation.m"; sourceTree = "<group>"; };
 		77E07E5F20D1311D00706616 /* UIAlertController+Orientation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIAlertController+Orientation.h"; sourceTree = "<group>"; };
 		77E07E6520D131B300706616 /* StocksOverviewViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StocksOverviewViewController.m; sourceTree = "<group>"; };
-		A091F7D12119BBAA0055198B /* CalculatorViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CalculatorViewController.m; sourceTree = "<group>"; };
 		A091F7D72119BBF40055198B /* NewOrderViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewOrderViewController.m; sourceTree = "<group>"; };
 		A091F7D92119BC050055198B /* PortfoliosViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PortfoliosViewController.m; sourceTree = "<group>"; };
+		D01726D121EC5E5000A44531 /* CalculatorViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CalculatorViewController.m; sourceTree = "<group>"; };
 		D03CC6AF20FCBD8A00166251 /* SectorsGraphViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SectorsGraphViewController.m; sourceTree = "<group>"; };
 		D03CC6B120FF25A200166251 /* CompanyGraphViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CompanyGraphViewController.m; sourceTree = "<group>"; };
 		D03CC6B320FF25B200166251 /* CompanyStocksViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CompanyStocksViewController.m; sourceTree = "<group>"; };
@@ -849,7 +850,7 @@
 			isa = PBXGroup;
 			children = (
 				7351BC5C20C53D3B00F49E27 /* CalculatorViewController.h */,
-				A091F7D12119BBAA0055198B /* CalculatorViewController.m */,
+				D01726D121EC5E5000A44531 /* CalculatorViewController.m */,
 				7351BC5A20C53D3B00F49E27 /* MarketDepthViewController.h */,
 				770BA38C20C959FB001B7ACA /* MarketDepthViewController.m */,
 				7351BC5F20C53D3C00F49E27 /* NewOrderViewController.h */,
@@ -1056,7 +1057,7 @@
 					};
 					514382A61D1D82D400E1B739 = {
 						CreatedOnToolsVersion = 7.3.1;
-						DevelopmentTeam = 4MCGAH3G26;
+						DevelopmentTeam = MU44929JUZ;
 						ProvisioningStyle = Manual;
 					};
 				};
@@ -1179,6 +1180,7 @@
 			files = (
 				5108D3351D6EDEB200D23F6E /* TodayViewController.m in Sources */,
 				5108D3431D6EE0A100D23F6E /* WidgetListCell.m in Sources */,
+				D01726D221EC5E5000A44531 /* CalculatorViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1278,7 +1280,7 @@
 				7351BC5520C53CFE00F49E27 /* ActiveOrdersViewController.m in Sources */,
 				51829C151D269F2900DF1C73 /* XLButtonBarPagerTabStripViewController.m in Sources */,
 				512379191D5614110096C0E2 /* StockNewsCell.m in Sources */,
-				A091F7D42119BBAB0055198B /* CalculatorViewController.m in Sources */,
+				D01726D321EC5E5000A44531 /* CalculatorViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1493,20 +1495,20 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
 				DEFINES_MODULE = YES;
-				DEVELOPMENT_TEAM = 4MCGAH3G26;
+				DEVELOPMENT_TEAM = MU44929JUZ;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/$(PROJECT_NAME)/QIFS-Prefix.pch";
 				INFOPLIST_FILE = QIFS/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.carmatec.ifs;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ifs.Islamicbroker;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "c35b4e65-2e02-4558-b373-79de4071c1f8";
-				PROVISIONING_PROFILE_SPECIFIER = "IFS ADHOC";
+				PROVISIONING_PROFILE_SPECIFIER = "IFSAPPStore Adhoc";
 				SWIFT_OBJC_BRIDGING_HEADER = "QIFS/Utility/QIFS-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.0;
@@ -1520,21 +1522,21 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
 				DEFINES_MODULE = YES;
-				DEVELOPMENT_TEAM = 4MCGAH3G26;
+				DEVELOPMENT_TEAM = MU44929JUZ;
 				ENABLE_TESTABILITY = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/$(PROJECT_NAME)/QIFS-Prefix.pch";
 				INFOPLIST_FILE = QIFS/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.carmatec.ifs;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ifs.Islamicbroker;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "c35b4e65-2e02-4558-b373-79de4071c1f8";
-				PROVISIONING_PROFILE_SPECIFIER = "IFS ADHOC";
+				PROVISIONING_PROFILE_SPECIFIER = "IFSAPPStore Adhoc";
 				SWIFT_OBJC_BRIDGING_HEADER = "QIFS/Utility/QIFS-Bridging-Header.h";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";

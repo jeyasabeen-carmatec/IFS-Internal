@@ -12,8 +12,8 @@
 
 NSString *const kSearchStocksCellIdentifier = @"SearchStocksCell";
 
-@interface SearchStocksViewController ()
-
+@interface SearchStocksViewController ()<NSURLSessionDelegate>
+@property (nonatomic, weak) IBOutlet UIActivityIndicatorView *indicatorView;
 @property (nonatomic, weak) IBOutlet UILabel *labelTitle;
 @property (nonatomic, weak) IBOutlet UITableView *tableViewStocks;
 @property (nonatomic, weak) IBOutlet UISearchBar *searchBar;
@@ -38,6 +38,7 @@ NSString *const kSearchStocksCellIdentifier = @"SearchStocksCell";
     self.tableViewStocks.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
 
     self.arrayFilter = [[NSMutableArray alloc] init];
+
     self.arrayList = [[NSMutableArray alloc] init];
 //    self.arrayFilterList = [[NSMutableArray alloc] init];
 
@@ -53,13 +54,35 @@ NSString *const kSearchStocksCellIdentifier = @"SearchStocksCell";
 //    _buttonApply.layer.masksToBounds = YES;
 //    _buttonApply.layer.borderWidth = 1.0;
 //    _buttonApply.layer.borderColor = [UIColor whiteColor].CGColor;
-
+    NSLog(@"The values of ticker selction are:%@",globalShare.dictValues);
     self.arrayTitles = [[globalShare.dictValues allKeys] sortedArrayUsingSelector:@selector(localizedCaseInsensitiveCompare:)];
+    
+    for(int i=0;i<self.arrayTitles.count;i++)
+    {
+        NSString *sectionTitle = [self.arrayTitles objectAtIndex:i];
+        NSLog(@"The Dictionary Values are:%@",globalShare.dictValues);
+        NSMutableArray *sectionVals = [globalShare.dictValues objectForKey:sectionTitle];
+        for(int j=0;j<sectionVals.count;j++)
+        {
+        NSMutableDictionary *dictVal = [sectionVals objectAtIndex:j];
+        for(int k = 0; k< globalShare.favouritesArray.count;k++)
+        {
+            if([[dictVal valueForKey:@"ticker"] isEqualToString:[[globalShare.favouritesArray objectAtIndex:k]valueForKey:@"Ticker"]])
+            {
+                [dictVal setValue:@"YES" forKey:@"is_checked"];
+                [sectionVals replaceObjectAtIndex:j withObject:dictVal];
+                [globalShare.dictValues setValue:sectionVals forKey:sectionTitle];
+            }
+        }
+        }
+    }
     [self.searchBar setPlaceholder:NSLocalizedString(@"Symbol/Company Name", @"Symbol/Company Name")];
     [self.searchBar setImage:[UIImage imageNamed:@"icon_greysearch"] forSearchBarIcon:UISearchBarIconSearch state:UIControlStateNormal];
     self.searchBar.tintColor = [UIColor darkGrayColor];
 }
-
+-(void)viewWillAppear:(BOOL)animated
+{
+}
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
@@ -72,17 +95,42 @@ NSString *const kSearchStocksCellIdentifier = @"SearchStocksCell";
 
 - (IBAction)actionApply:(id)sender {
     NSString *strTickerParams;
+    NSString *strUpdateParams;
+    NSMutableArray *Temparry = [[NSMutableArray alloc]init];
+    NSLog(@"The array count :%lu",(unsigned long)self.arrayFilter.count);
     if(self.arrayFilter.count > 0)
-        strTickerParams = [NSString stringWithFormat:@"ticker = '%@'", self.arrayFilter[0][@"ticker"]];
-    for (int i=1; i<self.arrayFilter.count; i++) {
+    {
+     //   strUpdateParams = [NSString stringWithFormat:@"%@", self.arrayFilter[0][@"ticker"]];
+ //   [Temparry addObject:strUpdateParams];
+        NSLog(@"The values in filter array is : %@",self.arrayFilter);
+    for (int i=0; i<self.arrayFilter.count; i++) {
         NSMutableDictionary *dictVal = self.arrayFilter[i];
-        strTickerParams = [NSString stringWithFormat:@"%@ or ticker = '%@'", strTickerParams, dictVal[@"ticker"]];
-    }
-    NSString *strUpdateParams = [NSString stringWithFormat:@"update tbl_SecurityList set is_checked = '%@' where %@", @"YES", strTickerParams];
-    [globalShare.fmDBObject executeUpdate:strUpdateParams];
+        if([[dictVal valueForKey:@"is_checked"]boolValue])
+        {
+            
+        strTickerParams = [NSString stringWithFormat:@"%@",dictVal[@"ticker"]];
+            [Temparry addObject:strTickerParams];
+            
+//        strTickerParams = [NSString stringWithFormat:@"%@ or ticker = '%@'", strTickerParams, dictVal[@"ticker"]];
+//        strUpdateParams = [NSString stringWithFormat:@"update tbl_SecurityList set is_checked = '%@' where %@", @"YES", strTickerParams];
+        }
+        else{
+         strTickerParams = [NSString stringWithFormat:@"%@",dictVal[@"ticker"]];
+            [Temparry addObject:strTickerParams];
 
-    [self.delegate callBackResults:self.arrayFilter];
-    [self dismissViewControllerAnimated:YES completion:nil];
+        }
+       
+      //  [globalShare.fmDBObject executeUpdate:strUpdateParams];
+    }
+    NSString *strTickerParamsString = [NSString stringWithFormat:@"%@",[Temparry componentsJoinedByString:@","]];
+
+    [self favouritesAddorRemove:strTickerParamsString];
+    }
+    else
+    {
+         [GlobalShare showBasicAlertView:self :CHECK_ITEMS];
+    }
+
 }
 
 - (IBAction)actionCheckFavorite:(id)sender {
@@ -101,6 +149,7 @@ NSString *const kSearchStocksCellIdentifier = @"SearchStocksCell";
             [cell.buttonTick setImage:nil forState:UIControlStateNormal];
             
             [dictVal setValue:@"NO" forKey:@"is_checked"];
+            
             cell.selected=NO;
             
             [self.arrayFilter removeObject:dictVal];
@@ -120,6 +169,7 @@ NSString *const kSearchStocksCellIdentifier = @"SearchStocksCell";
     else {
         SearchStocksCell* cell = (SearchStocksCell *)[self.tableViewStocks cellForRowAtIndexPath:indexPath];
         
+        
         NSString *sectionTitle = [self.arrayTitles objectAtIndex:indexPath.section];
         NSMutableArray *sectionVals = [globalShare.dictValues objectForKey:sectionTitle];
         NSMutableDictionary *dictVal = [sectionVals objectAtIndex:indexPath.row];
@@ -132,9 +182,11 @@ NSString *const kSearchStocksCellIdentifier = @"SearchStocksCell";
             [cell.buttonTick setImage:nil forState:UIControlStateNormal];
             
             [dictVal setValue:@"NO" forKey:@"is_checked"];
+            [sectionVals replaceObjectAtIndex:indexPath.row withObject:dictVal];
+            [globalShare.dictValues setValue:sectionVals forKey:sectionTitle];
             cell.selected=NO;
             
-            [self.arrayFilter removeObject:dictVal];
+            [self.arrayFilter addObject:dictVal];
         }
         else {
 //            [cell.viewTick setBackgroundColor:[UIColor orangeColor]];
@@ -143,6 +195,8 @@ NSString *const kSearchStocksCellIdentifier = @"SearchStocksCell";
             [cell.buttonTick setImage:[UIImage imageNamed:@"icon_tickmark"] forState:UIControlStateNormal];
             
             [dictVal setValue:@"YES" forKey:@"is_checked"];
+            [sectionVals replaceObjectAtIndex:indexPath.row withObject:dictVal];
+            [globalShare.dictValues setValue:sectionVals forKey:sectionTitle];
             cell.selected=YES;
             
             [self.arrayFilter addObject:dictVal];
@@ -271,9 +325,11 @@ NSString *const kSearchStocksCellIdentifier = @"SearchStocksCell";
     }
     else {
         NSString *sectionTitle = [self.arrayTitles objectAtIndex:indexPath.section];
+        NSLog(@"The Dictionary Values are:%@",globalShare.dictValues);
         NSMutableArray *sectionVals = [globalShare.dictValues objectForKey:sectionTitle];
         NSMutableDictionary *dictVal = [sectionVals objectAtIndex:indexPath.row];
-
+        
+        
         cell.labelSymbol.text = dictVal[@"ticker"];
         cell.labelCompanyName.text = (globalShare.myLanguage != ARABIC_LANGUAGE) ? dictVal[@"security_name_e"] : dictVal[@"security_name_a"];;
 
@@ -527,6 +583,63 @@ NSString *const kSearchStocksCellIdentifier = @"SearchStocksCell";
     NSPredicate *applePred = [NSPredicate predicateWithFormat:@"self.security_name_e contains [c] %@ OR self.security_name_a contains [c] %@ OR self.ticker contains [c] %@", productName, productName, productName];
     NSArray *arrFiltered = [self.arrayList filteredArrayUsingPredicate:applePred];
     [self.arrayFilterList addObjectsFromArray:arrFiltered];
+}
+#pragma Favourites Functionality
+
+-(void)favouritesAddorRemove:(NSString *)tickerParams
+{
+    @try {
+        [self.indicatorView setHidden:NO];
+        NSString *strToken = [NSString stringWithFormat:@"%@", [[NSUserDefaults standardUserDefaults] stringForKey:@"ssckey"]];
+        NSURLSessionConfiguration *defaultConfigObject = [NSURLSessionConfiguration defaultSessionConfiguration];
+        defaultConfigObject.HTTPAdditionalHeaders = @{@"Authorization": strToken};
+        NSURLSession *defaultSession = [NSURLSession sessionWithConfiguration:defaultConfigObject delegate:self delegateQueue:[NSOperationQueue mainQueue]];
+        NSString *strURL = [NSString stringWithFormat:@"%@SaveFavorites?Tickers=%@", REQUEST_URL, tickerParams];
+        NSURL *url = [NSURL URLWithString:strURL];
+        NSURLSessionDataTask *dataTask = [defaultSession dataTaskWithURL:url
+                                                       completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
+                                                           [self.indicatorView setHidden:YES];
+                                                           if(error == nil)
+                                                           {
+                                                               NSMutableDictionary *returnedDict = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:&error];
+                                                               NSLog(@"The favourites :%@",returnedDict);
+                                                               if([returnedDict[@"status"] hasPrefix:@"error"]) {
+                                                                   if([returnedDict[@"result"] hasPrefix:@"T5"])
+                                                                       [GlobalShare showSessionExpiredAlertView:self :SESSION_EXPIRED];
+                                                                   else if([returnedDict[@"result"] hasPrefix:@"T4"])
+                                                                       [GlobalShare showBasicAlertView:self :INVALID_HEADER];
+                                                                   else if([returnedDict[@"result"] hasPrefix:@"T3"] || [returnedDict[@"result"] hasPrefix:@"T2"])
+                                                                       [GlobalShare showBasicAlertView:self :INVALID_TOKEN];
+                                                                   else
+                                                                       [GlobalShare showBasicAlertView:self :returnedDict[@"result"]];
+                                                                   return;
+                                                               }
+                                                               if([[returnedDict valueForKey:@"status"] isEqualToString:@"authenticated"])
+                                                               {
+                                                                   [self.delegate callBackResults:self.arrayFilter];
+                                                                   [self dismissViewControllerAnimated:YES completion:nil];
+
+
+                                                                   //globalShare.favouritesArray= [returnedDict valueForKey:@"result"];
+                                                          
+                                                                   
+                                                               }
+                                                           }
+                                                           else {
+                                                               [GlobalShare showBasicAlertView:self :[error localizedDescription]];
+                                                           }
+                                                           
+                                                       }];
+        
+        [dataTask resume];
+    }
+    @catch (NSException * e) {
+        NSLog(@"%@", [e description]);
+    }
+    @finally {
+        
+    }
+    
 }
 
 @end
